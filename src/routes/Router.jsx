@@ -329,12 +329,12 @@ const ThemeRoutes = [
               <TransferListPage/>
             )
           },
-          {
-            path: '/transfer/details',
-            element: (
-              <TransferDetailpage/>
-            )
-          },
+          // {
+          //   path: '/transfer/details',
+          //   element: (
+          //     <TransferDetailpage/>
+          //   )
+          // },
           {
             path: '/transfer/invoice/:id',
             element: (
