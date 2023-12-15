@@ -52,7 +52,9 @@ const testLive = {
 };
 
 const devLocal = {
-  SERVER_URL: "http://localhost:8089",
+  // SERVER_URL: "http://localhost:8089",
+  SERVER_URL: "https://dev.mytravellerschoice.com",
+
   CLIENT_URL: "https://b2b.mytravellerschoice.com",
   MAP_API_KEY: "AIzaSyA6qMfsMovR4sRbC8bu6zMNMH3brgzxwW4",
   TITLE_NAME: "Traveller's Choice Travel & Tourism",
