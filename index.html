@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" id="companyLogo" type="image/svg+xml" href="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="title"></title>
+
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=AXk5nXOcqQjRqDJ_0psZMtUrtZxuRC36TH2pcwjmiI5cUBf1fbSTOlDcp4FhoaevlJx2FpEbaFhJwUz5&currency=USD"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3F5BQ4QYYX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-3F5BQ4QYYX");
+  </script>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module">
+    import { config } from "/src/constants";
+    document.getElementById("title").textContent = config.TITLE_SHORT_NAME;
+    document.getElementById("companyLogo").setAttribute("href", config.COMPANY_FAVICON);
+  </script>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

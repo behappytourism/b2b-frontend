@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+
+import MarkupsNavigation from "../MarkupsNavigation";
+import HotelsTab from "./HotelsTab";
+import StarCategoryTab from "./StarCategoryTab";
+
+function HotelMarkupList() {
+  const [tab, setTab] = useState({
+    starCategory: true,
+    hotels: false,
+  });
+
+  return (
+    <>
+      <div className=" ">
+        <MarkupsNavigation />
+        <div className="max-w-screen-xl mx-auto">
+          <div className="px-5 py-10">
+            <div className="overflow-x-auto shadow-[0_0_7px_2px_rgb(56_65_74_/_5%)]">
+              <div className="m-5 text-gray-400 font-demo flex gap-7 px-3 border-b">
+                <p
+                  onClick={() => setTab({ starCategory: true, hotels: false })}
+                  className={`${
+                    tab.starCategory
+                      ? " font-medium text-lightblue border-b-2 border-lightblue "
+                      : " "
+                  } px-2 cursor-pointer`}
+                >
+                  Star Category
+                </p>
+                <p
+                  onClick={() => setTab({ starCategory: false, hotels: true })}
+                  className={`${
+                    tab.hotels
+                      ? " font-medium text-lightblue border-b-2 border-lightblue "
+                      : " "
+                  } px-2 cursor-pointer`}
+                >
+                  Hotels
+                </p>
+              </div>
+              {tab.starCategory ? <StarCategoryTab /> : ""}
+              {tab.hotels ? <HotelsTab /> : ""}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default HotelMarkupList;
