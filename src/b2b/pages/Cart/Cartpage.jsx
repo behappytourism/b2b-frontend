@@ -334,7 +334,7 @@ function Cartpage() {
 
     <div className="">
         <div className="p-5 flex justify-center ">
-            <div className='flex justify-between bg-BEColor/10 shadow-sm p-5 w-[1200px] rounded-lg '>
+            <div className='flex justify-between bg-white shadow-sm p-5 w-[1200px] rounded-lg '>
                         <div className='flex justify-evenly'>
                                 <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
@@ -370,7 +370,7 @@ function Cartpage() {
                         <div>
                             <h1 className='text-sm font-semibold'>Currently, you have 4 item(s) in your cart</h1>
                             <div className='flex justify-end pt-2'>
-                                <button className='text-end text-md text-orange-600'>CONTINUE SHOPPING</button>
+                                <button onClick={()=> navigate('/')} className='text-end text-md text-orange-600'>CONTINUE SHOPPING</button>
                             </div>
                         </div>
                     </div>
@@ -585,18 +585,27 @@ function Cartpage() {
                     }
              </div>
 
-                ) : (
-                    <div className="pt-20">
-                        <div className="w-52 h-52">
-                            <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" alt="" />
-                        </div>
-                        <div>
-                            <h1 className="text-xl font-bold">Your Cart is empty...</h1>
-                        </div>
-                    </div>
-                )
+                ) : ""
             }
               
+             </div>
+
+            {
+                agentExcursionCart.length < 1 && agentTransferCart.length < 1 ? (
+                    (
+                        <div className="pt-20">
+                            <div className="w-52 h-52">
+                                <img src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png" alt="" />
+                            </div>
+                            <div>
+                                <h1 className="text-xl font-bold">Your Cart is empty...</h1>
+                            </div>
+                        </div>
+                    )
+                ) : ""
+            }
+             <div>
+
              </div>
              
         <div className=''>
@@ -671,7 +680,7 @@ function Cartpage() {
                     </div>
                  </div>
                  <div className='pt-3'>
-                    <div className='shadow-sm w-full h-auto relative bg-white '>
+                    <div className='shadow-sm w-full h-96 relative bg-white '>
                         <div className=''>
                             <div className='flex gap-1 justify-center items-center mb-2 bg-BEColor h-12'>
                                 <h1 className='text-green-900 text-3xl'><IoIosCheckmarkCircleOutline /></h1>
@@ -688,6 +697,7 @@ function Cartpage() {
 
                         <div className='pt-2'>
                             <div className=' w-full h-auto p-4'>
+                                <div className=" flex justify-center place-items-center">
                                 <div className=''>
                                     <div className=' w-full h-10'>
                                 <div className='text-xl font-bold'>
@@ -709,7 +719,9 @@ function Cartpage() {
                                     </div>
                                     </div>
                                 </div>
-                            <div className='flex justify-end items-end pt-3'>
+                                </div>
+                               
+                            <div className='flex justify-end items-end pt-9'>
                             {
                                 details.name && details.email && details.phoneNumber && details.country && details.paymentMethod && (
                                     <div className='pt-8'>
