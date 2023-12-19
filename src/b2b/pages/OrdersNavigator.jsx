@@ -5,6 +5,8 @@ import { IoAirplaneOutline, IoBedOutline, IoNewspaperOutline } from "react-icons
 import { MdOutlineAirplaneTicket } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { AiOutlineInsurance } from "react-icons/ai";
+import { PiCarProfileLight } from "react-icons/pi";
+
 
 function OrdersNavigator() {
   const navigate = useNavigate();
@@ -63,6 +65,8 @@ function OrdersNavigator() {
                   ) : (
                     ""
                   )}
+                  
+                  
                   {/* {agent?.configuration?.showVisa ? (
                     <li className=" mr-8">
                       <span
@@ -148,6 +152,25 @@ function OrdersNavigator() {
                   ) : (
                     ""
                   )} */}
+
+                    <li className=" mr-8">
+                      <span
+                        className={`inline-block p-2 ${
+                          location.pathname === "/transfers/order"
+                            ? " text-blue-500  "
+                            : " text-gray-400 border-transparent hover:text-blue-400  "
+                        }  rounded-full  transition duration-200 cursor-pointer flex items-center gap-1 text-sm`}
+                        href="#"
+                        onClick={() => {
+                          navigate("/transfers/order");
+                        }}
+                      >
+                        <span className="text-lg">
+                        <PiCarProfileLight />
+                        </span>
+                        Transfer
+                      </span>
+                    </li>
                 </ul>
               </div>
             </div>

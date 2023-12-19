@@ -59,7 +59,7 @@ function SearchListViewSection() {
                     <div className="text-lg font-semibold  text-darktext flex items-center">
                       {item?.title}
                     </div>
-                    <div className="flex items-center space-x-1 text-text ">
+                    {/* <div className="flex items-center space-x-1 text-text ">
                       <span
                         className="text-3xl text-main"
                         onClick={(e) => {
@@ -80,7 +80,7 @@ function SearchListViewSection() {
                           <AiFillHeart />
                         )}
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="text-xs text-text px-3  flex space-x-1 items-center">
                     <div className="">
@@ -160,16 +160,16 @@ function SearchListViewSection() {
                         </div>
                       </span>
                       <span className="space-y-1">
-                        <div className="flex justify-end">
+                        {/* <div className="flex justify-end">
                           <Rating
                             value={item?.totalRating}
                             color={"#FED049"}
                           />
-                        </div>
-                        <div className="text-xs text-text flex justify-end">
+                        </div> */}
+                        {/* <div className="text-xs text-text flex justify-end">
                           {item?.totalRating?.toFixed(2) + " Rating" + " "} (
                           {item?.totalReviews} reviews)
-                        </div>
+                        </div> */}
                         <div className="flex space-x-1 items-center">
                           <span className="text-lightblue">
                             {" "}

@@ -62,7 +62,7 @@ function PaymentDetailsSection() {
         },
       };
       const response = await axios.post(
-        "/b2b/attractions/orders/create",
+        "/b2b/attractions/orders/create", 
         {
           selectedActivities: activity,
           country: travellerData?.country,

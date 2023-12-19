@@ -158,6 +158,8 @@ const LandingPage = lazy(()=> import("../b2b/components/landingPage/LandingPage"
 const Transfer = lazy(()=>import("../b2b/pages/Home/TransferPage"))
 const TransferListPage = lazy(()=>import("../b2b/pages/Transfer/TransferListPage"))
 const CartPage = lazy(()=> import('../b2b/pages/Cart/Cartpage'))
+const ToursHomePage = lazy(()=> import('../b2b/pages/Tours/ToursHomePage'))
+
 
 import TransferDetailpage from "../b2b/pages/Transfer/TransferDetailpage";
 
@@ -171,6 +173,9 @@ import GeneralModule from "./modules/GeneralModule";
 import AboutUsPage from "../b2b/components/landingPage/AboutUsPage";
 import ContactUsPage from "../b2b/components/landingPage/ContactUsPage";
 import OrderSuccessPage from "../b2b/pages/Transfer/OrderSuccessPage";
+import TransferOrderPage from "../b2b/pages/TransferOrder/TransferOrderPage";
+import ViewSigleDetails from "../b2b/pages/TransferOrder/ViewSigleDetails";
+import TourModule from "./modules/TourModule";
 
 
 // const HotelErrorPage = lazy(() =>
@@ -252,7 +257,7 @@ const ThemeRoutes = [
           { path: "/attractions/:slug", element: <Attraction /> },
           { path: "/attractions/details/:id", element: <AttractionDetails /> },
           { path: "/attractions/payment", element: <PaymentHomePage /> },
-          { path: "/attraction/order", element: <AttractionOrder /> },
+          // { path: "/attraction/order", element: <AttractionOrder /> },
           {
             path: "/attractions/invoice/:id",
             element: <AttractionInvoice />,
@@ -329,6 +334,7 @@ const ThemeRoutes = [
               <TransferListPage/>
             )
           },
+        
           // {
           //   path: '/transfer/details',
           //   element: (
@@ -343,6 +349,18 @@ const ThemeRoutes = [
           }
         ]
         
+      },
+      {
+        path: "/",
+        element: <TourModule/>,
+        children: [
+          {
+            path: "/tours",
+            element: (
+              <ToursHomePage/>
+            )
+          }
+        ]
       },
       {
         path: "/",
@@ -381,6 +399,19 @@ const ThemeRoutes = [
           { path: "/wallet", element: <Wallet /> },
 
           {path: "/home/cart", element: <CartPage/>},
+          {
+            path: '/order',
+            element: (
+              <TransferOrderPage/>
+            )
+          },
+          {
+            path: "/order/details/:id",
+            element: (
+              <ViewSigleDetails/>
+            )
+          },
+
 
           // { path: "/flight/order/results", element: <FlightHomePage /> },
           // { path: "/b2b/flight/:tbId", element: <FlightBookingPage /> },

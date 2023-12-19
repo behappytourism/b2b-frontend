@@ -6,7 +6,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import { LiaSaveSolid } from "react-icons/lia";
 import { useSelector, useDispatch } from 'react-redux';
 import { TiDelete } from "react-icons/ti";
-import { deleteSelectedTransferInCart, clearSearchTransferTrips, clearCartItemsAfterPurchase } from '../../../redux/slices/transferSlice';
+import { deleteSelectedTransferInCart, clearSearchTransferTrips } from '../../../redux/slices/transferSlice';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../../axios'
 import { FaArrowRightArrowLeft } from "react-icons/fa6";

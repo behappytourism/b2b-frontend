@@ -6,6 +6,8 @@ import { MdPassword } from "react-icons/md";
 import { setAlertError } from '../../../redux/slices/homeSlice';
 import { useDispatch } from 'react-redux';
 import { clearCartItemsAfterPurchase } from '../../../redux/slices/transferSlice';
+import { emptyCart } from '../../../redux/slices/agentExcursionSlice';
+import { setAlertSuccess } from '../../../redux/slices/homeSlice';
 
 function ConfirmOtpModal({details, orderId, setIsModal}) {
 
@@ -53,7 +55,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
         try {
             e.preventDefault()
             setIsLoading(true)
-            const res = await axios.post(`/b2b/transfer/order/complete`, 
+            const res = await axios.post(`/b2b/orders/complete`, 
             {
                 otp: otp.one + otp.two + otp.three + otp.four + otp.five,
                 orderId
@@ -61,13 +63,17 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
             { headers: { Authorization: `Bearer ${token}`}}    
                 )
 
-            setIsModal(false)
-            setIsLoading(false)
-
                if (res.data) {
-              
-                localStorage.removeItem('selectedTransfer');
+                dispatch(setAlertSuccess({
+                  status: true,
+                  title: "Completed",
+                  text: "Order successfully completed"
+                }))
+                setIsModal(false)
+                setIsLoading(false)
+    
                 dispatch(clearCartItemsAfterPurchase())
+                dispatch(emptyCart())
             }
 
         } catch (error) {
@@ -78,6 +84,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
                 title: error?.response?.data?.error,
                 text: error?.message
             }))
+            console.log(error); 
         }
       }
     
@@ -162,7 +169,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
           <p className="text-xs  text-red-500 text-right py-1">{error}</p>
         )}
         {/* <button className="inline-block w-full sm:w-auto py-3 px-5 mb-2 text-center font-semibold leading-6 text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200">Submit</button> */}
-        <div className="pt-5 pb-6 px-6 text-right bg-primaryColor -mb-2">
+        <div className="pt-5 pb-6 px-6 text-right bg-BEColor -mb-2">
           {/* <div className="inline-block w-full sm:w-auto py-3 px-5 mb-2 mr-4 text-center font-semibold leading-6 text-gray-200 bg-gray-500 hover:bg-gray-400 rounded-lg transition duration-200">
     Resend OTP
   </div> */}

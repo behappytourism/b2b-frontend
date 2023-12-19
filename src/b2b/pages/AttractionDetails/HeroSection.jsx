@@ -99,14 +99,14 @@ function HeroSection() {
                         {agentExcursion?.title} 
                       </div>
                       <div className="flex items-center space-x-3 text-sm">
-                        <span className=" text-yellow-500 flex space-x-1 ">
+                        {/* <span className=" text-yellow-500 flex space-x-1 ">
                           <Rating
                             value={agentExcursion?.totalRating}
                             text={agentExcursion?.totalReviews + " Reviews"}
                             color={"#FED049"}
                           />
-                        </span>
-                        <span className="flex items-center text-blueColor  capitalize">
+                        </span> */}
+                        <span className="flex items-center text-blueColor text-lg capitalize">
                           <CiLocationOn /> {agentExcursion?.destination?.name}{" "}
                         </span>
                       </div>
@@ -120,7 +120,7 @@ function HeroSection() {
                         <RxShare2 />
                       </button>
                       {/* like button */}
-                      <button
+                      {/* <button
                         className="h-10 w-10 rounded-full bg-soft text-main border-main border flex justify-center items-center text-2xl"
                         onClick={() => {
                           dispatch(
@@ -138,7 +138,7 @@ function HeroSection() {
                         ) : (
                           <AiFillHeart />
                         )}
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>

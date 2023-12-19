@@ -148,6 +148,7 @@ export const transferSlice = createSlice({
         },
 
         clearCartItemsAfterPurchase: (state, { payload })=> {
+            localStorage.removeItem('selectedTransfer');
             state.agentTransferCart = []
         }
         

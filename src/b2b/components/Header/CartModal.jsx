@@ -13,7 +13,7 @@ function CartModal({ setCart }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(0) 
   const [carts, setCarts] = useState({
     attraction: true,
     transfer: false
