@@ -1,8 +1,38 @@
 import React, {useState} from 'react'
 import { config } from '../../../constants'
 import { LuDownload } from "react-icons/lu";
+import axios from '../../../axios'
+import { useSelector } from 'react-redux';
 
-function ShowAttractionDetails({ele}) {
+
+function ShowAttractionDetails({ele, orderAttractionDetails}) {
+
+    console.log(ele, 'lsdaklsjhfsldkjjfhdskjfjhadslkjfhsdlkjhfdsklfhsdlkdfhsdldkjhskdfjhdslkjfhdskjsdkjfhdslkjfhslkj');
+ 
+   const { token } = useSelector((state)=> state.agents)
+
+   const handleDownloadAllTicket = async () => {
+    try {
+        
+        const response = await axios.get(`/b2b/attractions/orders/${orderAttractionDetails?._id}/ticket/${ele?._id}`, 
+        {
+            headers: { Authorization: `Bearer ${token}`},
+            responseType: "arraybuffer"
+        })
+        console.log(response);
+        const blob = new Blob([response.data], {
+            type: "application/pdf"
+        })
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob)
+        link.download = "tickets.pdf";
+        link.click()
+    } catch (error) {
+        console.log(error);
+    }
+   }
+
+
 
   return (
 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -57,12 +87,16 @@ function ShowAttractionDetails({ele}) {
                    {ele?.grandTotal}
                 </td>
                 <td className="px-6 py-4">
-                    <h1 className='bg-orange-200 w-20 text-center p-1 text-xs text-orange-500 rounded'>
+                    <h1 className={`${ele?.status === 'confirmed' ? "bg-green-300 text-green-600" : ""} ${ele?.status === 'booked' ? "bg-orange-200 text-orange-500" : ""} font-bold  w-20 text-center p-1 text-xs  rounded`}>
                        {ele?.status}
                     </h1>
                 </td>
                 <td className="px-6 py-4">
-                    <h1 className='cursor-pointer text-xl'><LuDownload /></h1>
+                    <h1 className='cursor-pointer text-xl'
+                    onClick={()=>{
+                        handleDownloadAllTicket()
+                    }}
+                    ><LuDownload /></h1>
                 </td>
             </tr>
         </tbody>

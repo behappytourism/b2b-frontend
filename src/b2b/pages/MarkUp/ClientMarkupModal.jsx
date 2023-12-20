@@ -11,8 +11,8 @@ function ClientMarkupModal({ setMarkup, setMarkupData, markupData, activity }) {
   useHandleClickOutside(wrapperRef, () => setMarkup(false));
   const { token } = useSelector((state) => state.agents);
 
-  const [markupType, setMarkupType] = useState(markupData.markupType || "");
-  const [markupAmount, setMarkupAmount] = useState(markupData.markup || 0);
+  const [markupType, setMarkupType] = useState(markupData?.markupType || "");
+  const [markupAmount, setMarkupAmount] = useState(markupData?.markup || 0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 

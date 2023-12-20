@@ -1,10 +1,14 @@
 import React from 'react'
 import { BiTransfer } from "react-icons/bi";
 import { IoMdArrowRoundForward } from "react-icons/io";
+import axios from '../../../axios'
+import { useSelector } from 'react-redux';
+import { LuDownload } from "react-icons/lu";
+
 
 function ShowTransferDetails({ele}) {
 
-    console.log(ele, 'elements for transfers');
+    
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -45,7 +49,7 @@ function ShowTransferDetails({ele}) {
                      Vehicle
                 </th>
                 {/* <th scope="col" className="px-6 py-3">
-                   Ticket
+                   Invoice
                 </th> */}
             </tr>
         </thead>
@@ -140,7 +144,11 @@ function ShowTransferDetails({ele}) {
                    }
                 </td>
                 {/* <td className="px-6 py-4">
-                    <h1 className='cursor-pointer text-xl'><LuDownload /></h1>
+                    <h1 className='cursor-pointer text-xl'
+                    onClick={()=>{
+                        handleDownloadTickets(ele?.activity?._id)
+                    }}
+                    ><LuDownload /></h1>
                 </td> */}
             </tr>
         </tbody>

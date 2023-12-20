@@ -316,7 +316,7 @@ function HotelIndexPage() {
                     return { ...prev, skip: prev.skip + 1 };
                   });
                 }
-              }}
+              }} 
               hasMore={isLoading ? false : filters.hasMore}
               endMessage={
                 <p style={{ textAlign: "center" }}>

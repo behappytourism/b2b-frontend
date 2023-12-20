@@ -14,12 +14,17 @@ function ToursHomePage() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [attractions, setAttractions] = useState([])
+    const [filters, setFilters] = useState({
+        limit: 20,
+        skip: 0,
+        totalAttractions: 0,
+    })
 
 
     const fetchAllAttractions = async () => {
         try {
             setIsLoading(true)
-            const res = await axios.get(`/b2b/resellers/client/attraction/all`, {
+            const res = await axios.get(`/b2b/resellers/client/attraction/all?skip=${filters.skip}&limit=${filters.limit}`, {
                 headers: {Authorization: `Bearer ${token}`}
             })
             setAttractions(res?.data?.attractions)
@@ -44,23 +49,21 @@ function ToursHomePage() {
                         {
                             attractions?.data?.length > 0 ? (
                                 <>
-                                            <div className='grid md:grid-cols-4 sm:grid-cols-2 gap-3'>
+                                            <div className='grid md:grid-cols-5 sm:grid-cols-2 gap-3'>
                                                 {
                                                     attractions?.data?.map((ele, index)=> {
-                                                        console.log(ele, 'map elements');
                                                         return (
                                                             <div key={ele?._id} className='bg-white shadow-md rounded-xl w-full h-[450px] cursor-pointer'
                                                             onClick={()=>{
                                                                 navigate(`/attractions/details/${ele?._id}`);
                                                             }}
-
                                                             >
                                                             <div className='w-full h-52 rounded-t-3xl'>
                                                                 <img className='w-full h-full object-cover rounded-t-3xl' src={config?.SERVER_URL + ele?.images[0]} alt="" />
                                                             </div>
                                                             <div className='p-4'>
-                                                                <div className=' flex justify-center'>
-                                                                    <h1 className='text-xl font-extralight text-center'>{ele?.title}</h1>
+                                                                <div className=' flex justify-center h-14'>
+                                                                    <h1 className='text-md font-extralight text-center max-w-2xl'>{ele?.title}</h1>
                                                                 </div>
                                                                 <div className='flex gap-2 pt-2'>
                                                                     <div className=''>
@@ -82,11 +85,11 @@ function ToursHomePage() {
                                                                         <h1 className='text-xs font-light text-gray-300'>*price varies</h1>
                                                                         </div>
                                                                         <div className='flex gap-1'>
-                                                                            <div className='pt-1'>
+                                                                            <div className=''>
                                                                                 <h1 className='text-lg text-blue-400'><GoClock /></h1>
                                                                             </div>
                                                                             <div>
-                                                                              <h1>Duration {ele?.duration} {ele?.durationType}</h1>
+                                                                              <h1 className='text-sm'>Duration {ele?.duration} {ele?.durationType}</h1>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -105,7 +108,7 @@ function ToursHomePage() {
                 ) : (
                     <div className='grid md:grid-cols-4 sm:grid-cols-2 gap-3'>
                         {
-                            [1,2,3,4,5]?.map((ele)=>(
+                            [1,2,3,4,5,6,7,8,9]?.map((ele)=>(
                                 <div className='bg-white shadow-md rounded-xl w-full h-[450px]'>
                                 <div className='w-full h-52 rounded-t-3xl'>
                                     <div className='w-full h-full bg-gray-100 animate-pulse'></div>

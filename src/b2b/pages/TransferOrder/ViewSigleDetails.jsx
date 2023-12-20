@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { PageLoader } from '../../components'
 import ShowAttractionDetails from './ShowAttractionDetails'
 import ShowTransferDetails from './ShowTransferDetails'
+import {BtnLoader} from '../../components'
 
 function ViewSigleDetails() {
 
@@ -15,6 +16,7 @@ function ViewSigleDetails() {
     const [orderAttractionDetails, setOrderAttractionDetails] = useState({})
     const [orderTransferDetails, setOrderTransferDetails] = useState({})
     const [isLoading, setIsLoading] = useState(false)
+    const [invoiceLoading, setInvoiceLoading] = useState(false)
 
     const fetchSingleOrderDetails = async ()=>{
         try {
@@ -40,8 +42,32 @@ function ViewSigleDetails() {
         fetchSingleOrderDetails()
     }, [])
 
-    console.log(orderAttractionDetails, 'attraction details');
-    console.log(orderTransferDetails, "transfers");
+    const handleDownloadInvoice = async () => {
+        try {
+            setInvoiceLoading(true)
+            const pdfBuffer = await axios.get(
+                `/b2b/orders/invoice/${params.id}`,
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                    responseType: "arraybuffer"
+                }
+            )
+            const blob = new Blob([pdfBuffer?.data], {
+                type: "application/pdf"
+            })
+            const link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob)
+            link.download = "invoice.pdf";
+            document.body.appendChild(link)
+            link.click()
+
+            setInvoiceLoading(false)
+        } catch (error) {
+            console.log(error);
+            setInvoiceLoading(false)
+        }
+      
+    }
 
   return (
     <div>
@@ -54,6 +80,13 @@ function ViewSigleDetails() {
             ) : (
               <div>
                 <div className='py-20 px-20 bg-white shadow-xl w-full h-auto'>
+                    <div className='flex justify-end'>
+                        <button
+                        onClick={()=> {
+                            handleDownloadInvoice()
+                        }}
+                        className='bg-orange-500 w-52 rounded text-white  h-8'>{invoiceLoading ? <BtnLoader/> : "Download Invoice"}</button>
+                    </div>
                     {
                         orderAttractionDetails?.activities?.length > 0 && (
                             <>
@@ -65,7 +98,7 @@ function ViewSigleDetails() {
                             orderAttractionDetails?.activities?.map((ele)=>{
                                 return (
                                     <div className='pt-4'>
-                                        <ShowAttractionDetails ele={ele}/>
+                                        <ShowAttractionDetails ele={ele} orderAttractionDetails={orderAttractionDetails}/>
                                             </div>
                                         )
                                     })
