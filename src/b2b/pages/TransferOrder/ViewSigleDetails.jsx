@@ -98,7 +98,7 @@ function ViewSigleDetails() {
                             orderAttractionDetails?.activities?.map((ele)=>{
                                 return (
                                     <div className='pt-4'>
-                                        <ShowAttractionDetails ele={ele} orderAttractionDetails={orderAttractionDetails}/>
+                                        <ShowAttractionDetails ele={ele} orderAttractionDetails={orderAttractionDetails} orderDetails={orderDetails}/>
                                             </div>
                                         )
                                     })

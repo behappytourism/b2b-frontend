@@ -175,7 +175,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
   </div> */}
           <button
             type="submit"
-            className="inline-block w-full sm:w-auto py-3 px-5 mb-2 text-center font-semibold leading-6 text-blue-50 bg-blue-500 hover:bg-blue-600 rounded-lg transition duration-200"
+            className="inline-block w-full sm:w-auto py-3 px-5 mb-2 text-center font-semibold leading-6 text-blue-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition duration-200"
           >
             {isLoading ? <BtnLoader /> : "Submit"}
           </button>

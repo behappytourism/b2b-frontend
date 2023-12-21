@@ -37,7 +37,7 @@ function SearchListViewSection() {
             agentExcursions?.attractions?.data?.map((item, index) => (
               <div
                 key={index}
-                className="h-full snap-start mt-2 bg-light rounded-3xl  p-3 cursor-pointer md:mx-0"
+                className="h-full snap-start mt-2 bg-light rounded-3xl shadow-sm p-3 cursor-pointer md:mx-0"
                 onClick={() => {
                   saveDatatoLocalStorage({
                     _id: item?._id,
