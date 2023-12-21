@@ -11,7 +11,7 @@ import FilterSection from "./FilterSection";
 import ExtendedVersion from "./ExtendedVersion";
 import CompactVersion from "./CompactVersion";
 import ComparatorVersion from "./ComparatorVersion";
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroll-component"; 
 import { AiOutlineArrowUp } from "react-icons/ai";
 import { config } from "../../../constants";
 import LoadingBar from "react-top-loading-bar";
