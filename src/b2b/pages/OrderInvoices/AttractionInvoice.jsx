@@ -80,7 +80,7 @@ function AttractionInvoice() {
         const pdfBuffer = await axios.get(
           `/b2b/attractions/orders/${id}/ticket/${item?._id}`,
           {
-            headers: { authorization: `Bearer ${token}` },
+            headers: { authorization: `Bearer ${token}` }, 
             responseType: "arraybuffer",
           }
         );

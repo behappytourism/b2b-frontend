@@ -5,7 +5,7 @@ import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-
+import AttractionCard from "../../components/Cards/AttractionCard";
 
 function AttractionPage() {
 
@@ -49,11 +49,12 @@ function AttractionPage() {
     <div className="">
   
       {/* <SearchCards /> */}
-      <div className="grid md:grid-cols-1">
+      <div className="grid md:grid-cols-1 relative">
         <Carousel 
         responsive={responsive}
         infinite={true}
         autoPlay={true}
+        duration={9000}
         >
           {
             data.map((ele)=>(
@@ -63,6 +64,9 @@ function AttractionPage() {
             ))
           }
             </Carousel>
+      <div className="absolute left-0 right-0 top-52 bottom-0">
+        <AttractionCard/>
+      </div>
       </div>
       <div className="px-5 pt-7 mt-5 max-w-screen-xl mx-auto" data-aos = "fade-up">
         <TopDestination />

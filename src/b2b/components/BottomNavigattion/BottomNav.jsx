@@ -7,6 +7,10 @@ import { IoMdCart } from "react-icons/io";
 import { RiMarkupFill } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
 import SearchCardModal from "./SearchCardModal";
+import { FaCar } from "react-icons/fa";
+import { MdTravelExplore } from "react-icons/md";
+
+
 
 function BottomNav({ setSidebarView }) {
   const navigate = useNavigate();
@@ -14,7 +18,7 @@ function BottomNav({ setSidebarView }) {
 
   const [searchModal, setSearchModal] = useState(false);
   return (
-    <>
+    <> 
       <div
         className={`${
           location.pathname.includes("/attractions/details/")
@@ -22,20 +26,36 @@ function BottomNav({ setSidebarView }) {
             : "block"
         } lg:hidden fixed w-full bottom-0 bg-primaryColor text-white h-[48px] flex justify-center items-center`}
       >
-        <div className="grid grid-cols-5 gap-4 px-2 w-full">
-          <div className="flex justify-center items-center">
+        <div className="grid grid-cols-6 gap-4 px-2 w-full">
+        <div className="flex justify-center items-center">
             <div
-              className=""
+              className="" 
               onClick={() => {
                 // setSidebarView(true)
-                navigate("/quotation");
+                navigate("/tours");
               }}
             >
               <div className="flex justify-center items-center text-[20px]">
-                <RiFilePaper2Line />
+              <MdTravelExplore />
               </div>
               <div className="">
-                <p className="text-xs"> Quote</p>
+                <p className="text-xs">Tours</p>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div
+              className="" 
+              onClick={() => {
+                // setSidebarView(true)
+                navigate("/transfer");
+              }}
+            >
+              <div className="flex justify-center items-center text-[20px]">
+              <FaCar />
+              </div>
+              <div className="">
+                <p className="text-xs">Transfer</p>
               </div>
             </div>
           </div>
@@ -70,7 +90,7 @@ function BottomNav({ setSidebarView }) {
             </div>
           </div>
           <div className=" flex justify-center items-center">
-            <div className="" onClick={() => navigate("/attraction/order")}>
+            <div className="" onClick={() => navigate("/order")}>
               <div className="flex justify-center items-center text-[20px]">
                 <IoMdCart />
               </div>

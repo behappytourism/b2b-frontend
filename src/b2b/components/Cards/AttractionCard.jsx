@@ -44,7 +44,7 @@ function AttractionCard({ setView }) {
                 <div className="space-y-2">
                   <label
                     htmlFor=""
-                    className="text-sm text-gray-500  tracking-wide"
+                    className="text-4xl font-bold text-white  tracking-wide"
                   >
                     Where do you want to go?
                   </label>
@@ -55,11 +55,12 @@ function AttractionCard({ setView }) {
                     onChange={(e) => setValue(e.target.value)}
                     onFocus={handleFocus}
                     required
-                    className="block lg:w-[30%] sm:w-[60%] w-full capitalize outline-none border rounded px-2 h-10 border-b-blue-400 bg-transparent text-sm text-gray-300 font-medium"
+                    placeholder="Search here..."
+                    className="block placeholder:text-gray-300  lg:w-[60%] sm:w-[60%] w-full capitalize outline-none bg-white border rounded-xl p-5 px- h-16  bg-transparent text-sm text-gray-300 font-medium"
                   />
                 </div>
                 {datalist && (
-                  <div className="absolute max-h-[17em] w-[21em] mt-1  bg-light rounded-lg overflow-y-auto z-20">
+                  <div className="absolute max-h-[30em] w-[35em] mt-1 shadow-xl bg-light rounded-lg overflow-y-auto z-20">
                     <div className="w-full p-2 overflow-y-auto">
                       {searchQuery?.destinations?.length > 0 ? (
                         <div className="">

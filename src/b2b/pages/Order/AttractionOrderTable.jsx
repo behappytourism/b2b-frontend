@@ -68,7 +68,7 @@ function AttractionOrderTable({ item }) {
         `/b2b/attractions/orders/${item?._id}/ticket/${item?.activities?._id}/single/${ele?.ticketNo}`,
         {
           headers: { authorization: `Bearer ${token}` },
-          responseType: "arraybuffer",
+          responseType: "arraybuffer", 
         }
       );
       const url = window.URL.createObjectURL(

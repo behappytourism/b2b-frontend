@@ -21,6 +21,7 @@ import { BiRightArrowCircle } from "react-icons/bi";
 import { FaCar } from "react-icons/fa";
 import { IoMdHome } from "react-icons/io";
 import { TbBrandBooking } from "react-icons/tb";
+import { MdTravelExplore } from "react-icons/md";
 
 export default function Header({ setSidebarView, sidebarView }) {
   const dispatch = useDispatch();
@@ -244,13 +245,39 @@ export default function Header({ setSidebarView, sidebarView }) {
                   </p>
                 </div>
 
+
+                <div
+                  onClick={() => navigate("/tours")}
+                  className="flex flex-col cursor-pointer items-center"
+                >
+                  <p
+                    className={`text-3xl text-center  ${
+                      location.pathname === "/tours" 
+                        ? " text-blue-500 "
+                        : " text-gray-400 "
+                    }`}
+                  >
+                  <MdTravelExplore />
+                  </p>
+                  <p
+                    className={`text-sm ${
+                      location.pathname === "/tours"
+                        ? " text-blue-500 "
+                        : " text-gray-400 "
+                    }`}
+                  >
+                    Tours
+                  </p>
+                </div>
+
                 <div
                     onClick={() => navigate("/transfer")}
                     className="flex flex-col cursor-pointer items-center"
                   >
                     <p
                       className={`text-3xl text-center  ${
-                        location.pathname.includes("/transfer")
+                        location.pathname === "/transfer" ||
+                        location.pathname === '/transfer/list'
                           ? " text-blue-500 "
                           : " text-gray-400 "
                       }`}
@@ -259,7 +286,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                     </p>
                     <p
                       className={`text-sm  ${
-                        location.pathname.includes("/transfer")
+                        location.pathname === "/transfer"
                           ? " text-blue-500 "
                           : " text-gray-400 "
                       }`}
@@ -306,20 +333,16 @@ export default function Header({ setSidebarView, sidebarView }) {
 
                 <div
                   onClick={() => {
-                    if (agent?.configuration?.showHotel) {
-                      navigate("/attraction/order");
+                    if (agent?.configuration?.showAttraction) {
+                      navigate("/order");
                     } 
                   }}
                   className="flex flex-col cursor-pointer items-center"
                 >
                   <p
                     className={`text-3xl text-center ${
-                      // location.pathname === "/flight/order" ||
-                      // location.pathname === "/insurance/order" ||
-                      // location.pathname === "/a2a/order" ||
-                      // location.pathname === "/visa/order" ||
-                      location.pathname === "/attraction/order" 
-                      // location.pathname === "/hotel/order"
+                      location.pathname === "/order/details" ||
+                      location.pathname === "/order" 
                         ? " text-blue-500 "
                         : " text-gray-400 "
                     } `}
@@ -328,12 +351,8 @@ export default function Header({ setSidebarView, sidebarView }) {
                   </p>
                   <p
                     className={`"text-sm ${
-                      // location.pathname === "/flight/order" ||
-                      // location.pathname === "/insurance/order" ||
-                      // location.pathname === "/a2a/order" ||
-                      // location.pathname === "/visa/order" ||
-                      location.pathname === "/attraction/order" 
-                      // location.pathname === "/hotel/order"
+                      location.pathname === "/order/details" ||
+                      location.pathname === "/order"
                         ? " text-blue-500 "
                         : " text-gray-400 "
                     }`}

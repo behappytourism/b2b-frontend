@@ -51,7 +51,8 @@ function TransferListPage() {
     const handleAddTransferInCart = () =>{
         if(selectedTransfer.journys.length){
             dispatch(setSelectedTransferInCart(selectedTransfer))
-            navigate('/transfer/details')
+            // navigate('/transfer/details')
+            navigate('/home/cart')
         }
     }
   

@@ -293,7 +293,7 @@ function TransferHome() {
                                                             <div className=' '>
                                                                 <select name="pickupHr"
                                                                 onChange={handleTripTimes}
-                                                                value={pickupHour ? pickupHour : formDatas?.pickupDate ? formDatas?.pickupDate : ""}
+                                                                value={pickupHour ? pickupHour : ""}
                                                                 id="" className='outline-none border h-12 w-36 p-2'>
                                                                     <option value="00">0</option>
                                                                     <option value="01">1</option>
@@ -325,7 +325,7 @@ function TransferHome() {
                                                             <div className=''>
                                                                 <select name="pickupMin"
                                                                 onChange={handleTripTimes}
-                                                                value={formDatas?.pickupTime ? formDatas.pickupTime : ""}
+                                                                value={pickupMint ? pickupMint : " "}
                                                                 id="" className='outline-none border h-12 w-36 p-2'>
                                                                     <option value="00">00</option>
                                                                     <option value="05">5</option>
@@ -425,6 +425,7 @@ function TransferHome() {
                                                             </div>
                                                             <div className=''>
                                                                 <select name="returnMin"
+                                                                value={returnMin ? returnMin : ""}
                                                                 onChange={handleTripTimes}
                                                                 id="" className='outline-none border h-12 w-36 p-2'>
                                                                 <option value="0">00</option>
