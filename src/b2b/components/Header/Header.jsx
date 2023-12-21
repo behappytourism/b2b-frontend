@@ -419,8 +419,8 @@ export default function Header({ setSidebarView, sidebarView }) {
               <div className="">
                 <div  className="relative  cursor-pointer">
                   <div
-                    onClick={() => setCart(!cart)}
-                    // onClick={()=> navigate('/home/cart')}
+                    // onClick={() => setCart(!cart)}
+                    onClick={()=> navigate('/home/cart')}
                     className="flex flex-col items-center"
                   >
                     <p className="text-3xl text-center text-gray-400">
@@ -428,7 +428,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                     </p>
                     <p className="text-sm text-gray-400">Cart</p>
                   </div>
-                  {cart && <CartModal setCart={setCart} />}
+                  {/* {cart && <CartModal setCart={setCart} />} */}
                 </div>
               </div>
             </div>
