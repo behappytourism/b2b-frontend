@@ -83,7 +83,7 @@ function TransferListPage() {
                 <div className='grid md:grid-cols-1 gap-7 '>
                     {
                         trips?.map((ele)=>(
-                            <div className='border w-full'>
+                            <div className='border w-[1000px]'>
                             {
                                 ele?.trips?.map((items, index)=>(
                                     <div key={index} className='  '>
@@ -206,6 +206,9 @@ function TransferListPage() {
                                                                     <option value="0">0</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
                                                                 </select>
                                                             </div>
                                                         </div>

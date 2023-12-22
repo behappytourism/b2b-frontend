@@ -37,7 +37,7 @@ function AttractionCard({ setView }) {
   return (
     <>
       <form>
-        <div className="md:flex gap-2 py-7 space-y-4 md:space-y-0 max-w-screen-xl mx-auto px-5">
+        <div className="md:flex gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto px-5">
           <div className="w-full flex justify-center items-center ">
             <div className=" w-full ">
               <div className="" ref={dropdownWrapperRef}>
@@ -56,7 +56,7 @@ function AttractionCard({ setView }) {
                     onFocus={handleFocus}
                     required
                     placeholder="Search here..."
-                    className="block placeholder:text-gray-300  lg:w-[60%] sm:w-[60%] w-full capitalize outline-none bg-white border rounded-xl p-5 px- h-16  bg-transparent text-sm text-gray-300 font-medium"
+                    className="block placeholder:text-gray-300  lg:w-[60%] sm:w-[60%] w-full capitalize outline-none bg-white border rounded-xl p-5  h-16  bg-transparent text-sm text-gray-300 font-medium"
                   />
                 </div>
                 {datalist && (

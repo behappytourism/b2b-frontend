@@ -12,7 +12,7 @@ function Availablity() {
 
 
   return (
-    <main>
+    <main className=' '>
       <div className='font-semibold text-xl tracking-wide'>
         Availability
       </div>
@@ -22,8 +22,8 @@ function Availablity() {
             <span className=''>
               <div className='grid sm:grid-cols-3 md:grid-cols-4 grid-cols-2 gap-4'>
                 {agentExcursion?.availability?.map((item, index) => (
-                  <div className='bg-black text-white rounded-2xl shadow-sm lg:w-full h-[100px] ' key={index}>
-                    <div className='py-1 border-b border-dashed'>
+                  <div className=' border rounded lg:w-full h-[100px] ' key={index}>
+                    <div className='py-1 '>
                       <p className='text-center font-bold uppercase ' >{item?.day}</p>
                     </div>
                     <div className='mt-2'>

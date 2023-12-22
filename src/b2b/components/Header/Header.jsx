@@ -52,7 +52,7 @@ export default function Header({ setSidebarView, sidebarView }) {
 
   return (
     <section className="bg-white">
-      <div className="  bg-BEColor border-b h-16   ">
+      <div className="  bg-white border-b h-16   ">
         <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
           <div className="flex w-full items-center justify-between -mx-2">
             <div className=" bg-gray-100 rounded-b-xl mb-2">

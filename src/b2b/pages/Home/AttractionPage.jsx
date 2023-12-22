@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import SearchCards from "../../components/Cards/SearchCards";
 import TopDestination from "../TopDestination";
 import "react-multi-carousel/lib/styles.css";
@@ -6,8 +6,14 @@ import Carousel from "react-multi-carousel";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import AttractionCard from "../../components/Cards/AttractionCard";
+import axios from '../../../axios'
+import { useSelector } from "react-redux";
+import { config } from "../../../constants";
 
 function AttractionPage() {
+
+  const { token } = useSelector((state)=> state.agents)
+  const [banners, setBanners] = useState([])
 
   const responsive = {
     superLargeDesktop: {
@@ -45,11 +51,26 @@ function AttractionPage() {
     Aos.init({duration: 2000})
   })
 
+  const fetchHomeBanners = async ()=> {
+    try {
+      const res = await axios.get(`/b2b/home/banners`, {
+        headers: { Authorization: `Bearer ${token}`}
+      })
+      setBanners(res.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    fetchHomeBanners()
+  }, [])
+
   return (
     <div className="">
   
       {/* <SearchCards /> */}
-      <div className="grid md:grid-cols-1 relative">
+      <div className="grid md:grid-cols-1 ">
         <Carousel 
         responsive={responsive}
         infinite={true}
@@ -57,16 +78,26 @@ function AttractionPage() {
         duration={9000}
         >
           {
-            data.map((ele)=>(
-            <div className="w-full h-96">
-                  <img className="w-full h-full object-fill" src={ele?.image} alt="" />
+            banners.map((ele)=>(
+            <div className="w-full h-96 relative">
+                  <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
+                  <div className="absolute top-40 bottom-0 right-0 left-40 ">
+                      <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
+                      <h1 className="text-white font-semibold max-w-xl">{ele?.body}</h1>
+                      <div className='pt-1'>
+                            {
+                                ele?.isButton === true && (
+                                    <a href={ele?.buttonUrl}>
+                                       <button className='bg-white h-10 rounded-full w-32 font-bold '>{ele?.buttonText}</button>
+                                   </a>
+                                )
+                            }
+                      </div>
+                  </div>
               </div>
             ))
           }
             </Carousel>
-      <div className="absolute left-0 right-0 top-52 bottom-0">
-        <AttractionCard/>
-      </div>
       </div>
       <div className="px-5 pt-7 mt-5 max-w-screen-xl mx-auto" data-aos = "fade-up">
         <TopDestination />

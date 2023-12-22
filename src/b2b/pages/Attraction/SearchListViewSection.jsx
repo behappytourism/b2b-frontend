@@ -32,12 +32,12 @@ function SearchListViewSection() {
   return (
     <div>
       {agentExcursions?.attractions?.data?.length > 0 && (
-        <div className=" sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 ">
+        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-3 ">
           {agentExcursions?.attractions?.data?.length > 0 &&
             agentExcursions?.attractions?.data?.map((item, index) => (
               <div
                 key={index}
-                className="h-full snap-start mt-2 bg-light rounded-3xl shadow-sm p-3 cursor-pointer md:mx-0"
+                className="bg-white shadow-md rounded-xl border w-full h-[450px] cursor-pointer mt-2"
                 onClick={() => {
                   saveDatatoLocalStorage({
                     _id: item?._id,
@@ -47,18 +47,58 @@ function SearchListViewSection() {
                   navigate(`/attractions/details/${item?._id}`);
                 }}
               >
-                <div className=" relative space-y-3">
-                  <div className="overflow-hidden rounded-t-2xl ">
+                <div className="  ">
+                  <div className="relative w-full h-52 overflow-hidden ">
                     <img
-                      className="hover:scale-110 object-cover  h-[14em] w-full transition-all duration-500 cursor-pointer"
+                      className="w-full h-full object-cover hover:scale-110 transition-all duration-500"
                       src={config.SERVER_URL + item?.images[0]}
                       alt={item?.title}
                     />
+                      <div className="absolute top-0  right-0 text-xs text-text  flex gap- items-center">
+                    <div className="">
+                      <button className="bg-orange-500   px-2 py-1 text-light  capitalize">
+                        {item.bookingType}
+                      </button>
+                    </div>
+                    <div className="flex space-x-3 items-center">
+                      {item?.cancellationType === "freeCancellation" && (
+                        <div className="flex space-x-1 items-center">
+                          <span className="text-lightblue">
+                            <TiTick />
+                          </span>
+                          <span className="text-green-600 text-sm">
+                            Free Cancellation{" "}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex space-x-1 items-center">
+                      <span className="text-light bg-red-500 px-2 py-1 whitespace-nowrap text-center capitalize ">
+                        {item?.category && item?.category?.categoryName}{" "}
+                      </span>
+                      {item?.isOffer === true &&
+                        item?.offerAmountType === "flat" && (
+                          <span className="text-light bg-green-600  py-1 whitespace-nowrap text-center rounded-md capitalize ">
+                            {item?.offerAmountType === "flat"
+                              ? `$ ${item?.offerAmount} OFF`
+                              : ""}{" "}
+                          </span>
+                        )}
+                      {item?.isOffer === true &&
+                        item?.offerAmountType === "percentage" && (
+                          <span className="text-light bg-green-600  py-1 whitespace-nowrap text-center rounded-md capitalize text-xs">
+                            {item?.offerAmountType === "percentage"
+                              ? `${item?.offerAmount} % OFF`
+                              : ""}{" "}
+                          </span>
+                        )}
+                    </div>
+                  </div>
                   </div>
                   <div className="px-3 pt-5 flex justify-between ">
-                    <div className="text-lg font-semibold  text-darktext flex items-center">
-                      {item?.title}
-                    </div>
+                  <div className=' flex justify-center h-14'>
+                      <h1 className='text-lg font-extralight text-center max-w-2xl'>{item?.title}</h1>
+                 </div>
                     {/* <div className="flex items-center space-x-1 text-text ">
                       <span
                         className="text-3xl text-main"
@@ -82,46 +122,7 @@ function SearchListViewSection() {
                       </span>
                     </div> */}
                   </div>
-                  <div className="text-xs text-text px-3  flex space-x-1 items-center">
-                    <div className="">
-                      <button className="bg-orange-500  px-2 py-1 text-light rounded-md capitalize">
-                        {item.bookingType}
-                      </button>
-                    </div>
-                    <div className="flex space-x-3 items-center">
-                      {item?.cancellationType === "freeCancellation" && (
-                        <div className="flex space-x-1 items-center">
-                          <span className="text-lightblue">
-                            <TiTick />
-                          </span>
-                          <span className="text-green-600 text-sm">
-                            Free Cancellation{" "}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex space-x-1 items-center">
-                      <span className="text-light bg-BEColor px-2 py-1 whitespace-nowrap text-center rounded-md capitalize ">
-                        {item?.category && item?.category?.categoryName}{" "}
-                      </span>
-                      {item?.isOffer === true &&
-                        item?.offerAmountType === "flat" && (
-                          <span className="text-light bg-green-600  py-1 whitespace-nowrap text-center rounded-md capitalize ">
-                            {item?.offerAmountType === "flat"
-                              ? `$ ${item?.offerAmount} OFF`
-                              : ""}{" "}
-                          </span>
-                        )}
-                      {item?.isOffer === true &&
-                        item?.offerAmountType === "percentage" && (
-                          <span className="text-light bg-green-600  py-1 whitespace-nowrap text-center rounded-md capitalize text-xs">
-                            {item?.offerAmountType === "percentage"
-                              ? `${item?.offerAmount} % OFF`
-                              : ""}{" "}
-                          </span>
-                        )}
-                    </div>
-                  </div>
+                
                   <div className="px-3 space-y-2  text-darktext">
                     <div className="flex justify-between items-center">
                       <span className="space-y-1">
@@ -170,7 +171,7 @@ function SearchListViewSection() {
                           {item?.totalRating?.toFixed(2) + " Rating" + " "} (
                           {item?.totalReviews} reviews)
                         </div> */}
-                        <div className="flex space-x-1 items-center">
+                        <div className="flex space-x-1  items-center">
                           <span className="text-lightblue">
                             {" "}
                             <AiOutlineClockCircle />

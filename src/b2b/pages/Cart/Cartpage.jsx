@@ -251,6 +251,7 @@ function Cartpage() {
     } 
 
 
+    const [attractionTotalAmount, setAttractionTotalAmount] = useState(0)
     const singleAttractionTotalCost = (items) =>{
         let sum = 0
         if(items.adultPrice && items.adult ){
@@ -262,7 +263,10 @@ function Cartpage() {
         if(items?.infantPrice && items?.infant) {
             sum += items?.infantPrice * items?.infant
         }
-        return sum
+       
+        let data = priceConversion(sum, selectedCurrency, true)
+         
+        return data
     }
 
 
@@ -395,7 +399,7 @@ function Cartpage() {
                                                         </div>
                                                     </div>
                                                         <div className="flex justify-end">
-                                                            <p className='text-xl font-semibold text-green-500 '>{singleAttractionTotalCost(item).toFixed(2)}AED</p>
+                                                            <p className='text-xl font-semibold text-green-500 '>{singleAttractionTotalCost(item)}</p>
                                                         </div>
                                                 </div>
 
@@ -533,7 +537,7 @@ function Cartpage() {
                                                                         <div className='flex justify-end'>
                                                                             {
                                                                                 nn === 0 && (
-                                                                                    <h1 className='text-xl font-semibold text-green-500'>{sum}.00 AED</h1>
+                                                                                    <h1 className='text-xl font-semibold text-green-500'>{priceConversion(sum, selectedCurrency, true)}</h1>
                                                                                 )
                                                                             }
                                                                         </div>
@@ -590,7 +594,7 @@ function Cartpage() {
                                                                         <div className='flex justify-end'>
                                                                             {
                                                                                nn === 0 && (
-                                                                                   <h1 className='text-xl font-semibold text-green-500'>{sum}.00 AED</h1>
+                                                                                   <h1 className='text-xl font-semibold text-green-500'>{priceConversion(sum, selectedCurrency, true)}</h1>
                                                                                ) 
                                                                             }
                                                                         </div>
@@ -741,7 +745,7 @@ function Cartpage() {
                             <div className=''>
                                 <h1 className='text-lg flex justify-center'><LiaSaveSolid /></h1>
                                 <h1 className='text-xs text-gray-400 text-center'>Total price</h1>
-                                <h1 className='text-green-400 font-bold text-3xl'>{totalPrice.toFixed(2)} AED</h1>
+                                <h1 className='text-green-400 font-bold text-3xl'> {priceConversion(totalPrice, selectedCurrency, true)}</h1>
                             </div>
                         </div>
 

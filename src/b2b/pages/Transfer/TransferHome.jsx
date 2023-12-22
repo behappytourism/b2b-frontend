@@ -11,6 +11,9 @@ import axios from '../../../axios'
 import { setSearchTransfer, setSearchedTrips } from '../../../redux/slices/transferSlice';
 import { BtnLoader } from '../../components';
 import { setAlertError } from '../../../redux/slices/homeSlice';
+import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
+import { config } from '../../../constants';
 
 
 function TransferHome() {
@@ -186,17 +189,78 @@ function TransferHome() {
         !locality && setValue("");
       }, [locality]);
     
-  
+   const [banners, setBanners] = useState([])   
+   const fetchTransferBanners = async () => {
+    try {
+        const res = await axios.get(`/b2b/transfer/banners`, {
+            headers: { Authorization: `Bearer ${token}`}
+        })
+        setBanners(res?.data)
+    } catch (error) {
+        console.log(error);
+    }
+   }
+
+   useEffect(()=>{
+        fetchTransferBanners()
+   }, [])
+
+   const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
 
   return (
   
     <div className='h-[800px]'>
         <div className='w-full h-[590px] relative'>
-            <img className='w-full h-full object-cover' src="https://destinationfuntravel.com/wp-content/uploads/2020/03/1slide-wedeliver-notxt.jpg" alt="" />
-            <div className='absolute top-0 bottom-0 right-0 left-0 bg-black/10 h-full w-full'> </div>
-        <div className='absolute left-16 right-10 bottom-0 top-44 '>
-    
-            <div className='bg-gray-500/30 w-full  rounded-xl h-[300px]'>
+        <div className="grid md:grid-cols-1 ">
+        <Carousel 
+        responsive={responsive}
+        infinite={true}
+        autoPlay={true}
+        duration={9000}
+        >
+          {
+            banners.map((ele)=>(
+            <div className="w-full h-96 relative">
+                  <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
+                  <div className="absolute top-20 bottom-0 right-0 left-40 ">
+                      <h1 className="font-bold text-black text-5xl">{ele?.title}</h1>
+                      <h1 className="text-black font-semibold max-w-xl">{ele?.body}</h1>
+                      <div className='pt-1'>
+                            {
+                                ele?.isButton === true && (
+                                    <a href={ele?.buttonUrl}>
+                                       <button className='bg-white h-10 rounded-full w-32 font-bold '>{ele?.buttonText}</button>
+                                   </a>
+                                )
+                            }
+                      </div>
+                  </div>
+              </div>
+            ))
+          }
+            </Carousel>
+      </div>
+            <div className='absolute top-10 bottom-0 right-0 left-0 h-full w-full'> </div>
+        <div className='absolute left-16 right-10 bottom-0 top-60 '>
+            <div className='bg-black/40 w-full  rounded-xl h-[300px]'>
                 <div className=' p-10'>
                         {/* <form onSubmit={handleSubmint}> */}
                         <div className='flex gap-3 '>

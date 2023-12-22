@@ -12,8 +12,8 @@ function ImageSection() {
 
     return (
         <>
-            <div className=' lg:py-10'>
-                <div className='lg:mx-auto lg:max-w-screen-2xl'>
+            <div className=' lg:py-5'>
+                {/* <div className='lg:mx-auto lg:max-w-screen-2xl'>
                     <div className='lg:grid lg:grid-cols-12 gap-1'>
                      
                         <div className='col-span-9 '>
@@ -38,6 +38,24 @@ function ImageSection() {
 
                         </div>
                     </div>
+                </div> */}
+
+                <div className='w-full h-[600px]'>
+                    <img className='w-full h-full object-cover rounded-xl' src={config.SERVER_URL + agentExcursion?.images[0]} alt="" />
+                </div>
+                <div className='flex gap-3'>
+                    {
+                        agentExcursion?.images?.map((item)=>(
+                            <div className='h-40 w-40 pt-2' key={item}>
+                            <img src={config.SERVER_URL + item} alt='img'
+                                className=' object-cover w-full rounded-xl h-full  hidden lg:block'
+                                onClick={() => {
+                                    setModal(!modal)
+                                    setPreview(config.SERVER_URL + item)
+                                }} />
+                        </div>
+                        ))
+                    }
                 </div>
             </div>
             {modal && (

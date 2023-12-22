@@ -49,7 +49,7 @@ function HeroSection() {
           <div className="">
             <div className="relative lg:grid lg:grid-cols-12 gap-5 py-2 lg:my-0 lg:py-5">
               <div className="1st lg:col-span-8">
-                <div className="bg-light rounded-2xl p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
+                <div className="bg-light rounded-2xl  p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
                   <div className="flex justify-between">
                     <div className="space-y-3">
                       {/* tags */}
@@ -149,13 +149,14 @@ function HeroSection() {
                 >
                   <PackageSection />
                 </div>
-                <div className="mx-2">
+                <div className="mx-2 pt-2 shadow-lg rounded-lg">
                   <FeatureSection />
                 </div>
 
+            
 
                 <div className="mx-2 lg:mx-0 mt-2 ">
-                  <div className="bg-light py-5 px-4 rounded-2xl md:my-4 w-full  lg:mx-0 my-2 lg:my-0 text-darktext">
+                  <div className="bg-light shadow-lg py-5 px-4 rounded-2xl md:my-4 w-full  lg:mx-0 my-2 lg:my-0 text-darktext">
                     <div className="py-3">
                       <span className="text-xl font-semibold text-blueColor  ">
                         {agentExcursion?.title}{" "}
@@ -176,7 +177,7 @@ function HeroSection() {
                   <>
                     <div
                       id="availability"
-                      className="p-5 mb-2 lg:mb-5  bg-BeGray border-2 text-darktext rounded-2xl "
+                      className="p-5 mb-2 lg:mb-5  bg-white  text-darktext rounded-2xl shadow-lg"
                     >
                       <Availablity />
                     </div>
@@ -220,7 +221,7 @@ function HeroSection() {
                 </div>
               </div>
 
-              <div className="2nd lg:col-span-4 border-l">
+              <div className="2nd lg:col-span-4 ">
                 <div
                   className={`lightglass  top-0 bottom-0  left-0 right-0 z-10 ${
                     viewBookCard ? "fixed" : "hidden"
@@ -231,8 +232,8 @@ function HeroSection() {
                   className={`${
                     viewBookCard
                       ? "fixed bottom-0 max-h-[93vh] overflow-y-auto left-0 right-0 z-10 bg-white"
-                      : "-bottom-full invisible h-0 overflow-hidden"
-                  } transition-all duration-500  rounded-t-3xl lg:rounded-none lg:block   lg:visible lg:h-auto  lg:sticky lg:top-[90px]`}
+                      : "-bottom-full invisible h-0 overflow-hidden "
+                  } transition-all duration-500 rounded-t-3xl lg:rounded-none lg:block   lg:visible lg:h-auto  lg:sticky lg:top-[90px]`}
                 >
                   <div
                     className="flex lg:hidden justify-end pt-5 lg:pt-0 px-7 text-4xl"
