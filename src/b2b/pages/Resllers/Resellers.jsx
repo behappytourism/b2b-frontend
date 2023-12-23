@@ -13,6 +13,10 @@ import { setResellers } from "../../../redux/slices/resellerSlice";
 import { PageLoader } from "../../components";
 import ResellerChipList from "./ResellerChipList";
 import { BsSearch } from "react-icons/bs";
+import { CgEditMarkup } from "react-icons/cg";
+
+
+
 
 function Resellers() {
   const navigate = useNavigate();
@@ -154,6 +158,13 @@ function Resellers() {
                           <td className="px-3 py-4">{item?.email}</td>
                           <td className="px-3 py-4">{item?.designation}</td>
                           <td className="px-3 py-4 flex gap-2">
+                            {/* <span className="text-xl cursor-pointer"
+                            onClick={()=>{
+                              navigate(`/reseller/markup/${item?._id}`)
+                            }}
+                            >
+                              <CgEditMarkup />
+                            </span> */}
                             <span
                               className="text-xl text-green-500"
                               onClick={() => navigate(`/reseller/${item?._id}`)}

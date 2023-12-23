@@ -41,7 +41,7 @@ function ImageSection() {
                 </div> */}
 
                 <div className='w-full h-[600px]'>
-                    <img className='w-full h-full object-cover rounded-xl' src={config.SERVER_URL + agentExcursion?.images[0]} alt="" />
+                    <img className='w-full h-full object-cover rounded-xl' src={ agentExcursion?.images?.length ? config.SERVER_URL + agentExcursion?.images[0] : ""} alt="" />
                 </div>
                 <div className='flex gap-3'>
                     {

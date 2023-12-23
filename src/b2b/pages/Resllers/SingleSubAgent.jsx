@@ -35,9 +35,9 @@ export default function SingleSubAgent() {
   const renderTab = (tab) => {
     switch (tab) {
       case "details":
-        return <SingleSubAgentDetails />;
+        return <SingleSubAgentDetails  />;
       case "markup":
-        return <Markup />;
+        return <Markup subAgentId={id} />;
       case "configuration":
         return <Configuration />;
       default:

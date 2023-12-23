@@ -9,8 +9,10 @@ import HotelMarkupList from "./Hotel/HotelMarkupList";
 import MarkUpList from "./Attraction/MarkUpList";
 import VisaMarkupList from "./Visa/VisaMarkupList";
 import QuotationMarkupIndex from "./Quotation/QuotationMarkupIndex";
+import { IoCarSportSharp } from "react-icons/io5";
+import TransferList from "./Transfer/TransferList";
 
-function Markup() {
+function Markup({subAgentId}) {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const { agent } = useSelector((state) => state.agents);
@@ -30,15 +32,9 @@ function Markup() {
   useEffect(() => {
     if (activeMarkup) {
       setQueryParameter(activeMarkup);
-    } else if (agent?.configuration?.showHotel) {
-      setQueryParameter("hotel");
     } else if (agent?.configuration?.showAttraction) {
       setQueryParameter("attraction");
-    } else if (agent?.configuration?.showVisa) {
-      setQueryParameter("visa");
-    } else if (agent?.configuration?.showQuotaion) {
-      setQueryParameter("quotation");
-    }
+    } 
   }, []);
 
   // const entries = Object.entries(agent?.configuration);
@@ -52,7 +48,7 @@ function Markup() {
     return (
       <div className="w-full ">
         <ul className="flex">
-          {agent?.configuration?.showHotel ? (
+          {/* {agent?.configuration?.showHotel ? (
             <li className=" mr-8">
               <span
                 className={`inline-block p-2 ${
@@ -79,7 +75,7 @@ function Markup() {
             </li>
           ) : (
             ""
-          )}
+          )} */}
           {agent?.configuration?.showAttraction ? (
             <li className=" mr-8">
               <span
@@ -108,7 +104,31 @@ function Markup() {
           ) : (
             ""
           )}
-          {agent?.configuration?.showVisa ? (
+           <li className=" mr-8">
+              <span
+                className={`inline-block p-2 ${
+                  activeMarkup === "transfer"
+                    ? " text-blue-500  "
+                    : " text-gray-400 border-transparent hover:text-blue-400  "
+                }  rounded-full  transition duration-200 cursor-pointer flex items-center gap-1 text-sm`}
+                href="#"
+                onClick={() => {
+                  setSearchParams(
+                    (prev) => {
+                      prev.set("markup", "transfer");
+                      return prev;
+                    },
+                    { replace: true }
+                  );
+                }}
+              >
+                <span className="text-lg">
+                  <IoCarSportSharp />
+                </span>
+                Transfer
+              </span>
+            </li>
+          {/* {agent?.configuration?.showVisa ? (
             <li className=" mr-8">
               <span
                 className={`inline-block p-2 ${
@@ -135,8 +155,8 @@ function Markup() {
             </li>
           ) : (
             ""
-          )}
-          {agent?.configuration?.showQuotaion ? (
+          )} */}
+          {/* {agent?.configuration?.showQuotaion ? (
             <li className=" mr-8">
               <span
                 className={`inline-block p-2 ${
@@ -163,7 +183,7 @@ function Markup() {
             </li>
           ) : (
             ""
-          )}
+          )} */}
         </ul>
       </div>
     );
@@ -171,14 +191,14 @@ function Markup() {
 
   const renderMarkups = (tab) => {
     switch (tab) {
-      case "hotel":
-        return <HotelMarkupList />;
+      case "transfer":
+        return <TransferList subAgentId={subAgentId} />;
       case "attraction":
         return <MarkUpList />;
-      case "visa":
-        return <VisaMarkupList />;
-      case "quotation":
-        return <QuotationMarkupIndex />;
+      // case "visa":
+      //   return <VisaMarkupList />;
+      // case "quotation":
+      //   return <QuotationMarkupIndex />;
       default:
         return "";
     }

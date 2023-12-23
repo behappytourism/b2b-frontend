@@ -97,7 +97,7 @@ function Configuration() {
                 />
               </div>
             )}
-            {!configuration?.showHotel && !agent?.configuration?.showHotel ? (
+            {/* {!configuration?.showHotel && !agent?.configuration?.showHotel ? (
               ""
             ) : (
               <div>
@@ -114,8 +114,8 @@ function Configuration() {
                   value={configuration.showHotel || false}
                 />
               </div>
-            )}
-            {!configuration?.showFlight && !agent?.configuration?.showFlight ? (
+            )} */}
+            {/* {!configuration?.showFlight && !agent?.configuration?.showFlight ? (
               ""
             ) : (
               <div>
@@ -132,8 +132,8 @@ function Configuration() {
                   value={configuration.showFlight || false}
                 />
               </div>
-            )}
-            {!configuration?.showVisa && !agent?.configuration?.showVisa ? (
+            )} */}
+            {/* {!configuration?.showVisa && !agent?.configuration?.showVisa ? (
               ""
             ) : (
               <div>
@@ -150,8 +150,8 @@ function Configuration() {
                   value={configuration.showVisa || false}
                 />
               </div>
-            )}
-            {!configuration?.showA2a && !agent?.configuration?.showA2a ? (
+            )} */}
+            {/* {!configuration?.showA2a && !agent?.configuration?.showA2a ? (
               ""
             ) : (
               <div>
@@ -168,8 +168,8 @@ function Configuration() {
                   value={configuration.showA2a || false}
                 />
               </div>
-            )}
-            {!configuration?.showQuotaion &&
+            )} */}
+            {/* {!configuration?.showQuotaion &&
             !agent?.configuration?.showQuotaion ? (
               ""
             ) : (
@@ -187,7 +187,7 @@ function Configuration() {
                   value={configuration.showQuotaion || false}
                 />
               </div>
-            )}
+            )} */}
           </div>
           {error ? (
             <div className="text-gray-400 py-10 text-center font-sm tracking-wide font-demo">
