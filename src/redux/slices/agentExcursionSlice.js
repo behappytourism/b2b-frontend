@@ -90,9 +90,11 @@ const agentExcursionSlice = createSlice({
       );
     },
     removeFromCart: (state, action) => {
-      state.agentExcursionCart = state.agentExcursionCart.filter((item) => {
-        return item._id !== action.payload;
-      });
+      // state.agentExcursionCart = state.agentExcursionCart.filter((item) => {
+      //   return item._id !== action.payload;
+      // });
+      console.log(action.payload,'id payload for remove attractions');
+      state.agentExcursionCart = state.agentExcursionCart.filter((item)=> item?._id !== action.payload)
       localStorage.setItem(
         "agentExcursionCart",
         JSON.stringify(state.agentExcursionCart)

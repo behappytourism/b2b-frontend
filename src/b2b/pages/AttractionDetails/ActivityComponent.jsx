@@ -872,7 +872,7 @@ function ActivityComponent({ item, index }) {
                   onClick={() => {
                     carting(item);
                     if (error?.length <= 0) {
-                      navigate(`/attractions/payment`);
+                      navigate(`/home/cart`);
                     }
                   }}
                   className="bg-orange-500 text-xs font-semibold shadow rounded-sm h-8 text-white px-4 flex justify-center items-center"

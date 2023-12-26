@@ -202,7 +202,7 @@ function Cartpage() {
         }
         details.selectedJourneys = data
         details.selectedActivities = activityData
-    }, [details.name && details.email && details.phoneNumber && details.country && details.paymentMethod ])
+    }, [details.name && details.email && details.phoneNumber && details.country && details.paymentMethod, agentExcursionCart ])
 
 
     const [countryCode, setCountryCode] = useState('')
@@ -251,7 +251,6 @@ function Cartpage() {
     } 
 
 
-    const [attractionTotalAmount, setAttractionTotalAmount] = useState(0)
     const singleAttractionTotalCost = (items) =>{
         let sum = 0
         if(items.adultPrice && items.adult ){
@@ -734,9 +733,9 @@ function Cartpage() {
                     </div>
                  </div>
                  <div className='pt-3'>
-                    <div className='shadow-sm w-full h-96 relative bg-white '>
+                    <div className='shadow-sm border rounded-t-xl w-full h-96 relative bg-white '>
                         <div className=''>
-                            <div className='flex gap-1 justify-center items-center mb-2 bg-BEColor h-12'>
+                            <div className='flex gap-1 justify-center items-center mb-2 bg-BEColor h-12 rounded-t-xl'>
                                 <h1 className='text-green-900 text-3xl'><IoIosCheckmarkCircleOutline /></h1>
                                  <h1 className='text-lg text-center font-bold'>Confirm Order</h1>   
                             </div>

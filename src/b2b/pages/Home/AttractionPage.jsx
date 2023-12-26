@@ -34,18 +34,7 @@ function AttractionPage() {
     },
   };
 
-  const data = [
-    {
-      image:"https://mybayutcdn.bayut.com/mybayut/wp-content/uploads/Cover-6-2.jpg"
-    },
-    {
-      image:"https://assets-global.website-files.com/5f46c318c843828732a6f8e2/651e65e2ebed7ab2f4aac8cc_Digital-Signage-Companies-in-Dubai.webp"
-    },
-    {
-      image:"https://media.cntraveler.com/photos/5a84e860b8ebbd42565cf871/2:1/w_2560%2Cc_limit/Dubai_GettyImages-143769640.jpg"
-    },
-   
-  ]
+  
 
   useEffect(()=>{
     Aos.init({duration: 2000})
@@ -81,9 +70,10 @@ function AttractionPage() {
             banners.map((ele)=>(
             <div className="w-full h-96 relative">
                   <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
-                  <div className="absolute top-40 bottom-0 right-0 left-40 ">
+                  <div className="absolute top-36 bottom-0 right-0 left-40 ">
+                    <div className="bg-black/40 rounded w-[550px] p-3">
                       <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
-                      <h1 className="text-white font-semibold max-w-xl">{ele?.body}</h1>
+                      <h1 className="text-white text-lg font-semibold max-w-3xl pt-2">{ele?.body}</h1>
                       <div className='pt-1'>
                             {
                                 ele?.isButton === true && (
@@ -93,6 +83,8 @@ function AttractionPage() {
                                 )
                             }
                       </div>
+
+                    </div>
                   </div>
               </div>
             ))

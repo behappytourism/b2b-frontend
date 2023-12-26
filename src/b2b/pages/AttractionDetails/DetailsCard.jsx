@@ -58,7 +58,7 @@ function DetailsCard() {
     if (isDateExist.length > 0 && !location.pathname.includes("/")) {
       navigate(`/payment`);
     } else if (isDateExist.length > 0 && location.pathname.includes("/")) {
-      navigate(`/attractions/payment`);
+      navigate(`/home/cart`);
     } else {
       setError("Fill the tour Date");
     }
@@ -66,8 +66,8 @@ function DetailsCard() {
 
   return (
     <>
-      <div className="bg-light  lg:rounded-xl p-5 space-y-2 mb-2">
-        {/* cutted price without offer */}
+      <div className="bg-light w-80 shadow-sm lg:rounded-xl p-5 space-y-2 mb-2 ml-5">
+      
         <div className="">
           {agentExcursion?.isOffer && (
             <p className="text-main text-xs">
@@ -91,7 +91,7 @@ function DetailsCard() {
             </h2>
             <p className="text-xs text-text">cheapest price*</p>
           </span>
-          {/* offer percentage  */}
+        
           {agentExcursion?.isOffer && (
             <span className="bg-soft px-3 py-2 rounded-full text-blue">
               {priceConversion(
@@ -109,9 +109,9 @@ function DetailsCard() {
         </div>
       </div>
 
-      <div className="bg-light shadow-xl lg:rounded-xl p-5 space-y-2 ">
-        <div className="p-3 shadow-xl rounded-lg w-full">
-          <div>
+      <div className="bg-light lg:rounded-xl p-5 space-y-2 ">
+        <div className="p-3 shadow-lg rounded-lg w-full">
+          <div className="">
             <div className="inputs space-y-5 my-4">
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 text-darktext">
@@ -122,7 +122,7 @@ function DetailsCard() {
                   {agentExcursionCart?.map((item, index) => (
                     <div
                       key={index}
-                      className="bg-white  space-y-2 mt-2 border-t py-2"
+                      className="bg-white space-y-2 mt-2 border-t py-2"
                     >
                       <div>
                         <div className="flex justify-between items-center gap-2 space-y-1 text-sm">

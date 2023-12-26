@@ -56,7 +56,7 @@ function SearchingResultPage() {
                   setViewCategory={setViewCategory}
                   category={category}
                   setCategory={setCategory}
-               />
+               />   
                <div className="">
                   <div className="">
                      <div className="">
@@ -104,10 +104,9 @@ function SearchingResultPage() {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    ))
-                                                }
-                                            
-                                            </div>
+                                                ))
+                                           }
+                                  </div>
                            </>
                         ) : (
                            <Suspense

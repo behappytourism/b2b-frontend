@@ -29,7 +29,6 @@ function AttractionDetails() {
                },
             }
          );
-         console.log(response.data);
          dispatch(setAgentExcursion(response.data));
          setIsLoading(false);
       } catch (err) {

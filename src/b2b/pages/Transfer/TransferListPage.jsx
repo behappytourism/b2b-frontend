@@ -74,10 +74,7 @@ function TransferListPage() {
       <div className=' flex justify-center gap-5 p-10 '>
         {/* Transfer list section */}
          <div>
-            <div>
-                <h1 className=''>Select transfer <span className='text-lg font-semibold'>OUT</span></h1>
-                <h1>Among {vehicleCount } transfers found</h1>
-            </div>
+        
             <div>
                
                 <div className='grid md:grid-cols-1 gap-7 '>

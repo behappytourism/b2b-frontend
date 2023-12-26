@@ -27,7 +27,7 @@ function SearchHomePage({ setCategory, category }) {
          <div className="">
             <div className="">
                <div
-                  className={`  p-5 lg:p-0 rounded-t-3xl lg:rounded-none lg:h-auto lg:w-auto max-h-[80vh] w-full fixed lg:static ${
+                  className={`p-5 lg:p-0 rounded-t-3xl lg:rounded-none lg:h-auto lg:w-auto max-h-[80vh] w-full fixed lg:static ${
                      viewFilter ? "bottom-0 bg-light" : "-bottom-full"
                   } z-10 transition-all duration-500`}
                >
@@ -42,7 +42,7 @@ function SearchHomePage({ setCategory, category }) {
                   </div>
                   <div className="relative lg:px-7">
                      <div
-                        className="hidden absolute left-0 top-5 z-10 h-7 w-7 rounded-full bg-gray-400 lg:flex justify-center items-center text-white"
+                        className="hidden absolute left-0 top-5 z-10 h-7 w-7 cursor-pointer rounded-full bg-gray-400 lg:flex justify-center items-center text-white"
                         onClick={() => {
                            document.querySelector(
                               ".containerBAL"
@@ -52,7 +52,7 @@ function SearchHomePage({ setCategory, category }) {
                         <AiOutlineLeft />
                      </div>
                      <div
-                        className="hidden absolute right-0 top-5 z-10 h-7 w-7 rounded-full bg-gray-400 lg:flex justify-center items-center text-white"
+                        className="hidden absolute right-0 top-5 z-10 h-7 w-7 cursor-pointer rounded-full bg-gray-400 lg:flex justify-center items-center text-white"
                         onClick={() => {
                            document.querySelector(
                               ".containerBAL"
@@ -72,7 +72,7 @@ function SearchHomePage({ setCategory, category }) {
                                     category === item?._id
                                        ? " bg-orange-500 "
                                        : " bg-white "
-                                 }  hover:text-lightblue lg:justify-center items-center py-4 rounded-lg lg:border lg:border-gray-300 cursor-pointer capitalize`}
+                                 }  hover:text-lightblue lg:justify-center items-center py-4  lg:border  cursor-pointer capitalize`}
                                  onClick={() => setCategory(item?._id)}
                               >
                                  {category === item?._id && (

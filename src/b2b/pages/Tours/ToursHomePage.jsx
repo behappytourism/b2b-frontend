@@ -10,6 +10,8 @@ import priceConversion from '../../../utils/PriceConversion';
 import AttractionCard from "../../components/Cards/AttractionCard";
 import "react-multi-carousel/lib/styles.css";
 import Carousel from "react-multi-carousel";
+import BannerBtn from './BannerBtn';
+
 
 function ToursHomePage() {
 
@@ -122,7 +124,7 @@ function ToursHomePage() {
 
   return (
     <div className=''>
-         <div className="grid md:grid-cols-1 relative">
+         <div className="grid md:grid-cols-1 relative ">
             {
                 banners?.length ? (
                     <Carousel 
@@ -130,15 +132,18 @@ function ToursHomePage() {
                     infinite={true}
                     autoPlay={true}
                     duration={100000}
+                    arrows={false}
+                    renderButtonGroupOutside={true}
+                    customButtonGroup={<BannerBtn />}
                     >
                       {
                         banners?.map((ele)=>(
-                        <div className="w-full h-96 relative">
+                        <div className="w-full h-96 relative ">
                               <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
-                              <div className="absolute top-20 bottom-0 right-1  ">
+                              <div className="absolute top-20 bottom-0 left-16 rounded bg-black/40 h-56 p-3 ">
                                   <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
-                                  <h1 className="text-white font-semibold max-w-xl">{ele?.body}</h1>
-                                  <div className='pt-1'>
+                                  <h1 className="text-white font-semibold max-w-md pt-2">{ele?.body}</h1>
+                                  <div className='pt-2'>
                                         {
                                             ele?.isButton === true && (
                                                 <a href={ele?.buttonUrl}>
@@ -157,7 +162,7 @@ function ToursHomePage() {
                 )
             }
       
-      <div className="absolute left-0 right-0 top-52 bottom-0">
+      <div className="absolute left-[600px] w-96 right-0 top-60 bottom-0">
         <AttractionCard/>
       </div>
       </div>
@@ -188,7 +193,7 @@ function ToursHomePage() {
                                                 {
                                                     attractions?.map((ele, index)=> {
                                                         return (
-                                                            <div key={ele?._id} className='bg-white shadow-md rounded-xl border w-full h-[450px] cursor-pointer'
+                                                            <div key={ele?._id} className='bg-slate-100 shadow-md border w-full h-[400px] cursor-pointer'
                                                             onClick={()=>{
                                                                 navigate(`/attractions/details/${ele?._id}`);
                                                             }}

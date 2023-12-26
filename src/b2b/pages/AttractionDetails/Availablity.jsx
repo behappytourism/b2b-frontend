@@ -22,7 +22,7 @@ function Availablity() {
             <span className=''>
               <div className='grid sm:grid-cols-3 md:grid-cols-4 grid-cols-2 gap-4'>
                 {agentExcursion?.availability?.map((item, index) => (
-                  <div className=' border rounded lg:w-full h-[100px] ' key={index}>
+                  <div className=' rounded lg:w-full h-[100px] ' key={index}>
                     <div className='py-1 '>
                       <p className='text-center font-bold uppercase ' >{item?.day}</p>
                     </div>

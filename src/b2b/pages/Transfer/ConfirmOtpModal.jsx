@@ -8,10 +8,13 @@ import { useDispatch } from 'react-redux';
 import { clearCartItemsAfterPurchase } from '../../../redux/slices/transferSlice';
 import { emptyCart } from '../../../redux/slices/agentExcursionSlice';
 import { setAlertSuccess } from '../../../redux/slices/homeSlice';
+import { useNavigate } from 'react-router-dom';
 
 function ConfirmOtpModal({details, orderId, setIsModal}) {
 
     const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
@@ -63,6 +66,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
             { headers: { Authorization: `Bearer ${token}`}}    
                 )
 
+                console.log(res.data, 'res.data');
                if (res.data) {
                 dispatch(setAlertSuccess({
                   status: true,
@@ -74,6 +78,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
     
                 dispatch(clearCartItemsAfterPurchase())
                 dispatch(emptyCart())
+                navigate(`/transfer/invoice/${res?.data?._id}`)
             }
 
         } catch (error) {

@@ -47,15 +47,12 @@ function HeroSection() {
       <div className="bg-white rounded-3xl">
         <div className="p-0 lg:p-6">
           <div className="">
-            <div className="relative lg:grid lg:grid-cols-12 gap-5 py-2 lg:my-0 lg:py-5">
-              <div className="1st lg:col-span-8">
-                <div className="bg-light rounded-2xl  p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
-                  <div className="flex justify-between">
-                    <div className="space-y-3">
-                      {/* tags */}
-                      <div className="text-xs text-text   flex space-x-1 items-center">
+            <div className="w-full ">
+              <div className="flex  gap-2">
+            
+                 <div className="text-xs text-text  flex space-x-1 items-center">
                         <div className="">
-                          <button className="bg-yellow-500  px-2 py-1 text-light rounded-md capitalize">
+                          <button className=" px-2 py-1 text-black border rounded-md capitalize">
                             {agentExcursion?.bookingType}
                           </button>
                         </div>
@@ -71,7 +68,7 @@ function HeroSection() {
                           )}
                         </div>
                         <div className="flex space-x-1 items-center">
-                          <span className="text-light bg-BEColor px-3 py-1 whitespace-nowrap text-center rounded-md capitalize text-xs">
+                          <span className="text-black border px-3 py-1 whitespace-nowrap text-center rounded-md capitalize text-xs">
                             {agentExcursion?.category &&
                               agentExcursion?.category?.categoryName}{" "}
                           </span>
@@ -95,9 +92,35 @@ function HeroSection() {
                             )}
                         </div>
                       </div>
-                      <div className="text-3xl font-bold ">
+                      <button
+                        className="h-10 w-10 rounded-full bg-soft border border-green-600 flex justify-center items-center text-2xl text-green-600"
+                        onClick={() => setShareModal(!shareModal)}
+                      >
+                        <RxShare2 />
+                      </button>
+              </div>
+              <div className="flex pt-1">
+                  <h1 className="text-lg"><CiLocationOn /> </h1>
+                  <h1 className="text-sm text-gray-300">{agentExcursion?.destination?.name}{" "}</h1>
+               </div>
+         
+            <div className="text-5xl font-semibold pt-1">
+                   {agentExcursion?.title} 
+             </div>
+             <div className="mx-2 pt-3 border-b rounded-lg">
+                  <FeatureSection />
+                </div>
+            </div>
+            <div className="relative lg:grid lg:grid-cols-12 gap-5 py-2 lg:my-0 lg:py-5">
+              <div className="1st lg:col-span-8">
+                <div className="bg-light rounded-2xl  p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
+                  <div className="flex justify-between">
+                    <div className="space-y-3">
+                   
+                     
+                      {/* <div className="text-3xl font-bold ">
                         {agentExcursion?.title} 
-                      </div>
+                      </div> */}
                       <div className="flex items-center space-x-3 text-sm">
                         {/* <span className=" text-yellow-500 flex space-x-1 ">
                           <Rating
@@ -106,19 +129,14 @@ function HeroSection() {
                             color={"#FED049"}
                           />
                         </span> */}
-                        <span className="flex items-center text-blueColor text-lg capitalize">
+                        {/* <span className="flex items-center text-blueColor text-lg capitalize">
                           <CiLocationOn /> {agentExcursion?.destination?.name}{" "}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                     <div className="flex space-x-2">
                       {/* share button */}
-                      <button
-                        className="h-10 w-10 rounded-full bg-soft border border-green-600 flex justify-center items-center text-2xl text-green-600"
-                        onClick={() => setShareModal(!shareModal)}
-                      >
-                        <RxShare2 />
-                      </button>
+                    
                       {/* like button */}
                       {/* <button
                         className="h-10 w-10 rounded-full bg-soft text-main border-main border flex justify-center items-center text-2xl"
@@ -143,22 +161,18 @@ function HeroSection() {
                   </div>
                 </div>
 
+              
                 <div
                   id="packageSection"
                   className="py-5 px-2  bg-light rounded-2xl "
                 >
                   <PackageSection />
                 </div>
-                <div className="mx-2 pt-2 shadow-lg rounded-lg">
-                  <FeatureSection />
-                </div>
-
-            
 
                 <div className="mx-2 lg:mx-0 mt-2 ">
                   <div className="bg-light shadow-lg py-5 px-4 rounded-2xl md:my-4 w-full  lg:mx-0 my-2 lg:my-0 text-darktext">
                     <div className="py-3">
-                      <span className="text-xl font-semibold text-blueColor  ">
+                      <span className="text-3xl font-semibold text-black  ">
                         {agentExcursion?.title}{" "}
                         {agentExcursion?.title && "Highlights"}
                       </span>

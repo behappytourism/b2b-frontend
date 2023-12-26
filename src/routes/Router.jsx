@@ -256,7 +256,7 @@ const ThemeRoutes = [
           },
           { path: "/attractions/:slug", element: <Attraction /> },
           { path: "/attractions/details/:id", element: <AttractionDetails /> },
-          { path: "/attractions/payment", element: <PaymentHomePage /> },
+          // { path: "/attractions/payment", element: <PaymentHomePage /> },
           // { path: "/attraction/order", element: <AttractionOrder /> },
           {
             path: "/attractions/invoice/:id",
@@ -474,10 +474,10 @@ const ThemeRoutes = [
     path: "/demo",
     element: <Demo />,
   },
-  // {
-  //   path:"/landingpageb2b",
-  //   element:<LandingPage/>
-  // },
+  {
+    path:"/landingpageb2b",
+    element:<LandingPage/>
+  },
   // {
   //   path:"/aboutus",
   //   element:<AboutUsPage/>

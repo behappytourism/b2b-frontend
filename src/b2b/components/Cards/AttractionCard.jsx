@@ -36,15 +36,15 @@ function AttractionCard({ setView }) {
 
   return (
     <>
-      <form>
+      <form >
         <div className="md:flex gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto px-5">
           <div className="w-full flex justify-center items-center ">
             <div className=" w-full ">
               <div className="" ref={dropdownWrapperRef}>
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <label
                     htmlFor=""
-                    className="text-4xl font-bold text-white  tracking-wide"
+                    className="text-lg font-bold text-white  tracking-wide"
                   >
                     Where do you want to go?
                   </label>
@@ -56,22 +56,22 @@ function AttractionCard({ setView }) {
                     onFocus={handleFocus}
                     required
                     placeholder="Search here..."
-                    className="block placeholder:text-gray-300  lg:w-[60%] sm:w-[60%] w-full capitalize outline-none bg-white border rounded-xl p-5  h-16  bg-transparent text-sm text-gray-300 font-medium"
+                    className="block placeholder:text-gray-300  lg:w-[150%] sm:w-[40%] w-full capitalize outline-none bg-white border rounded-xl p-5  h-10  bg-transparent text-sm text-gray-300 font-medium"
                   />
                 </div>
                 {datalist && (
-                  <div className="absolute max-h-[30em] w-[35em] mt-1 shadow-xl bg-light rounded-lg overflow-y-auto z-20">
+                  <div className="absolute max-h-[30em] w-[32em] mt-1 shadow-xl bg-light rounded-lg overflow-y-auto z-20">
                     <div className="w-full p-2 overflow-y-auto">
                       {searchQuery?.destinations?.length > 0 ? (
                         <div className="">
-                          <p className="bg-gray-200 py-[2px] px-2 text-[14px] font-[600] text-textColor">
+                          <p className="font-bold py-[2px] px-2 text-lg text-textColor">
                             Destinations
                           </p>
                           {searchQuery?.destinations.map((item) => (
                             <>
                               <div
                                 key={item?.name}
-                                className=" py-2 px-2 cursor-pointer capitalize text-darktext z-30 border-b text-sm"
+                                className=" py-3 px-3 cursor-pointer capitalize text-darktext z-30 border-b text-sm"
                                 onClick={() => {
                                   setValue(item?.name);
                                   setDatalist(!datalist);
@@ -88,13 +88,13 @@ function AttractionCard({ setView }) {
                       )}
                       {searchQuery?.attractions?.length > 0 ? (
                         <div className="">
-                          <p className="bg-gray-200 py-[2px] px-2 text-[14px] font-[600] text-textColor">
+                          <p className=" py-[2px] px-2 text-lg font-bold text-textColor">
                             Attractions
                           </p>
                           {searchQuery?.attractions.map((item) => (
                             <div
                               key={item.title}
-                              className=" py-2 px-2 cursor-pointer capitalize text-darktext z-30 border-b text-sm"
+                              className=" py-3 px-3 cursor-pointer capitalize text-darktext z-30 border-b text-sm"
                               onClick={() => {
                                 setValue(item.title);
                                 setDatalist(!datalist);
