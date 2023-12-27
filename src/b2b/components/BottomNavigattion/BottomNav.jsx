@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import SearchCardModal from "./SearchCardModal";
 import { FaCar } from "react-icons/fa";
 import { MdTravelExplore } from "react-icons/md";
+import { RxPerson } from "react-icons/rx";
 
 
 
@@ -24,9 +25,9 @@ function BottomNav({ setSidebarView }) {
           location.pathname.includes("/attractions/details/")
             ? "hidden"
             : "block"
-        } lg:hidden fixed w-full bottom-0 bg-primaryColor text-white h-[48px] flex justify-center items-center`}
+        } lg:hidden fixed w-full bottom-0 bg-BEColor text-white h-[48px] flex justify-center items-center`}
       >
-        <div className="grid grid-cols-6 gap-4 px-2 w-full">
+        <div className="grid grid-cols-7 gap-4 px-2 w-full">
         <div className="flex justify-center items-center">
             <div
               className="" 
@@ -39,7 +40,7 @@ function BottomNav({ setSidebarView }) {
               <MdTravelExplore />
               </div>
               <div className="">
-                <p className="text-xs">Tours</p>
+                <p className="text-xs">Tours</p> 
               </div>
             </div>
           </div>
@@ -76,6 +77,16 @@ function BottomNav({ setSidebarView }) {
             >
               <div className="flex justify-center items-center text-2xl">
                 <TbLayoutDashboard />
+              </div>
+            </div>
+          </div>
+          <div className=" flex justify-center items-center">
+            <div className="" onClick={() => navigate("/resellers")}>
+              <div className="flex justify-center items-center text-[20px]">
+              <RxPerson />
+              </div>
+              <div className="">
+                <p className="text-xs">Agents</p>
               </div>
             </div>
           </div>

@@ -140,7 +140,7 @@ function ToursHomePage() {
                         banners?.map((ele)=>(
                         <div className="w-full h-96 relative ">
                               <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
-                              <div className="absolute top-20 bottom-0 left-16 rounded bg-black/40 h-56 p-3 ">
+                              <div className="absolute top-20 bottom-0 left-16 rounded bg-black/40 h-52 p-3 ">
                                   <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
                                   <h1 className="text-white font-semibold max-w-md pt-2">{ele?.body}</h1>
                                   <div className='pt-2'>
