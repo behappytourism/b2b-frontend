@@ -79,7 +79,7 @@ export default function SingleSubAgent() {
             </div>
           </div>
           <div className="grid sm:grid-cols-4 gap-4 mt-6 text-gray-200">
-            <div className="to-blue-600 bg-gradient-to-r from-[#003580] shadow-sm rounded-xl p-4 flex items-start justify-between">
+            <div className="to-BEColor bg-gradient-to-r from-black shadow-sm rounded-xl p-4 flex items-start justify-between">
               <div>
                 <span className="block text-lg font-[600]">
                   {priceConversion(
@@ -96,7 +96,7 @@ export default function SingleSubAgent() {
                 <MdAccountBalanceWallet />
               </span>
             </div>
-            <div className=" to-blue-600 bg-gradient-to-r from-[#003580] shadow-sm rounded-xl p-4 flex items-start justify-between">
+            <div className=" to-BEColor bg-gradient-to-r from-black shadow-sm rounded-xl p-4 flex items-start justify-between">
               <div>
                 <span className="block text-lg font-[600]">
                   {" "}
@@ -114,7 +114,7 @@ export default function SingleSubAgent() {
                 <GiTakeMyMoney />
               </span>
             </div>
-            <div className="to-blue-600 bg-gradient-to-r from-[#003580] shadow-sm rounded-xl p-4 flex items-start justify-between">
+            <div className="to-BEColor bg-gradient-to-r from-black shadow-sm rounded-xl p-4 flex items-start justify-between">
               <div>
                 <span className="block text-lg font-[600]">
                   {" "}
@@ -132,7 +132,7 @@ export default function SingleSubAgent() {
                 <GiCash />
               </span>
             </div>
-            <div className="to-blue-600 bg-gradient-to-r from-[#003580] shadow-sm rounded-xl p-4 flex items-start justify-between">
+            <div className="to-BEColor bg-gradient-to-r from-black shadow-sm rounded-xl p-4 flex items-start justify-between">
               <div>
                 <span className="block text-lg font-[600]">
                   {" "}

@@ -69,9 +69,11 @@ function ViewSigleDetails() {
       
     }
 
+    console.log(orderDetails);
+
   return (
     <div>
-      <div className='py-10 px-20'>
+      <div className='py-5 px-5'>
         {
             isLoading ? (
                 <div className='py-20'>
@@ -79,56 +81,94 @@ function ViewSigleDetails() {
                 </div>
             ) : (
               <div>
-                <div className='py-20 px-20 bg-white shadow-xl w-full h-auto'>
-                    <div className='flex justify-end'>
-                        <button
-                        onClick={()=> {
-                            handleDownloadInvoice()
-                        }}
-                        className='bg-orange-500 w-52 rounded text-white  h-8'>{invoiceLoading ? <BtnLoader/> : "Download Invoice"}</button>
-                    </div>
-                    {
-                        orderAttractionDetails?.activities?.length > 0 && (
-                            <>
-                               <div>
-                                <h1 className='text-lg font-bold'>Attraction</h1>
+                <div className='flex gap-4 py-2 px-2'>
+                    <div className='bg-white shadow-xl w-[570px] min-h-min p-3'>
+                        <div>
+                            <h1 className='font-semibold text-lg'>Details</h1>
+                        </div>
+                        <div className='pt-2'>
+                           <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                                <h1 className='text-sm'>Ref.Number : </h1>
+                                <h1 className='text-sm'>{orderDetails?.referenceNumber}</h1>
                             </div>
-                               <div className='p-5'>
-                              {
-                            orderAttractionDetails?.activities?.map((ele)=>{
-                                return (
-                                    <div className='pt-4'>
-                                        <ShowAttractionDetails ele={ele} orderAttractionDetails={orderAttractionDetails} orderDetails={orderDetails}/>
+                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                                <h1 className='text-sm'>Booking Date : </h1>
+                                <h1 className='text-sm'>{orderDetails?.createdAt?.slice(0, 10)}</h1>
+                            </div>
+                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                                <h1 className='text-sm'>Order Status: </h1>
+                                <h1 className='text-sm'>{orderDetails?.orderStatus}</h1>
+                            </div>
+                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                                <h1 className='text-sm'>Payment Status: </h1>
+                                <h1 className='text-sm'>{orderDetails?.paymentState}</h1>
+                            </div>
+                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                                <h1 className='text-sm'>Name : </h1>
+                                <h1 className='text-sm'>{orderDetails?.name}</h1>
+                            </div>
+                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <h1 className='text-sm'>Email : </h1>
+                             <h1 className='text-sm'>{orderDetails?.email}</h1>
+                        </div>
+                        <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <h1 className='text-sm'>Phone Number : </h1>
+                             <h1 className='text-sm'>{orderDetails?.phoneNumber}</h1>
+                        </div>
+                        </div>
+                    </div>
+                    <div className='py-5 px-5 bg-white shadow-xl w-full h-auto'>
+                        <div className='flex justify-end'>
+                            <button
+                            onClick={()=> {
+                                handleDownloadInvoice()
+                            }}
+                            className='bg-orange-500 w-52 rounded text-white  h-8'>{invoiceLoading ? <BtnLoader/> : "Download Invoice"}</button>
+                        </div>
+                        {
+                            orderAttractionDetails?.activities?.length > 0 && (
+                                <>
+                                <div>
+                                    <h1 className='text-lg font-bold'>Attraction</h1>
+                                </div>
+                                <div className='p-5'>
+                                {
+                                orderAttractionDetails?.activities?.map((ele)=>{
+                                    return (
+                                        <div className='pt-4'>
+                                            <ShowAttractionDetails ele={ele} orderAttractionDetails={orderAttractionDetails} orderDetails={orderDetails}/>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+                                </>
+                            
+                            )
+                        }
+                    
+                    {
+                        orderTransferDetails?.journey?.length && (
+                            <>
+                            <div>
+                                <h1 className='text-lg font-bold'>Transfer</h1>
+                            </div>
+                            <div className='p-5'>
+                                {
+                                    orderTransferDetails?.journey?.map((ele, index)=> {
+                                        return (
+                                            <div key={index} className='pt-4'>
+                                                <ShowTransferDetails ele={ele} />
                                             </div>
                                         )
                                     })
                                 }
                             </div>
                             </>
-                         
                         )
                     }
-                 
-                 {
-                    orderTransferDetails?.journey?.length && (
-                        <>
-                        <div>
-                            <h1 className='text-lg font-bold'>Transfer</h1>
-                        </div>
-                        <div className='p-5'>
-                            {
-                                orderTransferDetails?.journey?.map((ele, index)=> {
-                                    return (
-                                        <div key={index} className='pt-4'>
-                                            <ShowTransferDetails ele={ele} />
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                        </>
-                    )
-                 }
+                    </div>
+                    
                 </div>
               </div>
             )
