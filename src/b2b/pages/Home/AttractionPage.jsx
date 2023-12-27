@@ -14,6 +14,7 @@ function AttractionPage() {
 
   const { token } = useSelector((state)=> state.agents)
   const [banners, setBanners] = useState([])
+  const [sections, setSections] = useState([])
 
   const responsive = {
     superLargeDesktop: {
@@ -51,8 +52,20 @@ function AttractionPage() {
     }
   }
 
+  const fetchSections = async ()=>{
+    try {
+      const res = await axios.get(`/b2b/home/sections`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      setSections(res?.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(()=>{
     fetchHomeBanners()
+    fetchSections()
   }, [])
 
   return (
@@ -92,7 +105,7 @@ function AttractionPage() {
             </Carousel>
       </div>
       <div className="px-5 pt-7 mt-5 max-w-screen-xl mx-auto" data-aos = "fade-up">
-        <TopDestination />
+        <TopDestination sections={sections} />
       </div>
     </div>
   );
