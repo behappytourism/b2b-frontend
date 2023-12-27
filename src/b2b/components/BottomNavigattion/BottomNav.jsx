@@ -10,6 +10,7 @@ import SearchCardModal from "./SearchCardModal";
 import { FaCar } from "react-icons/fa";
 import { MdTravelExplore } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
+import { TbBrandBooking } from "react-icons/tb";
 
 
 
@@ -27,14 +28,14 @@ function BottomNav({ setSidebarView }) {
             : "block"
         } lg:hidden fixed w-full bottom-0 bg-BEColor text-white h-[48px] flex justify-center items-center`}
       >
-        <div className="grid grid-cols-7 gap-4 px-2 w-full">
+        <div className="grid grid-cols-8 gap-4 px-2 w-full">
         <div className="flex justify-center items-center">
             <div
-              className="" 
+              className="cursor-pointer" 
               onClick={() => {
                 // setSidebarView(true)
                 navigate("/tours");
-              }}
+              }} 
             >
               <div className="flex justify-center items-center text-[20px]">
               <MdTravelExplore />
@@ -46,7 +47,7 @@ function BottomNav({ setSidebarView }) {
           </div>
           <div className="flex justify-center items-center">
             <div
-              className="" 
+              className="cursor-pointer" 
               onClick={() => {
                 // setSidebarView(true)
                 navigate("/transfer");
@@ -60,8 +61,24 @@ function BottomNav({ setSidebarView }) {
               </div>
             </div>
           </div>
+          <div className="flex justify-center items-center">
+            <div
+              className="cursor-pointer" 
+              onClick={() => {
+                // setSidebarView(true)
+                navigate("/order");
+              }} 
+            >
+              <div className="flex justify-center items-center text-[20px]">
+               <TbBrandBooking />
+              </div>
+              <div className="">
+                <p className="text-xs">Bookings</p> 
+              </div>
+            </div>
+          </div>
           <div className=" flex justify-center items-center">
-            <div className="" onClick={() => navigate("/wallet")}>
+            <div className="cursor-pointer" onClick={() => navigate("/wallet")}>
               <div className="flex justify-center items-center text-[20px]">
                 <FaWallet />
               </div>
@@ -72,7 +89,7 @@ function BottomNav({ setSidebarView }) {
           </div>
           <div className=" flex justify-center items-center relative">
             <div
-              className="absolute -top-7 w-[60px] h-[60px] bg-main rounded-full flex justify-center items-center"
+              className="absolute -top-7 w-[60px] h-[60px] bg-orange-600 rounded-full flex justify-center items-center cursor-pointer"
               onClick={() => navigate("/")}
             >
               <div className="flex justify-center items-center text-2xl">
@@ -81,7 +98,7 @@ function BottomNav({ setSidebarView }) {
             </div>
           </div>
           <div className=" flex justify-center items-center">
-            <div className="" onClick={() => navigate("/resellers")}>
+            <div className="cursor-pointer" onClick={() => navigate("/resellers")}>
               <div className="flex justify-center items-center text-[20px]">
               <RxPerson />
               </div>
@@ -91,7 +108,7 @@ function BottomNav({ setSidebarView }) {
             </div>
           </div>
           <div className=" flex justify-center items-center">
-            <div className="" onClick={() => navigate("/markup/attraction")}>
+            <div className="cursor-pointer" onClick={() => navigate("/markup/attraction")}>
               <div className="flex justify-center items-center text-[20px]">
                 <RiMarkupFill />
               </div>
@@ -101,7 +118,7 @@ function BottomNav({ setSidebarView }) {
             </div>
           </div>
           <div className=" flex justify-center items-center">
-            <div className="" onClick={() => navigate("/order")}>
+            <div className="cursor-pointer" onClick={() => navigate("/order")}>
               <div className="flex justify-center items-center text-[20px]">
                 <IoMdCart />
               </div>
