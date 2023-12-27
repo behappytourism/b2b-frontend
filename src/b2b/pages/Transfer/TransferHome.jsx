@@ -240,9 +240,11 @@ function TransferHome() {
             banners.map((ele)=>(
             <div className="w-full h-96 relative">
                   <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
-                  <div className="absolute top-20 bottom-0 right-0 left-40 ">
-                      <h1 className="font-bold text-black text-5xl">{ele?.title}</h1>
-                      <h1 className="text-black font-semibold max-w-xl">{ele?.body}</h1>
+                  <div className="absolute top-10 bottom-0 right-0 left-40 ">
+                    <div className='bg-black/50 rounded w-[550px] p-3'>
+                        <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
+                        <h1 className="text-white font-light text-lg max-w-3xl">{ele?.body}</h1>
+                    </div>
                       <div className='pt-1'>
                             {
                                 ele?.isButton === true && (
@@ -260,7 +262,7 @@ function TransferHome() {
       </div>
             <div className='absolute top-10 bottom-0 right-0 left-0 h-full w-full'> </div>
         <div className='absolute left-16 right-10 bottom-0 top-60 '>
-            <div className='bg-black/40 w-full  rounded-xl h-[300px]'>
+            <div className='bg-black/60 w-full  rounded-xl h-[300px]'>
                 <div className=' p-10'>
                         {/* <form onSubmit={handleSubmint}> */}
                         <div className='flex gap-3 '>

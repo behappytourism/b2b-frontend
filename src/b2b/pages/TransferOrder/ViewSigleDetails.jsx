@@ -69,7 +69,16 @@ function ViewSigleDetails() {
       
     }
 
-    console.log(orderDetails);
+    function formatTime(dateTime) {
+      
+        const hours = new Date(dateTime).getHours().toString().padStart(2, '0');
+        const minutes = new Date(dateTime).getMinutes().toString().padStart(2, '0');
+        // const seconds = new Date(dateTime).getSeconds().toString().padStart(2, '0');
+      
+        const formattedTime = `${hours} : ${minutes} `;
+        return formattedTime;
+      }
+
 
   return (
     <div>
@@ -81,37 +90,41 @@ function ViewSigleDetails() {
                 </div>
             ) : (
               <div>
-                <div className='flex gap-4 py-2 px-2'>
-                    <div className='bg-white shadow-xl w-[570px] min-h-min p-3'>
+                <div className='grid md:flex gap-4 py-2 px-2'>
+                    <div className='bg-white shadow-xl w-96 md:w-[580px] md:h-72 h-96 py-5 px-6'>
                         <div>
                             <h1 className='font-semibold text-lg'>Details</h1>
                         </div>
                         <div className='pt-2'>
-                           <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                           <div className='flex md:grid md:grid-cols-2 gap-1 pt-1'>
                                 <h1 className='text-sm'>Ref.Number : </h1>
                                 <h1 className='text-sm'>{orderDetails?.referenceNumber}</h1>
                             </div>
-                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <div className='flex md:grid md:grid-cols-2 gap-1 pt-1'>
                                 <h1 className='text-sm'>Booking Date : </h1>
                                 <h1 className='text-sm'>{orderDetails?.createdAt?.slice(0, 10)}</h1>
                             </div>
-                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <div className='flex md:grid md:grid-cols-2 gap-1 pt-2'>
+                                <h1 className='text-sm'>Booking Time : </h1>
+                                <h1 className='text-sm'>{formatTime(orderDetails?.createdAt)}</h1>
+                            </div>
+                            <div className='flex md:grid md:grid-cols-2 gap-1 pt-2'>
                                 <h1 className='text-sm'>Order Status: </h1>
                                 <h1 className='text-sm'>{orderDetails?.orderStatus}</h1>
                             </div>
-                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <div className='flex md:grid md:grid-cols-2 gap-1 pt-2'>
                                 <h1 className='text-sm'>Payment Status: </h1>
                                 <h1 className='text-sm'>{orderDetails?.paymentState}</h1>
                             </div>
-                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <div className='flex md:grid md:grid-cols-2 gap-1 pt-2'>
                                 <h1 className='text-sm'>Name : </h1>
                                 <h1 className='text-sm'>{orderDetails?.name}</h1>
                             </div>
-                            <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                            <div className='flex md:grid md:grid-cols-2 gap-1 pt-2'>
                             <h1 className='text-sm'>Email : </h1>
                              <h1 className='text-sm'>{orderDetails?.email}</h1>
                         </div>
-                        <div className='grid md:grid-cols-2 gap-1 pt-1'>
+                        <div className='flex md:grid md:grid-cols-2 gap-1 pt-2'>
                             <h1 className='text-sm'>Phone Number : </h1>
                              <h1 className='text-sm'>{orderDetails?.phoneNumber}</h1>
                         </div>
