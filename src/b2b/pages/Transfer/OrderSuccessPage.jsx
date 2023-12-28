@@ -8,6 +8,8 @@ import priceConversion from "../../../utils/PriceConversion";
 import { config } from "../../../constants";
 import moment from "moment";
 import { BsDownload } from "react-icons/bs";
+import { BiTransfer } from "react-icons/bi";
+import { IoMdArrowRoundForward } from "react-icons/io";
 
 function OrderSuccessPage() {
   const params = useParams();
@@ -44,85 +46,10 @@ function OrderSuccessPage() {
     fetchOrderDetails();
   }, [params?.id]);
   //
-  return (
-    <div className="flex justify-center p-10 max-w-screen-lg mx-auto ">
-      <div className="w-full rounded-2xl border p-10 bg-gradient-to-br from-BEColor/50 to-green-50 shadow-round">
-        <div className="mb-7 ">
-          <h1 className="text-center text-2xl underline underline-offset-8  md:text-4xl font-bold text-BEColor  ">
-            You have Ordered Successfully!
-          </h1>
-        </div>
-        <div className="md:flex justify-between gap-4  px-4  py-5">
-          <div className="md:order-2">
-            <Lottie animationData={successAnimations} />
-          </div>
-          <div className="md:order-1 space-y-3 md:text-lg">
-            <div className="flex gap-5 flex-wrap">
-              <div className="space-y-1">
-                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                  Order Status
-                </h4>
-                <div className="uppercase text-xs font-semibold text-white bg-BEColor rounded flex justify-center px-4 py-2 ">
-                  {orderDetails?.orderStatus}{" "}
-                </div>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                  Payment State
-                </h4>
-                <div className="uppercase text-xs font-semibold text-white bg-BEColor rounded flex justify-center px-4 py-2 ">
-                  {orderDetails?.paymentState}{" "}
-                </div>
-              </div>
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                Reference Number
-              </h4>
-              <p className="text-textColor uppercase">
-                {orderDetails?.referenceNumber}{" "}
-              </p>
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                Name
-              </h4>
-              <p className="text-textColor uppercase">{orderDetails?.name} </p>
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                Email
-              </h4>
-              <p className="text-textColor ">{orderDetails?.email} </p>
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                Phone Number
-              </h4>
-              <p className="text-textColor ">{orderDetails?.phoneNumber} </p>
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                Agent Reference Number
-              </h4>
-              <p className="text-textColor ">
-                {orderDetails?.agentReferenceNumber}{" "}
-              </p>
-            </div>
-            <div className="space-y-1">
-              <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                price
-              </h4>
-              <p className="text-textColor font-bold text-xl">
-                {priceConversion(
-                  orderDetails?.netPrice,
-                  selectedCurrency,
-                  true
-                )}{" "}
-              </p>
-            </div>
-          </div>
-        </div>
+
+  const renderAttractionSection = () => {
+    return (
+      <>
         {orderDetails?.attractionOrder &&
         orderDetails?.attractionOrder?.activities?.length ? (
           <>
@@ -168,7 +95,11 @@ function OrderSuccessPage() {
                             Total
                           </h4>
                           <p className="text-BEColor font-bold  ">
-                            {orderDetails?.attractionOrder?.totalAmount}{" "}
+                            {priceConversion(
+                              orderDetails?.attractionOrder?.totalAmount,
+                              selectedCurrency,
+                              true
+                            )}{" "}
                           </p>
                         </div>
                       </div>
@@ -189,7 +120,7 @@ function OrderSuccessPage() {
                   <div className="col-span-5 divide-y">
                     <div className="flex justify-between py-2">
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Adult
+                        Adult count
                       </h4>
                       <p className=" text-textColor text-sm capitalize ">
                         {attr?.adultsCount}{" "}
@@ -197,7 +128,7 @@ function OrderSuccessPage() {
                     </div>
                     <div className="flex justify-between py-2">
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Child
+                        Child count
                       </h4>
                       <p className=" text-textColor text-sm capitalize ">
                         {attr?.childrenCount}{" "}
@@ -205,7 +136,7 @@ function OrderSuccessPage() {
                     </div>
                     <div className="flex justify-between py-2">
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Infant
+                        Infant count
                       </h4>
                       <p className=" text-textColor text-sm capitalize ">
                         {attr?.infantCount}{" "}
@@ -227,8 +158,14 @@ function OrderSuccessPage() {
         ) : (
           ""
         )}
+      </>
+    );
+  };
 
-        {/* {orderDetails?.transferOrder &&
+  const renderTransferSection = () => {
+    return (
+      <>
+        {orderDetails?.transferOrder &&
         orderDetails?.transferOrder?.journey?.length ? (
           <>
             <hr />
@@ -236,94 +173,288 @@ function OrderSuccessPage() {
               <h3 className="text-xl tracking-wide  font-bold text-gray-800">
                 Transfers
               </h3>
-              {orderDetails?.transferOrder?.journey?.map((jrn) => (
-                <div className="grid grid-cols-12 gap-3 md:gap-6 py-3">
-                  <div className="col-span-6 space-y-1">
-                    <div className=" ">
-                      <p className="font-semibold tracking-tight font-demo px-1">
-                        {jrn?.trips?.transferFrom?.airportName}
-                        <span className="capitalize">
-                          {jrn?.trips?.attraction?.destination?.name
-                            ? ", " + jrn?.trips?.attraction?.destination?.name
-                            : ""}
-                        </span>
-                      </p>
-                      <p className=" tracking-tight font-demo px-1">
-                        {moment(jrn?.date).format("dddd, MMMM Do YYYY")}{" "}
-                      </p>
-                      <div className="detail__section flex-1 divide-y">
-                        <div className="flex justify-between py-2">
-                          <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                            Status
-                          </h4>
-                          <p className="text-textColor text-sm capitalize ">
-                            {orderDetails?.attractionOrder?.orderStatus}{" "}
-                          </p>
-                        </div>
-                        <div className="flex justify-between py-2">
-                          <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                            Payment
-                          </h4>
-                          <p className="text-textColor text-sm capitalize ">
-                            {orderDetails?.attractionOrder?.paymentState}{" "}
-                          </p>
-                        </div>
-                        <div className="flex justify-between py-2">
-                          <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                            Total
-                          </h4>
-                          <p className="text-BEColor font-bold  ">
-                            {orderDetails?.attractionOrder?.totalAmount}{" "}
-                          </p>
+              <div className="divide-y ">
+                {orderDetails?.transferOrder?.journey?.map((jrn) => (
+                  <div className="py-3">
+                    <div className=" flex justify-between">
+                      <div>
+                        {jrn?.trips?.map((trp, ind) => {
+                          if (ind === 0) {
+                            return (
+                              <p className="font-semibold tracking-tight font-demo px-1 flex items-center gap-2">
+                                {trp?.transferFrom?.airportName ||
+                                  trp?.transferFrom?.areaName}
+                                <span className="capitalize">
+                                  {jrn?.transferType === "return" ? (
+                                    <h1 className="text-lg">
+                                      <BiTransfer />
+                                    </h1>
+                                  ) : (
+                                    <h1>
+                                      <IoMdArrowRoundForward />
+                                    </h1>
+                                  )}
+                                </span>
+                                {trp?.transferTo?.airportName ||
+                                  trp?.transferTo?.areaName}
+                              </p>
+                            );
+                          }
+                        })}
+
+                        <p className=" tracking-tight font-demo px-1 capitalize text-BEColor font-semibold">
+                          {jrn?.transferType}{" "}
+                        </p>
+                      </div>
+                      <div className="">
+                        <div className="">
+                          <div className="uppercase text-sm font-bold text-white bg-BEColor rounded flex justify-center px-4 py-2 ">
+                            {priceConversion(
+                              jrn?.netPrice,
+                              selectedCurrency,
+                              true
+                            )}{" "}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                    <div className="divide-y divide-dashed">
+                      {jrn?.trips?.map((trp) => (
+                        <div className="grid grid-cols-12 gap-3 md:gap-6 py-3">
+                          <div className="col-span-6 space-y-2 px-1">
+                            <div className="detail__section flex-1  ">
+                              <div className="py-2">
+                                <p className="font-thin tracking-tight text-sm  flex items-center gap-2 ">
+                                  {trp?.transferFrom?.airportName ||
+                                    trp?.transferFrom?.areaName}
+                                  <span className="capitalize">
+                                    <span>
+                                      <IoMdArrowRoundForward />
+                                    </span>
+                                  </span>
+                                  {trp?.transferTo?.airportName ||
+                                    trp?.transferTo?.areaName}
+                                </p>
+                                <p className=" tracking-tight font-demo text-sm ">
+                                  {moment(trp?.pickupDate).format(
+                                    "dddd, MMMM Do YYYY"
+                                  )}{" "}
+                                </p>
+                                <p className=" tracking-tight font-demo text-sm ">
+                                  {"Time - " + trp?.pickupTime}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex justify-between items-center gap-2">
+                              <h4 className=" tracking-wide text-gray-400 text-sm">
+                                Pax
+                              </h4>
+                              <span className="flex-1 border-b border-dashed " />
+                              <p className=" text-textColor text-sm capitalize ">
+                                <span className="">
+                                  {jrn?.noOfAdults + " Adult"}
+                                </span>
+                                {jrn?.noOfChildren > 0 ? (
+                                  <span className="">
+                                    {jrn?.noOfChildren + " Child"}
+                                  </span>
+                                ) : (
+                                  ""
+                                )}
+                              </p>
+                            </div>
+                            <div className="flex justify-between items-center gap-2">
+                              <h4 className=" tracking-wide text-gray-400 text-sm">
+                                Trip Price
+                              </h4>
+                              <span className="flex-1 border-b border-dashed " />
+                              <p className=" text-textColor text-sm capitalize ">
+                                {priceConversion(
+                                  trp?.tripPrice,
+                                  selectedCurrency,
+                                  true
+                                )}
+                              </p>
+                            </div>
+                          </div>
 
-                  <div className="col-span-5 divide-y">
-                    <div className="flex justify-between py-2">
-                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Adult
-                      </h4>
-                      <p className=" text-textColor text-sm capitalize ">
-                        {jrn?.adultsCount}{" "}
-                      </p>
-                    </div>
-                    <div className="flex justify-between py-2">
-                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Child
-                      </h4>
-                      <p className=" text-textColor text-sm capitalize ">
-                        {jrn?.childrenCount}{" "}
-                      </p>
-                    </div>
-                    <div className="flex justify-between py-2">
-                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Infant
-                      </h4>
-                      <p className=" text-textColor text-sm capitalize ">
-                        {jrn?.infantCount}{" "}
-                      </p>
-                    </div>
-                    <div className="flex justify-between py-2">
-                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Ticket
-                      </h4>
-                      <p className=" text-textColor text-xl capitalize ">
-                        <BsDownload />
-                      </p>
+                          <div className="col-span-6 px-2">
+                            <h3 className="font-demo text-sm font-semibold text-gray-600">
+                              Vehicles
+                            </h3>
+                            <div className="py-2 space-y-2">
+                              {trp?.vehicleTypes?.map((vehicle) => {
+                                return (
+                                  <div className="flex justify-between items-center gap-2">
+                                    <h4 className=" tracking-wide text-gray-400 text-sm">
+                                      {vehicle?.name}
+                                    </h4>
+                                    <span className="flex-1 border-b border-dashed " />
+                                    <p className=" text-textColor text-sm capitalize ">
+                                      {vehicle?.count}
+                                    </p>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </>
         ) : (
           ""
-        )} */}
+        )}
+      </>
+    );
+  };
+
+  return (
+    <div className="flex justify-center p-10 max-w-screen-lg mx-auto ">
+      <div className="w-full rounded-2xl border p-10 bg-gradient-to-br from-BEColor/10 to-gray-50 shadow-round">
+        <div className="mb-7 ">
+          <h1 className="text-center text-2xl underline underline-offset-8  md:text-4xl font-bold text-BEColor  ">
+            You have Ordered Successfully!
+          </h1>
+        </div>
+        <div className="md:flex justify-between gap-4  px-4  py-5">
+          <div className="md:order-2">
+            <Lottie animationData={successAnimations} />
+          </div>
+          {isLoading ? (
+            LoadingComponent()
+          ) : (
+            <div className="md:order-1 space-y-3 md:text-lg">
+              <div className="flex gap-5 flex-wrap">
+                <div className="space-y-1">
+                  <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                    Order Status
+                  </h4>
+                  <div className="uppercase text-xs font-semibold text-white bg-BEColor rounded flex justify-center px-4 py-2 ">
+                    {orderDetails?.orderStatus}{" "}
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                    Payment State
+                  </h4>
+                  <div className="uppercase text-xs font-semibold text-white bg-BEColor rounded flex justify-center px-4 py-2 ">
+                    {orderDetails?.paymentState}{" "}
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                  Reference Number
+                </h4>
+                <p className="text-textColor uppercase">
+                  {orderDetails?.referenceNumber}{" "}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                  Name
+                </h4>
+                <p className="text-textColor uppercase">
+                  {orderDetails?.name}{" "}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                  Email
+                </h4>
+                <p className="text-textColor ">{orderDetails?.email} </p>
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                  Phone Number
+                </h4>
+                <p className="text-textColor ">{orderDetails?.phoneNumber} </p>
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                  Agent Reference Number
+                </h4>
+                <p className="text-textColor ">
+                  {orderDetails?.agentReferenceNumber}{" "}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                  price
+                </h4>
+                <p className="text-textColor font-bold text-xl">
+                  {priceConversion(
+                    orderDetails?.netPrice,
+                    selectedCurrency,
+                    true
+                  )}{" "}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {renderAttractionSection()}
+        {renderTransferSection()}
       </div>
     </div>
   );
 }
 
 export default OrderSuccessPage;
+
+function LoadingComponent() {
+  return (
+    <div className="md:order-1 space-y-3 md:text-lg">
+      <div className="flex gap-5 flex-wrap">
+        <div className="space-y-1">
+          <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+            Order Status
+          </h4>
+          <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+        </div>
+        <div className="space-y-1">
+          <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+            Payment State
+          </h4>
+          <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+        </div>
+      </div>
+      <div className="space-y-1">
+        <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+          Reference Number
+        </h4>
+        <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+      </div>
+      <div className="space-y-1">
+        <h4 className="font-bold tracking-wide text-gray-400 text-sm">Name</h4>
+        <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+      </div>
+      <div className="space-y-1">
+        <h4 className="font-bold tracking-wide text-gray-400 text-sm">Email</h4>
+        <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+      </div>
+      <div className="space-y-1">
+        <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+          Phone Number
+        </h4>
+        <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+      </div>
+      <div className="space-y-1">
+        <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+          Agent Reference Number
+        </h4>
+        <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+      </div>
+      <div className="space-y-1">
+        <h4 className="font-bold tracking-wide text-gray-400 text-sm">price</h4>
+        <div className="bg-gray-300 rounded animate-pulse h-4 w-36" />
+      </div>
+    </div>
+  );
+}
