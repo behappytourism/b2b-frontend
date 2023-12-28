@@ -10,6 +10,8 @@ import moment from "moment";
 import { BsDownload } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { IoMdArrowRoundForward } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { BtnLoader } from "../../components";
 
 function OrderSuccessPage() {
   const params = useParams();
@@ -17,9 +19,12 @@ function OrderSuccessPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [orderDetails, setOrderDetails] = useState({});
+  const [invoiceLoading, setInvoiceLoading] = useState(false)
 
   const { token } = useSelector((state) => state.agents);
   const { selectedCurrency } = useSelector((state) => state.home);
+
+  const navigate = useNavigate()
 
   const fetchOrderDetails = async () => {
     try {
@@ -67,6 +72,33 @@ function OrderSuccessPage() {
         console.log(error);
     }
    }
+
+   const handleDownloadInvoice = async () => {
+    try {
+        setInvoiceLoading(true)
+        const pdfBuffer = await axios.get(
+            `/b2b/orders/invoice/${params.id}`,
+            {
+                headers: { Authorization: `Bearer ${token}` },
+                responseType: "arraybuffer"
+            }
+        )
+        const blob = new Blob([pdfBuffer?.data], {
+            type: "application/pdf"
+        })
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob)
+        link.download = "invoice.pdf";
+        document.body.appendChild(link)
+        link.click()
+
+        setInvoiceLoading(false)
+    } catch (error) {
+        console.log(error);
+        setInvoiceLoading(false)
+    }
+  
+}
 
   const renderAttractionSection = () => {
     return (
@@ -347,6 +379,13 @@ function OrderSuccessPage() {
             You have Ordered Successfully!
           </h1>
         </div>
+        <div className="flex justify-end">
+          <button className="bg-green-400 rounded h-7 text-white w-24"
+          onClick={()=>{
+            handleDownloadInvoice()
+          }}
+          >{invoiceLoading ? <BtnLoader/> : "Invoice"}</button>
+        </div>
         <div className="md:flex justify-between gap-4  px-4  py-5">
           <div className="md:order-2">
             <Lottie animationData={successAnimations} />
@@ -428,7 +467,11 @@ function OrderSuccessPage() {
         {renderAttractionSection()}
         {renderTransferSection()}
         <div className="flex justify-end">
-            <button className="text-white font-medium w-24 h-8 border bg-BEColor rounded">Home</button>
+            <button className="text-white font-medium w-24 h-8 border bg-BEColor rounded"
+            onClick={()=>{
+              navigate('/')
+            }}
+            >Home</button>
         </div>
       </div>
       
