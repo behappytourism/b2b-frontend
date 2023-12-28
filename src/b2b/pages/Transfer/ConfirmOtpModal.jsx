@@ -9,6 +9,7 @@ import { clearCartItemsAfterPurchase } from '../../../redux/slices/transferSlice
 import { emptyCart } from '../../../redux/slices/agentExcursionSlice';
 import { setAlertSuccess } from '../../../redux/slices/homeSlice';
 import { useNavigate } from 'react-router-dom';
+import { IoClose } from "react-icons/io5";
 
 function ConfirmOtpModal({details, orderId, setIsModal}) {
 
@@ -97,6 +98,13 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
   return (
     <div className="z-50 fixed top-0 left-0 right-0 bottom-0 flex items-center w-full h-full p-4 lightglass overflow-y-auto">
     <div className="max-w-xl w-full mx-auto bg-white rounded-xl overflow-hidden">
+            <div className='flex justify-end py-2 px-2'>
+              <h1 className='text-2xl text-gray-400 cursor-pointer '
+              onClick={()=>{
+                setIsModal(false)
+              }}
+              ><IoClose /></h1>
+            </div>
       <form onSubmit={submitHandler}>
         <div className="text-gray-400 flex justify-center py-5">
           <div className="mt-2">

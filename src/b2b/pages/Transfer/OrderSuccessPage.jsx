@@ -47,6 +47,27 @@ function OrderSuccessPage() {
   }, [params?.id]);
   //
 
+  const handleDownloadAllTicket = async (id) => {
+    try {
+      console.log(id, "act id");
+      console.log(orderDetails);
+        const response = await axios.get(`/b2b/attractions/orders/${orderDetails?.attractionOrder?._id}/ticket/${id}`, 
+        {
+            headers: { Authorization: `Bearer ${token}`},
+            responseType: "arraybuffer"
+        })
+        const blob = new Blob([response.data], {
+            type: "application/pdf"
+        })
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob)
+        link.download = "tickets.pdf";
+        link.click()
+    } catch (error) {
+        console.log(error);
+    }
+   }
+
   const renderAttractionSection = () => {
     return (
       <>
@@ -61,6 +82,7 @@ function OrderSuccessPage() {
               {orderDetails?.attractionOrder?.activities?.map((attr) => (
                 <div className="grid grid-cols-12 gap-3 md:gap-6 py-3">
                   {/* Image and detail */}
+                  {console.log(attr)}
                   <div className="col-span-7 space-y-1">
                     <div className="flex gap-3 ">
                       <img
@@ -146,7 +168,11 @@ function OrderSuccessPage() {
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">
                         Ticket
                       </h4>
-                      <p className=" text-textColor text-xl capitalize ">
+                      <p className=" text-textColor text-xl capitalize cursor-pointer"
+                      onClick={()=>{
+                        handleDownloadAllTicket(attr._id)
+                      }}
+                      >
                         <BsDownload />
                       </p>
                     </div>
@@ -401,7 +427,11 @@ function OrderSuccessPage() {
 
         {renderAttractionSection()}
         {renderTransferSection()}
+        <div className="flex justify-end">
+            <button className="text-white font-medium w-24 h-8 border bg-BEColor rounded">Home</button>
+        </div>
       </div>
+      
     </div>
   );
 }
