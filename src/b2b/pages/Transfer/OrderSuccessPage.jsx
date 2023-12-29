@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import successAnimations from "./animation_success.json";
 import axios from "../../../axios";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import priceConversion from "../../../utils/PriceConversion";
 import { config } from "../../../constants";
 import moment from "moment";
@@ -12,9 +12,14 @@ import { BiTransfer } from "react-icons/bi";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { BtnLoader } from "../../components";
+import { clearCartItemsAfterPurchase } from "../../../redux/slices/transferSlice";
+import { emptyCart } from "../../../redux/slices/agentExcursionSlice";
+
 
 function OrderSuccessPage() {
   const params = useParams();
+
+  const dispatch = useDispatch()
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -41,6 +46,10 @@ function OrderSuccessPage() {
       );
       setOrderDetails(response?.data);
       setIsLoading(false);
+      dispatch(emptyCart())
+      dispatch(clearCartItemsAfterPurchase())
+
+      
     } catch (error) {
       setIsLoading(false);
       setError(error?.response?.data?.error);
@@ -50,12 +59,9 @@ function OrderSuccessPage() {
   useEffect(() => {
     fetchOrderDetails();
   }, [params?.id]);
-  //
 
   const handleDownloadAllTicket = async (id) => {
     try {
-      console.log(id, "act id");
-      console.log(orderDetails);
         const response = await axios.get(`/b2b/attractions/orders/${orderDetails?.attractionOrder?._id}/ticket/${id}`, 
         {
             headers: { Authorization: `Bearer ${token}`},

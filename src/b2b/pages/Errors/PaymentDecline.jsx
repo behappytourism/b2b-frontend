@@ -8,6 +8,7 @@ import { CardPaymentError } from "../../../data";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { config } from "../../../constants";
+import PaymentCancelLottie from './Animation cancel payment.json'
 
 function PaymentDecline() {
    const navigate = useNavigate();
@@ -15,14 +16,14 @@ function PaymentDecline() {
    const { agent } = useSelector((state) => state.agents);
    return (
       <div className="h-screen w-full flex justify-center items-center">
-         <div className=" bg-white shadow-sm p-4 w-full lg:w-9/12 rounded-[0.40rem]">
+         <div className=" bg-white border p-4 w-full lg:w-9/12 rounded-[0.40rem]">
             <div className="border-b flex justify-center pb-3">
                <img src={companyLogo} alt="hero" className="h-16" />
             </div>
             <div className="details">
-               <div className="bg-gray-300 flex p-3 space-x-5 rounded-[0.25rem]">
+               <div className="bg-red-300 flex p-3 space-x-5 rounded-[0.25rem]">
                   <div className="text-main">
-                     <img src={warningPng} alt="warning" className="h-12" />
+                     <img src={"https://cdn2.iconfinder.com/data/icons/free-basic-icon-set-2/300/10-512.png"} alt="warning" className="h-12" />
                   </div>
                   <div className="text-darktext">
                      <h3 className="uppercase font-semibold text-lg">
@@ -94,12 +95,12 @@ function PaymentDecline() {
                         </div>
                      </div>
                      <div className="w-3/12 mx-auto">
-                        <Lottie animationData={CardPaymentError} />
+                        <Lottie animationData={PaymentCancelLottie} />
                      </div>
                   </div>
                   <div className="flex justify-center">
                      <button
-                        className="text-sm bg-blueColor text-light w-[100px] py-1 rounded-[0.25rem]"
+                        className="text-sm bg-orange-500 text-light w-[100px] py-1 rounded-[0.25rem]"
                         onClick={() => navigate("/wallet")}
                      >
                         Try Again

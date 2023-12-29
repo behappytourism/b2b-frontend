@@ -67,7 +67,6 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
             { headers: { Authorization: `Bearer ${token}`}}    
                 )
 
-                console.log(res.data, 'res.data');
                if (res.data) {
                 dispatch(setAlertSuccess({
                   status: true,
@@ -77,9 +76,9 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
                 setIsModal(false)
                 setIsLoading(false)
     
-                dispatch(clearCartItemsAfterPurchase())
-                dispatch(emptyCart())
-                navigate(`/transfer/invoice/${res?.data?._id}`)
+                // dispatch(clearCartItemsAfterPurchase())
+                // dispatch(emptyCart())
+                navigate(`/order/invoice/${res?.data?._id}`)
             }
 
         } catch (error) {

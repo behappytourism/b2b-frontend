@@ -342,7 +342,7 @@ const ThemeRoutes = [
           //   )
           // },
           {
-            path: '/transfer/invoice/:id',
+            path: '/order/invoice/:id',
             element: (
               <OrderSuccessPage/>
             )
