@@ -262,7 +262,7 @@ function TransferHome() {
       </div>
             <div className='absolute top-10 bottom-0 right-0 left-0 h-full w-full'> </div>
         <div className='absolute left-16 right-10 bottom-0 top-60 '>
-            <div className='bg-black/60 w-full  rounded-xl h-[300px]'>
+            <div className='bg-black/60 w-full  rounded-xl h-auto md:h-[300px]'>
                 <div className=' p-10'>
                         {/* <form onSubmit={handleSubmint}> */}
                         <div className='flex gap-3 '>
@@ -329,7 +329,7 @@ function TransferHome() {
                                     </div>
                             </div>
                             <div className='grid md:grid-cols-2 gap-5 pt-4'>
-                                <div className='flex gap-2'>
+                                <div className='grid md:flex gap-2'>
                                 <div>
                                     <div className='ml-2 text-white'>
                                         <label htmlFor="">Date and time of arrival</label>
@@ -341,9 +341,9 @@ function TransferHome() {
                                                 onChange={(e)=>{
                                                     dispatch(setSearchTransfer({value: e.target.value, name:"pickupDate"}))
                                                 }}
-                                             className='rounded-l p-3 h-12 w-40 text-gray-300 bg-slate-100 outline-none'/>
+                                             className='rounded-l p-3 h-12 w-28 md:w-40 text-gray-300 bg-slate-100 outline-none'/>
                                         </div>
-                                            <div className='bg-slate-100 rounded-r border-l h-12 w-40 '>
+                                            <div className='bg-slate-100 rounded-r border-l h-12 w-28 md:w-40 '>
                                                 <div className='p-3 flex justify-between cursor-pointer'
                                                               onClick={()=>{
                                                                 setShowArraiDate(!showArraiDate)
@@ -440,9 +440,9 @@ function TransferHome() {
                                             dispatch(setSearchTransfer({value: e.target.value, name:"returnDate"}))
                                         }}
                                      
-                                        className='rounded-l p-3 h-12 w-40 text-gray-300 bg-slate-100 outline-none'/>
+                                        className='rounded-l p-3 h-12 w-28 md:w-40 text-gray-300 bg-slate-100 outline-none'/>
                                         </div>
-                                            <div className='bg-slate-100 rounded-r border-l h-12 w-40'
+                                            <div className='bg-slate-100 rounded-r border-l h-12 w-28 md:w-40'
                                          
                                             >
                                                <div className='p-3 flex justify-between cursor-pointer'
@@ -534,9 +534,9 @@ function TransferHome() {
                                         <div>
                                         <input type="date" 
                                       
-                                        className='rounded-l p-3 h-12 w-40 text-gray-300 outline-none bg-white/20' disabled/>
+                                        className='rounded-l p-3 h-12 w-28 md:w-40 text-gray-300 outline-none bg-white/20' disabled/>
                                         </div>
-                                            <div className='bg-white/20 rounded-r border-l h-12 w-40'
+                                            <div className='bg-white/20 rounded-r border-l h-12 w-28 md:w-40'
                                          
                                             >
                                                <div className='p-3 flex justify-between'
@@ -554,12 +554,12 @@ function TransferHome() {
                                
                                 </div>
 
-                                <div className='flex gap-2'>
+                                <div className='grid md:flex gap-2'>
                                     <div className=''>
                                             <div className='ml-2 '>
                                                 <label htmlFor="" className='text-white '>Passengers</label>
                                             </div>
-                                            <div className='bg-slate-100 w-80 h-12 rounded relative  '>
+                                            <div className='bg-slate-100 md:w-80 h-12 rounded relative  '>
                                                 <div className='p-3 flex justify-between gap-5 cursor-pointer'
                                                 onClick={()=>{
                                                     setShowPassengers(!showPassengers)

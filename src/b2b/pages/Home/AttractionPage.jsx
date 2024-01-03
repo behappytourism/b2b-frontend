@@ -83,8 +83,8 @@ function AttractionPage() {
             banners.map((ele)=>(
             <div className="w-full h-96 relative">
                   <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
-                  <div className="absolute top-36 bottom-0 right-0 left-40 ">
-                    <div className="bg-black/40 rounded w-[550px] p-3">
+                  <div className="absolute top-20 left-10 md:top-36 bottom-0 right-0 md:left-40 ">
+                    <div className="bg-black/40 rounded w-80 md:w-[550px] p-3">
                       <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
                       <h1 className="text-white text-lg font-semibold max-w-3xl pt-2">{ele?.body}</h1>
                       <div className='pt-1'>

@@ -140,7 +140,7 @@ function ToursHomePage() {
                         banners?.map((ele)=>(
                         <div className="w-full h-96 relative ">
                               <img className="w-full h-full object-fill" src={config.SERVER_URL + ele?.image} alt="" />
-                              <div className="absolute top-20 bottom-0 left-16 rounded bg-black/40 h-52 p-3 ">
+                              <div className="absolute top-5  md:top-20 bottom-0 md:left-16 rounded bg-black/40 h-52 p-3 ">
                                   <h1 className="font-bold text-white text-5xl">{ele?.title}</h1>
                                   <h1 className="text-white font-semibold max-w-md pt-2">{ele?.body}</h1>
                                   <div className='pt-2'>
@@ -162,11 +162,11 @@ function ToursHomePage() {
                 )
             }
       
-      <div className="absolute left-[600px] w-96 right-0 top-60 bottom-0">
+      <div className="absolute md:left-[600px] w-96 right-0 top-64 md:top-60 bottom-0">
         <AttractionCard/>
       </div>
       </div>
-        <div className='py-10 px-32 flex justify-center bg-white w-full h-full'>
+        <div className='py-5 px-3 md:py-10 md:px-32 flex justify-center bg-white w-full h-full'>
                     <div>
                                 <>
                                 <InfiniteScroll

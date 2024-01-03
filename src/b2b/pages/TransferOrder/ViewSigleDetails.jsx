@@ -130,7 +130,7 @@ function ViewSigleDetails() {
                         </div>
                         </div>
                     </div>
-                    <div className='py-5 px-5 bg-white shadow-xl w-full h-auto'>
+                    <div className='py-5 px-5 bg-white shadow-xl w-96 md:w-full h-auto'>
                         <div className='flex justify-end'>
                             <button
                             onClick={()=> {
