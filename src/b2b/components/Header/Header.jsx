@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CurrencyModal from "./CurrencyModal";
 import { useHandleClickOutside } from "../../../hooks";
-import { AiOutlineDown,  AiOutlineLogout } from "react-icons/ai";
+import { AiOutlineDown, AiOutlineLogout } from "react-icons/ai";
 import { getWalletBalance } from "../../../redux/slices/walletSlice";
 import { IoIosWallet, IoMdNotificationsOutline } from "react-icons/io";
 import { BsPerson } from "react-icons/bs";
@@ -56,7 +56,10 @@ export default function Header({ setSidebarView, sidebarView }) {
         <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
           <div className="flex w-full items-center justify-between -mx-2">
             <div className=" bg-gray-100 rounded-b-xl mb-2">
-              <div className="h-10 w-full md:h-12 " onClick={() => navigate("/")}>
+              <div
+                className="h-10 w-full md:h-12 "
+                onClick={() => navigate("/")}
+              >
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}
                   src={companyLogo}
@@ -141,7 +144,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                     >
                       <div className="w-8 h-8 rounded-full shadow-sm bg-gray-300">
                         <img
-                          src={`https://avatars.dicebear.com/api/initials/${agent?.name}.svg`}
+                          src={`https://api.dicebear.com/7.x/initials/svg?seed=${agent?.name}`}
                           alt="avatar"
                           className=" border border-gray-100 h-full w-full rounded-full"
                         />
@@ -186,8 +189,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                                   Logout
                                 </p>
                               </li>
-                              <a  href="https://docs.mytravellerschoice.com/api-integration/attraction-endpoints">
-                                </a>
+                              <a href="https://docs.mytravellerschoice.com/api-integration/attraction-endpoints"></a>
                             </ul>
                           </div>
                         </div>
@@ -216,13 +218,13 @@ export default function Header({ setSidebarView, sidebarView }) {
                   <p
                     className={`text-3xl text-center  ${
                       location.pathname === "/" ||
-                      location.pathname === "/attraction" 
-                      // location.pathname === "/visa" ||
-                      // location.pathname === "/a2a" ||
-                      // location.pathname === "/flight" ||
-                      // location.pathname === "/flight/order/results" ||
-                      // location.pathname === "/insurance"
-                        ? " text-blue-500 "
+                      location.pathname === "/attraction"
+                        ? // location.pathname === "/visa" ||
+                          // location.pathname === "/a2a" ||
+                          // location.pathname === "/flight" ||
+                          // location.pathname === "/flight/order/results" ||
+                          // location.pathname === "/insurance"
+                          " text-blue-500 "
                         : " text-gray-400 "
                     }`}
                   >
@@ -231,13 +233,13 @@ export default function Header({ setSidebarView, sidebarView }) {
                   <p
                     className={`text-sm ${
                       location.pathname === "/" ||
-                      location.pathname === "/attraction" 
-                      // location.pathname === "/visa" ||
-                      // location.pathname === "/a2a" ||
-                      // location.pathname === "/flight" ||
-                      // location.pathname === "/flight/order/results" ||
-                      // location.pathname === "/insurance"
-                        ? " text-blue-500 "
+                      location.pathname === "/attraction"
+                        ? // location.pathname === "/visa" ||
+                          // location.pathname === "/a2a" ||
+                          // location.pathname === "/flight" ||
+                          // location.pathname === "/flight/order/results" ||
+                          // location.pathname === "/insurance"
+                          " text-blue-500 "
                         : " text-gray-400 "
                     }`}
                   >
@@ -245,19 +247,18 @@ export default function Header({ setSidebarView, sidebarView }) {
                   </p>
                 </div>
 
-
                 <div
                   onClick={() => navigate("/tours")}
                   className="flex flex-col cursor-pointer items-center"
                 >
                   <p
                     className={`text-3xl text-center  ${
-                      location.pathname === "/tours" 
+                      location.pathname === "/tours"
                         ? " text-blue-500 "
                         : " text-gray-400 "
                     }`}
                   >
-                  <MdTravelExplore />
+                    <MdTravelExplore />
                   </p>
                   <p
                     className={`text-sm ${
@@ -271,29 +272,29 @@ export default function Header({ setSidebarView, sidebarView }) {
                 </div>
 
                 <div
-                    onClick={() => navigate("/transfer")}
-                    className="flex flex-col cursor-pointer items-center"
+                  onClick={() => navigate("/transfer")}
+                  className="flex flex-col cursor-pointer items-center"
+                >
+                  <p
+                    className={`text-3xl text-center  ${
+                      location.pathname === "/transfer" ||
+                      location.pathname === "/transfer/list"
+                        ? " text-blue-500 "
+                        : " text-gray-400 "
+                    }`}
                   >
-                    <p
-                      className={`text-3xl text-center  ${
-                        location.pathname === "/transfer" ||
-                        location.pathname === '/transfer/list'
-                          ? " text-blue-500 "
-                          : " text-gray-400 "
-                      }`}
-                    >
-                      <FaCar />
-                    </p>
-                    <p
-                      className={`text-sm  ${
-                        location.pathname === "/transfer"
-                          ? " text-blue-500 "
-                          : " text-gray-400 "
-                      }`}
-                    >
-                      Transfer
-                    </p>
-                  </div>
+                    <FaCar />
+                  </p>
+                  <p
+                    className={`text-sm  ${
+                      location.pathname === "/transfer"
+                        ? " text-blue-500 "
+                        : " text-gray-400 "
+                    }`}
+                  >
+                    Transfer
+                  </p>
+                </div>
                 {/* {agent?.configuration?.showQuotaion ? (
                   <div
                     onClick={() => navigate("/quotation")}
@@ -335,14 +336,14 @@ export default function Header({ setSidebarView, sidebarView }) {
                   onClick={() => {
                     if (agent?.configuration?.showAttraction) {
                       navigate("/order");
-                    } 
+                    }
                   }}
                   className="flex flex-col cursor-pointer items-center"
                 >
                   <p
                     className={`text-3xl text-center ${
                       location.pathname === "/order/details" ||
-                      location.pathname === "/order" 
+                      location.pathname === "/order"
                         ? " text-blue-500 "
                         : " text-gray-400 "
                     } `}
@@ -392,7 +393,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                   onClick={() => {
                     if (agent?.configuration?.showAttraction) {
                       navigate("/markup/attraction");
-                    } 
+                    }
                   }}
                   className="flex flex-col cursor-pointer items-center"
                 >
@@ -417,10 +418,10 @@ export default function Header({ setSidebarView, sidebarView }) {
                 </div>
               </div>
               <div className="">
-                <div  className="relative  cursor-pointer">
+                <div className="relative  cursor-pointer">
                   <div
                     // onClick={() => setCart(!cart)}
-                    onClick={()=> navigate('/home/cart')}
+                    onClick={() => navigate("/home/cart")}
                     className="flex flex-col items-center"
                   >
                     <p className="text-3xl text-center text-gray-400">
