@@ -17,7 +17,7 @@ function LandingPageFooter() {
                         <div className='flex gap-20 pt-10 mb-5'>
                             <div>
                                 <div>
-                                    <img className='h-full object-fill' src={config.COMPANY_LOGO} alt="" />
+                                    <img className='h-full object-fill w-[250px]' src={config.COMPANY_LOGO} alt="" />
                                 </div>
                                 <div className='flex gap-2 pt-3 justify-center'>
                                     <div className='    w-10 h-10 text-xl'>

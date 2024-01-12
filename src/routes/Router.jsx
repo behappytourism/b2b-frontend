@@ -443,7 +443,7 @@ const ThemeRoutes = [
     ],
   },
   {
-    path: "/login",
+    path: "/login2",
     element: <B2BLoginPage />,
   },
   {
@@ -475,7 +475,7 @@ const ThemeRoutes = [
     element: <Demo />,
   },
   {
-    path:"/landingpageb2b",
+    path:"/login",
     element:<LandingPage/>
   },
   // {
