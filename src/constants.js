@@ -114,8 +114,8 @@ const devLive = {
   // COMPANY_FAVICON:
   // "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
   COMPANY_FAVICON: "/public/BELogo.jpg",
-  COMPANY_FAVICON:
-    "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
+  // COMPANY_FAVICON:
+  //   "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
   LOGIN_BANNER:
     "https://images.unsplash.com/photo-1526495124232-a04e1849168c?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHw0fHxkdWJhaXxlbnwwfHx8fDE2NzY3NTMwMDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920",
   SIGNUP_BANNER:
