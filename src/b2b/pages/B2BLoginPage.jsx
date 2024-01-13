@@ -190,7 +190,7 @@ function B2BLoginPage() {
                   </span>
                   <input
                     className="block w-full h-full outline-none bg-transparent text-sm text-gray-400 font-medium"
-                    type="text"
+                    type="email"
                     name="email"
                     value={data.email}
                     onChange={handleChange}
