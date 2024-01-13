@@ -78,7 +78,7 @@ const devLocal = {
   COMPANY_CONTACT_NUMBER_ONE: "971526395594",
   COMPANY_CONTACT_NUMBER_TWO: "971508941068",
   COMPANY_WHATSAPP_NUMBER: "971508941068",
-  COMPANY_LOGO: "/public/BELogo.jpg",
+  COMPANY_LOGO: "https://res.cloudinary.com/duuidrhyl/image/upload/v1705058334/Website/logo/unpb5sdovoeysv98fnnk.png",
   // COMPANY_LOGO:
   //   "https://res.cloudinary.com/dartrxel9/image/upload/f_auto,q_auto/mytravellers-website-logo_va1xxc",
   //   COMPANY_FAVICON:
@@ -108,7 +108,8 @@ const devLive = {
   COMPANY_CONTACT_NUMBER_ONE: "971526395594",
   COMPANY_CONTACT_NUMBER_TWO: "971508941068",
   COMPANY_WHATSAPP_NUMBER: "971508941068",
-  COMPANY_LOGO: "/public/BELogo.jpg",
+  COMPANY_LOGO:
+    "https://res.cloudinary.com/duuidrhyl/image/upload/v1705058334/Website/logo/unpb5sdovoeysv98fnnk.png",
   // COMPANY_LOGO:
   //   "https://res.cloudinary.com/dartrxel9/image/upload/f_auto,q_auto/mytravellers-website-logo_va1xxc",
   // COMPANY_FAVICON:

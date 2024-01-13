@@ -246,8 +246,8 @@ const LoginSection = () => {
 
   return (
     <div>
-      <div className="flex gap-20 justify-center">
-        <div className="flex gap-1">
+      <div className="flex md:flex-row flex-col gap-5 md:gap-20 justify-center p-5 ">
+        <div className="order-last md:order-first md:flex gap-1">
           <div className="">
             <div className="pt-20">
               <h1 className="text-5xl font-extrabold">Start Your</h1>
@@ -267,14 +267,14 @@ const LoginSection = () => {
               </button>
             </div>
           </div>
-          <div>
+          <div className="hidden lg:block">
             <img
               src="https://cdni.iconscout.com/illustration/premium/thumb/international-travel-3217263-2745445.png"
               alt=""
             />
           </div>
         </div>
-        <div className="pt-10">
+        <div className="order-first md:order-last pt-10 flex justify-center">
           {isForgotPassword
             ? renderForgotPasswordSection()
             : renderLoginSection()}

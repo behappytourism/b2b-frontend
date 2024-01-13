@@ -32,7 +32,11 @@ function Footer({ module = "general" }) {
       <div className="">
         <Link to="/">
           <div className="mb-5 flex justify-center">
-            <img className="h-10 md:h-[50px]" src={companyLogo} alt={"img"} />
+            <img
+              className="h-20 md:h-32"
+              src={config.COMPANY_LOGO}
+              alt={"img"}
+            />
           </div>
         </Link>
 
