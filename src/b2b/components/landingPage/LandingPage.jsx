@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "../../../axios";
+import React from "react";
+
 import { IoLocationOutline } from "react-icons/io5";
 import {
   MdAppRegistration,
@@ -10,17 +10,12 @@ import {
 import { GiVibratingShield } from "react-icons/gi";
 import { RiSecurePaymentFill, RiPriceTag2Fill } from "react-icons/ri";
 import MobileAppCard from "../Footers/MobileAppCard";
-import { IoIosLock } from "react-icons/io";
-import { BsPersonFill } from "react-icons/bs";
+
 import LandingPageFooter from "./LandingPageFooter";
 import LandingPageHeader from "./LandingPageHeader";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { BiHide, BiShow } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { setAlertError } from "../../../redux/slices/homeSlice";
-import { setAgent } from "../../../redux/slices/agentSlice";
+import LoginSection from "./LoginSection";
 
 const responsive = {
   superLargeDesktop: {
@@ -42,93 +37,6 @@ const responsive = {
 };
 
 function LandingPage() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.agents);
-  const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const [forgotPasswordModal, setForgotPasswordModal] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [data, setData] = useState({
-    email: "",
-    agentCode: "",
-    password: "",
-  });
-  const [forgotEmail, setForgotEmail] = useState("");
-
-  const handleChange = (e) => {
-    setData((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      setError("");
-      setIsLoading(true);
-      const response = await axios.post("/b2b/resellers/auth/login", data);
-
-      dispatch(setAgent(response.data));
-      setIsLoading(false);
-      navigate("/");
-      console.log("working");
-    } catch (err) {
-      if (err?.response?.data?.error === "Invalid credentials") {
-        setError("You have given incorrect email or password");
-        dispatch(
-          setAlertError({
-            status: true,
-            title: "Invalid credentials!",
-            text: "You have given incorrect email or password",
-          })
-        );
-        setIsLoading(false);
-        return;
-      } else {
-        err?.response?.data?.status === 500
-          ? setError("Something went wrong!!!")
-          : setError(err?.response?.data?.error);
-        dispatch(
-          setAlertError({
-            status: true,
-            title: "Something went wrong!",
-            text:
-              err?.response?.data?.error ||
-              "Sorry! Login unsuccessfull. Please try again.",
-          })
-        );
-        setIsLoading(false);
-        return;
-      }
-    }
-  };
-
-  console.log(error);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/");
-    }
-  }, [isLoggedIn, navigate]);
-
-  const submitForgotPasswordHandler = async (e) => {
-    try {
-      e.preventDefault();
-      setError("");
-      setIsLoading(true);
-      const response = await axios.patch("/b2b/resellers/forget/password", {
-        email: forgotEmail,
-      });
-      setIsLoading(false);
-      setForgotPasswordModal(true);
-    } catch (err) {
-      setError(err?.response?.data?.error);
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="bg-slate-50">
       <div>
@@ -193,128 +101,7 @@ function LandingPage() {
         </div> */}
 
       {/* new changes for just try */}
-      <div>
-        <div className="flex gap-20 justify-center">
-          <div className="flex gap-1">
-            <div className="">
-              <div className="pt-20">
-                <h1 className="text-5xl font-extrabold">Start Your</h1>
-                <h1 className="text-5xl font-extrabold">
-                  Journey <span className="text-green-400">Enjoy</span>
-                </h1>
-              </div>
-              <div className="pt-5">
-                <h1 className="text-xs max-w-xs">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Placeat, optio in.
-                </h1>
-              </div>
-              <div className="pt-10 ">
-                <button className="h-14 text-white w-44 bg-sky-400 rounded-full">
-                  Explore More
-                </button>
-              </div>
-            </div>
-            <div>
-              <img
-                src="https://cdni.iconscout.com/illustration/premium/thumb/international-travel-3217263-2745445.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <div className="pt-10">
-            <form onSubmit={handleSubmit}>
-              <div className=" bg-white rounded-3xl w-96 h-96 shadow-xl">
-                <div className="pt-8 pl-8">
-                  <h1 className="text-lg font-semibold">Login Now</h1>
-                </div>
-                <div className="grid p-5 pl-8 gap-5">
-                  <div className="">
-                    <div className="flex">
-                      <div className="h-12 w-10 bg-slate-200 rounded-l-full">
-                        <h1 className="p-[14px] text-xl text-gray-400">
-                          <BsPersonFill />
-                        </h1>
-                      </div>
-                      <div>
-                        <input
-                          type="text"
-                          className="bg-slate-200 h-12 w-72 rounded-r-full outline-none placeholder:text-sm placeholder:"
-                          placeholder="Agent Code"
-                          name="agentCode"
-                          value={data.agentCode}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex">
-                      <div className="h-12 w-10 bg-slate-200 rounded-l-full">
-                        <h1 className="p-[14px] text-xl text-gray-400">
-                          <MdEmail />
-                        </h1>
-                      </div>
-                      <div>
-                        <input
-                          type="email"
-                          className="bg-slate-200 h-12 w-72 rounded-r-full outline-none placeholder:text-sm placeholder:"
-                          placeholder="Email"
-                          name="email"
-                          value={data.email}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex">
-                      <div className="h-12 w-10 bg-slate-200 rounded-l-full">
-                        <h1 className="p-[14px] text-xl text-gray-400">
-                          <IoIosLock />
-                        </h1>
-                      </div>
-                      <div className="relative">
-                        <p
-                          className="text-2xl absolute top-1/2 transform -translate-y-1/2 right-3"
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? <BiShow /> : <BiHide />}
-                        </p>
-                        <input
-                          className="bg-slate-200 h-12 w-72 rounded-r-full outline-none placeholder:text-sm placeholder:"
-                          placeholder="Password"
-                          type={showPassword ? "text" : "password"}
-                          name="password"
-                          value={data.password}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-end mr-8 ">
-                  <h1 className="text-sm cursor-pointer">Forgot password?</h1>
-                </div>
-                <p className="">{error}</p>
-                <div className="flex justify-center">
-                  <div className="pt-5">
-                    <button
-                      type="submit"
-                      className="border rounded-full w-32 h-9 hover:bg-sky-400 bg-black hover:text-white text-white"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      <LoginSection />
 
       <div className="pt-24 bg-white h-[500px]">
         <div className="flex gap-32 justify-center  p-5">
