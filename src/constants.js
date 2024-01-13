@@ -19,12 +19,10 @@ const testLocal = {
   COMPANY_WHATSAPP_NUMBER: "971508941068",
   // COMPANY_LOGO:
   //   "https://res.cloudinary.com/dartrxel9/image/upload/f_auto,q_auto/mytravellers-website-logo_va1xxc",
-  COMPANY_LOGO:
-    "/public/BELogo.jpg",
+  COMPANY_LOGO: "/public/BELogo.jpg",
   // COMPANY_FAVICON:
   // "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
-  COMPANY_FAVICON:
-  "/public/BELogo.jpg",
+  COMPANY_FAVICON: "/public/BELogo.jpg",
   LOGIN_BANNER:
     "https://images.unsplash.com/photo-1526495124232-a04e1849168c?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHw0fHxkdWJhaXxlbnwwfHx8fDE2NzY3NTMwMDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920",
   REACT_APP_SIGNUP_BANNER:
@@ -51,12 +49,10 @@ const testLive = {
   COMPANY_WHATSAPP_NUMBER: "971508941068",
   // COMPANY_LOGO:
   //   "https://res.cloudinary.com/dartrxel9/image/upload/f_auto,q_auto/mytravellers-website-logo_va1xxc",
-  COMPANY_LOGO:
-  "/public/BELogo.jpg",
+  COMPANY_LOGO: "/public/BELogo.jpg",
   //   COMPANY_FAVICON:
   // "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
-  COMPANY_FAVICON:
-  "/public/BELogo.jpg",
+  COMPANY_FAVICON: "/public/BELogo.jpg",
   LOGIN_BANNER:
     "https://images.unsplash.com/photo-1526495124232-a04e1849168c?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHw0fHxkdWJhaXxlbnwwfHx8fDE2NzY3NTMwMDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920",
   REACT_APP_SIGNUP_BANNER:
@@ -82,14 +78,12 @@ const devLocal = {
   COMPANY_CONTACT_NUMBER_ONE: "971526395594",
   COMPANY_CONTACT_NUMBER_TWO: "971508941068",
   COMPANY_WHATSAPP_NUMBER: "971508941068",
-  COMPANY_LOGO:
-  "/public/BELogo.jpg",
+  COMPANY_LOGO: "/public/BELogo.jpg",
   // COMPANY_LOGO:
   //   "https://res.cloudinary.com/dartrxel9/image/upload/f_auto,q_auto/mytravellers-website-logo_va1xxc",
   //   COMPANY_FAVICON:
   // "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
-  COMPANY_FAVICON:
-  "/public/BELogo.jpg",
+  COMPANY_FAVICON: "/public/BELogo.jpg",
   LOGIN_BANNER:
     "https://images.unsplash.com/photo-1526495124232-a04e1849168c?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHw0fHxkdWJhaXxlbnwwfHx8fDE2NzY3NTMwMDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920",
   REACT_APP_SIGNUP_BANNER:
@@ -97,16 +91,16 @@ const devLocal = {
 };
 
 const devLive = {
-  SERVER_URL: "https://api-server-i1.mytravellerschoice.com",
-  CLIENT_URL: "https://b2b.mytravellerschoice.com",
+  SERVER_URL: "https://api-server-i.behappytourism.com",
+  CLIENT_URL: "https://behappyb2b.com",
   MAP_API_KEY: "AIzaSyA6qMfsMovR4sRbC8bu6zMNMH3brgzxwW4",
   // TITLE_NAME: "Traveller's Choice Travel & Tourism",
   // TITLE_SHORT_NAME: "Traveller's Choice",
   TITLE_NAME: "BE Happy",
   TITLE_SHORT_NAME: "BE Happy",
-  COMPANY_EMAIL: "excursions@travellerschoice.ae",
-  FACEBOOK_URL: "https://www.facebook.com/mytravellerschoice",
-  INSTAGRAM_URL: "https://www.instagram.com/travellerschoicetctt",
+  COMPANY_EMAIL: "excursions@behappytourism.com",
+  FACEBOOK_URL: "https://www.facebook.com/",
+  INSTAGRAM_URL: "https://www.instagram.com/",
   MOBILE_APP_iMAGE:
     "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1694096045/Screenshot_2023-09-07_180654-removebg_ptonak.png",
   PLAYSTORE_URL:
@@ -114,16 +108,14 @@ const devLive = {
   COMPANY_CONTACT_NUMBER_ONE: "971526395594",
   COMPANY_CONTACT_NUMBER_TWO: "971508941068",
   COMPANY_WHATSAPP_NUMBER: "971508941068",
-  COMPANY_LOGO:
-  "/public/BELogo.jpg",
+  COMPANY_LOGO: "/public/BELogo.jpg",
   // COMPANY_LOGO:
   //   "https://res.cloudinary.com/dartrxel9/image/upload/f_auto,q_auto/mytravellers-website-logo_va1xxc",
   // COMPANY_FAVICON:
   // "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
+  COMPANY_FAVICON: "/public/BELogo.jpg",
   COMPANY_FAVICON:
-  "/public/BELogo.jpg",
-  COMPANY_FAVICON:
-  "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
+    "https://res.cloudinary.com/dmsvc9pbz/image/upload/v1695210988/output-onlinepngtools_2_lsx8ax.png",
   LOGIN_BANNER:
     "https://images.unsplash.com/photo-1526495124232-a04e1849168c?crop=entropy&amp;cs=tinysrgb&amp;fm=jpg&amp;ixid=MnwzMzIzMzB8MHwxfHNlYXJjaHw0fHxkdWJhaXxlbnwwfHx8fDE2NzY3NTMwMDA&amp;ixlib=rb-4.0.3&amp;q=80&amp;w=1920",
   SIGNUP_BANNER:
