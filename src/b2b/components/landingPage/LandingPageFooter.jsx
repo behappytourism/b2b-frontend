@@ -39,7 +39,7 @@ function LandingPageFooter() {
                   </div>
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <div>
                   <h1 className="text-md font-light text-slate-500">
                     Terms & Settings
@@ -173,7 +173,7 @@ function LandingPageFooter() {
                     Royal Falcon Hotel
                   </h1>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

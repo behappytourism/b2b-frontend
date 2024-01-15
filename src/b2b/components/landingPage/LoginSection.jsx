@@ -250,15 +250,15 @@ const LoginSection = () => {
         <div className="order-last md:order-first md:flex gap-1">
           <div className="">
             <div className="pt-20">
-              <h1 className="text-5xl font-extrabold">Start Your</h1>
-              <h1 className="text-5xl font-extrabold">
-                Journey <span className="text-green-400">Enjoy</span>
+              <h1 className="text-4xl font-extrabold">Your Gateway to</h1>
+              <h1 className="text-4xl font-extrabold">
+                Unforgettable{" "}
+                <span className="text-green-400">UAE Experiences</span>
               </h1>
             </div>
             <div className="pt-5">
               <h1 className="text-xs max-w-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Placeat, optio in.
+              We understand happiness at every guest Touchpoint, all we got covered to create unforgettable memory
               </h1>
             </div>
             <div className="pt-10 ">
