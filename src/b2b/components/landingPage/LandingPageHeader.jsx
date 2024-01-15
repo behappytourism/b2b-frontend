@@ -1,13 +1,14 @@
 import React from "react";
 import { config } from "../../../constants";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useResolvedPath } from "react-router-dom";
 
 function LandingPageHeader() {
   const navigate = useNavigate();
+  const { pathname } = useResolvedPath();
 
   return (
-    <div>
-      <div className="flex justify-between p-4 bg-slate-50">
+    <div className="bg-slate-50">
+      <div className="flex justify-between p-4 max-w-screen-2xl mx-auto pr-10">
         <div className="h-16 md:h-20 ">
           <img
             className="h-full object-cover"
@@ -34,14 +35,18 @@ function LandingPageHeader() {
               Contact{" "}
             </button>
           </div>
-          <div className="pt-1">
-            <button
-              className="border w-32 h-9 text-sm bg-sky-400 text-white rounded hover:bg-sky-500 "
-              onClick={() => navigate("/register")}
-            >
-              Register Here
-            </button>
-          </div>
+          {pathname === "/login" ? (
+            <div className="pt-1">
+              <button
+                className="border w-32 h-9 text-sm bg-sky-400 text-white rounded hover:bg-sky-500 "
+                onClick={() => navigate("/register")}
+              >
+                Register Here
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
