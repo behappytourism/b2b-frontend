@@ -211,7 +211,7 @@ function ToursHomePage() {
                                                             </div>
                                                             <div className='p-4'>
                                                                 <div className=' flex justify-center h-14'>
-                                                                    <h1 className='text-lg font-extralight text-center max-w-2xl'>{ele?.title}</h1>
+                                                                    <h1 className='text-lg font-extralight text-center max-w-2xl line-clamp-2'>{ele?.title}</h1>
                                                                 </div>
                                                               
                                                                 <div className='pt-1'>
