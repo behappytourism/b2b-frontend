@@ -375,6 +375,63 @@ function B2BRegisterPage() {
       </div>
     );
   };
+  //
+  const signupCompleteSection = () => {
+    return (
+      <div className=" text-darktext space-y-2 text-sm max-w-screen-md mx-auto">
+        <div className="flex justify-center mt-4">
+          <h3 className="text-xl font-[700] text-green-700 uppercase">
+            Thank You for registering our B2B Portal
+          </h3>
+        </div>
+        <div className=" mx-10 space-y-2">
+          <p className="">
+            You will be allowed to access the business portal only after getting
+            confirmation from the managemant side.
+          </p>
+          <p className="">
+            Please wait until you get confirmation email.Then proceed to login
+            our B2B portal.
+          </p>
+          <p className="">
+            {" "}
+            You will be only allowed to access this email for another
+            registraion either access confirmation from management side nor
+            rejection from the management side{" "}
+          </p>
+        </div>
+        <div className="text-center py-7">
+          <h4 className="uppercase text-text font-[700]">Your Agent Code is</h4>
+          <p className="text-green-700 font-[700]">
+            {result?.data?.agentCode}{" "}
+          </p>
+        </div>
+        <div className="mx-10 bg-gray-200 p-6 text-gray-500 space-y-1">
+          <p className="">
+            Please save this for further login purposes. You can access other
+            details from the corresponding email you have provided
+          </p>
+          <p className="">
+            You can move to
+            <Link to="/login">
+              <span className="text-main font-[550] cursor-pointer">Login</span>
+            </Link>{" "}
+            from here.Click!!{" "}
+          </p>
+          <div className="flex justify-end">
+            <p
+              className="text-lightblue font-[550] cursor-pointer"
+              onClick={() => {
+                setInfo(false);
+              }}
+            >
+              Back
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -430,63 +487,7 @@ function B2BRegisterPage() {
                   </div>
                 </form>
               ) : (
-                <div className="col-span-7 text-darktext space-y-2 text-sm">
-                  <div className="flex justify-center mt-4">
-                    <h3 className="text-xl font-[700] text-green-700 uppercase">
-                      Thank You for registering our B2B Portal
-                    </h3>
-                  </div>
-                  <div className=" mx-10 space-y-2">
-                    <p className="">
-                      You will be allowed to access the business portal only
-                      after getting confirmation from the managemant side.
-                    </p>
-                    <p className="">
-                      Please wait until you get confirmation email.Then proceed
-                      to login our B2B portal.
-                    </p>
-                    <p className="">
-                      {" "}
-                      You will be only allowed to access this email for another
-                      registraion either access confirmation from management
-                      side nor rejection from the management side{" "}
-                    </p>
-                  </div>
-                  <div className="text-center py-7">
-                    <h4 className="uppercase text-text font-[700]">
-                      Your Agent Code is
-                    </h4>
-                    <p className="text-green-700 font-[700]">
-                      {result?.data?.agentCode}{" "}
-                    </p>
-                  </div>
-                  <div className="mx-10 bg-gray-200 p-6 text-gray-500 space-y-1">
-                    <p className="">
-                      Please save this for further login purposes. You can
-                      access other details from the corresponding email you have
-                      provided
-                    </p>
-                    <p className="">
-                      You can move to
-                      <Link to="/login">
-                        <span className="text-main font-[550] cursor-pointer">
-                          Login
-                        </span>
-                      </Link>{" "}
-                      from here.Click!!{" "}
-                    </p>
-                    <div className="flex justify-end">
-                      <p
-                        className="text-lightblue font-[550] cursor-pointer"
-                        onClick={() => {
-                          setInfo(false);
-                        }}
-                      >
-                        Back
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                signupCompleteSection()
               )}
             </div>
           </div>
