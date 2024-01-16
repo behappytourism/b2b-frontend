@@ -7,7 +7,7 @@ function ConfirmationVoucher() {
   return (
     <div className="section-voucher border">
       <div className="image-container">
-        <img src={companyLogo} alt="logo" className="logo-image" />
+        <img src={config.COMPANY_LOGO} alt="logo" className="logo-image" />
       </div>
       <h1 className="">CONFIRMATION VOUCHER</h1>
       <div className="main-container">

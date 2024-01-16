@@ -778,7 +778,7 @@ function QuotationEmail() {
           </span>
           <br />
         </div>
-      <img width="150" src={companyLogo} alt="" style={{ marginTop: "15px" }} />
+      <img width="150" src={config.COMPANY_LOGO} alt="" style={{ marginTop: "15px" }} />
     </div>
     </div>
     </div>

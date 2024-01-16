@@ -24,7 +24,7 @@ function EntryDenied() {
           </p>
           <div className="w-full flex justify-center items-center  h-20">
             <img
-              src={companyLogo}
+              src={config.COMPANY_LOGO}
               className="w-36 h-full object-contain"
               alt="logo"
             />

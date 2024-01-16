@@ -9,7 +9,7 @@ function PaymentSuccessPage() {
       <div className="h-screen w-full flex justify-center items-center bg-white">
          <div className=" bg-white  p-4 w-full md:w-7/12 rounded-[0.40rem] success-page h-screen object-center">
             <div className="border-b flex justify-center pb-3">
-               <img src={companyLogo} alt="hero" className="h-16" />
+               <img src={config.COMPANY_LOGO} alt="hero" className="h-16" />
             </div>
             <div className="flex  items-center h-full ">
                <div className="w-full">

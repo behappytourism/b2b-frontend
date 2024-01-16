@@ -55,8 +55,8 @@ export default function Header({ setSidebarView, sidebarView }) {
       <div className="  bg-white border-b h-16   ">
         <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
           <div className="flex w-full items-center justify-between -mx-2">
-            <div className=" bg-gray-100 rounded-b-xl mb-2">
-              <div className="h-10 w-32 md:h-12 " onClick={() => navigate("/")}>
+            <div className=" bg-gray-100 rounded-b-xl mb-2 h-14">
+              <div className="w-28 md:w-32 h-full " onClick={() => navigate("/")}>
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}
                   src={config.COMPANY_LOGO}

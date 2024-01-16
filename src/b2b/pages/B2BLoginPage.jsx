@@ -104,7 +104,7 @@ function B2BLoginPage() {
           {isForgotPassword ? (
             <div className="relative max-w-xs lg:max-w-md mx-auto text-center">
               <Link className="inline-block mx-auto mb-5" to="/">
-                <img className="block" src={companyLogo} alt="logo" />
+                <img className="block" src={config.COMPANY_LOGO} alt="logo" />
               </Link>
               <h2 className="text-2xl text-gray-300 font-semibold mb-2">
                 Forgot Password
@@ -161,7 +161,7 @@ function B2BLoginPage() {
           ) : (
             <div className="relative max-w-xs lg:max-w-md mx-auto text-center">
               <Link className="inline-block mx-auto mb-5" to="/">
-                <img className="block h-20" src={companyLogo} alt="logo" />
+                <img className="block h-20" src={config.COMPANY_LOGO} alt="logo" />
               </Link>
               <h2 className="text-2xl text-gray-300 font-semibold mb-2">
                 Log in to your account

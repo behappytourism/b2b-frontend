@@ -18,7 +18,7 @@ function PaymentDecline() {
       <div className="h-screen w-full flex justify-center items-center">
          <div className=" bg-white border p-4 w-full lg:w-9/12 rounded-[0.40rem]">
             <div className="border-b flex justify-center pb-3">
-               <img src={companyLogo} alt="hero" className="h-16" />
+               <img src={config.COMPANY_LOGO} alt="hero" className="h-16" />
             </div>
             <div className="details">
                <div className="bg-red-300 flex p-3 space-x-5 rounded-[0.25rem]">

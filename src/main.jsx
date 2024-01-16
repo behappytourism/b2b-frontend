@@ -9,6 +9,7 @@ import store from "./redux/store";
 import ScrollToTop from "./utils/ScrollToTop";
 
 import { companyLogo } from "./static/imagesB2B/index.js";
+import { config } from "./constants.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
@@ -25,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           >
             <div className="h-full w-full flex justify-center items-center">
               <img
-                src={companyLogo}
+                src={config.COMPANY_LOGO}
                 alt="Logo"
                 className="object-contain w-60"
               />

@@ -33,7 +33,7 @@ export default function Sidebar({ setSidebarView, sidebarView }) {
             className="h-12 bg-gray-200 px-5 py-1 rounded-xl"
             onClick={() => navigate("/")}
           >
-            <img src={companyLogo} alt="logo" className="h-full object-fill" />
+            <img src={config.COMPANY_LOGO} alt="logo" className="h-full object-fill" />
           </div>
           <p
             className="lg:hidden text-light text-xl"
