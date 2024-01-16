@@ -86,7 +86,7 @@ function LandingPageFooter() {
                     <TbBrandTripadvisor  />
                     </h1>
                     <div className="pt-3">
-                      <h1 className="text-xs text-gray-400">TripAdvisor</h1>
+                      <h1 className="text-xs text-gray-400">Tripadviser</h1>
                     </div>
                   </div>
                 </a>
