@@ -55,8 +55,8 @@ export default function Header({ setSidebarView, sidebarView }) {
       <div className="  bg-white border-b h-16   ">
         <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
           <div className="flex w-full items-center justify-between -mx-2">
-            <div className=" bg-gray-100 rounded-b-xl mb-2 h-14">
-              <div className="w-28 md:w-32 h-full " onClick={() => navigate("/")}>
+            <div className="  rounded-b-xl mb-2 h-14">
+              <div className=" h-full " onClick={() => navigate("/")}>
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}
                   src={config.COMPANY_LOGO}
@@ -156,7 +156,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                     {isProfile ? (
                       <div className="absolute w-[250px] top-12 right-0 z-10 shadow-round">
                         <div className="w-full relative overflow-hidden">
-                          <div className="w-full bg-gray-100 text-gray-400 rounded-md p-2">
+                          <div className="w-full bg-white text-gray-400 rounded-md p-2">
                             <ul className="divide-y ">
                               <li
                                 onClick={() => {
@@ -216,7 +216,6 @@ export default function Header({ setSidebarView, sidebarView }) {
                                   Logout
                                 </p>
                               </li>
-                              {/* <a href="https://docs.mytravellerschoice.com/api-integration/attraction-endpoints"></a> */}
                             </ul>
                           </div>
                         </div>
