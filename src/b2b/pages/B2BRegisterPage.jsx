@@ -35,7 +35,7 @@ function B2BRegisterPage() {
     phoneNumber: "",
     telephoneNumber: "",
     email: "",
-    designation: "",
+    designation: "designation",
     skypeId: "",
     whatsappNumber: "",
     password: "",
@@ -467,7 +467,7 @@ function B2BRegisterPage() {
               </div>
 
               {!info ? (
-                <form onSubmit={handleSubmit}>
+                <form className="space-y-7 md:space-y-10" onSubmit={handleSubmit}>
                   {companyInformationSection()}
                   {profileInformation()}
                   {passwordSettingSection()}

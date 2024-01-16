@@ -366,13 +366,13 @@ function LandingPage() {
                   </h1>
                 </div>
                 <div className="max-w-lg text-gray-400 text-sm">
-                  <h1>
+                  {/* <h1>
                     Registration is Free with TravellersChoiceb2b. Agent who
                     fulfills the criteria can register as an Agent. Once
                     registered login credentials will be sent to the registered
                     email id wherein the agent can login and access the services
                     he wants to book.
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
             </div>
@@ -389,13 +389,13 @@ function LandingPage() {
                   </h1>
                 </div>
                 <div className="max-w-lg text-gray-400 text-sm">
-                  <h1>
+                  {/* <h1>
                     Reliability and safety of our customers’ personal data are
                     top of mind at Travellers Choice Tours, and that’s why our
                     sophisticated online portal is thoroughly verified and
                     secured by the most advanced digital security certification
                     authority – Thawte.
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
             </div>
@@ -413,7 +413,7 @@ function LandingPage() {
                   </h1>
                 </div>
                 <div className="max-w-lg text-gray-400 text-sm">
-                  <h1>
+                  {/* <h1>
                     Travellers Choice Tours takes immense pride in its
                     exceptional capability to delight and wow customers by
                     offering instinctive and absolutely personalized destination
@@ -422,7 +422,7 @@ function LandingPage() {
                     Page and see what our valuable guests have to say about
                     their experience of booking and taking a tour or holiday
                     with us.
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
             </div>
@@ -439,7 +439,7 @@ function LandingPage() {
                   </h1>
                 </div>
                 <div className="max-w-lg text-gray-400 text-sm">
-                  <h1>
+                  {/* <h1>
                     We boast of an award-winning, round-the-clock customer
                     support center that is rapid to reply on every medium: be it
                     via Live Chat, WhatsApp. Whether you’ve any query on our
@@ -448,7 +448,7 @@ function LandingPage() {
                     perfect holiday, get in touch with our crew who will listen
                     to all your travel needs anytime, anywhere, and turn it into
                     an absolute reality.
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
             </div>
@@ -465,11 +465,11 @@ function LandingPage() {
                   </h1>
                 </div>
                 <div className="max-w-lg text-gray-400 text-sm">
-                  <h1>
+                  {/* <h1>
                     Our online payment system is secure! In fact it encrypts
                     your payment information to protect you against fraud and
                     unauthorized transactions.
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
             </div>
@@ -484,12 +484,12 @@ function LandingPage() {
                   <h1 className="text-lg font-medium">Best Price Guarantee</h1>
                 </div>
                 <div className="max-w-lg text-gray-400 text-sm">
-                  <h1>
+                  {/* <h1>
                     Travellers Choice Tours’ Best Price Guarantee promises our
                     esteemed clients that they will not only be faultlessly
                     served with the Destination Management services of high-end
                     quality, but also the best possible value in the industry.
-                  </h1>
+                  </h1> */}
                 </div>
               </div>
             </div>

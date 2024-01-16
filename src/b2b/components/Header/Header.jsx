@@ -56,10 +56,7 @@ export default function Header({ setSidebarView, sidebarView }) {
         <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
           <div className="flex w-full items-center justify-between -mx-2">
             <div className=" bg-gray-100 rounded-b-xl mb-2">
-              <div
-                className="h-10 w-32 md:h-12 "
-                onClick={() => navigate("/")}
-              >
+              <div className="h-10 w-32 md:h-12 " onClick={() => navigate("/")}>
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}
                   src={companyLogo}
@@ -175,6 +172,36 @@ export default function Header({ setSidebarView, sidebarView }) {
                                   Profile
                                 </p>
                               </li>
+                              {agent?.role === "reseller" ? (
+                                <li
+                                  onClick={() => {}}
+                                  className="flex items-center gap-2 py-1 hover:bg-gray-50 px-2"
+                                >
+                                  <p className="w-5 flex justify-center items-center text-lg">
+                                    <RxPerson />
+                                  </p>
+                                  <p className="font-demo tracking-wide font-medium ">
+                                    Agents
+                                  </p>
+                                </li>
+                              ) : (
+                                ""
+                              )}
+                              <li
+                                onClick={() => {
+                                  if (agent?.configuration?.showAttraction) {
+                                    navigate("/markup/attraction");
+                                  }
+                                }}
+                                className="flex items-center gap-2 py-1 hover:bg-gray-50 px-2"
+                              >
+                                <p className="w-5 flex justify-center items-center text-lg">
+                                  <IoPricetagOutline />
+                                </p>
+                                <p className="font-demo tracking-wide font-medium ">
+                                  Markup
+                                </p>
+                              </li>
                               <li
                                 onClick={() => {
                                   dispatch(logoutAgent());
@@ -189,7 +216,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                                   Logout
                                 </p>
                               </li>
-                              <a href="https://docs.mytravellerschoice.com/api-integration/attraction-endpoints"></a>
+                              {/* <a href="https://docs.mytravellerschoice.com/api-integration/attraction-endpoints"></a> */}
                             </ul>
                           </div>
                         </div>
@@ -359,61 +386,6 @@ export default function Header({ setSidebarView, sidebarView }) {
                     }`}
                   >
                     Bookings
-                  </p>
-                </div>
-                {agent?.role === "reseller" ? (
-                  <div
-                    onClick={() => navigate("/resellers")}
-                    className="flex flex-col cursor-pointer items-center"
-                  >
-                    <p
-                      className={`text-3xl text-center  ${
-                        location.pathname.includes("/reseller")
-                          ? " text-blue-500 "
-                          : " text-gray-400 "
-                      }`}
-                    >
-                      <RxPerson />
-                    </p>
-                    <p
-                      className={`text-sm  ${
-                        location.pathname.includes("/reseller")
-                          ? " text-blue-500 "
-                          : " text-gray-400 "
-                      }`}
-                    >
-                      Agents
-                    </p>
-                  </div>
-                ) : (
-                  ""
-                )}
-
-                <div
-                  onClick={() => {
-                    if (agent?.configuration?.showAttraction) {
-                      navigate("/markup/attraction");
-                    }
-                  }}
-                  className="flex flex-col cursor-pointer items-center"
-                >
-                  <p
-                    className={`text-3xl text-center  ${
-                      location.pathname.includes("/markup")
-                        ? " text-blue-500 "
-                        : " text-gray-400 "
-                    }`}
-                  >
-                    <IoPricetagOutline />
-                  </p>
-                  <p
-                    className={`text-sm  ${
-                      location.pathname.includes("/markup")
-                        ? " text-blue-500 "
-                        : " text-gray-400 "
-                    }`}
-                  >
-                    Markup
                   </p>
                 </div>
               </div>
