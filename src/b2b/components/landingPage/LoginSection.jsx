@@ -20,7 +20,6 @@ const LoginSection = () => {
   const [error, setError] = useState("");
   const [data, setData] = useState({
     email: "",
-    agentCode: "",
     password: "",
   });
   const [forgotEmail, setForgotEmail] = useState("");
@@ -154,7 +153,7 @@ const LoginSection = () => {
             <h1 className="text-lg font-semibold">Login Now</h1>
           </div>
           <div className="grid p-5 pl-8 gap-5">
-            <div className="">
+            {/* <div className="">
               <div className="flex">
                 <div className="h-12 w-10 bg-slate-200 rounded-l-full">
                   <h1 className="p-[14px] text-xl text-gray-400">
@@ -173,7 +172,7 @@ const LoginSection = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
             <div>
               <div className="flex">
                 <div className="h-12 w-10 bg-slate-200 rounded-l-full">
