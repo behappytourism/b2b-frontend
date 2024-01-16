@@ -36,18 +36,12 @@ function AttractionCard({ setView }) {
 
   return (
     <>
-      <form >
+      <form>
         <div className="md:flex gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto px-5">
           <div className="w-full flex justify-center items-center ">
             <div className=" w-full ">
               <div className="" ref={dropdownWrapperRef}>
                 <div className="space-y-1">
-                  <label
-                    htmlFor=""
-                    className="text-lg font-bold text-white  tracking-wide"
-                  >
-                    Where do you want to go?
-                  </label>
                   <input
                     type="text"
                     list="Country"
@@ -55,7 +49,7 @@ function AttractionCard({ setView }) {
                     onChange={(e) => setValue(e.target.value)}
                     onFocus={handleFocus}
                     required
-                    placeholder="Search here..."
+                    placeholder="Search Tours"
                     className="block placeholder:text-gray-300  lg:w-[150%] sm:w-[40%] w-full capitalize outline-none bg-white border rounded-xl p-5  h-10  bg-transparent text-sm text-gray-300 font-medium"
                   />
                 </div>

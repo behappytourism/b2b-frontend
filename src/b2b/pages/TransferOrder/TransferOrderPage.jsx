@@ -240,11 +240,11 @@ function TransferOrderPage() {
                 <option value="100">100</option>
               </select>
             </div>
-            <button className="flex items-center h-8 rounded bg-orange-500 text-white justify-center gap-[10px] text-sm">
+            <button className="flex items-center h-8 rounded-full bg-BEColor text-white justify-center gap-[10px] text-sm">
               <BiFilter /> Filter
             </button>
             <button
-              className="bg-gray-500 text-white h-8 rounded text-sm"
+              className="bg-gray-500 text-white h-8 rounded-full text-sm"
               onClick={clearFilters}
               type="button"
             >
@@ -252,7 +252,7 @@ function TransferOrderPage() {
             </button>
             <button
               onClick={handleDownload}
-              className="bg-green-500 text-white h-8 rounded text-sm"
+              className="bg-BEColor text-white h-8 rounded-full text-sm"
             >
               Download Sheet
             </button>

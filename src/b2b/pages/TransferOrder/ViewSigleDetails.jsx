@@ -136,7 +136,7 @@ function ViewSigleDetails() {
                             onClick={()=> {
                                 handleDownloadInvoice()
                             }}
-                            className='bg-orange-500 w-52 rounded text-white  h-8'>{invoiceLoading ? <BtnLoader/> : "Download Invoice"}</button>
+                            className='bg-BEColor w-52 rounded-full text-white  h-8'>{invoiceLoading ? <BtnLoader/> : "Download Invoice"}</button>
                         </div>
                         {
                             orderAttractionDetails?.activities?.length > 0 && (

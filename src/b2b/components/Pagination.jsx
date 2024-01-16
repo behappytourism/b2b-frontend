@@ -38,7 +38,7 @@ export default function Pagination({
                                 className={
                                     "h-[32px] min-w-[32px] px-[10px] " +
                                     (skip === index
-                                        ? "font-medium  bg-orange-500 text-white"
+                                        ? "font-medium  bg-BEColor text-white"
                                         : "bg-transparent text-textColor font-normal border hover:bg-[#f3f6f9] ")
                                 }
                                 key={index}

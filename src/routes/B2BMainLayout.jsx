@@ -16,7 +16,7 @@ export default function B2BMainLayout() {
   );
   return (
     <>
-      {isFirst ? <CookieInstallApp setIsFirst={setIsFirst} /> : ""}
+      {/* {isFirst ? <CookieInstallApp setIsFirst={setIsFirst} /> : ""} */}
       <div className="relative ">
         <Header sidebarView={sidebarView} setSidebarView={setSidebarView} />
         <main>

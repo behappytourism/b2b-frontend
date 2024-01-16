@@ -99,14 +99,14 @@ function ClientMarkupModal({ setMarkup, setMarkupData, markupData, activity }) {
               <div className="mt-4 flex items-center justify-end gap-[12px]">
                 {error && <p className="text-main text-xs"> {error}</p>}
                 <span
-                  className="cursor-pointer w-[100px] h-[40px] text-[14px] bg-orange-600 text-white rounded-[0.25rem] flex justify-center items-center font-[600]"
+                  className="cursor-pointer w-[100px] h-[40px] text-[14px] bg-gray-500 text-white rounded-full flex justify-center items-center font-[600]"
                   onClick={() => {
                     setMarkup(false);
                   }}
                 >
                   Close
                 </span>
-                <button className="w-[100px] button" type="submit">
+                <button className="w-[100px] rounded-full button" type="submit">
                   {isLoading ? <BtnLoader /> : "Submit"}
                 </button>
               </div>

@@ -57,7 +57,7 @@ export default function Header({ setSidebarView, sidebarView }) {
           <div className="flex w-full items-center justify-between -mx-2">
             <div className=" bg-gray-100 rounded-b-xl mb-2">
               <div
-                className="h-10 w-full md:h-12 "
+                className="h-10 w-32 md:h-12 "
                 onClick={() => navigate("/")}
               >
                 <img

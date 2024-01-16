@@ -249,7 +249,7 @@ function TransferHome() {
                 />
                 <div className="absolute top-10 bottom-0 right-0 left-40 ">
                   <div className="bg-black/50 rounded w-[550px] p-3">
-                    <h1 className="font-bold text-white text-5xl">
+                    <h1 className="font-bold text-white text-4xl">
                       {ele?.title}
                     </h1>
                     <h1 className="text-white font-light text-lg max-w-3xl">
@@ -347,7 +347,7 @@ function TransferHome() {
                       onFocus={handleToFocus}
                       onChange={(e) => setToValue(e.target.value)}
                       className="border outline-none w-full h-12 rounded p-3 placeholder:text-gray-300 bg-slate-100 placeholder:text-sm"
-                      placeholder="Pickup (Airport, train, hotel)"
+                      placeholder="Drop (Airport, train, hotel)"
                     />
                     <TransferToSuggestionList
                       toLocality={toLocality}
