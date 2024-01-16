@@ -312,6 +312,20 @@ function B2BRegisterPage() {
               onChange={onChangeHandler}
             />
           </label>
+
+
+          <label className="flex flex-col gap-2">
+            <label className="text-left pl-1">
+              Whatsapp <span className="text-lg text-red-600">*</span>
+            </label>
+            <input
+              className="block w-full h-12 outline-none bg-transparent text-sm text-gray-400 font-medium border border-BEColor rounded-lg px-4 "
+              type="number"
+              name="whatsappNumber"
+              value={data.whatsappNumber}
+              onChange={onChangeHandler}
+            />
+          </label>
         </div>
       </div>
     );
