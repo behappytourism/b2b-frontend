@@ -3,6 +3,9 @@ import { FaFacebook, FaSquareInstagram } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { config } from "../../../constants";
 import { useNavigate } from "react-router-dom";
+import { FaYoutube } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa6";
+import { TbBrandTripadvisor } from "react-icons/tb";
 
 function LandingPageFooter() {
   const navigate = useNavigate();
@@ -12,39 +15,88 @@ function LandingPageFooter() {
       <div className="pt-10 min-h-80 bg-white w-full">
         <div className="p-5 max-w-screen-2xl mx-auto ">
           <div className="border-b mb-10">
-            <div className="flex justify-start md:justify-center  flex-col md:flex-row gap-5 md:gap-20 pt-10 mb-5 divide-y md:divide-y-0">
+            <div className="flex justify-start md:justify-evenly flex-col md:flex-row gap-5 md:gap-20 pt-10 mb-5 divide-y md:divide-y-0">
               <div>
-                <div className="flex justify-center">
-                  <img
-                    className="h-full object-fill w-[250px]"
-                    src={config.COMPANY_LOGO}
-                    alt=""
-                  />
+                <div className="md:flex md:gap-10 md:justify-start">
+                  <div>
+                    <img
+                      className="h-full object-fill w-[250px]"
+                      src={config.COMPANY_LOGO}
+                      alt=""
+                    />
+                  </div>
+                  
                 </div>
-                <div className="flex gap-2 pt-3 justify-center">
-                  <div className="    w-10 h-10 text-xl">
-                    <h1 className="p-[11px] bg-white  rounded-full  shadow-xl">
-                      <FaFacebook />
-                    </h1>
-                  </div>
-                  <div className="    w-10 h-10 text-xl">
-                    <h1 className="p-[11px] bg-white  rounded-full  shadow-xl">
-                      <FaSquareInstagram />
-                    </h1>
-                  </div>
-                  <div className="    w-10 h-10 text-xl">
-                    <h1 className="p-[11px] bg-white  rounded-full  shadow-xl">
+             
+              </div>
+              <div className="grid gap-2 pt-3 justify-center">
+                {/* <a href="">
+                     <div className=" flex gap-1 w-8 h-8 text-xl">
+                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
                       <IoLogoWhatsapp />
                     </h1>
+                    <div className="pt-3">
+                      <h1 className="text-xs text-gray-400">Whatsapp</h1>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div>
-                <div>
+                </a> */}
+                <a href="https://www.facebook.com/behappytourism">
+                  <div className=" flex gap-1  w-8 h-8 text-xl">
+                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                      <FaFacebook />
+                    </h1>
+                    <div className="pt-3">
+                      <h1 className="text-xs text-gray-400">Facebook</h1>
+                    </div>
+                  </div>
+                </a>
+                <a href="https://www.instagram.com/behappydubai">
+                  <div className="  flex gap-1  w-8 h-8 text-xl">
+                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                      <FaSquareInstagram />
+                    </h1>
+                    <div className="pt-3">
+                      <h1 className="text-xs text-gray-400">Instagram</h1>
+                    </div>
+                  </div>
+                </a>
+                <a href="http://www.youtube.com/@behappytraveltourismllc-du7563">
+                  <div className=" flex gap-1  w-8 h-8 text-xl">
+                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                    <FaYoutube />
+                    </h1>
+                    <div className="pt-3">
+                      <h1 className="text-xs text-gray-400">YouTube</h1>
+                    </div>
+                  </div>
+                </a>
+                <a href="https://twitter.com/behappydubai">
+                  <div className="  flex gap-1  w-8 h-8 text-xl">
+                    <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
+                    <FaTwitter />
+                    </h1>
+                    <div className="pt-3">
+                      <h1 className="text-xs text-gray-400">Twitter</h1>
+                    </div>
+                  </div>
+                </a>
+                <a href="https://www.tripadvisor.com/Attraction_Review-g295424-d23319552-Reviews-BE_HAPPY_TRAVEL_TOURISM_LLC-Dubai_Emirate_of_Dubai.html">
+                  <div className="  flex gap-1  w-8 h-8 text-xl">
+                    <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
+                    <TbBrandTripadvisor  />
+                    </h1>
+                    <div className="pt-3">
+                      <h1 className="text-xs text-gray-400">TripAdvisor</h1>
+                    </div>
+                  </div>
+                </a>
+                </div>  
+              <div className="">
+                {/* <div>
                   <h1 className="text-md font-light text-slate-500">
                     Terms & Settings
                   </h1>
-                </div>
+                </div> */}
                 <div className="pt-5">
                   <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
                     Terms & conditions
