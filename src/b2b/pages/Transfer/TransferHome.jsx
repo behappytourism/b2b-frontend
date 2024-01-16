@@ -241,22 +241,22 @@ function TransferHome() {
             duration={9000}
           >
             {banners.map((ele) => (
-              <div className="w-full h-96 relative">
+              <div className="w-full h-[500px] relative">
                 <img
                   className="w-full h-full object-fill"
                   src={config.SERVER_URL + ele?.image}
                   alt=""
                 />
                 <div className="absolute top-10 bottom-0 right-0 left-40 ">
-                  <div className="bg-black/50 rounded w-[550px] p-3">
+                  <div className="bg-black/50 rounded w-full md:w-8/12 p-7">
                     <h1 className="font-bold text-white text-4xl">
                       {ele?.title}
                     </h1>
-                    <h1 className="text-white font-light text-lg max-w-3xl">
+                    <h1 className="text-white font-light text-lg  pt-5">
                       {ele?.body}
                     </h1>
                   </div>
-                  <div className="pt-1">
+                  <div className="pt-5">
                     {ele?.isButton === true && (
                       <a href={ele?.buttonUrl}>
                         <button className="bg-white h-10 rounded-full w-32 font-bold ">

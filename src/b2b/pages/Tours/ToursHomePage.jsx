@@ -137,17 +137,17 @@ function ToursHomePage() {
                   src={config.SERVER_URL + ele?.image}
                   alt=""
                 />
-                <div className="absolute top-5  md:top-20 bottom-0 md:left-16 rounded bg-black/40 h-52 p-3 ">
+                <div className="absolute top-5  md:top-20  md:left-16 rounded-lg w-full md:w-8/12 bg-black/40  p-7 ">
                   <h1 className="font-bold text-white text-4xl">
                     {ele?.title}
                   </h1>
-                  <h1 className="text-white font-semibold max-w-md pt-2">
+                  <h1 className="text-white font-semibold   pt-5">
                     {ele?.body}
                   </h1>
-                  <div className="pt-2">
+                  <div className="pt-5">
                     {ele?.isButton === true && (
                       <a href={ele?.buttonUrl}>
-                        <button className="bg-white h-10 rounded-full w-32 font-bold ">
+                        <button className="bg-BEColor text-white h-10 rounded-full w-32 font-bold ">
                           {ele?.buttonText}
                         </button>
                       </a>
@@ -161,7 +161,7 @@ function ToursHomePage() {
           <div className="w-full h-96 bg-slate-200 animate-pulse"></div>
         )}
 
-        <div className="absolute md:left-[600px] w-96 right-0 top-64 md:top-80 bottom-0">
+        <div className="absolute inset-0 flex flex-col justify-center items-center translate-y-40 md:translate-y-32">
           <AttractionCard />
         </div>
       </div>
