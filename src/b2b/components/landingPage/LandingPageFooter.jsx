@@ -39,7 +39,7 @@ function LandingPageFooter() {
                   </div>
                 </div>
               </div>
-              {/* <div>
+              <div>
                 <div>
                   <h1 className="text-md font-light text-slate-500">
                     Terms & Settings
@@ -47,7 +47,12 @@ function LandingPageFooter() {
                 </div>
                 <div className="pt-5">
                   <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    About Us
+                    Terms & conditions
+                  </button>
+                </div>
+                <div className="pt-2">
+                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                    Privacy Policy
                   </button>
                 </div>
                 <div className="pt-2">
@@ -58,7 +63,7 @@ function LandingPageFooter() {
                     Contact Us
                   </button>
                 </div>
-                <div className="pt-2">
+                {/* <div className="pt-2">
                   <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
                     B2C Login
                   </button>
@@ -67,14 +72,9 @@ function LandingPageFooter() {
                   <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
                     Knowledge Base
                   </button>
-                </div>
-                <div className="pt-2">
-                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Privacy Policy
-                  </button>
-                </div>
+                </div> */}
               </div>
-              <div>
+              {/* <div>
                 <div>
                   <h1 className="text-md font-light text-slate-500">
                     Top Desitnations
@@ -110,8 +110,8 @@ function LandingPageFooter() {
                     Sharjah
                   </h1>
                 </div>
-              </div>
-              <div>
+              </div> */}
+              {/* <div>
                 <div>
                   <h1 className="text-md font-light text-slate-500 hover:border-b cursor-pointer">
                     Top Attractions
@@ -148,8 +148,8 @@ function LandingPageFooter() {
                     Dubai Parks & Resorts
                   </h1>
                 </div>
-              </div>
-              <div>
+              </div> */}
+              {/* <div>
                 <div>
                   <h1 className="text-md font-light text-slate-500">Hotels</h1>
                 </div>
