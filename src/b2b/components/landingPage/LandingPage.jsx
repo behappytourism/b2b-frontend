@@ -114,83 +114,12 @@ function LandingPage() {
                 and their choice
               </h1>
             </div>
-            <div className="pt-8">
-              <button className="bg-sky-500 w-44 h-14 rounded-full text-white ">
-                Discover Now
-              </button>
-            </div>
           </div>
         </div>
       </div>
     );
   };
   //
-  const renderDestinationSection = () => {
-    return (
-      <>
-        <div className="pt-14">
-          <h1 className="text-3xl font-extrabold text-center ">
-            Top Destinations
-          </h1>
-        </div>
-        <div className="pt-10 flex justify-center">
-          <div>
-            <div className="flex flex-wrap justify-center gap-10">
-              <div>
-                <div className="rounded-full bg-white p-5 shadow-round shadow-slate-300">
-                  <div className="w-80 h-80 rounded-full overflow-hidden relative">
-                    <img
-                      className="w-full h-full object-cover"
-                      src="https://thevoyagemagazine.com/wp-content/uploads/2023/08/Dubai-Travel-Guide-12-Important-Things-to-Know-Burj-Al-Arab-Hotel-scaled.jpg"
-                      alt=""
-                    />
-                    <div className="absolute w-full h-full bg-black/40 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-                      <h1 className="text-white text-3xl font-extrabold">
-                        Destination
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="rounded-full bg-white p-5 shadow-round shadow-slate-300">
-                  <div className="w-80 h-80 rounded-full overflow-hidden relative">
-                    <img
-                      className="w-full h-full object-cover"
-                      src="https://blog.unimonitravel.com/wp-content/uploads/2022/08/dubai-m-742x1024.webp"
-                      alt=""
-                    />
-                    <div className="absolute w-full h-full bg-black/40 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-                      <h1 className="text-white text-3xl font-extrabold">
-                        Destination
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className="rounded-full bg-white p-5 shadow-round shadow-slate-300">
-                  <div className="w-80 h-80 rounded-full overflow-hidden relative">
-                    <img
-                      className="w-full h-full object-cover"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS03zRqCjtBRbvno2Z0_z-5q9gFt_XuPol8Dg&usqp=CAU"
-                      alt=""
-                    />
-                    <div className="absolute w-full h-full bg-black/40 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-                      <h1 className="text-white text-3xl font-extrabold">
-                        Destination
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  };
   //
   const renderTopAttractions = () => {
     return (
@@ -611,7 +540,6 @@ function LandingPage() {
       {/* new changes for just try */}
       <LoginSection />
       {renderServiceSection()}
-      {renderDestinationSection()}
       <div>
         <div className="w-full min-h-96 pt-32">
           {renderTopAttractions()}

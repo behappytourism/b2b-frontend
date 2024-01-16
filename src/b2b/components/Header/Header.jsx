@@ -59,7 +59,7 @@ export default function Header({ setSidebarView, sidebarView }) {
               <div className="h-10 w-32 md:h-12 " onClick={() => navigate("/")}>
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}
-                  src={companyLogo}
+                  src={config.COMPANY_LOGO}
                   alt="logo"
                   className="h-full w-full rounded-b-xl object-fill"
                 />

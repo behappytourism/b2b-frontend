@@ -247,18 +247,18 @@ const LoginSection = () => {
   return (
     <div>
       <div className="flex md:flex-row flex-col gap-5 md:gap-20 justify-center p-5 ">
-        <div className="order-last md:order-first md:flex gap-1">
+        <div className="order-last md:order-first md:flex gap-1 w-1/2">
           <div className="">
             <div className="pt-20">
-              <h1 className="text-4xl font-extrabold">Your Gateway to</h1>
               <h1 className="text-4xl font-extrabold">
-                Unforgettable{" "}
+                Your Gateway to Unforgettable{" "}
                 <span className="text-green-400">UAE Experiences</span>
               </h1>
             </div>
             <div className="pt-5">
-              <h1 className="text-xs max-w-xs">
-              We understand happiness at every guest Touchpoint, all we got covered to create unforgettable memory
+              <h1 className="text-xsbase max-w-xs">
+                We understand happiness at every guest Touchpoint, all we got
+                covered to create unforgettable memory
               </h1>
             </div>
             <div className="pt-10 ">
