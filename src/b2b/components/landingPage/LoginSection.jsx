@@ -8,6 +8,7 @@ import { setAgent } from "../../../redux/slices/agentSlice";
 import { IoIosLock } from "react-icons/io";
 import { BsPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+import BtnLoader from "../BtnLoader";
 
 const LoginSection = () => {
   const navigate = useNavigate();
@@ -234,7 +235,7 @@ const LoginSection = () => {
                 type="submit"
                 className="border rounded-full w-32 h-9 hover:bg-sky-400 bg-black hover:text-white text-white"
               >
-                Submit
+               {isLoading ? <BtnLoader /> : "Submit"}
               </button>
             </div>
           </div>

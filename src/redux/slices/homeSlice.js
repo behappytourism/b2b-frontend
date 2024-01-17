@@ -28,6 +28,7 @@ const initialState = {
     title: "",
     text: "",
   },
+  socialMedias : {}
 };
 
 // get all data for home
@@ -46,6 +47,14 @@ export const getInitialVisaCountryList = createAsyncThunk(
     return response.data;
   }
 );
+
+export const getSocialMedia = createAsyncThunk(
+  "homeSlice/getSocialMedia",
+  async (args, { getState }) => {
+    const response = await axios.get(`/home/contact-details`)
+    return response.data
+  }
+)
 
 // export const getHotelSearchQuery = createAsyncThunk(
 //   "homeSlice/getHotelSearchQuery",
@@ -140,6 +149,10 @@ const homeSlice = createSlice({
       state.visaCountries = action.payload;
       state.loading = false;
     },
+
+    [getSocialMedia.fulfilled] : (state, {payload}) => {
+      state.socialMedias = payload
+    }
   },
 });
 

@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { getInitialData, getInitialVisaCountryList } from "./redux/slices/homeSlice";
 import { fetchAgent } from "./redux/slices/agentSlice";
 import { getAllAirports } from "./redux/slices/generalSlice";
+import { getSocialMedia } from "./redux/slices/homeSlice";
 
 export default function App() {
 
@@ -16,6 +17,7 @@ export default function App() {
         dispatch(getInitialData());
         dispatch(getInitialVisaCountryList())
         dispatch(getAllAirports())
+        dispatch(getSocialMedia())
     }, []);
 
     const routing = useRoutes(ThemeRoutes);

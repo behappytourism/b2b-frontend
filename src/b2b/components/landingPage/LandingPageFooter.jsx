@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa6";
 import { TbBrandTripadvisor } from "react-icons/tb";
+import { useSelector } from "react-redux";
 
 function LandingPageFooter() {
   const navigate = useNavigate();
+  const { socialMedias } = useSelector((state)=> state.home)
+
 
   return (
     <div>
@@ -29,7 +32,7 @@ function LandingPageFooter() {
                 </div>
              
               </div>
-              <div className="grid gap-2 pt-3 justify-center">
+              <div className=" pt-3 justify-center">
                 {/* <a href="">
                      <div className=" flex gap-1 w-8 h-8 text-xl">
                     <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
@@ -40,56 +43,86 @@ function LandingPageFooter() {
                     </div>
                   </div>
                 </a> */}
-                <a href="https://www.facebook.com/behappytourism">
-                  <div className=" flex gap-1  w-8 h-8 text-xl">
-                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
-                      <FaFacebook />
-                    </h1>
-                    <div className="pt-3">
-                      <h1 className="text-xs text-gray-400">Facebook</h1>
-                    </div>
-                  </div>
-                </a>
-                <a href="https://www.instagram.com/behappydubai">
-                  <div className="  flex gap-1  w-8 h-8 text-xl">
-                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
-                      <FaSquareInstagram />
-                    </h1>
-                    <div className="pt-3">
-                      <h1 className="text-xs text-gray-400">Instagram</h1>
-                    </div>
-                  </div>
-                </a>
-                <a href="http://www.youtube.com/@behappytraveltourismllc-du7563">
-                  <div className=" flex gap-1  w-8 h-8 text-xl">
-                    <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
-                    <FaYoutube />
-                    </h1>
-                    <div className="pt-3">
-                      <h1 className="text-xs text-gray-400">YouTube</h1>
-                    </div>
-                  </div>
-                </a>
-                <a href="https://twitter.com/behappydubai">
-                  <div className="  flex gap-1  w-8 h-8 text-xl">
-                    <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
-                    <FaTwitter />
-                    </h1>
-                    <div className="pt-3">
-                      <h1 className="text-xs text-gray-400">Twitter</h1>
-                    </div>
-                  </div>
-                </a>
-                <a href="https://www.tripadvisor.com/Attraction_Review-g295424-d23319552-Reviews-BE_HAPPY_TRAVEL_TOURISM_LLC-Dubai_Emirate_of_Dubai.html">
-                  <div className="  flex gap-1  w-8 h-8 text-xl">
-                    <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
-                    <TbBrandTripadvisor  />
-                    </h1>
-                    <div className="pt-3">
-                      <h1 className="text-xs text-gray-400">Tripadviser</h1>
-                    </div>
-                  </div>
-                </a>
+                {
+                  socialMedias?.facebookUrl?.length ? (
+                    <a  href={socialMedias?.facebookUrl}>
+                      <div className=" flex gap-1  w-8 h-8 text-xl">
+                        <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                          <FaFacebook />
+                        </h1>
+                        <div className="pt-3">
+                          <h1 className="text-xs text-gray-400">Facebook</h1>
+                        </div>
+                      </div>
+                    </a>
+                  ) : ""
+                }
+                <div className="pt-1">
+                  {
+                    socialMedias?.instagramUrl?.length ? (
+
+                      <a  href={socialMedias?.instagramUrl}>
+                        <div className="  flex gap-1  w-8 h-8 text-xl">
+                          <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                            <FaSquareInstagram />
+                          </h1>
+                          <div className="pt-3">
+                            <h1 className="text-xs text-gray-400">Instagram</h1>
+                          </div>
+                        </div>
+                      </a>
+                    ) : ""
+                  }
+                </div>
+                <div className="pt-1">
+                {
+                  socialMedias?.youtubeUrl?.length ? (
+                    <a href={socialMedias?.youtubeUrl}>
+                      <div className=" flex gap-1  w-8 h-8 text-xl">
+                        <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                        <FaYoutube />
+                        </h1>
+                        <div className="pt-3">
+                          <h1 className="text-xs text-gray-400">YouTube</h1>
+                        </div>
+                      </div>
+                    </a>
+                  ) : ""
+                }
+                </div>
+               
+               <div className="pt-1">
+                  {
+                    socialMedias?.twitterUrl?.length ? (
+                      <a href={socialMedias?.twitterUrl}>
+                        <div className="  flex gap-1  w-8 h-8 text-xl">
+                          <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
+                          <FaTwitter />
+                          </h1>
+                          <div className="pt-3">
+                            <h1 className="text-xs text-gray-400">Twitter</h1>
+                          </div>
+                        </div>
+                      </a>
+                    ) : ""
+                  }
+               </div>
+               <div className="pt-1">
+                  {
+                    socialMedias?.tripAdvisorUrl?.length ? (
+                      <a href={socialMedias?.tripAdvisorUrl}>
+                        <div className="  flex gap-1  w-8 h-8 text-xl">
+                          <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
+                          <TbBrandTripadvisor  />
+                          </h1>
+                          <div className="pt-3">
+                            <h1 className="text-xs text-gray-400">Tripadviser</h1>
+                          </div>
+                        </div>
+                      </a>
+                    ) : ""
+                  }
+               </div>
                 </div>  
               <div className="">
                 {/* <div>
@@ -115,117 +148,7 @@ function LandingPageFooter() {
                     Contact Us
                   </button>
                 </div>
-                {/* <div className="pt-2">
-                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    B2C Login
-                  </button>
-                </div>
-                <div className="pt-2">
-                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Knowledge Base
-                  </button>
-                </div> */}
               </div>
-              {/* <div>
-                <div>
-                  <h1 className="text-md font-light text-slate-500">
-                    Top Desitnations
-                  </h1>
-                </div>
-                <div className="pt-5">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Dubai
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Abu Dhabi
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Ajman
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Fujairah
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Hatta
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Sharjah
-                  </h1>
-                </div>
-              </div> */}
-              {/* <div>
-                <div>
-                  <h1 className="text-md font-light text-slate-500 hover:border-b cursor-pointer">
-                    Top Attractions
-                  </h1>
-                </div>
-                <div className="pt-5">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    {" "}
-                    I Fly
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Dinner In the Sky
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Gyrocopter Flight Dubai
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Xline Zipline Dubai
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Qasr Al Watan
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Dubai Parks & Resorts
-                  </h1>
-                </div>
-              </div> */}
-              {/* <div>
-                <div>
-                  <h1 className="text-md font-light text-slate-500">Hotels</h1>
-                </div>
-                <div className="pt-5">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Citymax Hotel Al Barsha
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Citymax Hotel Bur Dubai
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Grand Astoria Hotel
-                  </h1>
-                </div>
-                <div className="pt-2">
-                  <h1 className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                    Royal Falcon Hotel
-                  </h1>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>

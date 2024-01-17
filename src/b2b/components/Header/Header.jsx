@@ -174,7 +174,9 @@ export default function Header({ setSidebarView, sidebarView }) {
                               </li>
                               {agent?.role === "reseller" ? (
                                 <li
-                                  onClick={() => {}}
+                                  onClick={() => {
+                                    navigate('/resellers')
+                                  }}
                                   className="flex items-center gap-2 py-1 hover:bg-gray-50 px-2"
                                 >
                                   <p className="w-5 flex justify-center items-center text-lg">
