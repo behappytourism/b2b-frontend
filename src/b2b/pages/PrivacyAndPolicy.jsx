@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Header } from "../components";
 import { config } from "../../constants";
+import axios from '../../axios'
+import LandingPageFooter from "../components/landingPage/LandingPageFooter";
 
 function PrivacyAndPolicy() {
+
+  const [policyData, setPolicyData] = useState('')
+  const fetchPrivacyPolicyContent = async () => {
+    try {
+      const res = await axios.get(`/b2b/settings/privacy-and-policies`)
+      setPolicyData(res?.data?.privacyAndPolicies)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    fetchPrivacyPolicyContent()
+  }, [])
+
   return (
     <div>
         <Header />
-    <div className="py-10 px-2 max-w-screen-xl mx-auto">
+        <div className="py-10 px-2  max-w-screen-xl mx-auto">
+          <div>
+            <h1 className="text-lg font-semibold">Privacy and Policy</h1>
+          </div>
+          <div className="pt-4">
+            <div dangerouslySetInnerHTML={{ __html: policyData }} />
+          </div>
+        </div>
+        <div>
+          <LandingPageFooter/>
+        </div>
+    {/* <div className="py-10 px-2 max-w-screen-xl mx-auto">
       <div className="text-4xl text-gray-500 font-bold tracking-tight ">
         Privacy and Policy
       </div>
@@ -728,7 +756,7 @@ function PrivacyAndPolicy() {
           https://mytravellerschoice.com/remove-account.
         </p>
       </div>
-    </div>
+    </div> */}
     </div>
   );
 }

@@ -176,6 +176,7 @@ import OrderSuccessPage from "../b2b/pages/Transfer/OrderSuccessPage";
 import TransferOrderPage from "../b2b/pages/TransferOrder/TransferOrderPage";
 import ViewSigleDetails from "../b2b/pages/TransferOrder/ViewSigleDetails";
 import TourModule from "./modules/TourModule";
+import TermsAndCondition from "../b2b/components/landingPage/TermsAndCondition";
 
 
 // const HotelErrorPage = lazy(() =>
@@ -486,6 +487,10 @@ const ThemeRoutes = [
     path:"/contactusb2b",
     element:<ContactUsPage/>
   },
+  {
+    path: "/terms_conditions",
+    element: <TermsAndCondition/>
+  }
  
 
 ];

@@ -1,11 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LandingPageHeader from './LandingPageHeader'
 import LandingPageFooter from './LandingPageFooter'
 import { FaFacebook, FaSquareInstagram } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { useSelector } from 'react-redux';
+import { FaYoutube, FaTwitter  } from "react-icons/fa";
+
 
 function ContactUsPage() {
+
+    const { socialMedias } = useSelector((state)=> state.home)
+    const [data, setData] = useState({
+        name: '',
+        email: "",
+        phone: '',
+        message: ''
+    })
+
+    const [emailError, setEmailError] = useState('')
+
+    const onchangeHandler = (e) => {
+        const { name, value } = e.target
+        
+        if (name === "email") {
+            if(value?.length) {
+                const emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+                if (emailRegex.test(value)) {
+                   setEmailError("")
+                   setData(({
+                    ...data,
+                    [name]: value
+                   }))
+                } else {
+                    setEmailError( "Invalid email address" )
+                }
+            } else {
+                setEmailError('')
+            }
+        }
+
+        setData(({
+            ...data,
+            [name]:value
+        }))
+    }
+
+
   return (
     <div>
       <div>
@@ -25,8 +66,7 @@ function ContactUsPage() {
                      </div>
                 </div>
                     <div className='pt-5 '>
-                        <h1 className='text-5xl text-white font-extrabold font-demo'>Contact Us & Get</h1>
-                        <h1 className='text-5xl text-white font-extrabold'>Special Promo</h1>
+                        <h1 className='text-5xl text-white font-extrabold font-demo'>Contact Us</h1>
                     </div>
                 </div>
                </div>
@@ -47,14 +87,29 @@ function ContactUsPage() {
 
                     <div>
                         <div className='pt-10'>
-                            <input name='name' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Name' />
+                            <input 
+                             onChange={onchangeHandler}
+                            name='name' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Name' />
                         </div>
                         <div className='pt-10'>
-                            <input name='email' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Email' />
+                            <input 
+                            onChange={onchangeHandler}
+                            name='email' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Email' />
+                            {
+                                emailError?.length ? (
+                                    <h1 className='text-red-500 text-xs'>{ emailError }</h1>
+                                ) : ""
+                            }
                         </div>
-                     
                         <div className='pt-10'>
-                            <textarea name="message" className=' outline-none border-b w-full h-7 placeholder:pl-3 placeholder:text-gray-300 placeholder:text-sm' id="" cols="30" rows="10" placeholder='Message'></textarea>
+                            <input
+                             onChange={onchangeHandler}
+                            name='phone' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Phone Number' />
+                        </div>
+                        <div className='pt-10'>
+                            <textarea
+                             onChange={onchangeHandler}
+                            name="message" className=' outline-none border-b w-full h-20 placeholder:pl-3 placeholder:text-gray-300 placeholder:text-sm' id="" cols="30" rows="10" placeholder='Message'></textarea>
                         </div>
                         <div className='pt-5'>
                             <button className='bg-sky-400 text-white w-40 h-12 rounded-full hover:bg-sky-600'>Submit Now</button>
@@ -85,39 +140,67 @@ function ContactUsPage() {
                     </div>
                     </div>
                 </div>
-                <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
-                    <div>
-                    <div className='pt-9 flex justify-center items-center'>
-                        <img className='' src="/public/messageicon.png" alt="" />
-                    </div>
-                    <div>
-                        <h1 className='text-center text-xl font-extrabold'>Contact Us</h1>
-                    </div>
-                    <div className='flex gap-2 pt-3 justify-center'>
-                                    <div className='cursor-pointer w-10 h-10 text-lg'>
-                                        <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><FaFacebook/></h1>
-                                    </div>
-                                    <div className=' cursor-pointer w-10 h-10 text-lg'>
-                                        <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><FaSquareInstagram/></h1>
-                                    </div>
-                                    <div className=' cursor-pointer w-10 h-10 text-lg'>
-                                        <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><IoLogoWhatsapp/></h1>
-                                    </div>
-                                </div>
-                    </div>
-                </div>
+              
                 <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
                     <div>
                     <div className='pt-9 flex justify-center items-center'>
                         <img src="/public/contacticon.png" alt="" />
                     </div>
                     <div>
-                        <h1 className='text-center text-xl font-extrabold'>Our Address</h1>
+                        <h1 className='text-center text-xl font-extrabold'>Phone</h1>
                     </div>
                     <div className='pt-5'>
-                        <h1 className='text-center font-light text-gray-400 text-sm'>971-949 8th Ave </h1>
-                        <h1 className='text-center font-light text-gray-400 text-sm'>Dubai, UAE</h1>
+                        <h1 className='text-center font-light text-gray-400 text-sm'>{socialMedias?.phoneNumber1} </h1>
+                        <h1 className='text-center font-light text-gray-400 text-sm'>{socialMedias?.phoneNumber2}</h1>
                     </div>
+                    </div>
+                </div>
+                <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
+                    <div>
+                    <div className='pt-9 flex justify-center items-center'>
+                        <img className='' src="/public/messageicon.png" alt="" />
+                    </div>
+                    <div>
+                        <h1 className='text-center text-xl font-extrabold'>Social</h1>
+                    </div>
+                    <div className='flex gap-2 pt-3 justify-center'>
+                        {
+                            socialMedias?.facebookUrl?.length ? (
+                                    <a href={socialMedias?.facebookUrl}>
+                                        <div className=' w-10 h-10 text-lg'>
+                                            <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><FaFacebook/></h1>
+                                        </div>
+                                    </a>
+                            ) : ""
+                        }
+                                {
+                                    socialMedias?.instagramUrl?.length ? (
+                                        <a href={socialMedias?.instagramUrl}>
+                                            <div className='w-10 h-10 text-lg'>
+                                                <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><FaSquareInstagram/></h1>
+                                            </div>
+                                        </a>
+                                    ) : ""
+                                }
+                                {
+                                    socialMedias?.youtubeUrl?.length ? (
+                                        <a href={socialMedias?.youtubeUrl}>
+                                            <div className='w-10 h-10 text-lg'>
+                                                <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><FaYoutube /></h1>
+                                            </div>
+                                        </a>
+                                    ) : ""
+                                }
+                                {
+                                    socialMedias?.twitterUrl?.length ? (
+                                        <a href="">
+                                                  <div className='w-10 h-10 text-lg'>
+                                                <h1 className='p-[10px] bg-white  rounded-full  shadow-xl'><FaTwitter /></h1>
+                                            </div>
+                                        </a>
+                                    ) : ""
+                                }
+                                </div>
                     </div>
                 </div>
             </div>

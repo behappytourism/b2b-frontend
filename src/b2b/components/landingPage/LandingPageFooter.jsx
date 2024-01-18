@@ -131,12 +131,16 @@ function LandingPageFooter() {
                   </h1>
                 </div> */}
                 <div className="pt-5">
-                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                  <button 
+                  onClick={()=> navigate('/terms_conditions')}
+                  className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
                     Terms & conditions
                   </button>
                 </div>
                 <div className="pt-2">
-                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                  <button 
+                  onClick={() => navigate('/privacy-policy')}
+                  className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
                     Privacy Policy
                   </button>
                 </div>
