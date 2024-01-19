@@ -277,7 +277,7 @@ function LandingPage() {
   const renderChooseUsSection = () => {
     return (
       <div className="">
-        <div className="pt-10 bg-white">
+        <div className="pt-10 px-10 bg-white">
           <div>
             <h1 className="text-center text-3xl font-bold">WHY CHOOSE US?</h1>
           </div>

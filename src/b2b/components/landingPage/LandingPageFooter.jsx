@@ -57,6 +57,23 @@ function LandingPageFooter() {
                     </a>
                   ) : ""
                 }
+                
+                <div className="pt-1">
+                {
+                    socialMedias?.phoneNumber2?.length ? (
+                      <a href={`https://wa.me/${socialMedias?.phoneNumber2}`}>
+                        <div className="  flex gap-1  w-8 h-8 text-xl">
+                          <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
+                          <IoLogoWhatsapp  />
+                          </h1>
+                          <div className="pt-3">
+                            <h1 className="text-xs text-gray-400">Whatsapp</h1>
+                          </div>
+                        </div>
+                      </a>
+                    ) : ""
+                  }
+                </div>
                 <div className="pt-1">
                   {
                     socialMedias?.instagramUrl?.length ? (
@@ -122,6 +139,7 @@ function LandingPageFooter() {
                       </a>
                     ) : ""
                   }
+                  
                </div>
                 </div>  
               <div className="">

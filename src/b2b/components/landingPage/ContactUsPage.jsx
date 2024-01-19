@@ -4,20 +4,28 @@ import LandingPageFooter from './LandingPageFooter'
 import { FaFacebook, FaSquareInstagram } from "react-icons/fa6";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaYoutube, FaTwitter  } from "react-icons/fa";
+import axios from '../../../axios'
+import BtnLoader from '../BtnLoader';
+import { setAlertSuccess } from '../../../redux/slices/homeSlice';
+import { CiLocationOn } from "react-icons/ci";
+import { FaPhoneVolume, FaRegAddressBook  } from "react-icons/fa";
+import SuccessAlert from "../Alerts/SuccessAlert";
 
 
 function ContactUsPage() {
 
     const { socialMedias } = useSelector((state)=> state.home)
+    const dispatch = useDispatch();
+
     const [data, setData] = useState({
         name: '',
         email: "",
         phone: '',
         message: ''
     })
-
+    const [isLoading, setIsLoading] = useState(false)
     const [emailError, setEmailError] = useState('')
 
     const onchangeHandler = (e) => {
@@ -46,6 +54,27 @@ function ContactUsPage() {
         }))
     }
 
+    const submitHandler = async (e) => {
+        try {
+           e.preventDefault()
+           setIsLoading(true)
+            const res = await axios.post(`b2b/settings/get-in-touch`, data)
+            console.log('hhhhhh');
+            if(res?.data){
+                console.log('la;ksjdhf');
+                dispatch(setAlertSuccess({
+                    status: true,
+                    title: "Sended Successfully",
+                    text: "Message successfully sended!"
+                }))
+                console.log('aaaa');
+                setIsLoading(false)
+           }
+        } catch (error) {
+            setIsLoading(false)
+            console.log(error);
+        }
+    }
 
   return (
     <div>
@@ -85,36 +114,43 @@ function ContactUsPage() {
                         <h1>Any kind of travel information don't hesitate to contact with us for imiditate customer support. We are love to hear from you</h1>
                     </div>
 
-                    <div>
-                        <div className='pt-10'>
-                            <input 
-                             onChange={onchangeHandler}
-                            name='name' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Name' />
-                        </div>
-                        <div className='pt-10'>
-                            <input 
-                            onChange={onchangeHandler}
-                            name='email' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Email' />
-                            {
-                                emailError?.length ? (
-                                    <h1 className='text-red-500 text-xs'>{ emailError }</h1>
-                                ) : ""
-                            }
-                        </div>
-                        <div className='pt-10'>
-                            <input
-                             onChange={onchangeHandler}
-                            name='phone' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Phone Number' />
-                        </div>
-                        <div className='pt-10'>
-                            <textarea
-                             onChange={onchangeHandler}
-                            name="message" className=' outline-none border-b w-full h-20 placeholder:pl-3 placeholder:text-gray-300 placeholder:text-sm' id="" cols="30" rows="10" placeholder='Message'></textarea>
-                        </div>
-                        <div className='pt-5'>
-                            <button className='bg-sky-400 text-white w-40 h-12 rounded-full hover:bg-sky-600'>Submit Now</button>
-                        </div>
-                    </div>
+                        <form onSubmit={submitHandler}>
+                            <div>
+                                <div className='pt-10'>
+                                    <input 
+                                    required
+                                    onChange={onchangeHandler}
+                                    name='name' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Name' />
+                                </div>
+                                <div className='pt-10'>
+                                    <input 
+                                    required
+                                    onChange={onchangeHandler}
+                                    name='email' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Email' />
+                                    {
+                                        emailError?.length ? (
+                                            <h1 className='text-red-500 text-xs'>{ emailError }</h1>
+                                        ) : ""
+                                    }
+                                </div>
+                                <div className='pt-10'>
+                                    <input
+                                    required
+                                    onChange={onchangeHandler}
+                                    name='phone' type="text" className='outline-none border-b w-full placeholder:p-3 placeholder:text-gray-300 placeholder:text-sm' placeholder='Phone Number' />
+                                </div>
+                                <div className='pt-10'>
+                                    <textarea
+                                    required
+                                    onChange={onchangeHandler}
+                                    name="message" className=' outline-none border-b w-full h-20 placeholder:pl-3 placeholder:text-gray-300 placeholder:text-sm' id="" cols="30" rows="10" placeholder='Message'></textarea>
+                                </div>
+                                <div className='pt-5'>
+                                    <button className='bg-sky-400 text-white w-40 h-12 rounded-full hover:bg-sky-600'>{ isLoading ? <BtnLoader/> : "Submit Now" }</button>
+                                </div>
+                            </div>
+                        </form>
+
             </div>
                 <div className='pt-10'>
                     <div className='w-96 h-96 '>
@@ -126,22 +162,40 @@ function ContactUsPage() {
 
         <div className='flex justify-center pt-20'>
             <div className='grid md:grid-cols-3 gap-6'>
-                <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
-                    <div>
-                    <div className='pt-9 flex justify-center items-center'>
-                        <img src="/public/locationIcon.png" alt="" />
-                    </div>
-                    <div>
-                        <h1 className='text-center text-xl font-extrabold'>Our Address</h1>
-                    </div>
-                    <div className='pt-5'>
-                        <h1 className='text-center font-light text-gray-400 text-sm'>971-949 8th Ave </h1>
-                        <h1 className='text-center font-light text-gray-400 text-sm'>Dubai, UAE</h1>
-                    </div>
-                    </div>
-                </div>
+                {
+                    socialMedias?.addresses?.map((ele, index)=>{
+                        console.log(ele);
+                        return (
+                            <div key={index} className='bg-white w-80 h-[350px] shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
+                                <div className=''>
+                                <div className='pt-9 flex justify-center items-center'>
+                                    <img src="/public/locationIcon.png" alt="" />
+                                </div>
+                                <div>
+                                    <h1 className='text-center text-xl font-extrabold'>Our Address</h1>
+                                </div>
+                                <div className='pt-5 p-5'>
+                                    <h1 className=' font-light text-gray-400 text-sm'>{ele?.companyName} </h1>
+                                    <div className='flex gap-1  pt-2'>
+                                        <h1 className=' font-light text-gray-400 text-sm pt-1'><FaRegAddressBook  /></h1>
+                                        <h1 className='font-light text-gray-400 text-sm'>{ele?.address}</h1>
+                                    </div>
+                                    <div className='flex gap-1  pt-1'>
+                                        <h1 className=' font-light text-gray-400 text-sm '><FaPhoneVolume /></h1>
+                                        <h1 className='font-light text-gray-400 text-sm'>{ele?.phoneNumber}</h1>
+                                    </div>
+                                    <div className='flex gap-1 pt-1'>
+                                        <h1 className='text-center font-light text-gray-400 text-sm'><CiLocationOn /></h1>
+                                        <h1 className='text-center font-light text-gray-400 text-sm'>{ele?.location}, {ele?.country?.countryName}</h1>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
               
-                <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
+                {/* <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
                     <div>
                     <div className='pt-9 flex justify-center items-center'>
                         <img src="/public/contacticon.png" alt="" />
@@ -154,8 +208,8 @@ function ContactUsPage() {
                         <h1 className='text-center font-light text-gray-400 text-sm'>{socialMedias?.phoneNumber2}</h1>
                     </div>
                     </div>
-                </div>
-                <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
+                </div> */}
+                {/* <div className='bg-white w-80 h-72 shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
                     <div>
                     <div className='pt-9 flex justify-center items-center'>
                         <img className='' src="/public/messageicon.png" alt="" />
@@ -202,7 +256,7 @@ function ContactUsPage() {
                                 }
                                 </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
 
@@ -211,7 +265,9 @@ function ContactUsPage() {
                 <img className='w-full' src="https://florensija.lt/img/40a7b9c5e910296f0dc3217b441d7b29.jpg" alt="" />
             </div>
         </div>
-
+        <div>
+            <SuccessAlert/>
+        </div>
         {/* footer */}
         <div>
             <LandingPageFooter/>
