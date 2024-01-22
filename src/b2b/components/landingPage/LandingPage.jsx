@@ -16,6 +16,7 @@ import LandingPageHeader from "./LandingPageHeader";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import LoginSection from "./LoginSection";
+import ErrorAlert from "../Alerts/ErrorAlert";
 
 const responsive = {
   superLargeDesktop: {
@@ -559,6 +560,7 @@ function LandingPage() {
             <LandingPageFooter />
           </div>
         </div>
+        <ErrorAlert/>
       </div>
     </div>
   );
