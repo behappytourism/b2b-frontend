@@ -171,7 +171,7 @@ function ToursHomePage() {
             <InfiniteScroll
               dataLength={attractions || 0}
               next={() => {
-                if (!isLoading && filters.hasMore) {
+                if (!isLoading && filters.hasMore && filters.limit < filters.totalAttractions ) {
                   setFilters((prev) => {
                     return { ...prev, skip: prev.skip + 1 };
                   });
@@ -273,7 +273,7 @@ function ToursHomePage() {
                   );
                 })}
               </div>
-              {isLoading ? (
+              {isLoading  ? (
                 <div className="pt-2">
                   <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-3">
                     {[1, 2, 3, 4]?.map((ele) => (

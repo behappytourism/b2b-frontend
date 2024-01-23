@@ -60,10 +60,30 @@ function Cartpage() {
     const [price, setPrice] = useState(0) 
 
     useEffect(() => {
-        const sum = agentExcursionCart?.reduce((acc, data) => {
-          return Number(acc) + Number(data?.price)
-        }, 0)
-        setPrice(sum)
+        // const sum = agentExcursionCart?.reduce((acc, data) => {
+        //     console.log(acc, data, 'show acc and data');
+        //   return Number(acc) + Number(data?.price)
+        // }, 0)
+        // console.log(sum, 'show sum');
+        // setPrice(sum)
+
+        let sum = 0
+        if(agentExcursionCart?.length) {
+            agentExcursionCart?.map((items)=>{
+                if(items.adultPrice && items.adult ){
+                    sum += items?.isB2bPromoCode ? ( items?.adultPrice  + items?.b2bPromoAmountAdult )  * items?.adult : items?.adultPrice * items?.adult
+                
+                } 
+                if(items?.childPrice && items.child){
+                    sum += items?.isB2bPromoCode ? ( items?.childPrice  + items?.b2bPromoAmountChild )  * items?.child : items?.childPrice * items?.child
+                }
+                if(items?.infantPrice && items?.infant) {
+                    sum += items?.infantPrice * items?.infant
+                }
+                setPrice(sum)
+            })
+
+        }
       }, [agentExcursionCart])
     
     useEffect(()=>{
@@ -254,10 +274,11 @@ function Cartpage() {
     const singleAttractionTotalCost = (items) =>{
         let sum = 0
         if(items.adultPrice && items.adult ){
-            sum += items?.adultPrice * items.adult
+            sum += items?.isB2bPromoCode ? ( items?.adultPrice  + items?.b2bPromoAmountAdult )  * items?.adult : items?.adultPrice * items?.adult
+        
         } 
         if(items?.childPrice && items.child){
-            sum += items?.childPrice * items?.child
+            sum += items?.isB2bPromoCode ? ( items?.childPrice  + items?.b2bPromoAmountChild )  * items?.child : items?.childPrice * items?.child
         }
         if(items?.infantPrice && items?.infant) {
             sum += items?.infantPrice * items?.infant
@@ -377,14 +398,14 @@ function Cartpage() {
                                                                 <div className='gap-1 flex  text-gray-600 py-1 px-1 rounded-md items-center'>
                                                                     <span className=''>{item?.adult}</span>
                                                                     <span className=''><BsPersonFill /> </span>
-                                                                    <span className=''>{priceConversion(item?.adultPrice, selectedCurrency, true)}</span>
+                                                                    <span className=''>{priceConversion(item?.isB2bPromoCode ? item?.adultPrice + item?.b2bPromoAmountAdult : item?.adultPrice, selectedCurrency, true)}</span>
                                                                 </div>
                                                                 )}
                                                                 {item?.child > 0 && (
                                                                     <div className='gap-1 flex  text-gray-600 py-1 px-1 rounded-md items-center'>
                                                                         <span className=''>{item?.child} </span>
                                                                         <span className=''><FaChild /></span>
-                                                                        <span className=''>{priceConversion(item?.childPrice, selectedCurrency, true)} </span>
+                                                                        <span className=''>{priceConversion(item?.isB2bPromoCode ? item?.childPrice + item?.b2bPromoAmountChild : item?.childPrice , selectedCurrency, true)} </span>
                                                                     </div>
                                                                     )}
                                                                 {item?.infant > 0 && (
