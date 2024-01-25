@@ -97,7 +97,7 @@ const LoginSection = () => {
   const renderForgotPasswordSection = () => {
     return (
       <form onSubmit={submitForgotPasswordHandler}>
-        <div className=" bg-white rounded-3xl w-96 h-96 shadow-xl">
+        <div className=" bg-white rounded-3xl w-96 h-80 shadow-xl">
           <div className="pt-8 pl-8">
             <h1 className="text-lg font-semibold">Forgot Password</h1>
           </div>
@@ -149,7 +149,7 @@ const LoginSection = () => {
   const renderLoginSection = () => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className=" bg-white rounded-3xl w-96 h-96 shadow-xl">
+        <div className=" bg-white rounded-3xl w-96 h-80 shadow-xl">
           <div className="pt-8 pl-8">
             <h1 className="text-lg font-semibold">Login Now</h1>
           </div>
@@ -235,7 +235,7 @@ const LoginSection = () => {
                 type="submit"
                 className="border rounded-full w-32 h-9 hover:bg-sky-400 bg-black hover:text-white text-white"
               >
-               {isLoading ? <BtnLoader /> : "Submit"}
+               {isLoading ? <BtnLoader /> : "Login"}
               </button>
             </div>
           </div>
@@ -246,29 +246,30 @@ const LoginSection = () => {
 
   return (
     <div>
-      <div className="flex md:flex-row flex-col gap-5 md:gap-20 justify-center p-5 ">
+      <div className="flex md:flex-row flex-col justify-evenly p-5 ">
         <div className="order-last md:order-first md:flex gap-1 w-1/2">
           <div className="">
             <div className="pt-20">
-              <h1 className="text-4xl font-extrabold">
+              <h1 className="text-5xl font-extrabold">
                 Your Gateway to Unforgettable{" "}
                 <span className="text-green-400">UAE Experiences</span>
               </h1>
             </div>
             <div className="pt-5">
-              <h1 className="text-xsbase max-w-xs">
+              <h1 className="text-xsbase max-w-xs text-lg">
                 We understand happiness at every guest Touchpoint, all we got
                 covered to create unforgettable memory
               </h1>
             </div>
-            <div className="pt-10 ">
+            {/* <div className="pt-10 ">
               <button className="h-14 text-white w-44 bg-sky-400 rounded-full">
                 Explore More
               </button>
-            </div>
+            </div> */}
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden lg:block w-full h-96">
             <img
+            className="w-full h-full"
               src="https://cdni.iconscout.com/illustration/premium/thumb/international-travel-3217263-2745445.png"
               alt=""
             />

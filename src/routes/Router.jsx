@@ -479,10 +479,10 @@ const ThemeRoutes = [
     path:"/login",
     element:<LandingPage/>
   },
-  // {
-  //   path:"/aboutus",
-  //   element:<AboutUsPage/>
-  // },
+  {
+    path:"/aboutus",
+    element:<AboutUsPage/>
+  },
   {
     path:"/contactusb2b",
     element:<ContactUsPage/>

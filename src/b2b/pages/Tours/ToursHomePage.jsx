@@ -119,7 +119,7 @@ function ToursHomePage() {
 
   return (
     <div className="">
-      <div className="grid md:grid-cols-1 relative ">
+      {/* <div className="grid md:grid-cols-1 relative ">
         {banners?.length ? (
           <Carousel
             responsive={responsive}
@@ -164,6 +164,9 @@ function ToursHomePage() {
         <div className="absolute inset-0 flex flex-col justify-center items-center translate-y-40 md:translate-y-32">
           <AttractionCard />
         </div>
+      </div> */}
+      <div className="w-full px-36 flex justify-end">
+      <AttractionCard />
       </div>
       <div className="py-5 px-3 md:py-10 md:px-32 flex justify-center bg-white w-full h-full">
         <div>

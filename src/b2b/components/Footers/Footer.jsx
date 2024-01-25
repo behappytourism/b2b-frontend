@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { FaTwitter, FaYoutube } from "react-icons/fa";
 // import { BiLogoTripAdvisor } from "react-icons/bi";
 
-
 // import React from "react";
 import { FaFacebook, FaSquareInstagram } from "react-icons/fa6";
 // import { IoLogoWhatsapp } from "react-icons/io";
@@ -22,7 +21,7 @@ import { TbBrandTripadvisor } from "react-icons/tb";
 function Footer({ module = "general" }) {
   const navigate = useNavigate();
   const { agent } = useSelector((state) => state.agents);
-  const { socialMedias } = useSelector((state)=> state.home)
+  const { socialMedias } = useSelector((state) => state.home);
   const [whatsapp, setWhatsapp] = useState("");
 
   useEffect(() => {
@@ -37,7 +36,6 @@ function Footer({ module = "general" }) {
       );
     }
   }, [agent]);
-
 
   return (
     // <div className="flex justify-center bg-gray-100 mt-10 py-5 pb-20 md:pb-0 shadow-round">
@@ -128,25 +126,55 @@ function Footer({ module = "general" }) {
     //   </div>
     // </div>
     <div>
-    <div className="pt-10 min-h-80 bg-white w-full">
-      <div className="p-5 max-w-screen-2xl bg-slate-50 mx-auto ">
-        <div className="border-b mb-4 ">
-          <div className="flex justify-start md:justify-evenly flex-col md:flex-row gap-5 md:gap-20 pt-10 mb-5 divide-y md:divide-y-0">
-            <div>
-              <div className="md:flex md:gap-10 md:justify-start">
-                <div>
-                  <img
-                    className="h-full object-fill w-[250px]"
-                    src={config.COMPANY_LOGO}
-                    alt=""
-                  />
+      <div className="pt-10 min-h-80 bg-white w-full">
+        <div className="p-5 max-w-screen-2xl bg-slate-50 mx-auto ">
+          <div className="border-b mb-4 ">
+            <div className="grid md:grid-cols-2  pt-10 mb-5 divide-y md:divide-y-0">
+              <div>
+                <div className="md:flex md:gap-10 md:justify-start">
+                  <div className="flex justify-start px-5">
+                    <img
+                      className="h-full object-fill w-[250px]"
+                      src={config.COMPANY_LOGO}
+                      alt=""
+                    />
+                  </div>
                 </div>
-                
               </div>
-           
-            </div>
-            <div className=" pt-3 justify-center">
-                {/* <a href="">
+
+              <div className="flex gap-10">
+                <div className="">
+                  <div className="pt-5">
+                    <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                      Terms & conditions
+                    </button>
+                  </div>
+                  <div className="pt-2">
+                    <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                      Privacy Policy
+                    </button>
+                  </div>
+                  <div className="pt-2">
+                    <button
+                      className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer"
+                      onClick={() => navigate("/contactusb2b")}
+                    >
+                      Contact Us
+                    </button>
+                  </div>
+                  {/* <div className="pt-2">
+                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                    B2C Login
+                  </button>
+                </div>
+                <div className="pt-2">
+                  <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
+                    Knowledge Base
+                  </button>
+                </div> */}
+                </div>
+                <div className=" pt-3 justify-center">
+                  {/* <a href="">
                      <div className=" flex gap-1 w-8 h-8 text-xl">
                     <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
                       <IoLogoWhatsapp />
@@ -156,9 +184,8 @@ function Footer({ module = "general" }) {
                     </div>
                   </div>
                 </a> */}
-                {
-                  socialMedias?.facebookUrl?.length ? (
-                    <a  href={socialMedias?.facebookUrl}>
+                  {socialMedias?.facebookUrl?.length ? (
+                    <a href={socialMedias?.facebookUrl}>
                       <div className=" flex gap-1  w-8 h-8 text-xl">
                         <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
                           <FaFacebook />
@@ -168,13 +195,12 @@ function Footer({ module = "general" }) {
                         </div>
                       </div>
                     </a>
-                  ) : ""
-                }
-                <div className="pt-1">
-                  {
-                    socialMedias?.instagramUrl?.length ? (
-
-                      <a  href={socialMedias?.instagramUrl}>
+                  ) : (
+                    ""
+                  )}
+                  <div className="pt-1">
+                    {socialMedias?.instagramUrl?.length ? (
+                      <a href={socialMedias?.instagramUrl}>
                         <div className="  flex gap-1  w-8 h-8 text-xl">
                           <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
                             <FaSquareInstagram />
@@ -184,91 +210,64 @@ function Footer({ module = "general" }) {
                           </div>
                         </div>
                       </a>
-                    ) : ""
-                  }
-                </div>
-                <div className="pt-1">
-                {
-                  socialMedias?.youtubeUrl?.length ? (
-                    <a href={socialMedias?.youtubeUrl}>
-                      <div className=" flex gap-1  w-8 h-8 text-xl">
-                        <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
-                        <FaYoutube />
-                        </h1>
-                        <div className="pt-3">
-                          <h1 className="text-xs text-gray-400">YouTube</h1>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div className="pt-1">
+                    {socialMedias?.youtubeUrl?.length ? (
+                      <a href={socialMedias?.youtubeUrl}>
+                        <div className=" flex gap-1  w-8 h-8 text-xl">
+                          <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
+                            <FaYoutube />
+                          </h1>
+                          <div className="pt-3">
+                            <h1 className="text-xs text-gray-400">YouTube</h1>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  ) : ""
-                }
-                </div>
-               
-               <div className="pt-1">
-                  {
-                    socialMedias?.twitterUrl?.length ? (
+                      </a>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+
+                  <div className="pt-1">
+                    {socialMedias?.twitterUrl?.length ? (
                       <a href={socialMedias?.twitterUrl}>
                         <div className="  flex gap-1  w-8 h-8 text-xl">
                           <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
-                          <FaTwitter />
+                            <FaTwitter />
                           </h1>
                           <div className="pt-3">
                             <h1 className="text-xs text-gray-400">Twitter</h1>
                           </div>
                         </div>
                       </a>
-                    ) : ""
-                  }
-               </div>
-               <div className="pt-1">
-                  {
-                    socialMedias?.tripAdvisorUrl?.length ? (
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div className="pt-1">
+                    {socialMedias?.tripAdvisorUrl?.length ? (
                       <a href={socialMedias?.tripAdvisorUrl}>
                         <div className="  flex gap-1  w-8 h-8 text-xl">
                           <h1 className="p-[7px] bg-white  rounded-full  shadow-xl">
-                          <TbBrandTripadvisor  />
+                            <TbBrandTripadvisor />
                           </h1>
                           <div className="pt-3">
-                            <h1 className="text-xs text-gray-400">Tripadviser</h1>
+                            <h1 className="text-xs text-gray-400">
+                              Tripadviser
+                            </h1>
                           </div>
                         </div>
                       </a>
-                    ) : ""
-                  }
-               </div>
-                </div>   
-            <div className="">
-         
-              <div className="pt-5">
-                <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                  Terms & conditions
-                </button>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
               </div>
-              <div className="pt-2">
-                <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                  Privacy Policy
-                </button>
-              </div>
-              <div className="pt-2">
-                <button
-                  className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer"
-                  onClick={() => navigate("/contactusb2b")}
-                >
-                  Contact Us
-                </button>
-              </div>
-              {/* <div className="pt-2">
-                <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                  B2C Login
-                </button>
-              </div>
-              <div className="pt-2">
-                <button className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer">
-                  Knowledge Base
-                </button>
-              </div> */}
-            </div>
-            {/* <div>
+              {/* <div>
               <div>
                 <h1 className="text-md font-light text-slate-500">
                   Top Desitnations
@@ -305,7 +304,7 @@ function Footer({ module = "general" }) {
                 </h1>
               </div>
             </div> */}
-            {/* <div>
+              {/* <div>
               <div>
                 <h1 className="text-md font-light text-slate-500 hover:border-b cursor-pointer">
                   Top Attractions
@@ -343,7 +342,7 @@ function Footer({ module = "general" }) {
                 </h1>
               </div>
             </div> */}
-            {/* <div>
+              {/* <div>
               <div>
                 <h1 className="text-md font-light text-slate-500">Hotels</h1>
               </div>
@@ -368,11 +367,11 @@ function Footer({ module = "general" }) {
                 </h1>
               </div>
             </div> */}
+            </div>
           </div>
-        </div>
-        <div className=" flex text-gray-300 border-gray-50 w-[100%] text-center ">
-           <p className="mb-2 text-[10px]">
-             {/* License No. 671267 The logos, images, and other visual content
+          <div className=" flex text-gray-300 border-gray-50 w-[100%] text-center ">
+            <p className="mb-2 text-[10px]">
+              {/* License No. 671267 The logos, images, and other visual content
              displayed on our Website are used for informational and illustrative
              purposes only. These images may include, but are not limited to,
              logos of various travel agencies, hotels, airlines, and destination
@@ -383,12 +382,12 @@ function Footer({ module = "general" }) {
              Google LLC. These logos are protected by copyright and trademark
              laws. Google's terms of use and branding guidelines apply to the use
             of their logos. */}
-            {socialMedias?.footerDescription}
-          </p>
+              {socialMedias?.footerDescription}
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 }
 

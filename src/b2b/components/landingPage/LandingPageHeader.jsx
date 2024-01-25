@@ -30,7 +30,7 @@ function LandingPageHeader() {
           <div className="hidden lg:block ">
             <button
               className="text-sm font-lg font-demo  font-bold h-10 rounded-full hover:bg-sky-100 p-2 hover:text-sky-400 transition duration-300 whitespace-nowrap"
-              // onClick={() => navigate("/contactusb2b")}
+              onClick={() => navigate("/aboutus")}
             >
               About Us{" "}
             </button>
@@ -51,14 +51,14 @@ function LandingPageHeader() {
               Tours{" "}
             </button>
           </div>
-          <div className="hidden md:block ">
+          {/* <div className="hidden md:block ">
             <button
               className="text-sm font-lg font-demo  font-bold h-10 rounded-full hover:bg-sky-100 p-2 hover:text-sky-400 transition duration-300"
               // onClick={() => navigate("/contactusb2b")}
             >
               Promotions{" "}
             </button>
-          </div>
+          </div> */}
           <div className="hidden md:block ">
             <button
               className="text-sm font-lg font-demo  font-bold h-10 rounded-full hover:bg-sky-100 p-2 hover:text-sky-400 transition duration-300"

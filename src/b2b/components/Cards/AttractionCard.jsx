@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useHandleClickOutside } from "../../../hooks";
 import axios from "../../../axios";
+import { CiSearch } from "react-icons/ci";
 
 function AttractionCard({ setView }) {
   const navigate = useNavigate();
@@ -37,11 +38,16 @@ function AttractionCard({ setView }) {
   return (
     <>
       <form>
-        <div className="md:flex gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto px-5">
+        <div className="md:flex gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto">
           <div className="w-full flex justify-center items-center ">
             <div className=" w-full ">
               <div className="" ref={dropdownWrapperRef}>
-                <div className="space-y-1">
+                <div className="space-y-1 flex ">
+                  <div className="pt-1 ">
+                    <div className="border-l border-y rounded-l-xl  h-14 w-10">
+                      <h1 className="text-4xl text-gray-300 pt-2 ml-1"><CiSearch /></h1>
+                    </div>
+                  </div>
                   <input
                     type="text"
                     list="Country"
@@ -50,7 +56,7 @@ function AttractionCard({ setView }) {
                     onFocus={handleFocus}
                     required
                     placeholder="Search Tours"
-                    className="block placeholder:text-gray-300  lg:w-[150%] sm:w-[40%] w-full capitalize outline-none bg-white border rounded-xl p-5  h-10  bg-transparent text-sm text-gray-300 font-medium"
+                    className="block placeholder:text-gray-300 lg:w-[400px] sm:w-[40%] w-full capitalize outline-none bg-white border-r border-y rounded-r-xl p-5  h-14  bg-transparent text-sm text-gray-300 font-medium"
                   />
                 </div>
                 {datalist && (

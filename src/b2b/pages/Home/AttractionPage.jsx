@@ -65,6 +65,13 @@ function AttractionPage() {
     fetchSections();
   }, []);
 
+
+  const handleBannerUrls = (ele) => {
+    if (ele?.isButton === true && ele?.buttonUrl) {
+      window.location.href = ele?.buttonUrl;
+    }
+  }
+
   return (
     <div className="">
       {/* <SearchCards /> */}
@@ -77,30 +84,36 @@ function AttractionPage() {
         >
           {banners.map((ele) => (
             <div className="w-full h-[500px] relative">
-              <img
-                className="w-full h-full object-fill"
-                src={config.SERVER_URL + ele?.image}
-                alt=""
-              />
-              <div className="absolute top-20 left-10 md:top-36 bottom-0 right-0 md:left-40 ">
-                <div className="bg-black/40 rounded-lg w-full md:w-8/12 p-7">
-                  <h1 className="font-bold text-white text-4xl">
-                    {ele?.title}
-                  </h1>
-                  <h1 className="text-white text-lg font-semibold w-9/12 pt-2">
-                    {ele?.body}
-                  </h1>
-                  <div className="pt-5">
-                    {ele?.isButton === true && (
-                      <a href={ele?.buttonUrl}>
-                        <button className="bg-BEColor text-white h-10 rounded-full w-32 font-bold ">
-                          {ele?.buttonText}
-                        </button>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
+                <img
+                onClick={()=> handleBannerUrls(ele)}
+                  className="w-full h-full object-fill"
+                  src={config.SERVER_URL + ele?.image}
+                  alt=""
+                />
+                {
+                  ele?.title?.length ? (
+                    <div className="absolute top-20 left-10 md:top-36 bottom-0 right-0 md:left-40 h-1 ">
+                      <div className="bg-black/40 rounded-lg w-full md:w-8/12 p-7">
+                        <h1 className="font-bold text-white text-4xl">
+                          {ele?.title}
+                        </h1>
+                        <h1 className="text-white text-lg font-semibold w-9/12 pt-2">
+                          {ele?.body}
+                        </h1>
+                        {/* <div className="pt-5">
+                          {ele?.isButton === true && (
+                            <a href={ele?.buttonUrl}>
+                              <button className="bg-BEColor text-white h-10 rounded-full w-32 font-bold ">
+                                {ele?.buttonText}
+                              </button>
+                            </a>
+                          )}
+                        </div> */}
+                      </div>
+                    </div>
+
+                  ) : ""
+                }
             </div>
           ))}
         </Carousel>
