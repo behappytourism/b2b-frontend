@@ -46,11 +46,11 @@ function AttractionDetails() {
       <div className="">
          <div className="">
             {/* <SearchCards /> */}
-            <div className=" max-w-screen-xl mx-auto px-5">
+            <div className="  mx-auto px-10 py-5">
                {isLoading ? (
                   <div className=" rounded animate-pulse p-6">
                      <div className="lg:grid lg:grid-cols-12 gap-1">
-                        <div className="col-span-3 space-y-3 px-5 ">
+                        {/* <div className="col-span-3 space-y-3 px-5 ">
                            <div className="hidden lg:block  h-[55vh] space-y-2">
                               <div className="flex w-full md:h-full items-center justify-center mb-4 bg-gray-300 rounded-2xl ">
                                  <svg
@@ -64,7 +64,7 @@ function AttractionDetails() {
                                  </svg>
                               </div>
                            </div>
-                        </div>
+                        </div> */}
                         <div className="col-span-9 ">
                            <div className="flex w-full md:h-full items-center justify-center mb-4 bg-gray-300 rounded-2xl ">
                               <svg
@@ -129,7 +129,7 @@ function AttractionDetails() {
                   </div>
                ) : (
                   <>
-                     <ImageSection />
+                     {/* <ImageSection />  */}
                      <HeroSection />
                   </>
                )}
