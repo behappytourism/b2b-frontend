@@ -142,11 +142,15 @@ function LandingPage() {
 
     return (
       <div className="bg-white w-full h-auto">
-        <div className="pt-10">
-          <h1 className="text-center text-3xl font-extrabold">
-            Top Attractions
-          </h1>
-        </div>
+      {
+        topAttractionsData?.length ? (
+          <div className="pt-10">
+            <h1 className="text-center text-3xl font-extrabold">
+              Top Attractions
+            </h1>
+          </div>
+        ) : ""
+      }
         <div className="flex justify-center p-10 ">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {topAttractionsData?.map((ele, index) => {
