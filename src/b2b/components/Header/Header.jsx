@@ -402,7 +402,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                     </p>
                     <p className="text-sm text-gray-400">Cart</p>
                   </div>
-                  {/* {cart && <CartModal setCart={setCart} />} */}
+                
                 </div>
               </div>
             </div>
