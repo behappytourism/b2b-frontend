@@ -386,7 +386,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                         : " text-gray-400 "
                     }`}
                   >
-                    Bookings
+                    Booking Reports
                   </p>
                 </div>
               </div>

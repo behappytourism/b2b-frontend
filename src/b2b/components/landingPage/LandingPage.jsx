@@ -19,6 +19,15 @@ import LoginSection from "./LoginSection";
 import ErrorAlert from "../Alerts/ErrorAlert";
 import axios from "../../../axios";
 import { config } from "../../../constants";
+import { 
+  MdOutlineMiscellaneousServices, 
+  MdFolderSpecial, 
+  MdAttractions, 
+  MdOutlineSupportAgent
+} from "react-icons/md";
+import { SiAdguard } from "react-icons/si";
+import { IoCarSportSharp } from "react-icons/io5";
+import { TbBrandBooking } from "react-icons/tb";
 
 const responsive = {
   superLargeDesktop: {
@@ -45,80 +54,94 @@ function LandingPage() {
     return (
       <div className="pt-24 bg-white min-h-[500px]">
         <div className="flex md:flex-row flex-col gap-10 md:gap-32 justify-center  p-5">
-          <div className="order-last md:order-first grid grid-cols-2 gap-4">
+          <div className="order-last md:order-first grid grid-cols-2 gap-5">
             <div className="">
               <div className="">
-                <img
+                <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><SiAdguard /></h1>
+                {/* <img
                   className="w-10 h-10 rounded "
                   src="https://play-lh.googleusercontent.com/ZTOISGPcTOFkjff58ufepEY8QH5lcri3Y2X-ylNUMW1lRUDCXtlmxx3sudFgmHXYYbI"
                   alt=""
-                />
+                /> */}
               </div>
               <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">24/7 Support</h1>
-                <h1 className="text-sm text-slate-400 pt-1 ">
+                <h1 className=" font-bold">Best Price Guarantee</h1>
+                {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   We are committed to serve the best with customers{" "}
-                </h1>
+                </h1> */}
               </div>
             </div>
             <div className="">
               <div className="">
-                <img
-                  className="w-10 h-10 rounded"
-                  src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRcd82a3FCJmSRL3yaV_-1KopdWheHENkTiv8FBbYpI1cNtO3bN"
-                  alt=""
-                />
+              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><MdFolderSpecial /></h1>
               </div>
               <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Travel Guid</h1>
-                <h1 className="text-sm text-slate-400 pt-1 ">
+                <h1 className=" font-bold">Special Deals</h1>
+                {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   The tour guide will help you in your destination
-                </h1>
+                </h1> */}
               </div>
             </div>
             <div className="">
               <div className="">
-                <img
-                  className="w-10 h-10"
-                  src="https://banner2.cleanpng.com/20190708/kay/kisspng-business-cloud-computing-logo-product-information-about-hydrowwise-hydrowise-5d23a564b83346.6359897715626171887545.jpg"
-                  alt=""
-                />
+              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><MdAttractions /></h1>
               </div>
               <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Top Destination</h1>
-                <h1 className="text-sm text-slate-400 pt-1 ">
+                <h1 className=" font-bold">Top Attractions</h1>
+                {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   The best destination in the whole world are ready for you{" "}
-                </h1>
+                </h1> */}
               </div>
             </div>
             <div className="">
               <div className="">
-                <img
-                  className="w-10 h-10 rounded"
-                  src="https://images.assetsdelivery.com/compings_v2/vectorstockvadim/vectorstockvadim2004/vectorstockvadim200406348.jpg"
-                  alt=""
-                />
+              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><IoCarSportSharp /></h1>
               </div>
               <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Easly Booking</h1>
-                <h1 className="text-sm text-slate-400 pt-1 ">
+                <h1 className=" font-bold">Transfers</h1>
+                {/* <h1 className="text-sm text-slate-400 pt-1 ">
+                  The best destination in the whole world are ready for you{" "}
+                </h1> */}
+              </div>
+            </div>
+            <div className="">
+              <div className="">
+              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><MdOutlineSupportAgent /></h1>
+              </div>
+              <div className=" max-w-[250px] pt-2">
+                <h1 className=" font-bold">24x7 Support</h1>
+                {/* <h1 className="text-sm text-slate-400 pt-1 ">
+                  The best destination in the whole world are ready for you{" "}
+                </h1> */}
+              </div>
+            </div>
+            <div className="">
+              <div className="">
+               <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><TbBrandBooking /></h1>
+              </div>
+              <div className=" max-w-[250px] pt-2">
+                <h1 className=" font-bold">Easy Booking</h1>
+                {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   Ease of booking process for customers convenience{" "}
-                </h1>
+                </h1> */}
               </div>
             </div>
           </div>
           <div className="order-first md:order-last">
             <div>
               <h1 className="max-w-[350px] text-4xl font-extrabold">
-                Our Services For You
+                Who we are!
               </h1>
               <h1 className="text-slate-400 text-sm max-w-md">
-                We have service and trust for customers to always be the best
-                and their choice
+              BE HAPPY TRAVEL & TOURISM L.L.C. is A Dubai based Premier Destination Management Company. focused on B2B clients.
+              We vow to Provide the best Deals and Quality Service to our travel partners, and create unforgettable memories for the clients.
               </h1>
             </div>
           </div>
         </div>
+          <div className="flex justify-center  ">
+            <h1 className="font-light text-sm md:text-lg  px-0  md:px-10 ml-0 md:ml-[600px]">Service Excellence, Trust Always – Your Best Choice, Every Time.</h1>
+          </div>
       </div>
     );
   };
@@ -214,17 +237,13 @@ function LandingPage() {
                 <div>
                   <div>
                     <h1 className="text-lg font-medium">
-                      Free & Quick Registration
+                    Competitive Pricing
                     </h1>
                   </div>
                   <div className="max-w-lg text-gray-400 text-sm">
-                    {/* <h1>
-                      Registration is Free with TravellersChoiceb2b. Agent who
-                      fulfills the criteria can register as an Agent. Once
-                      registered login credentials will be sent to the registered
-                      email id wherein the agent can login and access the services
-                      he wants to book.
-                    </h1> */}
+                    <h1>
+                     Access to competitive and negotiated rates, ensuring cost-effectiveness for your clients.
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -237,17 +256,13 @@ function LandingPage() {
                 <div>
                   <div>
                     <h1 className="text-lg font-medium">
-                      Easy Online Transaction
+                    24/7 Support
                     </h1>
                   </div>
                   <div className="max-w-lg text-gray-400 text-sm">
-                    {/* <h1>
-                      Reliability and safety of our customers’ personal data are
-                      top of mind at Travellers Choice Tours, and that’s why our
-                      sophisticated online portal is thoroughly verified and
-                      secured by the most advanced digital security certification
-                      authority – Thawte.
-                    </h1> */}
+                    <h1>
+                    Dedicated customer support available around the clock to address any issues or queries promptly.
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -261,20 +276,13 @@ function LandingPage() {
                 <div>
                   <div>
                     <h1 className="text-lg font-medium">
-                      Guest Reviews & Ratings
+                    Free & instant Registration
                     </h1>
                   </div>
                   <div className="max-w-lg text-gray-400 text-sm">
-                    {/* <h1>
-                      Travellers Choice Tours takes immense pride in its
-                      exceptional capability to delight and wow customers by
-                      offering instinctive and absolutely personalized destination
-                      management services. But we don’t ask you to take our words;
-                      know it for yourself by directly visiting our Testimonials
-                      Page and see what our valuable guests have to say about
-                      their experience of booking and taking a tour or holiday
-                      with us.
-                    </h1> */}
+                    <h1>
+                      Meet Eligibility, Enjoy the Perks: Secure Free & Quick Registration Today!
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -287,20 +295,13 @@ function LandingPage() {
                 <div>
                   <div>
                     <h1 className="text-lg font-medium">
-                      24X7 Live Chat Support
+                    Easy online booking
                     </h1>
                   </div>
                   <div className="max-w-lg text-gray-400 text-sm">
-                    {/* <h1>
-                      We boast of an award-winning, round-the-clock customer
-                      support center that is rapid to reply on every medium: be it
-                      via Live Chat, WhatsApp. Whether you’ve any query on our
-                      services or need assistance with the reservation procedures
-                      or even looking for a little inspiration to decide on your
-                      perfect holiday, get in touch with our crew who will listen
-                      to all your travel needs anytime, anywhere, and turn it into
-                      an absolute reality.
-                    </h1> */}
+                    <h1>
+                      Effortless Transactions, Anytime, anywhere: Experience the Ease of Online bookings!
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -313,15 +314,13 @@ function LandingPage() {
                 <div>
                   <div>
                     <h1 className="text-lg font-medium">
-                      Secure Online Transaction
+                    Secure Online Transaction
                     </h1>
                   </div>
                   <div className="max-w-lg text-gray-400 text-sm">
-                    {/* <h1>
-                      Our online payment system is secure! In fact it encrypts
-                      your payment information to protect you against fraud and
-                      unauthorized transactions.
-                    </h1> */}
+                    <h1>
+                     Confidence in Every Click: Experience Secure Online Transactions with Peace of Mind.
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -334,16 +333,32 @@ function LandingPage() {
                 <div>
                   <div>
                     <h1 className="text-lg font-medium">
-                      Best Price Guarantee
+                       Happy Customers
                     </h1>
                   </div>
                   <div className="max-w-lg text-gray-400 text-sm">
-                    {/* <h1>
-                      Travellers Choice Tours’ Best Price Guarantee promises our
-                      esteemed clients that they will not only be faultlessly
-                      served with the Destination Management services of high-end
-                      quality, but also the best possible value in the industry.
-                    </h1> */}
+                    <h1>
+                      Customer Happiness, Our Pride – Where Every Interaction Sparks a Smile.
+                    </h1>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-5 justify-center">
+                <div className="pt-5">
+                  <h1 className="text-4xl text-sky-500 rounded-full bg-sky-50 p-3 ">
+                    <MdOutlineMiscellaneousServices />
+                  </h1>
+                </div>
+                <div>
+                  <div>
+                    <h1 className="text-lg font-medium">
+                      Commitment to Quality Services
+                    </h1>
+                  </div>
+                  <div className="max-w-lg text-gray-400 text-sm">
+                    <h1>
+                     Customer Happiness, Our Pride – Where Every Interaction Sparks a Smile.
+                    </h1>
                   </div>
                 </div>
               </div>
@@ -373,22 +388,21 @@ function LandingPage() {
             </div>
             <div className="pt-10">
               <h1 className="text-sm text-gray-300 max-w-md">
-                With all the convenience and experiences that we provide to
-                customers, We will always help
+              Our commitment is to provide you with the finest experience and impeccable service. From start to finish, your satisfaction is our priority. Choose us for a journey that exceeds expectations and a service that stands as our best, exclusively for you
               </h1>
             </div>
             <div className="pt-10 flex gap-20">
               <div>
-                <h1 className="text-4xl text-blue-400 font-medium">40+</h1>
+                <h1 className="text-4xl text-blue-400 font-medium">10+</h1>
                 <h1 className="text-gray-300 max-w-[30px]">Year Experience</h1>
               </div>
               <div>
-                <h1 className="text-4xl text-blue-400 font-medium">10K</h1>
-                <h1 className="text-gray-300 max-w-[30px]">Top Destinations</h1>
+                <h1 className="text-4xl text-blue-400 font-medium">1000+</h1>
+                <h1 className="text-gray-300 max-w-[30px]">Top Attractions</h1>
               </div>
               <div>
-                <h1 className="text-4xl text-blue-400 font-medium">40K</h1>
-                <h1 className="text-gray-300 max-w-[30px]">Happy Traveller</h1>
+                <h1 className="text-4xl text-blue-400 font-medium">90K</h1>
+                <h1 className="text-gray-300 max-w-[30px]">Happy Travelers</h1>
               </div>
               <div>
                 <h1 className="text-4xl text-blue-400 font-medium">200+</h1>

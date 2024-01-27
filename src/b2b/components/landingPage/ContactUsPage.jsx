@@ -12,11 +12,15 @@ import { setAlertSuccess } from '../../../redux/slices/homeSlice';
 import { CiLocationOn } from "react-icons/ci";
 import { FaPhoneVolume, FaRegAddressBook  } from "react-icons/fa";
 import SuccessAlert from "../Alerts/SuccessAlert";
+import Header from '../Header/Header';
+
 
 
 function ContactUsPage() {
 
     const { socialMedias } = useSelector((state)=> state.home)
+    const { isLoggedIn } = useSelector((state)=> state.agents)
+    
     const dispatch = useDispatch();
 
     const [data, setData] = useState({
@@ -59,9 +63,7 @@ function ContactUsPage() {
            e.preventDefault()
            setIsLoading(true)
             const res = await axios.post(`b2b/settings/get-in-touch`, data)
-            console.log('hhhhhh');
             if(res?.data){
-                console.log('la;ksjdhf');
                 dispatch(setAlertSuccess({
                     status: true,
                     title: "Sended Successfully",
@@ -79,9 +81,18 @@ function ContactUsPage() {
   return (
     <div>
       <div>
+        {
+            isLoggedIn === true ? (
+                <div className='w-full'>
+                    <Header />
+                </div>
+            ) : (
         <div className=' w-full'>
             <LandingPageHeader/>
         </div>
+
+            )
+        }
         <div>
             <div className='relative overflow-hidden h-96'>
                <img className='object-cover w-full h-full' src="https://img.veenaworld.com/customized-holidays/world/dubai-egypt-israel/shdz1/shdz1-bnn-1.jpg" alt="" />
@@ -164,7 +175,6 @@ function ContactUsPage() {
             <div className='grid md:grid-cols-3 gap-6'>
                 {
                     socialMedias?.addresses?.map((ele, index)=>{
-                        console.log(ele);
                         return (
                             <div key={index} className='bg-white w-80 h-[350px] shadow-round shadow-gray-200 rounded-2xl hover:border-sky-400 hover:border'>
                                 <div className=''>

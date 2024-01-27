@@ -28,7 +28,7 @@ export default function B2BMainLayout() {
             <Outlet />
           </div>
           <a href={`https://wa.me/${socialMedias?.phoneNumber2}`}>
-            <div className="fixed p-2 animate-bounce bg-white shadow-lg rounded-xl  hover:bg-slate-200 right-2 top-[570px]">
+            <div className="fixed p-4 animate-bounce bg-white shadow-lg rounded-xl  hover:bg-slate-200 right-2 top-[750px]">
               <h1 className="text-green-500 text-3xl"><BsWhatsapp /></h1>
             </div>
 

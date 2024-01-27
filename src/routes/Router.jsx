@@ -488,7 +488,7 @@ const ThemeRoutes = [
     element:<ContactUsPage/>
   },
   {
-    path: "/terms_conditions",
+    path: "/terms-conditions",
     element: <TermsAndCondition/>
   }
  

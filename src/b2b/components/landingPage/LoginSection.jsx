@@ -26,6 +26,7 @@ const LoginSection = () => {
   const [forgotEmail, setForgotEmail] = useState("");
 
   const handleChange = (e) => {
+    setError("")
     setData((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
@@ -44,28 +45,28 @@ const LoginSection = () => {
     } catch (err) {
       if (err?.response?.data?.error === "Invalid credentials") {
         setError("You have given incorrect email or password");
-        dispatch(
-          setAlertError({
-            status: true,
-            title: "Invalid credentials!",
-            text: "You have given incorrect email or password",
-          })
-        );
+        // dispatch(
+        //   setAlertError({
+        //     status: true,
+        //     title: "Invalid credentials!",
+        //     text: "You have given incorrect email or password",
+        //   })
+        // );
         setIsLoading(false);
         return;
       } else {
         err?.response?.data?.status === 500
           ? setError("Something went wrong!!!")
           : setError(err?.response?.data?.error);
-        dispatch(
-          setAlertError({
-            status: true,
-            title: "Something went wrong!",
-            text:
-              err?.response?.data?.error ||
-              "Sorry! Login unsuccessfull. Please try again.",
-          })
-        );
+        // dispatch(
+        //   setAlertError({
+        //     status: true,
+        //     title: "Something went wrong!",
+        //     text:
+        //       err?.response?.data?.error ||
+        //       "Sorry! Login unsuccessfull. Please try again.",
+        //   })
+        // );
         setIsLoading(false);
         return;
       }
@@ -97,7 +98,7 @@ const LoginSection = () => {
   const renderForgotPasswordSection = () => {
     return (
       <form onSubmit={submitForgotPasswordHandler}>
-        <div className=" bg-white rounded-3xl w-96 h-80 shadow-xl">
+        <div className=" bg-white rounded-3xl w-96 h-[350px]  shadow-xl">
           <div className="pt-8 pl-8">
             <h1 className="text-lg font-semibold">Forgot Password</h1>
           </div>
@@ -149,7 +150,7 @@ const LoginSection = () => {
   const renderLoginSection = () => {
     return (
       <form onSubmit={handleSubmit}>
-        <div className=" bg-white rounded-3xl w-96 h-80 shadow-xl">
+        <div className=" bg-white rounded-3xl w-96 h-[350px] shadow-xl">
           <div className="pt-8 pl-8">
             <h1 className="text-lg font-semibold">Login Now</h1>
           </div>
@@ -213,11 +214,14 @@ const LoginSection = () => {
                     placeholder="Password"
                     type={showPassword ? "text" : "password"}
                     name="password"
-                    value={data.password}
+                    value={data?.password}
                     onChange={handleChange}
                     required
                   />
                 </div>
+              </div>
+              <div className="flex justify-end">
+                <h1 className="text-red-500">{error}</h1>
               </div>
             </div>
           </div>
@@ -250,9 +254,11 @@ const LoginSection = () => {
         <div className="order-last md:order-first md:flex gap-1 w-1/2">
           <div className="">
             <div className="pt-20">
-              <h1 className="text-5xl font-extrabold">
+              <h1 className="text-5xl font-extrabold ">
                 Your Gateway to Unforgettable{" "}
-                <span className="text-green-400">UAE Experiences</span>
+                <div className="pt-1">
+                  <span className="text-green-400">UAE Experiences</span>
+                </div>
               </h1>
             </div>
             <div className="pt-5">

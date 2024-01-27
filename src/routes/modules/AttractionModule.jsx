@@ -7,7 +7,9 @@ export default function AttractionModule() {
       <div className="min-h-[70vh]">
         <Outlet />
       </div>
+      <div className="w-full">
       <Footer module="attractions" />
+      </div>
     </div>
   );
 }

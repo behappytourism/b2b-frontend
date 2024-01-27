@@ -73,7 +73,7 @@ function BottomNav({ setSidebarView }) {
                <TbBrandBooking />
               </div>
               <div className="">
-                <p className="text-xs">Bookings</p> 
+                <p className="text-xs">Booking Reports</p> 
               </div>
             </div>
           </div>

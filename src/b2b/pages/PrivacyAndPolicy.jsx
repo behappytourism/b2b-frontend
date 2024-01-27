@@ -3,8 +3,13 @@ import { Header } from "../components";
 import { config } from "../../constants";
 import axios from '../../axios'
 import LandingPageFooter from "../components/landingPage/LandingPageFooter";
+import { useSelector } from "react-redux";
+import LandingPageHeader from "../components/landingPage/LandingPageHeader";
 
 function PrivacyAndPolicy() {
+
+  const { isLoggedIn, token } = useSelector((state)=> state.agents)
+
 
   const [policyData, setPolicyData] = useState('')
   const fetchPrivacyPolicyContent = async () => {
@@ -22,16 +27,26 @@ function PrivacyAndPolicy() {
 
   return (
     <div>
-        <Header />
+      {
+        isLoggedIn === true && token ? (
+          <div className="w-full">
+            <Header />
+          </div>
+        ) : (
+           <div className="w-full">
+              <LandingPageHeader />
+           </div>
+        )
+      }
         <div className="py-10 px-2  max-w-screen-xl mx-auto">
           <div>
-            <h1 className="text-lg font-semibold">Privacy and Policy</h1>
+            <h1 className="text-3xl font-bold">Privacy and Policy</h1>
           </div>
-          <div className="pt-4">
+          <div className="pt-5">
             <div dangerouslySetInnerHTML={{ __html: policyData }} />
           </div>
         </div>
-        <div>
+        <div className="pt-20">
           <LandingPageFooter/>
         </div>
     {/* <div className="py-10 px-2 max-w-screen-xl mx-auto">

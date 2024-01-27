@@ -193,7 +193,7 @@ function ToursHomePage() {
                 </p>
               }
             >
-              <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-3">
+              <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-3">
                 {attractions?.map((ele, index) => {
                   return (
                     <div
@@ -278,7 +278,7 @@ function ToursHomePage() {
               </div>
               {isLoading  ? (
                 <div className="pt-2">
-                  <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-3">
+                  <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-3">
                     {[1, 2, 3, 4]?.map((ele) => (
                       <div className="bg-white shadow-md  w-full h-[450px]">
                         <div className="w-full h-52 ">

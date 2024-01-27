@@ -16,7 +16,7 @@ function LandingPageFooter() {
     <div>
       <div className="pt-10 min-h-80 bg-white w-full">
         <div className="p-5 max-w-screen-2xl mx-auto ">
-          <div className="border-b mb-10">
+          <div className="border-b mb-2">
             <div className="grid md:grid-cols-2  pt-10 mb-5 divide-y md:divide-y-0">
               <div>
                 <div className="md:flex md:gap-10 md:justify-start">
@@ -30,32 +30,39 @@ function LandingPageFooter() {
                 </div>
               </div>
               <div className="md:flex gap-10">
-                <div className="">
-                  <div className="pt-5">
-                    <button
-                      onClick={() => navigate("/terms_conditions")}
-                      className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer"
-                    >
-                      Terms & conditions
-                    </button>
-                  </div>
-                  <div className="pt-2">
-                    <button
-                      onClick={() => navigate("/privacy-policy")}
-                      className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer"
-                    >
-                      Privacy Policy
-                    </button>
-                  </div>
-                  <div className="pt-2">
-                    <button
-                      className="text-gray-300 text-sm font-extralight hover:border-b cursor-pointer"
-                      onClick={() => navigate("/contactusb2b")}
-                    >
-                      Contact Us
-                    </button>
-                  </div>
-                </div>
+                {
+                  socialMedias?.footer?.length ? (
+                    <div>
+                      {
+                  socialMedias?.footer?.map((ele)=>{
+                    return (
+                      <div>
+                      {
+                        ele?.navLinks?.map((items)=>{
+                          return (
+                            <div className="">
+                              <div className="pt-5">
+                                {/* <a className="text-gray-300 text-sm font-extralight hover:border-b " href={items?.link}>{items?.name}</a> */}
+                                <button
+                                className="text-gray-300 text-sm font-extralight hover:border-b"
+                                onClick={()=>{
+                                  navigate(items?.link)
+                                }}
+                                >{items?.name}</button>
+                              </div>
+                            
+                            </div>
+                          )
+                        })
+                      }
+                      </div>
+                    )
+                  })
+                }
+                    </div>
+                  ) : ""
+                }
+                
                 <div className=" pt-3 justify-center">
                   {/* <a href="">
                       <div className=" flex gap-1 w-8 h-8 text-xl">
@@ -168,6 +175,11 @@ function LandingPageFooter() {
                 </div>
               </div>
             </div>
+          </div>
+              <div className=" flex text-gray-300 border-gray-50 w-[100%] text-center ">
+            <p className=" text-[10px]">
+              {socialMedias?.footerDescription}
+            </p>
           </div>
         </div>
       </div>

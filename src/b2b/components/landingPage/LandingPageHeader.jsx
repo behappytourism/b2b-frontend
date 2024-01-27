@@ -9,8 +9,11 @@ function LandingPageHeader() {
   return (
     <div className="bg-slate-50">
       <div className="flex justify-between p-4 max-w-screen-2xl mx-auto ">
-        <div className="h-16 md:h-20 ">
+        <div className="h-16 md:h-16 ">
           <img
+            onClick={()=>{
+              navigate('/login')
+            }}
             className="h-full object-cover"
             src={config.COMPANY_LOGO}
             alt=""
@@ -67,7 +70,6 @@ function LandingPageHeader() {
               Contact{" "}
             </button>
           </div>
-          {pathname === "/login" ? (
             <div className="pt-1">
               <button
                 className="border px-10 h-9 text-sm bg-sky-400 text-white rounded hover:bg-sky-500 "
@@ -76,9 +78,6 @@ function LandingPageHeader() {
                 Register Here
               </button>
             </div>
-          ) : (
-            ""
-          )}
         </div>
       </div>
     </div>
