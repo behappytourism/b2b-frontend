@@ -45,7 +45,7 @@ function HeroSection() {
         thumbnail={agentExcursion?.images ? agentExcursion?.images[0] : ""}
       />
       <div className="bg-white rounded-3xl">
-        <div className="p-0 lg:p-6">
+        <div className="  ">
           <div className="">
             <div className="w-full ">
                 <div className="text-5xl font-semibold pt-1">
@@ -55,7 +55,7 @@ function HeroSection() {
                   <h1 className="text-lg"><CiLocationOn /> </h1>
                   <h1 className="text-sm text-gray-300">{agentExcursion?.destination?.name}{" "}</h1>
                </div>
-              <div className="flex  gap-2">
+              <div className="flex gap-2"> 
                  <div className="text-xs text-text  flex space-x-1 items-center">
                         {/* <div className="">
                           <button className=" px-2 py-1 text-black border rounded-md capitalize">
