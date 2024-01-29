@@ -109,7 +109,7 @@ function DetailsCard() {
         </div>
       </div>
 
-      <div className="bg-light lg:rounded-xl p-5 space-y-2 ">
+      <div className="bg-light lg:rounded-xl  space-y-2 w-[450px]">
         <div className="p-3 shadow-lg rounded-lg w-full">
           <div className="">
             <div className="inputs space-y-5 my-4">

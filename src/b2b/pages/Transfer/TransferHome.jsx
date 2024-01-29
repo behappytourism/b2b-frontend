@@ -139,7 +139,7 @@ function TransferHome() {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `b2b/transfer/search/suggestions?search=${value}`,
+        `b2b/transfer/search/suggestions?search=${value}&isoCode=${"AE"}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -156,7 +156,7 @@ function TransferHome() {
     try {
       setIsToLoading(true);
       const response = await axios.get(
-        `b2b/transfer/search/suggestions?search=${value}`,
+        `b2b/transfer/search/suggestions?search=${value}&isoCode=${"AE"}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

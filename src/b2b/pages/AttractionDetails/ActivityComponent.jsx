@@ -11,10 +11,18 @@ import { GiCheckMark } from "react-icons/gi";
 import priceConversion from "../../../utils/PriceConversion";
 import SlotBookingComponent from "../../components/BurjKhalifa/SlotBookingComponent";
 import { setAlertSuccess } from "../../../redux/slices/homeSlice";
+import { config } from "../../../constants";
+import ImagePreviewModal from "./ImagePreviewModal";
+import TermsConditionModal from "./TermsConditionModal";
 
 function ActivityComponent({ item, index }) {
+
   const [price, setPrice] = useState(0);
   const [error, setError] = useState("");
+  const [modal, setModal] = useState(false)
+  const [preview, setPreview] = useState()
+  const [termsModals, setTermsModals] = useState(false)
+  const [data, setData] = useState("")
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -447,7 +455,7 @@ function ActivityComponent({ item, index }) {
   const res = yyyy + "-" + mm + "-" + dd;
 
   const carting = (item) => {
-    if (item?.isChecked && item?.date?.length > 0) {
+    if ( item?.date?.length > 0) {
       setError("");
       dispatch(addToCartSingleItem(item));
       dispatch(
@@ -462,96 +470,151 @@ function ActivityComponent({ item, index }) {
     }
   };
 
+
   return (
     <div
-      className={`text-black shadow-md  ${
-        item?.isChecked ? " border bg-BeGray " : " bg-gray-100/30 "
-      } border-orange-300 rounded-lg p-4 mb-4 cursor-pointer`}
+      className={`text-black w-full h-auto shadow-md border border-orange-300  mb-4 cursor-pointer`}
     >
-      <div
-        onClick={() => {
-          handleChange({
-            value: !item?.isChecked,
-            name: "isChecked",
-            index,
-          });
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="w-full h-full">
+          <img 
+           onClick={() => {
+            setModal(!modal)
+            setPreview(item?.images)
         }}
-        className="w-full flex justify-between items-center "
-      >
-        <span className="flex w-full gap-2">
-          {/* <span className="">
-            <input
-              className="w-5 h-5 accent-blue-500"
-              disabled={
-                item?.adultTicketCount === 0 &&
-                item?.childTicketCount === 0 &&
-                item?.commonTicketCount === 0 &&
-                item?.bookingType === "ticket"
-              }
-              type="checkbox"
-              name="isChecked"
-              checked={item?.isChecked}
-              onChange={(e) =>
-                handleChange({
-                  value: e.target.checked,
-                  name: e.target.name,
-                  index,
-                })
-              }
-            />
-          </span> */}
-          {item?.isChecked ? (
-            <span className="">
-              <p className="text-xl text-green-500">
-                <GiCheckMark />
-              </p>
-            </span>
-          ) : (
-            ""
-          )}
-          <span className="w-full">
-            <p className="font-[550] text-[12px] sm:text-[16px] flex items-center gap-1">
-              {item?.name}
-              {item?.isB2bPromoCode ? (
-                <>
-                  <span>-</span>
-                  <span className="text-[10px] bg-BEColor text-white px-2 py-[1px]">
-                    {item?.isB2bPromoCode ? item?.b2bPromoCode : ""}
-                  </span>
-                </>
-              ) : (
-                ""
-              )}
-            </p>
-          </span>
-          {item?.bookingType === "ticket" && (
-            <>
-              <p className="text-main text-xs mr-5 font-[500]">
-                Adult Tickets left : {item?.adultTicketCount}
-              </p>
-              <p className="text-main text-xs mr-5 font-[500]">
-                Child Tickets left : {item?.childTicketCount}
-              </p>
-            </>
-          )}
-        </span>
-        <span className="md:flex items-center">
-          <p className="text-[9px] whitespace-nowrap font-[400] text-text  h-full">
-            per {item?.base} *
-          </p>
-          <p className="font-[600] whitespace-nowrap text-[12px] sm:text-[17px] flex items-end">
-            {priceConversion(item?.lowPrice, selectedCurrency, true)}
-          </p>
-        </span>
+          className="w-full h-full object-cover" src={item?.images?.length ? config.SERVER_URL + item?.images[0] : ""} alt="activity " />
+        </div>
+
+        <div className="w-full py-5 h-full">
+          <h1 className="text-2xl font-semibold mb-2">
+           {item?.name}
+          </h1>
+
+          <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
+          
+        <div className="flex gap-3">
+          {
+            item?.overview ? (
+              <button
+              className="text-black p-1 rounded text-xs bg-sky-300"
+              onClick={()=>{
+                setTermsModals(!termsModals)
+                setData(item?.overview)
+              }}
+              >Overview</button>
+            ) : ""
+          }
+          {
+            item?.inculsionsAndExclusions ? (
+                <button
+            className="text-black p-1 rounded text-xs bg-sky-300"
+            onClick={()=>{
+              setTermsModals(!termsModals)
+              setData(item?.inculsionsAndExclusions)
+            }}
+            >Inclusion & Exclusion</button>
+              
+            ) : ""
+          }
+          {
+            item?.termsAndConditions ? (
+              <button
+           className="text-black p-1 rounded text-xs bg-sky-300"
+           onClick={()=>{
+             setTermsModals(!termsModals)
+             setData(item?.termsAndConditions)
+           }}
+           
+           >Terms & Conditions</button>
+            ) : ""
+          }
       </div>
-      {item?.isChecked && (
-        <div className="space-y-3">
-          <div className="block xl:flex justify-between items-center">
-            <div className="flex gap-2 mt-2">
+      
+        </div>
+        <div className=" ">
+            <div
+              // onClick={() => {
+              //   handleChange({
+              //     value: !item?.isChecked,
+              //     name: "isChecked",
+              //     index,
+              //   });
+              // }}
+              className="w-full  flex justify-between items-center "
+            >
+              <span className="flex w-full gap-2">
+                {/* <span className="">
+                  <input
+                    className="w-5 h-5 accent-blue-500"
+                    disabled={
+                      item?.adultTicketCount === 0 &&
+                      item?.childTicketCount === 0 &&
+                      item?.commonTicketCount === 0 &&
+                      item?.bookingType === "ticket"
+                    }
+                    type="checkbox"
+                    name="isChecked"
+                    checked={item?.isChecked}
+                    onChange={(e) =>
+                      handleChange({
+                        value: e.target.checked,
+                        name: e.target.name,
+                        index,
+                      })
+                    }
+                  />
+                </span> */}
+                {/* {item?.isChecked ? (
+                  <span className="">
+                    <p className="text-xl text-green-500">
+                      <GiCheckMark />
+                    </p>
+                  </span>
+                ) : (
+                  ""
+                )} */}
+                <span className="w-full flex justify-end">
+                  <p className="font-[550] text-[12px] sm:text-[16px] flex items-center gap-1">
+                    {item?.isB2bPromoCode ? (
+                      <>
+                        {/* <span>-</span> */}
+                        <span className="text-[10px] bg-BEColor text-white px-2 py-[1px]">
+                          {item?.isB2bPromoCode ? item?.b2bPromoCode : ""}
+                        </span>
+                      </>
+                    ) : (
+                      ""
+                    )}{agentExcursion?.isApiConnected &&
+                      agentExcursion?.connectedApi === "63f0a47b479d4a0376fe12f4" &&
+                      // item?.isChecked &&i
+                      item?.date?.length > 0 &&
+                      item?.adult > 0 ? (
+                        <SlotBookingComponent item={item} index={index} />
+                      ) : (
+                        ""
+                      )}
+                  </p>
+                </span>
+                {item?.bookingType === "ticket" && (
+                  <>
+                    <p className="text-main text-xs mr-5 font-[500]">
+                      Adult Tickets left : {item?.adultTicketCount}
+                    </p>
+                    <p className="text-main text-xs mr-5 font-[500]">
+                      Child Tickets left : {item?.childTicketCount}
+                    </p>
+                  </>
+                )}
+              </span>
+            
+            </div>
+            <div className="space-y-3">
+          <div className="block xl:flex justify-between items-center py-5">
+            <div className="fle gap-2 mt-3">
               <div className="relative">
                 <p className="text-xs ">Date</p>
                 <input
-                  className="border border-orange-500 px-2 rounded outline-1 outline-green-500 py-2"
+                  className="border w-52 border-orange-500 px-2 rounded outline-1 outline-green-500 py-2"
                   type="date"
                   name="date"
                   min={res}
@@ -569,7 +632,7 @@ function ActivityComponent({ item, index }) {
                 <div className="relative">
                   <p className="text-xs">Hour</p>
                   <select
-                    className="border border-orange-500 px-4 rounded outline-1 outline-green-500 py-2"
+                    className="border border-orange-500 px-4 w-52 rounded outline-1 outline-green-500 py-2"
                     name="hourCount"
                     value={item?.hourCount}
                     onChange={(e) =>
@@ -590,10 +653,10 @@ function ActivityComponent({ item, index }) {
               ) : (
                 ""
               )}
-              <div className="">
-                <p className="text-xs">Transfer</p>
+              <div className="pt-2">
+                <p className="text-xs mb-1">Type</p>
                 <select
-                  className="border border-orange-500 px-4 rounded outline-1 outline-green-500 py-2"
+                  className="border w-52 border-orange-500 px-4 rounded outline-1 outline-green-500 py-3"
                   name="transfer"
                   value={item?.transfer}
                   onChange={(e) =>
@@ -605,7 +668,7 @@ function ActivityComponent({ item, index }) {
                   }
                 >
                   {item.activityType !== "transfer" && (
-                    <option value="without">Without Transfer</option>
+                    <option value="without">Ticket Only</option>
                   )}
                   {item?.isPrivateTransferAvailable &&
                     item.privateTransfers && (
@@ -756,7 +819,6 @@ function ActivityComponent({ item, index }) {
                             });
                       }}
                     />
-
                     <div
                       className=" text-lg flex justify-center items-center text-white font-[550] rounded-full bg-orange-600 w-5 h-5 cursor-pointer"
                       onClick={() =>
@@ -776,7 +838,7 @@ function ActivityComponent({ item, index }) {
                     Children
                   </p>
                 </span>
-                <span className="">
+                {/* <span className="">
                   <div className="flex items-center">
                     <div
                       className=" text-lg flex justify-center items-center text-white font-[550] rounded-full bg-orange-600 w-5 h-5 cursor-pointer"
@@ -832,36 +894,55 @@ function ActivityComponent({ item, index }) {
                   <p className="text-[14px] font-[400] text-center mt-1 text-gray-400">
                     Infant
                   </p>
-                </span>
+                </span> */}
               </div>
             </div>
-            <div className="mt-2 sm:mt-0">
-              <p className="font-[600] text-left sm:text-right  text-text text-[12px] sm:text-[14px]">
-                Grand Total
-              </p>
-              <p className="sm:text-right font-[600] sm:text-lg">
-                {priceConversion(price, selectedCurrency, true)}{" "}
-              </p>
+            <div className="px-3">
+            {/* <span className="md:flex items-center">
+                <p className="text-[9px] whitespace-nowrap font-[400] text-text  h-full">
+                  per {item?.base} *
+                </p>
+                <p className="font-[600] whitespace-nowrap text-[9px] sm:text-[17px] flex items-end">
+                  {priceConversion(item?.lowPrice, selectedCurrency, true)}
+                </p>
+              </span> */}
+              <div className="mt-2 sm:mt-0">
+                <p className="ftext-[9px] whitespace-nowrap  text-text  h-full">
+                 per {item?.base} *
+                </p>
+                <p className="sm:text-right font-[600] sm:text-lg">
+                {priceConversion(item?.lowPrice, selectedCurrency, true)}
+                </p>
+              </div>
+              <div className="mt-2 sm:mt-0">
+                <p className="ftext-[9px] whitespace-nowrap  text-text  h-full">
+                  Grand Total
+                </p>
+                <p className="sm:text-right font-[600] sm:text-lg">
+                  {priceConversion(price, selectedCurrency, true)}{" "}
+                </p>
+              </div>
+
             </div>
           </div>
         </div>
-      )}
       {agentExcursion?.isApiConnected &&
       agentExcursion?.connectedApi === "63f0a47b479d4a0376fe12f4" &&
-      item?.isChecked &&
+      // item?.isChecked &&
       item?.date?.length > 0 &&
       item?.adult > 0 ? (
         <SlotBookingComponent item={item} index={index} />
       ) : (
         ""
       )}
-      {item?.date?.length > 0 && item?.isChecked ? (
+
+    {item?.date?.length > 0  ? (
         <>
           {!agentExcursion?.isApiConnected ||
           agentExcursion?.connectedApi !== "63f0a47b479d4a0376fe12f4" ? (
-            <div className="">
+            <div className="py-2 px-2">
               <div className="flex gap-2 w-full justify-end items-end">
-                {error ? <p className="">{error}</p> : ""}
+                {error ? <p className="text-red-500">{error}</p> : ""}
                 <button
                   onClick={() => carting(item)}
                   className="bg-BEColor shadow rounded-sm h-8 text-white w-8 flex justify-center items-center"
@@ -887,6 +968,19 @@ function ActivityComponent({ item, index }) {
         </>
       ) : (
         ""
+      )}
+        </div>
+      </div>
+      
+
+        {
+          termsModals && (
+            <TermsConditionModal setTermsModals={setTermsModals} termsModals={termsModals} data={data} />
+          )
+        }
+    
+      {modal && (
+        <ImagePreviewModal setModal={setModal} modal={modal} preview={preview} />
       )}
     </div>
   );
