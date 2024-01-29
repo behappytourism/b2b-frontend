@@ -42,10 +42,10 @@ function Footer({ module = "general" }) {
       <div className="pt-10 min-h-80 bg-white">
         <div className="p-5 mx-auto bg-slate-50 w-full ">
           <div className="border-b mb-4 ">
-            <div className="grid md:grid-cols-2  pt-10 mb-5 divide-y md:divide-y-0">
+            <div className="grid md:grid-cols-3  pt-10 mb-5 divide-y md:divide-y-0">
               <div>
-                <div className="md:flex md:gap-10 md:justify-start">
-                  <div className="flex justify-start px-5">
+                <div className="">
+                  <div className="flex justify-center items-center">
                     <img
                       className="h-full object-fill w-[250px]"
                       src={config.COMPANY_LOGO}
@@ -55,8 +55,8 @@ function Footer({ module = "general" }) {
                 </div>
               </div>
 
-              <div className="md:flex gap-10">
-              {
+                <div className="flex justify-center items-center">
+                {
                   socialMedias?.footer?.length ? (
                     <div>
                       {
@@ -87,6 +87,10 @@ function Footer({ module = "general" }) {
                     </div>
                   ) : ""
                 }
+                </div>
+
+              <div className="flex justify-center md:items-centergap-10">
+              
                 <div className=" pt-3 justify-center">
            
                   {socialMedias?.facebookUrl?.length ? (

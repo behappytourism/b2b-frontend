@@ -17,10 +17,10 @@ function LandingPageFooter() {
       <div className="pt-10 min-h-80 bg-white w-full">
         <div className="p-5 max-w-screen-2xl mx-auto ">
           <div className="border-b mb-2">
-            <div className="grid md:grid-cols-2  pt-10 mb-5 divide-y md:divide-y-0">
+            <div className="grid md:grid-cols-3  pt-10 mb-5 divide-y md:divide-y-0">
               <div>
-                <div className="md:flex md:gap-10 md:justify-start">
-                  <div className="flex justify-start px-5">
+                <div className="">
+                  <div className="flex justify-center items-center">
                     <img
                       className="h-full object-fill w-[250px]"
                       src={config.COMPANY_LOGO}
@@ -29,8 +29,8 @@ function LandingPageFooter() {
                   </div>
                 </div>
               </div>
-              <div className="md:flex gap-10">
-                {
+              <div>
+              {
                   socialMedias?.footer?.length ? (
                     <div>
                       {
@@ -41,7 +41,7 @@ function LandingPageFooter() {
                         ele?.navLinks?.map((items)=>{
                           return (
                             <div className="">
-                              <div className="pt-5">
+                              <div className="pt-5 flex justify-center items-center">
                                 {/* <a className="text-gray-300 text-sm font-extralight hover:border-b " href={items?.link}>{items?.name}</a> */}
                                 <button
                                 className="text-gray-300 text-sm font-extralight hover:border-b"
@@ -62,8 +62,11 @@ function LandingPageFooter() {
                     </div>
                   ) : ""
                 }
+              </div>
+              <div className="md:flex gap-10 flex justify-center items-center">
+               
                 
-                <div className=" pt-3 justify-center">
+                <div className=" pt-3 ">
                   {/* <a href="">
                       <div className=" flex gap-1 w-8 h-8 text-xl">
                       <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">

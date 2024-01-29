@@ -55,9 +55,9 @@ function DetailsCard() {
     const isDateExist = agentExcursionCart.filter((item) => {
       return item?.isChecked === true && item?.date !== "";
     });
-    if (isDateExist.length > 0 && !location.pathname.includes("/")) {
+    if (!location.pathname.includes("/")) {
       navigate(`/payment`);
-    } else if (isDateExist.length > 0 && location.pathname.includes("/")) {
+    } else if (location.pathname.includes("/")) {
       navigate(`/home/cart`);
     } else {
       setError("Fill the tour Date");
@@ -109,7 +109,7 @@ function DetailsCard() {
         </div>
       </div>
 
-      <div className="bg-light lg:rounded-xl  space-y-2 w-[450px]">
+      <div className="bg-light lg:rounded-xl shadow-xl border space-y-2 w-[450px]">
         <div className="p-3 shadow-lg rounded-lg w-full">
           <div className="">
             <div className="inputs space-y-5 my-4">
@@ -153,9 +153,10 @@ function DetailsCard() {
                             {item?.adult +
                               " adults, " +
                               item?.child +
-                              " child, " +
-                              item?.infant +
-                              " infant"}
+                              " child, " 
+                              // item?.infant +
+                              // " infant"
+                              }
                           </span>
                         </div>
                         <div className="flex justify-between items-center gap-2 space-y-1 text-sm">
@@ -222,7 +223,7 @@ function DetailsCard() {
             </div>
           </div>
 
-          <div className="hidden lg:block py-7 space-y-3">
+          {/* <div className="hidden lg:block py-7 space-y-3">
             <div className="">
               <p className="text-text">
                 if you have questions about this tour, please feel free to ask
@@ -238,7 +239,7 @@ function DetailsCard() {
                 *All questions are replied within 24-48 hrs
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

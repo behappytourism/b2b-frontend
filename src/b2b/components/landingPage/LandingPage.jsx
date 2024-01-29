@@ -53,19 +53,14 @@ function LandingPage() {
   const renderServiceSection = () => {
     return (
       <div className="pt-24 bg-white min-h-[500px]">
-        <div className="flex md:flex-row flex-col gap-10 md:gap-32 justify-center  p-5">
+        <div className="flex md:flex-row flex-col gap-5 md:gap-3 justify-center  p-5">
           <div className="order-last md:order-first grid grid-cols-2 gap-5">
             <div className="">
               <div className="">
-                <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><SiAdguard /></h1>
-                {/* <img
-                  className="w-10 h-10 rounded "
-                  src="https://play-lh.googleusercontent.com/ZTOISGPcTOFkjff58ufepEY8QH5lcri3Y2X-ylNUMW1lRUDCXtlmxx3sudFgmHXYYbI"
-                  alt=""
-                /> */}
+                <h1 className="text-sky-500 text-5xl flex justify-center items-center h-16 bg-sky-100 w-16 rounded"><SiAdguard /></h1>
               </div>
-              <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Best Price Guarantee</h1>
+              <div className=" max-w-[250px] pt-4">
+                <h1 className="text-xl font-bold">Best Price Guarantee</h1>
                 {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   We are committed to serve the best with customers{" "}
                 </h1> */}
@@ -73,10 +68,10 @@ function LandingPage() {
             </div>
             <div className="">
               <div className="">
-              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><MdFolderSpecial /></h1>
+              <h1 className="text-sky-500 text-5xl flex justify-center items-center h-16 bg-sky-100 w-16 rounded"><MdFolderSpecial /></h1>
               </div>
-              <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Special Deals</h1>
+              <div className=" max-w-[250px] pt-4">
+                <h1 className="text-xl font-bold">Special Deals</h1>
                 {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   The tour guide will help you in your destination
                 </h1> */}
@@ -84,10 +79,10 @@ function LandingPage() {
             </div>
             <div className="">
               <div className="">
-              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><MdAttractions /></h1>
+              <h1 className="text-sky-500 text-5xl flex justify-center items-center h-16 bg-sky-100 w-16 rounded"><MdAttractions /></h1>
               </div>
-              <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Top Attractions</h1>
+              <div className=" max-w-[250px] pt-4">
+                <h1 className="text-xl font-bold">Top Attractions</h1>
                 {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   The best destination in the whole world are ready for you{" "}
                 </h1> */}
@@ -95,10 +90,10 @@ function LandingPage() {
             </div>
             <div className="">
               <div className="">
-              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><IoCarSportSharp /></h1>
+              <h1 className="text-sky-500 text-5xl flex justify-center items-center h-16 bg-sky-100 w-16 rounded"><IoCarSportSharp /></h1>
               </div>
-              <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Transfers</h1>
+              <div className=" max-w-[250px] pt-4">
+                <h1 className="text-xl font-bold">Transfers</h1>
                 {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   The best destination in the whole world are ready for you{" "}
                 </h1> */}
@@ -106,10 +101,10 @@ function LandingPage() {
             </div>
             <div className="">
               <div className="">
-              <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><MdOutlineSupportAgent /></h1>
+              <h1 className="text-sky-500 text-5xl flex justify-center items-center h-16 bg-sky-100 w-16 rounded"><MdOutlineSupportAgent /></h1>
               </div>
-              <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">24x7 Support</h1>
+              <div className=" max-w-[250px] pt-4">
+                <h1 className="text-xl font-bold">24x7 Support</h1>
                 {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   The best destination in the whole world are ready for you{" "}
                 </h1> */}
@@ -117,10 +112,10 @@ function LandingPage() {
             </div>
             <div className="">
               <div className="">
-               <h1 className="text-sky-500 text-4xl p-2 bg-sky-100 w-14 rounded"><TbBrandBooking /></h1>
+               <h1 className="text-sky-500 text-5xl flex justify-center items-center h-16 bg-sky-100 w-16 rounded"><TbBrandBooking /></h1>
               </div>
-              <div className=" max-w-[250px] pt-2">
-                <h1 className=" font-bold">Easy Booking</h1>
+              <div className=" max-w-[250px] pt-4">
+                <h1 className="text-xl font-bold">Easy Booking</h1>
                 {/* <h1 className="text-sm text-slate-400 pt-1 ">
                   Ease of booking process for customers convenience{" "}
                 </h1> */}
@@ -129,19 +124,20 @@ function LandingPage() {
           </div>
           <div className="order-first md:order-last">
             <div>
-              <h1 className="max-w-[350px] text-4xl font-extrabold">
+              <h1 className="max-w-[350px] text-5xl font-extrabold">
                 Who we are!
               </h1>
-              <h1 className="text-slate-400 text-sm max-w-md">
-              BE HAPPY TRAVEL & TOURISM L.L.C. is A Dubai based Premier Destination Management Company. focused on B2B clients.
-              We vow to Provide the best Deals and Quality Service to our travel partners, and create unforgettable memories for the clients.
-              </h1>
+              <div className="pt-10">
+                <h1 className="text-slate-400 text-xl font-medium flex justify-content max-w-md">
+                BE HAPPY TRAVEL & TOURISM L.L.C. is A Dubai based Premier Destination Management Company. focused on B2B clients.
+                We vow to Provide the best Deals and Quality Service to our travel partners, and create unforgettable memories for the clients.
+                </h1>
+
+              </div>
             </div>
           </div>
         </div>
-          <div className="flex justify-center  ">
-            <h1 className="font-light text-sm md:text-lg  px-0  md:px-10 ml-0 md:ml-[600px]">Service Excellence, Trust Always – Your Best Choice, Every Time.</h1>
-          </div>
+         
       </div>
     );
   };
@@ -177,7 +173,6 @@ function LandingPage() {
         <div className="flex justify-center p-10 ">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {topAttractionsData?.map((ele, index) => {
-              console.log(ele, "show elements");
               return (
                 <div
                   key={index}
@@ -481,7 +476,10 @@ function LandingPage() {
       <LoginSection />
       {renderServiceSection()}
       <div>
-        <div className="w-full min-h-96 pt-32">
+      <div className="flex justify-center Items-center pt-20">
+            <h1 className="text-xl md:text-2xl font-bold">Service Excellence, Trust Always – Your Best Choice, Every Time.</h1>
+          </div>
+        <div className="w-full min-h-96 pt-20">
           {renderTopAttractions()}
 
           {renderStatisticSection()}
