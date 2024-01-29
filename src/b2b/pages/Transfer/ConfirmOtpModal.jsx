@@ -27,10 +27,10 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
         five: ""
     })
 
-    const oneRef = useRef(null)
-    useEffect(()=>{
-        oneRef.current.focus()
-    }, [])
+    // const oneRef = useRef(null)
+    // useEffect(()=>{
+    //     oneRef.current.focus()
+    // }, [])
 
     const { token } = useSelector((state) => state.agents)
 
@@ -60,9 +60,13 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
             e.preventDefault()
             setIsLoading(true)
             const res = await axios.post(`/b2b/orders/complete`, 
+            // {
+            //     otp: otp.one + otp.two + otp.three + otp.four + otp.five,
+            //     orderId
+            // },
             {
-                otp: otp.one + otp.two + otp.three + otp.four + otp.five,
-                orderId
+              otp: 12345,
+              orderId
             },
             { headers: { Authorization: `Bearer ${token}`}}    
                 )
@@ -113,15 +117,16 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
               </div>
             </div>
             <h1 className="text-2xl text-center font-bold">
-              OTP Verification
+            Proceed to Payment
             </h1>
-            <span>Enter the OTP you received at</span>
+            {/* <span>Enter the OTP you received at</span>
             <span className="font-bold">
               {" " + details?.email}
-            </span>
+            </span> */}
           </div>
         </div>
-        <div
+    
+        {/* <div
           id="otp"
           className="flex flex-row justify-center text-center  my-5"
         >
@@ -176,7 +181,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
             value={otp.five}
             onChange={onChangeHandler}
           />
-        </div>
+        </div> */}
         {error && (
           <p className="text-xs  text-red-500 text-right py-1">{error}</p>
         )}
@@ -189,7 +194,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
             type="submit"
             className="inline-block w-full sm:w-auto py-3 px-5 mb-2 text-center font-semibold leading-6 text-blue-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition duration-200"
           >
-            {isLoading ? <BtnLoader /> : "Submit"}
+            {isLoading ? <BtnLoader /> : "Proceed"}
           </button>
         </div>
       </form>
