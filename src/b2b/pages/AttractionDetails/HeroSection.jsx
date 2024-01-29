@@ -189,12 +189,12 @@ function HeroSection() {
                 </div>
                 <div className="md:my-5 mx-2 lg:mx-0">
                   <>
-                    <div
+                    {/* <div
                       id="availability"
                       className="p-5 mb-2 lg:mb-5  bg-white  text-darktext rounded-2xl shadow-lg"
                     >
                       <Availablity />
-                    </div>
+                    </div> */}
 
                     <>
                       <CarousalMobile />

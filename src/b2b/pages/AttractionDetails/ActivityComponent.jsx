@@ -17,12 +17,15 @@ import TermsConditionModal from "./TermsConditionModal";
 
 function ActivityComponent({ item, index }) {
 
+  console.log(item, 'show items');
+
   const [price, setPrice] = useState(0);
   const [error, setError] = useState("");
   const [modal, setModal] = useState(false)
   const [preview, setPreview] = useState()
   const [termsModals, setTermsModals] = useState(false)
   const [data, setData] = useState("")
+  const [headings, setHeadings] = useState('')
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -475,7 +478,7 @@ function ActivityComponent({ item, index }) {
     <div
       className={`text-black w-full h-auto shadow-md border border-orange-300  mb-4 cursor-pointer`}
     >
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 gap-1 md:gap-4">
         <div className="w-full h-full">
           <img 
            onClick={() => {
@@ -485,21 +488,35 @@ function ActivityComponent({ item, index }) {
           className="w-full h-full object-cover" src={item?.images?.length ? config.SERVER_URL + item?.images[0] : ""} alt="activity " />
         </div>
 
-        <div className="w-full py-5 h-full">
+        <div className="w-full py-5 p-2 md:p-0 h-full">
           <h1 className="text-2xl font-semibold mb-2">
            {item?.name}
           </h1>
 
-          <div dangerouslySetInnerHTML={{ __html: item?.description }}></div>
+          <div>
+            <div dangerouslySetInnerHTML={{ __html: item?.description?.slice(0, 300) }}></div>
+            {
+              item?.description?.length > 300 ? (
+                <button 
+                onClick={()=>{
+                  setData(item?.description)
+                  setHeadings("Description")
+                  setTermsModals(!termsModals)
+                }}
+                className="text-blue-500 text-sm" >View More</button>
+              ) : ""
+            }
+          </div>
           
-        <div className="flex gap-3">
+        <div className="flex gap-3 pt-4">
           {
             item?.overview ? (
               <button
               className="text-black p-1 rounded text-xs bg-sky-300"
               onClick={()=>{
-                setTermsModals(!termsModals)
                 setData(item?.overview)
+                setHeadings("Overview")
+                setTermsModals(!termsModals)
               }}
               >Overview</button>
             ) : ""
@@ -509,8 +526,9 @@ function ActivityComponent({ item, index }) {
                 <button
             className="text-black p-1 rounded text-xs bg-sky-300"
             onClick={()=>{
-              setTermsModals(!termsModals)
               setData(item?.inculsionsAndExclusions)
+              setHeadings("Inclusion & Exclusion")
+              setTermsModals(!termsModals)
             }}
             >Inclusion & Exclusion</button>
               
@@ -521,8 +539,9 @@ function ActivityComponent({ item, index }) {
               <button
            className="text-black p-1 rounded text-xs bg-sky-300"
            onClick={()=>{
-             setTermsModals(!termsModals)
              setData(item?.termsAndConditions)
+             setHeadings("Terms & Conditions")
+             setTermsModals(!termsModals)
            }}
            
            >Terms & Conditions</button>
@@ -531,7 +550,7 @@ function ActivityComponent({ item, index }) {
       </div>
       
         </div>
-        <div className=" ">
+        <div className="p-2 md:p-0 px-10 md:px-0 ">
             <div
               // onClick={() => {
               //   handleChange({
@@ -720,7 +739,7 @@ function ActivityComponent({ item, index }) {
           ) : (
             ""
           )}
-          <div className={`sm:flex  justify-between `}>
+          <div className={`grid  xl:flex  lg:justify-between `}>
             <div>
               <div className="flex gap-5 ml-2 mt-2">
                 <span className="">
@@ -897,7 +916,7 @@ function ActivityComponent({ item, index }) {
                 </span> */}
               </div>
             </div>
-            <div className="px-3">
+            <div className="px-1 lg:px-3 pt-2 xl:pt-0">
             {/* <span className="md:flex items-center">
                 <p className="text-[9px] whitespace-nowrap font-[400] text-text  h-full">
                   per {item?.base} *
@@ -906,7 +925,7 @@ function ActivityComponent({ item, index }) {
                   {priceConversion(item?.lowPrice, selectedCurrency, true)}
                 </p>
               </span> */}
-              <div className="mt-2 sm:mt-0">
+              <div className="flex xl:grid md:gap mt-2 sm:mt-0">
                 <p className="ftext-[9px] whitespace-nowrap  text-text  h-full">
                  per {item?.base} *
                 </p>
@@ -914,7 +933,7 @@ function ActivityComponent({ item, index }) {
                 {priceConversion(item?.lowPrice, selectedCurrency, true)}
                 </p>
               </div>
-              <div className="mt-2 sm:mt-0">
+              <div className="flex xl:grid md:gap mt-2 sm:mt-0">
                 <p className="ftext-[9px] whitespace-nowrap  text-text  h-full">
                   Grand Total
                 </p>
@@ -975,7 +994,7 @@ function ActivityComponent({ item, index }) {
 
         {
           termsModals && (
-            <TermsConditionModal setTermsModals={setTermsModals} termsModals={termsModals} data={data} />
+            <TermsConditionModal setTermsModals={setTermsModals} termsModals={termsModals} data={data} headings={headings} />
           )
         }
     
