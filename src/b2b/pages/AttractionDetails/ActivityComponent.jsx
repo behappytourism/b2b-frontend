@@ -457,11 +457,11 @@ function ActivityComponent({ item, index }) {
   const res = yyyy + "-" + mm + "-" + dd;
 
   const carting = (item) => {
-    if (item?.isChecked && item?.adult === 0 && item?.child === 0) {
+    if (item?.adult === 0 && item?.child === 0) {
       setError("You should select atleast one adult or a child.");
       return;
     }
-    if (item?.isChecked && item?.date?.length > 0) {
+    if (item?.date?.length > 0) {
       setError("");
       dispatch(addToCartSingleItem(item));
       dispatch(
