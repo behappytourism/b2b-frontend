@@ -54,10 +54,10 @@ export default function Header({ setSidebarView, sidebarView }) {
 
   return (
     <section className="bg-white">
-      <div className="  bg-white border-b h-16   ">
+      <div className="  bg-white border-b h-20   ">
         <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
           <div className="flex w-full items-center justify-between -mx-2">
-            <div className="  rounded-b-xl mb-2 h-14">
+            <div className="  rounded-b-xl mb-2  h-20">
               <div className=" h-full " onClick={() => navigate("/")}>
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}

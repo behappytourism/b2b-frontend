@@ -481,8 +481,8 @@ function ActivityComponent({ item, index }) {
     <div
       className={`text-black w-full h-auto shadow-md border border-orange-300  mb-4 cursor-pointer`}
     >
-      <div className="grid md:grid-cols-3 gap-1 md:gap-4">
-        <div className="w-full h-full">
+      <div className="grid md:grid-cols-2 2xl:grid-cols-3 gap-1 md:gap-4">
+        <div className="w-full h-full row-span-2">
           <img
             onClick={() => {
               setModal(!modal);
@@ -496,7 +496,7 @@ function ActivityComponent({ item, index }) {
           />
         </div>
 
-        <div className="w-full py-5 p-2 md:p-0 h-full">
+        <div className="w-full py-5 p-2  h-full">
           <h1 className="text-2xl font-semibold mb-2">{item?.name}</h1>
 
           <div>
@@ -566,7 +566,7 @@ function ActivityComponent({ item, index }) {
             )}
           </div>
         </div>
-        <div className="p-2 md:p-0 px-10 md:px-0 ">
+        <div className="p-2 md:p-5 px-10 md:px-0 ">
           <div
             // onClick={() => {
             //   handleChange({
@@ -1006,6 +1006,7 @@ function ActivityComponent({ item, index }) {
             ""
           )}
         </div>
+        
       </div>
 
       {termsModals && (
