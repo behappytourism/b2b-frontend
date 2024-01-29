@@ -48,14 +48,11 @@ function HeroSection() {
         <div className="  ">
           <div className="">
             <div className="w-full ">
+              <div className="flex gap-1">
                 <div className="text-5xl font-semibold pt-1">
                     {agentExcursion?.title} 
               </div>
-              <div className="flex pt-1">
-                  <h1 className="text-lg"><CiLocationOn /> </h1>
-                  <h1 className="text-sm text-gray-300">{agentExcursion?.destination?.name}{" "}</h1>
-               </div>
-              <div className="flex gap-2"> 
+              <div className="flex gap-2 pt-2"> 
                  <div className="text-xs text-text  flex space-x-1 items-center">
                         {/* <div className="">
                           <button className=" px-2 py-1 text-black border rounded-md capitalize">
@@ -73,7 +70,7 @@ function HeroSection() {
                           ):("")}
                         </div>
                         <div className="flex space-x-1 items-center">
-                          <span className="text-black border px-3 py-1 whitespace-nowrap text-center rounded-md capitalize text-xs">
+                          <span className={`text-black  px-3 py-1 whitespace-nowrap text-center rounded-md capitalize text-xs ${agentExcursion?.category ? "border" : ""}`}>
                             {agentExcursion?.category &&
                               agentExcursion?.category?.categoryName}{" "}
                           </span>
@@ -104,8 +101,11 @@ function HeroSection() {
                         <RxShare2 />
                       </button>
               </div>
-           
-         
+              </div>
+              <div className="flex pt-1">
+                  <h1 className="text-2xl"><CiLocationOn /> </h1>
+                  <h1 className="text-lg text-gray-400">{agentExcursion?.destination?.name}{" "}</h1>
+               </div>
           
              {/* <div className="mx-2 pt-3 border-b rounded-lg">
                   <FeatureSection />
@@ -247,7 +247,7 @@ function HeroSection() {
                     viewBookCard
                       ? "fixed bottom-0 max-h-[93vh] overflow-y-auto left-0 right-0 z-10 bg-white"
                       : "-bottom-full invisible h-0 overflow-hidden "
-                  } transition-all duration-500 rounded-t-3xl lg:rounded-none lg:block   lg:visible lg:h-auto  lg:sticky lg:top-[90px]`}
+                  } transition-all duration-500 rounded-t-3xl lg:rounded-none lg:block lg:visible lg:h-auto  lg:sticky lg:top-[90px]`}
                 >
                   <div
                     className="flex lg:hidden justify-end pt-5 lg:pt-0 px-7 text-4xl"

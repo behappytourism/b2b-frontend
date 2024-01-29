@@ -531,7 +531,7 @@ function ActivityComponent({ item, index }) {
       </div>
       
         </div>
-        <div className=" px-3">
+        <div className=" ">
             <div
               // onClick={() => {
               //   handleChange({
@@ -573,11 +573,11 @@ function ActivityComponent({ item, index }) {
                 ) : (
                   ""
                 )} */}
-                <span className="w-full">
+                <span className="w-full flex justify-end">
                   <p className="font-[550] text-[12px] sm:text-[16px] flex items-center gap-1">
                     {item?.isB2bPromoCode ? (
                       <>
-                        <span>-</span>
+                        {/* <span>-</span> */}
                         <span className="text-[10px] bg-BEColor text-white px-2 py-[1px]">
                           {item?.isB2bPromoCode ? item?.b2bPromoCode : ""}
                         </span>
@@ -897,7 +897,7 @@ function ActivityComponent({ item, index }) {
                 </span> */}
               </div>
             </div>
-            <div>
+            <div className="px-3">
             {/* <span className="md:flex items-center">
                 <p className="text-[9px] whitespace-nowrap font-[400] text-text  h-full">
                   per {item?.base} *
