@@ -86,7 +86,7 @@ function AttractionPage() {
             <div className="w-full h-[500px] relative">
                 <img
                 onClick={()=> handleBannerUrls(ele)}
-                  className="w-full h-full object-fill"
+                  className="w-full h-full object-fill cursor-pointer"
                   src={config.SERVER_URL + ele?.image}
                   alt=""
                 />
