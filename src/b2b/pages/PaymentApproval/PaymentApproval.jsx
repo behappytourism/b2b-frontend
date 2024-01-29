@@ -64,7 +64,7 @@ function PaymentApproval() {
                     </div>
                   </div>
 
-                  <div className="md:flex justify-center">
+                  <div className="md:flex justify-center ">
                     <div className="md:w-7/12">
                       {payMethod === "paypal" && <AddWalletPaypalComponent />}
                       {payMethod === "razorpay" && <RazorPayPaymentComponent />}

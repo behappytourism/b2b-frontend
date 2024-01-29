@@ -23,10 +23,12 @@ import { IoMdHome } from "react-icons/io";
 import { TbBrandBooking } from "react-icons/tb";
 import { MdTravelExplore } from "react-icons/md";
 
+
 export default function Header({ setSidebarView, sidebarView }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  
 
   const [currency, setCurrency] = useState(false);
   const [cart, setCart] = useState(false);
@@ -35,7 +37,7 @@ export default function Header({ setSidebarView, sidebarView }) {
 
   const { balance } = useSelector((state) => state.wallet);
   const { selectedCurrency } = useSelector((state) => state.home);
-  const { agent, isLoggedIn } = useSelector((state) => state.agents);
+  const { agent,agenttempLogo, isLoggedIn } = useSelector((state) => state.agents);
 
   const currencyRef = useRef();
   useHandleClickOutside(currencyRef, () => setCurrency(false));
@@ -59,7 +61,9 @@ export default function Header({ setSidebarView, sidebarView }) {
               <div className=" h-full " onClick={() => navigate("/")}>
                 <img
                   // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : config.COMPANY_LOGO}
-                  src={config.COMPANY_LOGO}
+                  // src={agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo : agenttempLogo?agenttempLogo:config.COMPANY_LOGO}
+                  src={agenttempLogo?agenttempLogo: agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo:config.COMPANY_LOGO}
+                  // src={config.COMPANY_LOGO}
                   alt="logo"
                   className="h-full w-full rounded-b-xl object-fill"
                 />

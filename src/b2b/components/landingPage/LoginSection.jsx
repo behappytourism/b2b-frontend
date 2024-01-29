@@ -19,6 +19,12 @@ const LoginSection = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [frogotPasswordResponse, setFrogotPasswordResponse] = useState(
+    {
+      response:false,
+      message:''
+    }
+  );
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -79,6 +85,24 @@ const LoginSection = () => {
     }
   }, [isLoggedIn, navigate]);
 
+  function forgotpasswordMessageHandler(message) {
+    setFrogotPasswordResponse({
+      response:true,
+      message:message
+    });
+  
+    const forgotmessagetimer = setTimeout(() => {
+      setFrogotPasswordResponse(
+        {
+          response:false,
+          message:''
+        }
+      );
+    }, 2000);
+  
+    return () => clearTimeout(forgotmessagetimer);
+  }
+
   const submitForgotPasswordHandler = async (e) => {
     try {
       e.preventDefault();
@@ -87,6 +111,8 @@ const LoginSection = () => {
       const response = await axios.patch("/b2b/resellers/forget/password", {
         email: forgotEmail,
       });
+      console.log("response",response);
+      if(response.data.message){forgotpasswordMessageHandler(response.data.message)}
       setIsLoading(false);
       setForgotPasswordModal(true);
     } catch (err) {
@@ -142,6 +168,7 @@ const LoginSection = () => {
               </button>
             </div>
           </div>
+          {frogotPasswordResponse.response && <p className="mt-2 text-center text-sm text-red-500">{frogotPasswordResponse.message}!</p>}
         </div>
       </form>
     );

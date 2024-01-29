@@ -106,7 +106,7 @@ const RazorPayPaymentComponent = () => {
       <div className="flex justify-center flex-col gap-4 my-3">
         <div className="relative w-full h-14 py-3 px-3 mb-8 border border-gray-400 hover:border-gray-400 focus-within:border-green-500 rounded-lg">
           <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-100 rounded px-1 bg-gray-500">
-            Enter Amount to be added to wallet
+            Enter Amount to be added to wal let
           </span>
           <input
             className="block w-full h-full outline-none bg-transparent text-sm text-gray-400 font-medium no-spinner"
@@ -115,6 +115,9 @@ const RazorPayPaymentComponent = () => {
             type="number"
             placeholder="Enter Amount to be added to wallet"
             min="0"
+            onInput={(e) => {
+              e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            }}
           />
         </div>{" "}
         <button
