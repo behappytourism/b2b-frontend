@@ -8,6 +8,7 @@ const initialState = {
   token: localStorage.getItem("agent-string") || "",
   isLoggedIn: false,
   forgotPasswordEmail: "",
+  agenttempLogo:null
 };
 
 const fetchAgent = createAsyncThunk(
@@ -35,6 +36,7 @@ const logoutAgent = createAsyncThunk(
   }
 );
 
+
 const agentSlice = createSlice({
   name: "agent",
   initialState,
@@ -45,6 +47,11 @@ const agentSlice = createSlice({
       state.isLoggedIn = true;
 
       localStorage.setItem("agent-string", action.payload?.jwtToken);
+    },
+    setAgentCompanyLogo:(state,action)=>{
+      console.log(action.payload,"action.payload.companyLogo");
+      state.agenttempLogo=action.payload
+      console.log(state.agenttempLogo,"Pokak Technologies");
     },
     setRegisterAgent: (state, action) => {
       state.agent = action.payload?.reseller;
@@ -79,6 +86,6 @@ const agentSlice = createSlice({
 
 export { fetchAgent, logoutAgent };
 
-export const { setAgent, setRegisterAgent, setForgotPasswordEmail } = agentSlice.actions;
+export const { setAgent,setAgentCompanyLogo, setRegisterAgent, setForgotPasswordEmail } = agentSlice.actions;
 
 export default agentSlice.reducer;

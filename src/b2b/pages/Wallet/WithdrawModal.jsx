@@ -282,22 +282,24 @@ function WithdrawModal({ setViewWithdrawModal }) {
   const renderNewBankAccountDetails = () => {
     return (
       <>
-        <div className="flex flex-wrap -mx-3 mb-6">
+      <section className="w-full flex flex-col gap-[5%] sm:flex-row">
+          <div className="w-full sm:w-1/2 ">
+          <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full  px-3 ">
-            <div className="relative w-full h-14 py-2 px-3 border border-BEColor focus-within:border-green-500 rounded-lg">
+            <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 border border-BEColor focus-within:border-green-500 rounded-lg">
               <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
                 Country
               </span>
               <select
-                className="block h-full w-full outline-none bg-transparent capitalize text-sm text-gray-600 font-medium"
+                className="block h-full bg-blue-300 w-full outline-none bg-transparent capitalize text-sm text-gray-600 font-medium"
                 name="isoCode"
                 value={data.isoCode}
                 onChange={handleChange}
                 required
               >
-                <option hidden></option>{" "}
+                <option className="h-[2 00px]" hidden></option>{" "}
                 {countries?.map((item) => (
-                  <option className="capitalize bg-white" value={item?.isocode}>
+                  <option className="capitalize bg-white max-h-[200px]" value={item?.isocode}>
                     {item?.countryName}{" "}
                   </option>
                 ))}
@@ -306,7 +308,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
           </div>
         </div>
 
-        <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+        <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
           <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
             Account number
           </span>
@@ -320,7 +322,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
             required
           />
         </div>
-        <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+        <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
           <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
             Bank name
           </span>
@@ -334,7 +336,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
             required
           />
         </div>
-        <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+        <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
           <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
             Branch name
           </span>
@@ -348,8 +350,12 @@ function WithdrawModal({ setViewWithdrawModal }) {
             required
           />
         </div>
-        {data?.isoCode === "IN" ? (
-          <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+          </div>
+
+          {/* second part */}
+          <div className="w-full sm:w-1/2 ">
+          {data?.isoCode === "IN" ? (
+          <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
             <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
               IFSC Code
             </span>
@@ -363,7 +369,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
             />
           </div>
         ) : (
-          <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+          <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
             <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
               IBAN Code
             </span>
@@ -377,7 +383,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
             />
           </div>
         )}
-        <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+        <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
           <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
             Account Holder name
           </span>
@@ -391,6 +397,27 @@ function WithdrawModal({ setViewWithdrawModal }) {
             required
           />
         </div>
+        <div className="relative w-full h-[40px] sm:h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+                <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
+                  Amount
+                </span>
+                <input
+                  className="block w-full h-full outline-none bg-transparent text-sm text-gray-600 font-medium no-spinner"
+                  id="modalInput9-4"
+                  type="number"
+                  name="amount"
+                  value={data.amount}
+                  onChange={handleChange}
+                  required
+                  onInput={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                  }}
+                />
+              </div>
+          </div>
+      </section>
+        
+       
       </>
     );
   };
@@ -447,11 +474,11 @@ function WithdrawModal({ setViewWithdrawModal }) {
       {isOtpModal ? (
         renderOtpModal()
       ) : (
-        <div className="z-50 fixed top-0 left-0 right-0 bottom-0 flex items-center w-full h-full p-4 lightglass overflow-y-auto">
-          <div className="max-w-xl w-full mx-auto pt-6 px-6 pb-8 bg-white rounded-xl shadow-sm">
-            <div className="flex justify-between items-center">
+        <div className="fixed top-0  left-0 right-0 bottom-0 flex items-center w-full h-full py-[100px] px-4 lg:p-4 lightglass overflow-y-auto">
+          <div className={`${isNewBankAccount?"max-w-5xl ":"max-w-xl"} w-full h-[500px] overflow-y-auto sm:h-fit mx-auto pt-6 px-6 pb-8 bg-white rounded-xl shadow-sm`}>
+            <div className="flex justify-between ">
               <div className="flex flex-wrap items-center mb-6">
-                <div className="flex items-center justify-center h-14 w-14 mb-4 sm:mb-0 bg-gray-100 shadow-sm rounded-xl mr-4 text-orange-500 text-xl">
+                <div className="flex items-center justify-center  h-14 w-14 mb-4 sm:mb-0 bg-gray-100 shadow-sm rounded-xl mr-4  text-orange-500 text-xl">
                   <BsFillCreditCard2FrontFill />
                 </div>
                 <div className="w-full sm:w-auto">
@@ -464,7 +491,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
                 </div>
               </div>
               <div
-                className="flex items-center justify-center h-14 w-14 mb-4 sm:mb-0 bg-gray-100 shadow-sm rounded-xl mr-4 text-orange-500 text-xl"
+                className="flex items-center justify-center   h-14 w-14 sm:w-14   bg-gray-100 shadow-sm rounded-xl  text-orange-500 text-xl"
                 onClick={() => setViewWithdrawModal(false)}
               >
                 <RxEyeClosed />{" "}
@@ -482,8 +509,9 @@ function WithdrawModal({ setViewWithdrawModal }) {
               </div>
               {isNewBankAccount
                 ? renderNewBankAccountDetails()
-                : renderExistingBankDetails()}
-              <div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
+                : renderExistingBankDetails() }
+
+              {!isNewBankAccount&&<div className="relative w-full h-14 py-2 px-3 mb-6 border border-BEColor focus-within:border-green-500 rounded-lg">
                 <span className="absolute bottom-full left-0 ml-3 -mb-1 transform translate-y-0.5 text-xs font-semibold text-gray-50 px-1 bg-BEColor">
                   Amount
                 </span>
@@ -495,8 +523,11 @@ function WithdrawModal({ setViewWithdrawModal }) {
                   value={data.amount}
                   onChange={handleChange}
                   required
+                  onInput={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                  }}
                 />
-              </div>
+              </div>}
               {error && (
                 <p className="text-red-500 text-[11px] pb-1">{error}</p>
               )}

@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "../../../axios";
 import { BtnLoader } from "../../components";
 import { setAlertSuccess } from "../../../redux/slices/homeSlice";
+import {setAgentCompanyLogo} from "../../../redux/slices/agentSlice"
 import { useNavigate } from "react-router-dom";
 import { config } from "../../../constants";
 
 function CompanySettings() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { agent, token } = useSelector((state) => state.agents);
+  const { agent,agenttempLogo, token } = useSelector((state) => state.agents);
   const [companyDetails, setCompanyDetails] = useState({
     companyName: agent?.companyName || "",
     address: agent?.address || "",
@@ -48,6 +49,8 @@ function CompanySettings() {
     });
   };
 
+
+
   const handleLogoChange = (e) => {
     const file = e.target.files[0];
 
@@ -58,11 +61,16 @@ function CompanySettings() {
 
     const reader = new FileReader();
     reader.onload = () => {
-      setSelectedImage(reader.result); // Update the selected image in the state
+      setSelectedImage(reader.result); 
     };
     reader.readAsDataURL(file);
+    // setSelectedImage(URL.createObjectURL(file))
   };
+function updateAgednCompanyLogo(){
+ 
+  dispatch(setAgentCompanyLogo(selectedImage))
 
+}
   const formData = new FormData();
   formData.append("companyName", companyDetails.companyName);
   formData.append("address", companyDetails.address);
@@ -215,7 +223,7 @@ function CompanySettings() {
         <div className=" relative lg:w-1/2 mt-5 my-7">
           <div className="text-xs text-grayColor">Company Logo</div>
           <div className="md:flex gap-10">
-            <input
+            <input id="fileInput"
               className="order-2 md:order-1 border-b outline-none focus:border-green-400 hover:border-orange-500 text-sm px-2 w-full pt-10"
               type="file"
               name="companyLogo"
@@ -227,6 +235,7 @@ function CompanySettings() {
                 src={
                   selectedImage
                     ? selectedImage
+                    : agenttempLogo?agenttempLogo
                     : config?.SERVER_URL + agent?.companyLogo
                 }
                 className="md:order-2 order-1  w-32 h-20"
@@ -298,6 +307,9 @@ function CompanySettings() {
             </div>
           )}
           <button
+        
+        onClick={updateAgednCompanyLogo}
+        
             className="h-8 px-5 bg-orange-500 text-white text-xs rounded-sm shadow-mn "
             type="submit"
           >

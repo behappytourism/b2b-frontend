@@ -49,6 +49,9 @@ function CCAvenuePaymentComponent() {
                type="number"
                placeholder="Enter Amount to be added to wallet"
                min={10}
+               onInput={(e) => {
+                  e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                }}
             />
          </div>{" "}
          <p className="text-gray-400 text-[12px] text-center pb-1">
