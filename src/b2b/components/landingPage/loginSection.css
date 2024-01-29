@@ -1,0 +1,17 @@
+.forget-mail{
+    border: solid 1px rgb(202, 202, 220);
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    white-space: nowrap;
+    padding: 10px 10px;
+    transition: all 500ms ease;
+}
+
+.message-out{
+    transform: translate(130%);
+}
+
+.message-in{
+    transform: translate(-50%);
+}

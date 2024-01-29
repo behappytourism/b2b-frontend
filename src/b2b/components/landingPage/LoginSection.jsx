@@ -9,6 +9,8 @@ import { IoIosLock } from "react-icons/io";
 import { BsPersonFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import BtnLoader from "../BtnLoader";
+import './loginSection.css'
+import alertimg from '../../../../public/alert.png'
 
 const LoginSection = () => {
   const navigate = useNavigate();
@@ -95,10 +97,10 @@ const LoginSection = () => {
       setFrogotPasswordResponse(
         {
           response:false,
-          message:''
+          message:message
         }
       );
-    }, 2000);
+    }, 3000);
   
     return () => clearTimeout(forgotmessagetimer);
   }
@@ -124,7 +126,7 @@ const LoginSection = () => {
   const renderForgotPasswordSection = () => {
     return (
       <form onSubmit={submitForgotPasswordHandler}>
-        <div className=" bg-white rounded-3xl w-96 h-[350px]  shadow-xl">
+        <div className=" bg-white rounded-3xl w-96 h-[350px]  shadow-xl relative overflow-hidden">
           <div className="pt-8 pl-8">
             <h1 className="text-lg font-semibold">Forgot Password</h1>
           </div>
@@ -168,7 +170,9 @@ const LoginSection = () => {
               </button>
             </div>
           </div>
-          {frogotPasswordResponse.response && <p className="mt-2 text-center text-sm text-red-500">{frogotPasswordResponse.message}!</p>}
+          {/* {frogotPasswordResponse.response && <p className="forget-mail-message mt-2 text-center text-sm text-red-500">!</p>} */}
+          {<p className={`${frogotPasswordResponse.response?'message-in':'message-out'} forget-mail   mt-2 text-center text-sm text-stone-600 rounded-lg flex gap-1 font-medium items-center`}><span className={`${frogotPasswordResponse.response?'':'hidden'}`}><img className="w-[20px]" src={alertimg} alt="" /></span> {frogotPasswordResponse.message}</p>}
+
         </div>
       </form>
     );
