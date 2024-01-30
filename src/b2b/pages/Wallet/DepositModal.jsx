@@ -181,10 +181,10 @@ function DepositModal({setIsModal}) {
             <div className='flex justify-center'>
                 {
                     !isLoading ? ( 
-                        <button className='w-32 h-8 bg-orange-500 rounded text-white hover:bg-orange-600 '>Submit</button>
+                        <button className='w-32 h-8  rounded text-white  bg-BEColor hover-bg-BEColor'>Submit</button>
 
                     ) : (
-                        <button className='w-32 h-8 bg-orange-500 rounded text-white hover:bg-orange-600 '><BtnLoader/></button>
+                        <button className='w-32 h-8  rounded text-white bg-BEColor hover-bg-BEColor '><BtnLoader/></button>
                     )
                 }
             </div>

@@ -208,7 +208,7 @@ function ProfileSettings() {
             </div>
           )}
           <button
-            className="bg-orange-500 text-white px-5 h-8 rounded-sm text-xs shadow-mn"
+            className="bg-BEColor text-white px-5 h-8 rounded-sm text-xs shadow-mn"
             type="submit"
           >
             {isLoading ? <BtnLoader /> : "Update"}
