@@ -17,13 +17,13 @@ function ImagePreviewModal({setModal, modal, preview}) {
     <div className="flex justify-center items-center w-full h-[100vh] z-50">
         <div className="h-[80vh] w-8/12 bg-[#fcfeff]  rounded-2xl overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
             <img src={config.SERVER_URL + showImg} alt='preview' className='object-cover bg-no-repeat w-full h-full' />
-            <div  className='absolute bottom-0 left-5 p-2 shadow-xl flex gap-2'>
+            <div  className='absolute bottom-0 left-5 p-2 flex gap-2 '>
             {
                 preview?.map((ele, index)=>{
                     return (
                                 <img 
                                 key={index}
-                                className='w-36 h-36 object-cover rounded'
+                                className='w-36 h-36 object-cover rounded shadow-black shadow-xl'
                                 onClick={()=>{
                                     setShowImg(ele)
                                 }}
