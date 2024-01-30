@@ -44,7 +44,7 @@ function HeroSection() {
         description={"Get best deals on Travel and Tourism online with us"}
         thumbnail={agentExcursion?.images ? agentExcursion?.images[0] : ""}
       />
-      <div className="bg-white rounded-3xl">
+      <div className="bg-white rounded-3xl px-40">
         <div className="  ">
           <div className="">
             <div className="w-full ">
@@ -111,7 +111,7 @@ function HeroSection() {
                   <FeatureSection />
                 </div> */}
             </div>
-            <div className="relative lg:grid lg:grid-cols-12 gap-5 py-2 lg:my-0 lg:py-5">
+            <div className="relative  gap-5 py-2 lg:my-0 lg:py-5 ">
               <div className="1st lg:col-span-8">
                 <div className="bg-light rounded-2xl  p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
                   <div className="flex justify-between">
@@ -242,7 +242,7 @@ function HeroSection() {
                   }`}
                   onClick={() => setViewBookCard(!viewBookCard)}
                 ></div>
-                <div
+                {/* <div
                   className={`${
                     viewBookCard
                       ? "fixed bottom-0 max-h-[93vh] overflow-y-auto left-0 right-0 z-10 bg-white"
@@ -257,7 +257,7 @@ function HeroSection() {
                   </div>
 
                   <DetailsCard />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

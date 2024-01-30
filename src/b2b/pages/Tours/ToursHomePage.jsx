@@ -165,10 +165,10 @@ function ToursHomePage() {
           <AttractionCard />
         </div>
       </div> */}
-      <div className="w-full px-36 flex justify-end">
+      <div className="w-full px-44 flex justify-end">
       <AttractionCard />
       </div>
-      <div className="py-5 px-3 md:py-10 md:px-32 flex justify-center bg-white w-full h-full">
+      <div className="py-5 px-10 md:py-10 md:px-32 flex justify-center bg-white w-full h-full">
         <div>
           <>
             <InfiniteScroll

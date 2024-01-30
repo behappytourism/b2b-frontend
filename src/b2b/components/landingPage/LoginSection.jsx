@@ -283,9 +283,9 @@ const LoginSection = () => {
     <div>
       <div className="flex md:flex-row flex-col justify-evenly p-5 ">
         <div className="order-last md:order-first md:flex gap-1 w-1/2">
-          <div className="">
+          <div className="ml-28 md:ml-0">
             <div className="pt-20">
-              <h1 className="text-5xl font-extrabold ">
+              <h1 className="md:text-5xl text-3xl font-extrabold ">
                 Your Gateway to Unforgettable{" "}
                 <div className="pt-1">
                   <span className="text-green-400">UAE Experiences</span>

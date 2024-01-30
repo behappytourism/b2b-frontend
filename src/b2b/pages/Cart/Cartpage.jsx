@@ -22,6 +22,7 @@ import { BtnLoader } from '../../components';
 import ConfirmOtpModal from '../Transfer/ConfirmOtpModal';
 import { removeFromCart } from "../../../redux/slices/agentExcursionSlice";
 import priceConversion from "../../../utils/PriceConversion";
+import { LiaEditSolid } from "react-icons/lia";
 
 function Cartpage() {
 
@@ -375,7 +376,12 @@ function Cartpage() {
                                         <div key={index} className="pt-2">
                                             <div className="border">
                                                     <div className="flex justify-end ">
-                                                        <h1 className="text-xl text-red-500 cursor-pointer"
+                                                        <h1 className="text-2xl text-blue-500 cursor-pointer"
+                                                        onClick={()=>{
+                                                            navigate(`/attractions/details/${item?.attraction}`)
+                                                        }}
+                                                        ><LiaEditSolid /></h1>
+                                                        <h1 className="text-2xl text-red-500 cursor-pointer"
                                                         onClick={()=>{
                                                             dispatch(removeFromCart(item?._id))
                                                             dispatch(setAlertSuccess({

@@ -51,7 +51,7 @@ export const getInitialVisaCountryList = createAsyncThunk(
 export const getSocialMedia = createAsyncThunk(
   "homeSlice/getSocialMedia",
   async (args, { getState }) => {
-    const response = await axios.get(`/home/contact-details`)
+    const response = await axios.get(`/b2b/home/contact-details`)
     return response.data
   }
 )

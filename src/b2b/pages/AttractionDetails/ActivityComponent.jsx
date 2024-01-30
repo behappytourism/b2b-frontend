@@ -16,7 +16,6 @@ import ImagePreviewModal from "./ImagePreviewModal";
 import TermsConditionModal from "./TermsConditionModal";
 
 function ActivityComponent({ item, index }) {
-  console.log(item, "show items");
 
   const [price, setPrice] = useState(0);
   const [error, setError] = useState("");
@@ -477,10 +476,12 @@ function ActivityComponent({ item, index }) {
     }
   };
 
+
   return (
     <div
       className={`text-black w-full h-auto shadow-md border border-orange-300  mb-4 cursor-pointer`}
     >
+     
       <div className="grid md:grid-cols-2 2xl:grid-cols-3 gap-1 md:gap-4">
         <div className="w-full h-full row-span-2">
           <img
