@@ -310,7 +310,7 @@ function updateAgednCompanyLogo(){
         
         onClick={updateAgednCompanyLogo}
         
-            className="h-8 px-5 bg-orange-500 text-white text-xs rounded-sm shadow-mn "
+            className="h-8 px-5 bg-BEColor text-white text-xs rounded-sm shadow-mn "
             type="submit"
           >
             {isLoading ? <BtnLoader /> : "Update"}

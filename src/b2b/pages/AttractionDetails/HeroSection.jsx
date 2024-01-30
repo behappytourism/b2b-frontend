@@ -64,7 +64,7 @@ function HeroSection() {
                             "freeCancellation" ? (
                             <div className="flex space-x-1 items-center">
                               <span className="text-green-600 text-sm">
-                                Free Cancellation{" "}
+                                Free  Cancellation{" "}
                               </span>
                             </div>
                           ):("")}
@@ -269,13 +269,13 @@ function HeroSection() {
           } flex transition-all  duration-500 left-0 right-0 lg:hidden space-x-1 px-7 py-7 bg-[rgb(255,255,255,0)] rounded-t-xl z-10`}
         >
           <button
-            className="bg-orange-500 w-2/12 flex justify-center items-center rounded-lg text-lg text-light"
+            className="bg-BEColor w-2/12 flex justify-center items-center rounded-lg text-lg text-light"
             onClick={() => navigate(-1)}
           >
             <FaChevronLeft />
           </button>
           <button
-            className="bg-orange-500 w-10/12 py-3 rounded-lg font-semibold tracking-wider shadow-sm text-light"
+            className="bg-BEColor w-10/12 py-3 rounded-lg font-semibold tracking-wider shadow-sm text-light"
             onClick={() => setViewBookCard(!viewBookCard)}
           >
             Book Now

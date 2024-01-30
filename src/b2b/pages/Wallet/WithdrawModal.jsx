@@ -533,7 +533,7 @@ function WithdrawModal({ setViewWithdrawModal }) {
               )}
               <button
                 disabled={!isNewBankAccount && bankAccounts.length == 0}
-                className="block w-full h-full py-3 px-6 text-center text-blue-50 font-semibold leading-6 bg-orange-500 hover:bg-orange-600 rounded-xl transition duration-200"
+                className="block w-full h-full py-3 px-6 text-center text-blue-50 font-semibold leading-6 bg-BEColor hover-bg-BEColor  rounded-xl transition duration-200"
               >
                 {isLoading ? <BtnLoader /> : "Withdraw"}
               </button>

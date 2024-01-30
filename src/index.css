@@ -353,3 +353,6 @@ button:disabled {
 }
 
 
+.hover-bg-BEColor:hover{
+  background-color: hsla(192, 100%, 35%, 0.909);
+}

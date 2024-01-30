@@ -213,7 +213,7 @@ function DetailsCard() {
               <div className="">
                 <button
                   type="submit"
-                  className="bg-orange-500 text-light w-full py-3 rounded-lg"
+                  className="bg-BEColor text-light w-full py-3 rounded-lg"
                   onClick={navigator}
                 >
                   Book Now

@@ -43,7 +43,7 @@ function PaymentApproval() {
                     onClick={() => {
                       setPayMethod("ccavenue");
                     }}
-                    className={`h-10 hover:bg-orange-600 ${payMethod === "ccavenue" ? " bg-orange-500 " : " bg-transparent "} uppercase font-medium text-[13px] rounded-lg flex tracking-wide items-center cursor-pointer px-4`}
+                    className={`h-10 hover-bg-BEColor ${payMethod === "ccavenue" ? " bg-BEColor " : " bg-transparent "} uppercase font-medium text-[13px] rounded-lg flex tracking-wide items-center cursor-pointer px-4`}
                   >
                     CCAvenue
                   </div>
@@ -71,6 +71,7 @@ function PaymentApproval() {
                       {payMethod === "ccavenue" && <CCAvenuePaymentComponent />}
                     </div>
                   </div>
+                  
                   <div className="flex justify-center items-center space-x-10 border-gray-200 border-t border-dashed">
                     <div className="">
                       <img src={paypalpng} alt="paypal" className="w-[60px]" />
