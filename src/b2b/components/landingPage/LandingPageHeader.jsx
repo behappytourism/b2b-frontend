@@ -9,12 +9,12 @@ function LandingPageHeader() {
   return (
     <div className="bg-slate-50">
       <div className="flex justify-between p-4 max-w-screen-2xl mx-auto ">
-        <div className="h-16 md:h-16 ">
+        <div className="h-16 md:h-16 w-40">
           <img
             onClick={()=>{
               navigate('/login')
             }}
-            className="h-full object-cover"
+            className="h-full w-full object-cover"
             src={config.COMPANY_LOGO}
             alt=""
           />
