@@ -148,7 +148,7 @@ function LandingPage() {
 
     const getTopAttractions = async () => {
       try {
-        const res = await axios.get("/home");
+        const res = await axios.get("/b2b/home");
         setTopAttractionsData(res?.data?.topAttractions);
       } catch (error) {
         console.log(error);
@@ -366,44 +366,47 @@ function LandingPage() {
   //
   const renderStatisticSection = () => {
     return (
-      <div className="w-full min-h-[500px] bg-slate-50">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 items-center justify-center md:pt-32 py-10">
-          <div>
+      <div className="w-full min-h-[500px] bg-slate-50 ">
+        <div className=" md:flex flex-col lg:flex-row gap-10 lg:gap-32 items-center justify-center md:pt-32 py-10 p-5">
+          <div className="flex justify-center">
             <img
               className="w-80 h-72"
               src="https://www.nivabupa.com/content/dam/nivabupa/Image/new-travel-assure/travelassure_screen1_HeroImage.svg"
               alt=""
             />
           </div>
-          <div>
+          <div className="flex justify-center ">
             <div>
-              <h1 className="text-4xl font-bold max-w-md">
-                Our Best Experience And Service For You
-              </h1>
+              <div>
+                <h1 className="text-4xl font-bold max-w-md ">
+                  Our Best Experience And Service For You
+                </h1>
+              </div>
+              <div className="pt-10">
+                <h1 className="text-sm text-gray-300 max-w-md">
+                Our commitment is to provide you with the finest experience and impeccable service. From start to finish, your satisfaction is our priority. Choose us for a journey that exceeds expectations and a service that stands as our best, exclusively for you
+                </h1>
+              </div>
+              <div className="pt-10 grid gap-5 md:flex md:gap-20">
+                <div>
+                  <h1 className="text-4xl text-blue-400 font-medium">10+</h1>
+                  <h1 className="text-gray-300 max-w-[30px]">Year Experience</h1>
+                </div>
+                <div>
+                  <h1 className="text-4xl text-blue-400 font-medium">1000+</h1>
+                  <h1 className="text-gray-300 max-w-[30px]">Top Attractions</h1>
+                </div>
+                <div>
+                  <h1 className="text-4xl text-blue-400 font-medium">90K</h1>
+                  <h1 className="text-gray-300 max-w-[30px]">Happy Travelers</h1>
+                </div>
+                <div>
+                  <h1 className="text-4xl text-blue-400 font-medium">200+</h1>
+                  <h1 className="text-gray-300 max-w-[30px]">Our Partners</h1>
+                </div>
+              </div>
             </div>
-            <div className="pt-10">
-              <h1 className="text-sm text-gray-300 max-w-md">
-              Our commitment is to provide you with the finest experience and impeccable service. From start to finish, your satisfaction is our priority. Choose us for a journey that exceeds expectations and a service that stands as our best, exclusively for you
-              </h1>
-            </div>
-            <div className="pt-10 flex gap-20">
-              <div>
-                <h1 className="text-4xl text-blue-400 font-medium">10+</h1>
-                <h1 className="text-gray-300 max-w-[30px]">Year Experience</h1>
-              </div>
-              <div>
-                <h1 className="text-4xl text-blue-400 font-medium">1000+</h1>
-                <h1 className="text-gray-300 max-w-[30px]">Top Attractions</h1>
-              </div>
-              <div>
-                <h1 className="text-4xl text-blue-400 font-medium">90K</h1>
-                <h1 className="text-gray-300 max-w-[30px]">Happy Travelers</h1>
-              </div>
-              <div>
-                <h1 className="text-4xl text-blue-400 font-medium">200+</h1>
-                <h1 className="text-gray-300 max-w-[30px]">Our Partners</h1>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
