@@ -186,26 +186,6 @@ const LoginSection = () => {
             <h1 className="text-lg font-semibold">Login Now</h1>
           </div>
           <div className="grid p-5 pl-8 gap-5">
-            {/* <div className="">
-              <div className="flex">
-                <div className="h-12 w-10 bg-slate-200 rounded-l-full">
-                  <h1 className="p-[14px] text-xl text-gray-400">
-                    <BsPersonFill />
-                  </h1>
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    className="bg-slate-200 h-12 w-72 rounded-r-full outline-none placeholder:text-sm placeholder:"
-                    placeholder="Agent Code"
-                    name="agentCode"
-                    value={data.agentCode}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              </div>
-            </div> */}
             <div>
               <div className="flex">
                 <div className="h-12 w-10 bg-slate-200 rounded-l-full">
@@ -281,8 +261,44 @@ const LoginSection = () => {
 
   return (
     <div>
-      <div className="flex md:flex-row flex-col justify-evenly p-5 ">
+         <div className=" w-full md:h-96 h-auto relative">
+
+          <div className="w-full h-full hidden lg:block">
+            <div className="flex justify-center">
+              <img
+              className="w-96 flex justify-center h-full object-cover "
+                src="https://cdni.iconscout.com/illustration/premium/thumb/international-travel-3217263-2745445.png"
+                alt=""
+              />
+            </div>
+          </div>
+        <div className="flex md:flex-row flex-col justify-center p-2 md:absolute md:left-0 md:right-0  md:top-0">
         <div className="order-last md:order-first md:flex gap-1 w-1/2">
+          <div className="ml-10 xs:ml-12 sm:ml-28 md:ml-0">
+            <div className="pt-12">
+              <h1 className="md:text-5xl max-w-md text-4xl font-extrabold ">
+                Your Gateway to Unforgettable{" "}
+                <div className="pt-1">
+                  <span className="text-green-400">UAE Experiences</span>
+                </div>
+              </h1>
+            </div>
+            <div className="pt-5">
+              <h1 className="text-xsbase max-w-xs text-lg">
+                We understand happiness at every guest Touchpoint, all we got
+                covered to create unforgettable memory
+              </h1>
+            </div>
+          </div>
+       
+        </div>
+        <div className="order-first md:order-last pt-1 flex justify-center">
+          {isForgotPassword
+            ? renderForgotPasswordSection()
+            : renderLoginSection()}
+        </div>
+
+        {/* <div className="order-last md:order-first md:flex gap-1 w-1/2">
           <div className="ml-28 md:ml-0">
             <div className="pt-20">
               <h1 className="md:text-5xl text-3xl font-extrabold ">
@@ -298,11 +314,6 @@ const LoginSection = () => {
                 covered to create unforgettable memory
               </h1>
             </div>
-            {/* <div className="pt-10 ">
-              <button className="h-14 text-white w-44 bg-sky-400 rounded-full">
-                Explore More
-              </button>
-            </div> */}
           </div>
           <div className="hidden lg:block w-full h-96">
             <img
@@ -311,13 +322,12 @@ const LoginSection = () => {
               alt=""
             />
           </div>
-        </div>
-        <div className="order-first md:order-last pt-10 flex justify-center">
-          {isForgotPassword
-            ? renderForgotPasswordSection()
-            : renderLoginSection()}
-        </div>
+        </div> */}
+
+      
       </div>
+          </div>
+      
     </div>
   );
 };

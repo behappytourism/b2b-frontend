@@ -231,16 +231,6 @@ function TransferHome() {
   };
 
 
-  const [formatedDate, setFormatedDate] = useState("")
-  useEffect(()=>{
-    let date = new Date(formDatas?.pickupDate)
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    const year = date.getFullYear();
-
-    setFormatedDate(`${month}-${day}-${year}`)
-  }, [formDatas?.pickupDate])
-
   return (
     <div className="h-[800px]">
       <div className="w-full h-[590px] relative">
