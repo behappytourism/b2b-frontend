@@ -368,10 +368,11 @@ function Cartpage() {
                     agentExcursionCart?.length > 0 ? (
                         <div>
                             <div>
-                                <h1 className="font-semibold text-xl">Attraction</h1>
+                                <h1 className="font-semibold text-2xl">Attraction</h1>
                             </div>
                             {
                                 agentExcursionCart?.map((item, index)=>{
+                                    console.log(item);
                                     return (
                                         <div key={index} className="pt-2">
                                             <div className="border">
@@ -392,7 +393,7 @@ function Cartpage() {
                                                         }}
                                                         ><TiDelete /></h1>
                                                     </div>
-                                                <div className="w-[800px] h-40 p-5">
+                                                <div className="w-[800px] h-48 p-5">
                                                     <div className="flex justify-between">
                                                         <div className="">
                                                             <div>
@@ -422,6 +423,16 @@ function Cartpage() {
                                                                     </div>
                                                                     )}    
                                                             </div>
+                                                            <div>
+                                                                <div className="flex gap-1">
+                                                                    <h1>Activity Type : </h1>
+                                                                    <h1>{item?.qtnActivityType}</h1>
+                                                                </div>
+                                                                <div className="flex gap-1">
+                                                                    <h1>Transfer : </h1>
+                                                                    <h1>{item?.transfer}</h1>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                         <div className="flex justify-end">
@@ -441,13 +452,13 @@ function Cartpage() {
             </div>
             {
                 agentTransferCart?.length > 0 ? (
-                    <div className='  bg-BeGray'>
+                    <div className=' pt-10 bg-BeGray'>
                         <div>
-                            <h1 className="font-semibold text-xl">Transfer</h1>
+                            <h1 className="font-semibold text-2xl">Transfer</h1>
                         </div>
                     {
                         agentTransferCart?.map((ele, index)=>(
-                            <div key={index} className='mb-2 flex gap-2 pt-2'>
+                            <div key={index} className='mb-1 flex gap-2 pt-2'>
                             {
                                 ele?.journys.map((item, i)=>{
                                     return (
@@ -491,47 +502,63 @@ function Cartpage() {
                     
                                             <div className='flex gap-2 pt-2'>
                                                 <div className='flex gap-1'>
-                                                    <div>
-                                                        <h1><CiCalendarDate /></h1>
-                                                    </div>
+                                                  
                                                     {
                                                         item?.transferType === "oneway" ? (
                                                             <div>
-                                                                <h1 className='text-xs'>{item?.pickupDate}</h1>
+                                                                <div className="flex gap-1">
+                                                                    <h1><CiCalendarDate /></h1>
+                                                                    <h1 className='text-xs'>Date : {item?.pickupDate}</h1>
+
+                                                                </div>
                                                             </div>
 
                                                         ) : item?.transferType === 'return' ? (
                                                             <div className='flex justify-between gap-3'>
-                                                                <h1 className='text-xs'>Date: {item?.pickupDate}</h1>
-                                                                <h1 className='text-xs'>Return: {item?.returnDate}</h1>
+                                                                <div className="flex gap-1">
+                                                                    <h1><CiCalendarDate /></h1>
+                                                                    <h1 className='text-xs'>Pickup Date: {item?.pickupDate}</h1>
+                                                                </div>
+                                                                <div className="flex gap-1">
+                                                                   <h1><IoTimeOutline /></h1>
+                                                                
+                                                                     <h1 className='text-xs'>Pickup Time: {item?.pickupTime}</h1>
+                                                                </div>
                                                             </div>
                                                         ):""
                                                     }
-                                                    <div>
-                                                        <h1><IoTimeOutline /></h1>
-                                                    </div>
+                                                  
                                                     {
                                                         item?.transferType === "oneway" ? (
                                                             <div>
-                                                                <h1 className='text-xs'>{item?.pickupTime}</h1>
+                                                                <div className="flex gap-1">
+                                                                    <h1><IoTimeOutline /></h1>
+                                                                    <h1 className='text-xs'>Time : {item?.pickupTime}</h1>
+                                                                </div>
                                                             </div>
 
                                                         ) : item?.transferType === 'return' ? (
                                                             <div className='flex justify-between gap-3'>
-                                                                <h1 className='text-xs'>PickupTime: {item?.pickupTime}</h1>
-                                                                <h1 className='text-xs'>Return: {item?.returnTime}</h1>
+                                                                <div className="flex gap-1">
+                                                                    <h1><CiCalendarDate /></h1>
+                                                                    <h1 className='text-xs'>Return Date: {item?.returnDate}</h1>
+                                                                </div>
+                                                                <div className="flex gap-1">
+                                                                    <h1><IoTimeOutline /></h1>
+                                                                     <h1 className='text-xs'>Return Time: {item?.returnTime}</h1>
+                                                                </div>
                                                             </div>
                                                         ):""
                                                     }
                                                 </div>
-                                                <div className='flex gap-1'>
+                                                {/* <div className='flex gap-1'>
                                                     <div>
                                                         <h1><IoTimeOutline /></h1>
                                                     </div>
                                                     <div>
                                                         <h1 className='text-xs'>Maximum waiting time: 60 minutes</h1>
                                                     </div>
-                                                </div>
+                                                </div> */}
                                             </div>
                                              <div className='pt-3'>
                                                  <div>
@@ -675,7 +702,7 @@ function Cartpage() {
                     <div className='bg-white shadow-sm p-5 w-[500px]'>
                         {/* <form onSubmit={handleCreateTransferBooking}> */}
                         <div>
-                            <h1 className='text-lg font-bold'>Add Details</h1>
+                            <h1 className='text-xl font-bold'>Add Details</h1>
                         </div>
                             <div className='grid md:grid-cols-2 gap-2 pt-3'>
                             <div>

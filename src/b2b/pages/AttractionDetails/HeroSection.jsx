@@ -196,9 +196,9 @@ function HeroSection() {
                       <Availablity />
                     </div> */}
 
-                    <>
+                    {/* <>
                       <CarousalMobile />
-                    </>
+                    </> */}
 
                     <div
                       id="mapSection"
