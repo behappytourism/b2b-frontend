@@ -479,7 +479,7 @@ function TransferHome() {
                             value={
                               formDatas.returnDate ? formDatas.returnDate : ""
                             }
-                            min={formDatas?.pickupDate}
+                            min={formDatas?.pickupDate ? formDatas?.pickupDate : ""}
                             name="returnDate"
                             onChange={(e) => {
                               dispatch(
