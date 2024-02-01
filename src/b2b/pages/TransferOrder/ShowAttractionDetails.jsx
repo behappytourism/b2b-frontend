@@ -126,17 +126,21 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
                 {ele?.status}
               </h1>
             </td>
-            <td className="px-6 py-4">
-              <h1
-                className="cursor-pointer text-xl"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDownloadAllTicket();
-                }}
-              >
-                <LuDownload />
-              </h1>
-            </td>
+            {
+              ele?.status === 'confirmed' ? (
+                <td className="px-6 py-4">
+                  <h1
+                    className="cursor-pointer text-xl"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDownloadAllTicket();
+                    }}
+                  >
+                    <LuDownload />
+                  </h1>
+                </td>
+              ) : ""
+            }
           </tr>
         </tbody>
       </table>

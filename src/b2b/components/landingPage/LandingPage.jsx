@@ -217,11 +217,11 @@ function LandingPage() {
   const renderChooseUsSection = () => {
     return (
       <div className="">
-        <div className="pt-10 px-10 bg-white">
+        <div className="pt-16 px-10 bg-white">
           <div>
-            <h1 className="text-center text-3xl font-bold">WHY CHOOSE US?</h1>
+            <h1 className="text-center text-5xl font-bold">WHY CHOOSE US?</h1>
           </div>
-          <div className="py-5">
+          <div className="py-20">
             <div className="grid md:grid-cols-2 gap-10 p-5 max-w-screen-2xl mx-auto">
               <div className="flex gap-5 justify-center">
                 <div className="pt-2">
