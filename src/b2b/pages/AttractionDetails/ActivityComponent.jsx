@@ -479,11 +479,11 @@ function ActivityComponent({ item, index }) {
 
   return (
     <div
-      className={`text-black w-full  xl:h-80 shadow-md border border-orange-300 rounded-lg mb-4 cursor-pointer`}
+      className={`text-black w-full h-auto xl:h-[330px] shadow-md border border-orange-300 rounded-lg mb-4 cursor-pointer overflow-hidden`}
     >
      
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-1 md:gap-4">
-        <div className="w-full h-full xl:h-80 row-span-2">
+        <div className="w-full h-full xl:h-[330px] row-span-2">
           <img
             onClick={() => {
               setModal(!modal);
@@ -508,7 +508,7 @@ function ActivityComponent({ item, index }) {
             ></div>
             {item?.description?.length > 300 ? (
               <button
-                onClick={() => {
+                onClick={() => {Checkout
                   setData(item?.description);
                   setHeadings("Description");
                   setTermsModals(!termsModals);
@@ -946,7 +946,7 @@ function ActivityComponent({ item, index }) {
                   <p className="ftext-[9px] whitespace-nowrap  text-text  h-full">
                     per {item?.base} *
                   </p>
-                  <p className="sm:text-right font-[600] sm:text-lg">
+                  <p className="sm:text-right foCheckoutnt-[600] sm:text-lg">
                     {priceConversion(item?.lowPrice, selectedCurrency, true)}
                   </p>
                 </div>
@@ -978,7 +978,7 @@ function ActivityComponent({ item, index }) {
               {!agentExcursion?.isApiConnected ||
               agentExcursion?.connectedApi !== "63f0a47b479d4a0376fe12f4" ? (
                 <div className="py-2 px-2">
-                  <div className="flex gap-2 w-full justify-end items-end">
+                  <div className="flex gap-2 w-full justify-end items-end ">
                     {error ? <p className="text-red-500">{error}</p> : ""}
                     <button
                       onClick={() => carting(item)}

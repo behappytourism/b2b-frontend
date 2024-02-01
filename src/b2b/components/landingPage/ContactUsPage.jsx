@@ -116,16 +116,23 @@ function ContactUsPage() {
             <div className='flex gap-20 justify-center pt-10'>
                 <div>
                     <div>
-                        <h1 className='text-sky-600 font-medium text-lg'>Contact Us</h1>
+                        <h1 className='text-sky-600 font-medium text-lg uppercase'>Address</h1>
                     </div>
-                    <div className='pt-3'>
-                        <h1 className='text-6xl font-extrabold'>Get In Touch</h1>
-                    </div>
+                 
                     <div className='max-w-xl pt-7'>
-                        <h1>Any kind of travel information don't hesitate to contact with us for imiditate customer support. We are love to hear from you</h1>
+                       <div dangerouslySetInnerHTML={{ __html: socialMedias?.contactUs }} ></div>
                     </div>
 
-                        <form onSubmit={submitHandler}>
+                       
+
+            </div>
+                <div className=' flex justify-center items-center'>
+                    <div className='bg-white  p-10 shadow-lg rounded'>
+                    {/* <img className='w-full h-full object-cover' src="https://www.yuserver.in/templates/kohost/img/tt-contact-us.svg" alt="" /> */}
+                    <div className=''>
+                        <h1 className='text-xl font-extrabold text-sky-600'>Get In Touch</h1>
+                    </div>
+                    <form onSubmit={submitHandler}>
                             <div>
                                 <div className='pt-10'>
                                     <input 
@@ -161,11 +168,6 @@ function ContactUsPage() {
                                 </div>
                             </div>
                         </form>
-
-            </div>
-                <div className='pt-10'>
-                    <div className='w-96 h-96 '>
-                    <img className='w-full h-full object-cover' src="https://www.yuserver.in/templates/kohost/img/tt-contact-us.svg" alt="" />
                     </div>
                 </div>
             </div>
