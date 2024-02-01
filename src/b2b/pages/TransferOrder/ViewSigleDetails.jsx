@@ -90,7 +90,7 @@ function ViewSigleDetails() {
                 </div>
             ) : (
               <div>
-                <div className='grid md:flex gap-4 py-2 px-2'>
+                <div className='grid xl:flex gap-4 py-2 px-2'>
                     <div className='bg-white shadow-xl w-96 md:w-[580px] md:h-72 h-96 py-5 px-6'>
                         <div>
                             <h1 className='font-semibold text-lg'>Details</h1>

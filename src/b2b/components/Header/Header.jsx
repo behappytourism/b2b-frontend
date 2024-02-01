@@ -34,10 +34,23 @@ export default function Header({ setSidebarView, sidebarView }) {
   const [cart, setCart] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isProfile, setIsProfile] = useState(false);
+  const [cartCount, setCartCount] = useState(0)
 
   const { balance } = useSelector((state) => state.wallet);
   const { selectedCurrency } = useSelector((state) => state.home);
   const { agent,agenttempLogo, isLoggedIn } = useSelector((state) => state.agents);
+  const { agentExcursionCart } = useSelector(state => state.agentExcursions)
+  const { agentTransferCart } = useSelector((state)=> state.transfer)
+
+  useEffect(()=>{
+
+    let transferCount = agentTransferCart?.length
+    let excCount = agentExcursionCart?.length
+    let sum = transferCount + excCount
+    setCartCount(sum)
+
+  }, [agentExcursionCart, agentTransferCart])
+
 
   const currencyRef = useRef();
   useHandleClickOutside(currencyRef, () => setCurrency(false));
@@ -394,8 +407,8 @@ export default function Header({ setSidebarView, sidebarView }) {
                   </p>
                 </div>
               </div>
-              <div className="">
-                <div className="relative  cursor-pointer">
+              <div className="relative">
+                <div className="  cursor-pointer">
                   <div
                     // onClick={() => setCart(!cart)}
                     onClick={() => navigate("/home/cart")}
@@ -406,7 +419,11 @@ export default function Header({ setSidebarView, sidebarView }) {
                     </p>
                     <p className="text-sm text-gray-400">Cart</p>
                   </div>
-                
+                    <div className="absolute left-5 bottom-9">
+                      <div className="bg-orange-500 w-5 flex justify-center items-center h-5 rounded-full">
+                       <h1 className="text-white ">{ cartCount }</h1>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>

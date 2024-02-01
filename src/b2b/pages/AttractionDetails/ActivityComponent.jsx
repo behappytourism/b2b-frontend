@@ -479,17 +479,17 @@ function ActivityComponent({ item, index }) {
 
   return (
     <div
-      className={`text-black w-full h-auto shadow-md border border-orange-300  mb-4 cursor-pointer`}
+      className={`text-black w-full  xl:h-80 shadow-md border border-orange-300 rounded-lg mb-4 cursor-pointer`}
     >
      
-      <div className="grid md:grid-cols-2 2xl:grid-cols-3 gap-1 md:gap-4">
-        <div className="w-full h-full row-span-2">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-1 md:gap-4">
+        <div className="w-full h-full xl:h-80 row-span-2">
           <img
             onClick={() => {
               setModal(!modal);
               setPreview(item?.images);
             }}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-l-lg "
             src={
               item?.images?.length ? config.SERVER_URL + item?.images[0] : ""
             }
@@ -522,7 +522,7 @@ function ActivityComponent({ item, index }) {
             )}
           </div>
 
-          <div className="flex gap-3 pt-4">
+          <div className="grid lg:flex gap-3 pt-4">
             {item?.overview ? (
               <button
                 className="text-black p-1 rounded text-xs bg-sky-300"
@@ -567,7 +567,7 @@ function ActivityComponent({ item, index }) {
             )}
           </div>
         </div>
-        <div className="p-2 md:p-5 px-10 md:px-0 ">
+        <div className="p-2 px-10 md:px-0 ">
           <div
             // onClick={() => {
             //   handleChange({
@@ -614,7 +614,7 @@ function ActivityComponent({ item, index }) {
                   {item?.isB2bPromoCode ? (
                     <>
                       {/* <span>-</span> */}
-                      <span className="text-[10px] bg-BEColor text-white px-2 py-[1px]">
+                      <span className="text-[10px] bg-BEColor text-white px-2 ">
                         {item?.isB2bPromoCode ? item?.b2bPromoCode : ""}
                       </span>
                     </>
@@ -644,8 +644,8 @@ function ActivityComponent({ item, index }) {
               )}
             </span>
           </div>
-          <div className="space-y-3">
-            <div className="block xl:flex justify-between items-center py-5">
+          <div className="">
+            <div className="block xl:flex justify-between items-center ">
               <div className="fle gap-2 mt-3">
                 <div className="relative">
                   <p className="text-xs ">Date</p>

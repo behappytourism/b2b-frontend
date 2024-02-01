@@ -13,7 +13,7 @@ function PackageSection() {
       <div className=" my-2 text-xl text-darktext font-bold tracking-wider">
         Select Tour Options
       </div>
-      <div className="rounded-sm overflow-x-auto">
+      <div className="rounded-sm ">
         <div className=" ">
           {agentRecievedActivities &&
             agentRecievedActivities?.map((item, index) => (

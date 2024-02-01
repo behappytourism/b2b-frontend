@@ -18,6 +18,11 @@ export default function B2BMainLayout() {
       ? JSON.parse(localStorage.getItem("isFirst"))
       : true
   );
+
+  const WhatsappTab = (WpNumber) => {
+    window.open(`https://wa.me/${WpNumber}`)
+  }
+
   return (
     <>
       {/* {isFirst ? <CookieInstallApp setIsFirst={setIsFirst} /> : ""} */}
@@ -27,12 +32,14 @@ export default function B2BMainLayout() {
           <div className="">
             <Outlet />
           </div>
-          <a href={`https://wa.me/${socialMedias?.phoneNumber2}`}>
-            <div className="fixed p-4 animate-bounce bg-white shadow-lg rounded-xl  hover:bg-slate-200 right-2 top-[750px]">
+            <div className="fixed p-4 animate-bounce bg-white shadow-lg rounded-xl  hover:bg-slate-200 right-2 top-[750px] cursor-pointer"
+            onClick={()=>{
+              WhatsappTab(socialMedias?.phoneNumber2)
+            }}
+            >
               <h1 className="text-green-500 text-3xl"><BsWhatsapp /></h1>
             </div>
 
-          </a>
           <SuccessAlert />
           <ErrorAlert />
 

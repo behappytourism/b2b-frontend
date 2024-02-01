@@ -45,7 +45,7 @@ function PaymentApproval() {
                     }}
                     className={`h-10 hover-bg-BEColor ${payMethod === "ccavenue" ? " bg-BEColor " : " bg-transparent "} uppercase font-medium text-[13px] rounded-lg flex tracking-wide items-center cursor-pointer px-4`}
                   >
-                    CCAvenue
+                    Online Payment
                   </div>
                 </div>
                 <div className="2 col-span-9 p-6">

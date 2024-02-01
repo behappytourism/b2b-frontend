@@ -48,7 +48,9 @@ function MarkUpList() {
   }, [search]);
 
 
-  const [transferSearch, setTransferSearch] = useState("")
+  
+  const [transferFromSearch, setTransferFromSearch] = useState("")
+  const [transferToSearch, setTransferToSearch] = useState('')
   const [transferLoading, setTransferLoading] = useState(false)
   const [transfers, setTransfers] = useState([])
 
@@ -61,7 +63,7 @@ function MarkUpList() {
   const fetchTransferMarkup = async ()=> {
     try {
       setTransferLoading(true)
-      const res = await axios.get(`/b2b/transfer/client/markup/get-all-transfer?limit=${filters?.limit}&skip=${filters.skip}&search=${transferSearch || ""}`, {
+      const res = await axios.get(`/b2b/transfer/client/markup/get-all-transfer?limit=${filters?.limit}&skip=${filters.skip}&from=${transferFromSearch || ""}&to=${transferToSearch || ""}`, {
         headers: { authorization: `Bearer ${token}`}
       })
       setFilters(({
@@ -79,7 +81,7 @@ function MarkUpList() {
 
   useEffect(()=>{
     fetchTransferMarkup()
-  }, [transferSearch, filters.skip])
+  }, [filters.skip])
 
   return (
     <>
@@ -104,7 +106,7 @@ function MarkUpList() {
                   </div>
                 </div>
               ) : showDetails?.transfer ? (
-                <div className="flex items-center justify-end  p-4">
+                <div className="flex gap-3 items-center justify-end  p-4">
                   <div className="relative h-10">
                     <span className="absolute w-10 h-full flex justify-center items-center text-stone-500 border-r">
                       <BsSearch />
@@ -112,10 +114,29 @@ function MarkUpList() {
                     <input
                       type="search"
                       className=" pl-12 outline-none border px-2 text-xs text-stone-500 placeholder:text-xs placeholder:text-stone-500 rounded h-full focus:border-green-400 hover:border-blue-400 hover:bg-stone-100 lg:w-[400px] "
-                      placeholder="Search here!!!!!"
-                      value={transferSearch}
-                      onChange={(e) => setTransferSearch(e.target.value)}
+                      placeholder="From"
+                      value={transferFromSearch}
+                      onChange={(e) => setTransferFromSearch(e.target.value)}
                     />
+                  </div>
+                  <div className="relative h-10">
+                    <span className="absolute w-10 h-full flex justify-center items-center text-stone-500 border-r">
+                      <BsSearch />
+                    </span>
+                    <input
+                      type="search"
+                      className=" pl-12 outline-none border px-2 text-xs text-stone-500 placeholder:text-xs placeholder:text-stone-500 rounded h-full focus:border-green-400 hover:border-blue-400 hover:bg-stone-100 lg:w-[400px] "
+                      placeholder="To"
+                      value={transferToSearch}
+                      onChange={(e) => setTransferToSearch(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <button 
+                    onClick={()=>{
+                      fetchTransferMarkup()
+                    }}
+                    className="bg-BEColor h-10 w-28 rounded text-white">Search</button>
                   </div>
                 </div>
               ) : ""

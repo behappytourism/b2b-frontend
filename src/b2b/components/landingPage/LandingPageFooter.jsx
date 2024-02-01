@@ -42,7 +42,6 @@ function LandingPageFooter() {
                           return (
                             <div className="">
                               <div className="pt-5 flex justify-center items-center">
-                                {/* <a className="text-gray-300 text-sm font-extralight hover:border-b " href={items?.link}>{items?.name}</a> */}
                                 <button
                                 className="text-gray-300 text-sm font-extralight hover:border-b"
                                 onClick={()=>{

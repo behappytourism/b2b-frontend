@@ -230,6 +230,12 @@ function TransferHome() {
     },
   };
 
+  const handleBannerUrls = (ele) => {
+    console.log(ele, "show ele");
+    if (ele?.isButton === true && ele?.buttonUrl) {
+      window.location.href = ele?.buttonUrl;
+    }
+  }
 
   return (
     <div className="h-[800px]">
@@ -244,34 +250,41 @@ function TransferHome() {
             {banners.map((ele) => (
               <div className="w-full h-[500px] relative">
                 <img
-                  className="w-full h-full object-fill"
+                   onClick={()=> handleBannerUrls(ele)}
+                  className="w-full h-full object-fill cursor-pointer "
                   src={config.SERVER_URL + ele?.image}
                   alt=""
                 />
-                <div className="absolute top-10 bottom-0 right-0 left-40 ">
-                  <div className="bg-black/50 rounded w-full md:w-8/12 p-7">
-                    <h1 className="font-bold text-white text-4xl">
-                      {ele?.title}
-                    </h1>
-                    <h1 className="text-white font-light text-lg  pt-5">
-                      {ele?.body}
-                    </h1>
-                  </div>
-                  <div className="pt-5">
-                    {ele?.isButton === true && (
-                      <a href={ele?.buttonUrl}>
-                        <button className="bg-white h-10 rounded-full w-32 font-bold ">
-                          {ele?.buttonText}
-                        </button>
-                      </a>
-                    )}
-                  </div>
-                </div>
+                {
+                  ele?.title?.length || ele?.body?.length ? (
+                    <div className="absolute top-10 bottom-0 right-0 left-40 h-1 ">
+                      <div className="bg-black/50 rounded w-full md:w-8/12 p-7">
+                        <h1 className="font-bold text-white text-4xl">
+                          {ele?.title}
+                        </h1>
+                        <h1 className="text-white font-light text-lg  pt-5">
+                          {ele?.body}
+                        </h1>
+                      </div>
+                      {/* <div className="pt-5">
+                        {ele?.isButton === true && (
+                          <a href={ele?.buttonUrl}>
+                            <button className="bg-white h-10 rounded-full w-32 font-bold ">
+                              {ele?.buttonText}
+                            </button>
+                          </a>
+                        )}
+                      </div> */}
+                    </div>
+                  ) : (
+                    ""
+                  )
+                }
               </div>
             ))}
           </Carousel>
         </div>
-        <div className="absolute top-10 bottom-0 right-0 left-0 h-full w-full">
+        <div className="absolute top-10 bottom-0 right-0 left-0 h-0 w-0">
           {" "}
         </div>
         <div className="absolute left-16 right-10 bottom-0 top-60 ">

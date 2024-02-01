@@ -44,7 +44,7 @@ function HeroSection() {
         description={"Get best deals on Travel and Tourism online with us"}
         thumbnail={agentExcursion?.images ? agentExcursion?.images[0] : ""}
       />
-      <div className="bg-white rounded-3xl px-40">
+      <div className="bg-white rounded-3xl overflow-hidden md:px-20">
         <div className="  ">
           <div className="">
             <div className="w-full ">
@@ -164,7 +164,7 @@ function HeroSection() {
               
                 <div
                   id="packageSection"
-                  className=" px-2  bg-light rounded-2xl "
+                  className="  bg-light rounded-2xl "
                 >
                   <PackageSection />
                 </div>

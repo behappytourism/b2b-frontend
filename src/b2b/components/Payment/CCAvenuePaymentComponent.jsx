@@ -58,7 +58,7 @@ function CCAvenuePaymentComponent() {
             3.0% of processing fee will be deducted from the transaction amount
          </p>
          <button className="bg-BEColor hover-bg-BEColor h-9 text-white  w-full italic" onClick={submitHandler}>
-            CC Avenue
+            Online Payment
          </button>
       </div>
    );

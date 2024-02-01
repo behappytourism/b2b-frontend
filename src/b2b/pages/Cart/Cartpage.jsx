@@ -23,20 +23,18 @@ import ConfirmOtpModal from '../Transfer/ConfirmOtpModal';
 import { removeFromCart } from "../../../redux/slices/agentExcursionSlice";
 import priceConversion from "../../../utils/PriceConversion";
 import { LiaEditSolid } from "react-icons/lia";
+import nextId from "react-id-generator";
 
 function Cartpage() {
 
     // const { countries } = useSelector((state) => state.home);
-
-    
-    // console.log(agentExcursionCart);
-    
     const { selectedCurrency } = useSelector(state => state.home)
     const { agentExcursionCart } = useSelector(state => state.agentExcursions)
     const { agentTransferCart } = useSelector((state)=> state.transfer)
     const { countries } = useSelector((state) => state.home);
-    const { token } = useSelector((state)=> state.agents)
+    const { token, agent } = useSelector((state)=> state.agents)
 
+    const unid = nextId(agent.shortName + "_") + Math.floor(Math.random() * 1000);
 
     const dispatch = useDispatch()
 
@@ -44,14 +42,15 @@ function Cartpage() {
 
     const [totalPrice, setTotalPrice] = useState(0)
 
+
     const [details, setDetails] = useState({
-        name: '',
-        email: "",
-        phoneNumber: "",
-        country: "",
+        name: "",
+        email: agent?.email,
+        phoneNumber: agent?.phoneNumber,
+        country: agent?.country?._id,
         paymentMethod: "wallet",
         countryCode:"",
-        agentReferenceNumber:"",
+        agentReferenceNumber: unid,
         selectedJourneys: [],
         selectedActivities: []
     })
@@ -372,7 +371,6 @@ function Cartpage() {
                             </div>
                             {
                                 agentExcursionCart?.map((item, index)=>{
-                                    console.log(item);
                                     return (
                                         <div key={index} className="pt-2">
                                             <div className="border">
@@ -748,6 +746,7 @@ function Cartpage() {
                                     </div>
                                     <div>
                                     <select
+                                    value={details?.country}
                                     onChange={handleDetailsChanges}
                                     name="country" className='outline-none bg-slate-100 w-full h-10 rounded p-2 ' id="">
                                         {
@@ -818,7 +817,7 @@ function Cartpage() {
                                         </div>
                                     </div>
                                     <div className='flex gap-1'>
-                                        <label className='text-lg font-semibold'>CCAvenue</label>
+                                        <label className='text-lg font-semibold'>Online Payment</label>
                                         <div className='pt-1'>
                                              <input checked={details.paymentMethod === "ccavenue"} className='w-4 h-4 ' onChange={handleDetailsChanges} value={'ccavenue'} name='paymentMethod' type="radio" />
                                         </div>

@@ -91,7 +91,7 @@ function AttractionPage() {
                   alt=""
                 />
                 {
-                  ele?.title?.trim().length ? (
+                  ele?.title?.trim().length || ele?.body?.length ? (
                     <div className="absolute top-20 left-10 md:top-36 bottom-0 right-0 md:left-40 h-1 ">
                       <div className="bg-black/40 rounded-lg w-full md:w-8/12 p-7">
                         <h1 className="font-bold text-white text-4xl">

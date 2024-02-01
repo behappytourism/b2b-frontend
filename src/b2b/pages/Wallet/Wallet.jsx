@@ -123,7 +123,7 @@ function Wallet() {
                                                 <div className=" bg-slate-100 border-2 shadow-lg rounded">
                                                    <div className="border-b-2 w-full">
                                                    <Link to="/payment/approval">
-                                                      <button className="w-full hover:bg-slate-300" onClick={()=> setIsDropDown(false)}>ADD MONEY <span className="text-sm">(CCAVENUE)</span></button>
+                                                      <button className="w-full hover:bg-slate-300" onClick={()=> setIsDropDown(false)}>ADD MONEY <span className="text-sm">(Online Payment)</span></button>
                                                     </Link>
                                                    </div>
                                                    <div className="w-full">

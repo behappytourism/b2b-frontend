@@ -139,7 +139,11 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
                     <LuDownload />
                   </h1>
                 </td>
-              ) : ""
+              ) : (
+                <td className="px-6 py-4">
+                  N/A
+                </td>
+              )
             }
           </tr>
         </tbody>
