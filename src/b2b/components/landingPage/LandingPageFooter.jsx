@@ -178,9 +178,9 @@ function LandingPageFooter() {
               </div>
             </div>
           </div>
-              <div className=" flex text-gray-300 border-gray-50 w-[100%] text-center ">
+              <div className=" flex justify-center text-gray-300 border-gray-50 w-[100%] text-center ">
             <p className=" text-[10px]">
-              {socialMedias?.footerDescription}
+              {socialMedias?.copyRight}
             </p>
           </div>
         </div>
