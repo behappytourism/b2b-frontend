@@ -491,7 +491,7 @@ function TransferDetailpage() {
                                             </div>
                                         </div>
                                         <div className='flex gap-1'>
-                                            <label className='text-lg font-semibold'>CCAvenue</label>
+                                            <label className='text-lg font-semibold'>Online Payment</label>
                                             <div className='pt-1'>
                                                  <input checked={details.paymentMethod === "ccavenue"} className='w-4 h-4 ' onChange={handleDetailsChanges} value={'ccavenue'} name='paymentMethod' type="radio" />
                                             </div>

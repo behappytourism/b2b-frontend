@@ -700,7 +700,7 @@ function Cartpage() {
                     <div className='bg-white shadow-sm p-5 w-[500px]'>
                         {/* <form onSubmit={handleCreateTransferBooking}> */}
                         <div>
-                            <h1 className='text-xl font-bold'>Add Details</h1>
+                            <h1 className='text-xl font-bold'>Lead Passenger Details</h1>
                         </div>
                             <div className='grid md:grid-cols-2 gap-2 pt-3'>
                             <div>
@@ -811,16 +811,16 @@ function Cartpage() {
                                     </div>
                                     <div className='flex p-2 gap-3'>
                                     <div className='flex gap-1'>
-                                        <label className='text-lg font-semibold '>Wallet</label>
                                         <div className='pt-1'>
                                          <input checked={details.paymentMethod === 'wallet'} className='w-4 h-4 ' onChange={handleDetailsChanges} value={"wallet"} name='paymentMethod' type="radio" />
                                         </div>
+                                        <label className='text-lg font-semibold '>Wallet</label>
                                     </div>
                                     <div className='flex gap-1'>
-                                        <label className='text-lg font-semibold'>Online Payment</label>
                                         <div className='pt-1'>
                                              <input checked={details.paymentMethod === "ccavenue"} className='w-4 h-4 ' onChange={handleDetailsChanges} value={'ccavenue'} name='paymentMethod' type="radio" />
                                         </div>
+                                        <label className='text-lg font-semibold'>Online Payment</label>
                                     </div>
                                     </div>
                                     </div>

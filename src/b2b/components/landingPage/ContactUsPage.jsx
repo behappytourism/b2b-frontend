@@ -114,7 +114,7 @@ function ContactUsPage() {
         </div>
         <div>
             <div className='flex gap-20 justify-center pt-10'>
-                <div>
+                <div className='pt-6'>
                     <div>
                         <h1 className='text-sky-600 font-medium text-lg uppercase'>Address</h1>
                     </div>
@@ -122,15 +122,12 @@ function ContactUsPage() {
                     <div className='max-w-xl pt-7'>
                        <div dangerouslySetInnerHTML={{ __html: socialMedias?.contactUs }} ></div>
                     </div>
-
-                       
-
             </div>
-                <div className=' flex justify-center items-center'>
-                    <div className='bg-white  p-10 shadow-lg rounded'>
+                <div className=' flex justify-center '>
+                    <div className='bg-white  p-6 shadow-lg rounded'>
                     {/* <img className='w-full h-full object-cover' src="https://www.yuserver.in/templates/kohost/img/tt-contact-us.svg" alt="" /> */}
                     <div className=''>
-                        <h1 className='text-xl font-extrabold text-sky-600'>Get In Touch</h1>
+                        <h1 className='text-sky-600 font-medium text-lg uppercase'>Get In Touch</h1>
                     </div>
                     <form onSubmit={submitHandler}>
                             <div>
