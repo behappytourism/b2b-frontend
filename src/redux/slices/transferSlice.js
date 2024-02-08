@@ -42,13 +42,13 @@ export const transferSlice = createSlice({
         },
 
         setSelectedTransfer: (state, { payload }) => {
-
+          
             let trip = {
                 transferType: payload?.element?.transferType,
-                pickupLocation: payload?.trip?.transferFrom?._id,
-                pickupLocationName:  payload?.trip?.transferFrom?.airportName || payload?.trip?.transferFrom?.areaName,
-                dropOffLocation: payload?.trip?.transferTo?._id,
-                dropOffLocationName: payload?.trip?.transferTo?.airportName || payload?.trip?.transferTo?.areaName,
+                pickupLocation: payload?.element?.pickupLocation,
+                pickupLocationName:  payload?.trip?.transferFrom?.airportName ?  payload?.trip?.transferFrom?.airportName :  payload?.trip?.transferFrom?.name,
+                dropOffLocation: payload?.element?.dropOffLocation,
+                dropOffLocationName: payload?.trip?.transferTo?.airportName ? payload?.trip?.transferTo?.airportName : payload?.trip?.transferTo?.name,
                 pickupSuggestionType: payload?.element?.pickupSuggestionType,
                 dropOffSuggestionType: payload?.element?.dropOffSuggestionType,
                 noOfAdults: payload?.element?.noOfAdults,

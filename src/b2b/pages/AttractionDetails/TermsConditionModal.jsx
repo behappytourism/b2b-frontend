@@ -5,8 +5,8 @@ import { AiOutlineClose } from 'react-icons/ai'
 function TermsConditionModal({setTermsModals, termsModals, data, headings}) {
    
     return (
-       <div className='fixed  flex justify-center items-center backdrop-blur-sm top-10 md:top-0 md:bottom-0 md:top-0 md:left-0 right-1 md:right-0 z-50 w-full md:p-4 md:overflow-x-hidden overflow-y-auto'>
-        <div className='relative shadow-lg max-w-1xl bg-white  max-h-full h-screen md:h-96 w-screen md:w-[700px] rounded'>
+       <div className='fixed  flex justify-center items-center backdrop-blur-sm top-0 md:top-0 md:bottom-0  md:left-0 right-1 md:right-0 z-50 w-full md:p-4 md:overflow-x-hidden overflow-y-auto'>
+        <div className='relative shadow-lg max-w-1xl bg-white  max-h-full h-screen md:h-[550px] overflow-auto w-screen md:w-[700px] rounded'>
             <div className='lg:relative lg:rounded-lg  dark:bg-white p-5 h-[850px] md:h-auto  transition-all duration-300'>
             <div className="flex items-start justify-between p-4  rounded-t">
                         <button onClick={()=>setTermsModals(!termsModals)} className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-300 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-300 dark:hover:text-white" data-modal-hide="defaultModal">

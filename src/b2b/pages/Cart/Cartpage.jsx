@@ -308,8 +308,8 @@ function Cartpage() {
    
 
     <div className="">
-        <div className="p-5 flex justify-center ">
-            <div className='flex justify-between bg-white shadow-sm p-5 w-[1200px] rounded-lg '>
+        <div className="p-5 flex justify-center">
+            <div className='hidden lg:flex justify-between bg-white shadow-sm p-5 w-[1200px] rounded-lg '>
                         <div className='flex justify-evenly'>
                                 <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
@@ -351,7 +351,7 @@ function Cartpage() {
                     </div>
 
         </div>
-    <div className='grid  md:flex gap-5 justify-center p-10 '>
+    <div className='grid  xl:flex gap-5 justify-center '>
         <div className=''>
             {
                 agentExcursionCart?.length > 0 || agentTransferCart?.length > 0 && (
@@ -362,7 +362,7 @@ function Cartpage() {
             }
 
               {/* selected excursions  */}
-              <div className="pt-3">
+              <div className="md:pt-3">
                 {
                     agentExcursionCart?.length > 0 ? (
                         <div>
@@ -391,7 +391,7 @@ function Cartpage() {
                                                         }}
                                                         ><TiDelete /></h1>
                                                     </div>
-                                                <div className="w-[800px] h-48 p-5">
+                                                <div className="w-auto md:w-[800px] h-48 p-5">
                                                     <div className="flex justify-between">
                                                         <div className="">
                                                             <div>
@@ -460,7 +460,7 @@ function Cartpage() {
                             {
                                 ele?.journys.map((item, i)=>{
                                     return (
-                                        <div key={i} className=' w-[800px] border bg-white'>
+                                        <div key={i} className='w-[500px] md:w-[800px] border bg-white'>
                                             <div className='flex justify-end '>
                                                 <button 
                                                 onClick={()=>handleDeleteVehicle(ele, index)}
@@ -688,173 +688,173 @@ function Cartpage() {
                     )
                 ) : ""
             }
-             <div>
+             <div className="flex justify-center  md:p-0">
+                <div className=''>
+                    {
+                        agentTransferCart?.length > 0 || agentExcursionCart?.length >  0 ? (
+                            <>
+                                <div className='pt-10'>
+                            <div className='bg-white shadow-sm p-5 w-96 md:w-[550px] border'>
+                                {/* <form onSubmit={handleCreateTransferBooking}> */}
+                                <div>
+                                    <h1 className='text-xl font-bold'>Lead Passenger Details</h1>
+                                </div>
+                                    <div className='grid md:grid-cols-2 gap-2 pt-3'>
+                                    <div>
+                                            <div className='text-sm'>
+                                                <label >Agent Reference Number</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                name='agentReferenceNumber'
+                                                value={details.agentReferenceNumber}
+                                                onChange={handleDetailsChanges}
+                                                type="text" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='Agent Reference' />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className='text-sm'>
+                                                <label >Name</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                name='name'
+                                                value={details.name}
+                                                onChange={handleDetailsChanges}
+                                                type="text" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='Full name' />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className='text-sm'>
+                                                <label >Email</label>
+                                            </div>
+                                            <div>
+                                                <input
+                                                value={details.email}
+                                                name='email'
+                                                onChange={handleDetailsChanges}
+                                                type="text" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='example@gmail.com' />
+                                            </div>
+                                        </div>
+                                    
+                                        <div className="">
+                                            <div className='text-sm'>
+                                                <label >Country</label>
+                                            </div>
+                                            <div>
+                                            <select
+                                            value={details?.country}
+                                            onChange={handleDetailsChanges}
+                                            name="country" className='outline-none bg-slate-100 w-full h-10 rounded p-2 ' id="">
+                                                {
+                                                    countries?.map((ele)=>(
+                                                        <option value={ele?._id}>{ele?.countryName}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex gap-1">
+                                                <div>
+                                                    <div>
+                                                        <label className="text-sm" htmlFor="">Code</label>
+                                                    </div>
+                                                    <div>
+                                                        <input className="outline-none bg-slate-100 w-14 h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm" type="text" value={countryCode ? countryCode : ""} disabled placeholder="Code" />
+                                                    </div>
+                                                </div>
+                                            <div>
+                                                    <label className="text-sm" >Phone Number</label>
+                                                    <input
+                                                    name='phoneNumber'
+                                                    value={details.phoneNumber}
+                                                    onChange={handleDetailsChanges}
+                                                    type="phone" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='Phone number' />
+                                            </div>
+                                            
+                                        </div>
+                                    
+                                    </div>
+                                    {/* <div className='flex justify-end pt-5'>
+                                        <button className='w-32 bg-orange-500 h-10 text-white font-bold rounded '>Submit</button>
+                                    </div> */}
+                                {/* </form> */}
+                            </div>
+                        </div>
+                        <div className='pt-3'>
+                            <div className=' rounded-t-xl w-full h-80 mb-3 bg-white'>
+                                <div className=''>
+                                    <div className='flex gap-1 xl:justify-center items-center mb-2  h-12 rounded-t-xl'>
+                                        <h1 className='text-green-900 text-3xl'><IoIosCheckmarkCircleOutline /></h1>
+                                        <h1 className='text-xl xl:text-center font-bold'>Payment Methods</h1>   
+                                    </div>
+                                </div>
+                                <div className=' w-full h-28 flex xl:justify-center items-center '>
+                                    <div className=''>
+                                        <h1 className='text-lg flex justify-center'><LiaSaveSolid /></h1>
+                                        <h1 className='text-xs text-gray-400 text-center'>Total price</h1>
+                                        <h1 className='text-black font-bold text-3xl'> {priceConversion(totalPrice, selectedCurrency, true)}</h1>
+                                    </div>
+                                </div>
+
+                                <div className=''>
+                                    <div className=' w-full h-auto '>
+                                        <div className=" flex xl:justify-center place-items-center">
+                                        <div className=''>
+                                            <div className=' w-full h-10'>
+                                        {/* <div className='text-xl font-bold'>
+                                                <label >Payment Method</label>
+                                            </div> */}
+                                            <div className='flex  gap-3'>
+                                            <div className='flex gap-1'>
+                                                <div className='pt-1'>
+                                                <input checked={details.paymentMethod === 'wallet'} className='w-4 h-4 ' onChange={handleDetailsChanges} value={"wallet"} name='paymentMethod' type="radio" />
+                                                </div>
+                                                <label className='text-lg font-semibold '>Wallet</label>
+                                            </div>
+                                            <div className='flex gap-1'>
+                                                <div className='pt-1'>
+                                                    <input checked={details.paymentMethod === "ccavenue"} className='w-4 h-4 ' onChange={handleDetailsChanges} value={'ccavenue'} name='paymentMethod' type="radio" />
+                                                </div>
+                                                <label className='text-lg font-semibold'>Online Payment</label>
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    
+                                    <div className='flex justify-center lg:justify-end items-end'>
+                                    {
+                                        details.name && details.email && details.phoneNumber && details.country && details.paymentMethod && (
+                                            <div className='pt-8'>
+                                                {
+                                                    !isLoading ? (
+
+                                                        <button onClick={()=>handleCreateTransferBooking()} className='bg-orange-500 text-white w-44 h-10 rounded text-lg font-medium'>Pay Now</button>
+                                                    ) : (
+                                                        <button className='bg-orange-500 text-white w-60 h-10 rounded text-lg font-medium'><BtnLoader/></button>
+                                                    )
+                                                }
+                                            </div>
+
+                                        )
+                                    }
+                                </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                            </>
+                        ) : ""
+                    }
+            
+                    
+                    </div>
 
              </div>
              
-        <div className=''>
-            {
-                agentTransferCart?.length > 0 || agentExcursionCart?.length >  0 ? (
-                    <>
-                         <div className='pt-9'>
-                    <div className='bg-white shadow-sm p-5 w-[500px]'>
-                        {/* <form onSubmit={handleCreateTransferBooking}> */}
-                        <div>
-                            <h1 className='text-xl font-bold'>Lead Passenger Details</h1>
-                        </div>
-                            <div className='grid md:grid-cols-2 gap-2 pt-3'>
-                            <div>
-                                    <div className='text-sm'>
-                                        <label >Agent Reference Number</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                        name='agentReferenceNumber'
-                                        value={details.agentReferenceNumber}
-                                        onChange={handleDetailsChanges}
-                                        type="text" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='Agent Reference' />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className='text-sm'>
-                                        <label >Name</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                        name='name'
-                                        value={details.name}
-                                        onChange={handleDetailsChanges}
-                                        type="text" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='Full name' />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className='text-sm'>
-                                        <label >Email</label>
-                                    </div>
-                                    <div>
-                                        <input
-                                        value={details.email}
-                                        name='email'
-                                        onChange={handleDetailsChanges}
-                                        type="text" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='example@gmail.com' />
-                                    </div>
-                                </div>
-                               
-                                <div className="">
-                                    <div className='text-sm'>
-                                        <label >Country</label>
-                                    </div>
-                                    <div>
-                                    <select
-                                    value={details?.country}
-                                    onChange={handleDetailsChanges}
-                                    name="country" className='outline-none bg-slate-100 w-full h-10 rounded p-2 ' id="">
-                                        {
-                                            countries?.map((ele)=>(
-                                                <option value={ele?._id}>{ele?.countryName}</option>
-                                            ))
-                                        }
-                                    </select>
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-1">
-                                         <div>
-                                            <div>
-                                                <label className="text-sm" htmlFor="">Code</label>
-                                            </div>
-                                            <div>
-                                                <input className="outline-none bg-slate-100 w-14 h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm" type="text" value={countryCode ? countryCode : ""} disabled placeholder="Code" />
-                                            </div>
-                                        </div>
-                                    <div>
-                                            <label className="text-sm" >Phone Number</label>
-                                            <input
-                                            name='phoneNumber'
-                                            value={details.phoneNumber}
-                                            onChange={handleDetailsChanges}
-                                            type="phone" className='outline-none bg-slate-100 w-full h-10 rounded p-2 placeholder:text-gray-300 placeholder:text-sm' placeholder='Phone number' />
-                                    </div>
-                                       
-                                </div>
-                              
-                            </div>
-                            {/* <div className='flex justify-end pt-5'>
-                                <button className='w-32 bg-orange-500 h-10 text-white font-bold rounded '>Submit</button>
-                            </div> */}
-                        {/* </form> */}
-                    </div>
-                 </div>
-                 <div className='pt-3'>
-                    <div className='shadow-sm border rounded-t-xl w-full h-96 relative bg-white '>
-                        <div className=''>
-                            <div className='flex gap-1 justify-center items-center mb-2 bg-BEColor h-12 rounded-t-xl'>
-                                <h1 className='text-green-900 text-3xl'><IoIosCheckmarkCircleOutline /></h1>
-                                 <h1 className='text-lg text-center font-bold'>Confirm Order</h1>   
-                            </div>
-                        </div>
-                        <div className=' w-full h-28 flex justify-center items-center'>
-                            <div className=''>
-                                <h1 className='text-lg flex justify-center'><LiaSaveSolid /></h1>
-                                <h1 className='text-xs text-gray-400 text-center'>Total price</h1>
-                                <h1 className='text-green-400 font-bold text-3xl'> {priceConversion(totalPrice, selectedCurrency, true)}</h1>
-                            </div>
-                        </div>
-
-                        <div className='pt-2'>
-                            <div className=' w-full h-auto p-4'>
-                                <div className=" flex justify-center place-items-center">
-                                <div className=''>
-                                    <div className=' w-full h-10'>
-                                <div className='text-xl font-bold'>
-                                        <label >Payment Method</label>
-                                    </div>
-                                    <div className='flex p-2 gap-3'>
-                                    <div className='flex gap-1'>
-                                        <div className='pt-1'>
-                                         <input checked={details.paymentMethod === 'wallet'} className='w-4 h-4 ' onChange={handleDetailsChanges} value={"wallet"} name='paymentMethod' type="radio" />
-                                        </div>
-                                        <label className='text-lg font-semibold '>Wallet</label>
-                                    </div>
-                                    <div className='flex gap-1'>
-                                        <div className='pt-1'>
-                                             <input checked={details.paymentMethod === "ccavenue"} className='w-4 h-4 ' onChange={handleDetailsChanges} value={'ccavenue'} name='paymentMethod' type="radio" />
-                                        </div>
-                                        <label className='text-lg font-semibold'>Online Payment</label>
-                                    </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                               
-                            <div className='flex justify-end items-end pt-9'>
-                            {
-                                details.name && details.email && details.phoneNumber && details.country && details.paymentMethod && (
-                                    <div className='pt-8'>
-                                        {
-                                            !isLoading ? (
-
-                                                <button onClick={()=>handleCreateTransferBooking()} className='bg-orange-500 text-white w-44 h-10 rounded text-lg font-medium'>Pay Now</button>
-                                            ) : (
-                                                <button className='bg-orange-500 text-white w-60 h-10 rounded text-lg font-medium'><BtnLoader/></button>
-                                            )
-                                        }
-                                    </div>
-
-                                )
-                            }
-                        </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                    </>
-                ) : ""
-            }
-       
-               
-            </div>
 
     </div>
     {

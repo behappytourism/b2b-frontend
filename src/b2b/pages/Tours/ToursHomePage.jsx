@@ -209,7 +209,7 @@ function ToursHomePage() {
                           src={config?.SERVER_URL + ele?.images[0]}
                           alt=""
                         />
-                        <div className="absolute top-0 right-0 flex">
+                        {/* <div className="absolute top-0 right-0 flex">
                           <div className="">
                             <h1 className="bg-orange-500 p-1  text-white w-16 text-center font-semibold text-sm">
                               {ele?.bookingType}
@@ -220,7 +220,7 @@ function ToursHomePage() {
                               {ele?.category?.categoryName}
                             </h1>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="p-4">
                         <div className=" flex justify-center h-14">

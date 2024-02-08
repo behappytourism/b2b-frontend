@@ -508,7 +508,7 @@ function ActivityComponent({ item, index }) {
             ></div>
             {item?.description?.length > 300 ? (
               <button
-                onClick={() => {Checkout
+                onClick={() => {
                   setData(item?.description);
                   setHeadings("Description");
                   setTermsModals(!termsModals);

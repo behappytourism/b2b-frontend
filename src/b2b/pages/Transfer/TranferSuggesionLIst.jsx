@@ -310,7 +310,7 @@ function TranferSuggesionLIst({
                         setLocality(item?.hotelId);
                         setDatalist(!datalist);
                         setValue(
-                          `${item?.cityName}, ${item.stateName}, ${item.countryName}`
+                          `${item?.hotelName}, ${item.cityName}, ${item.stateName}`
                         );
                         dispatch(setSearchTransfer({
                           value:item?.hotelId, name:"pickupLocation"

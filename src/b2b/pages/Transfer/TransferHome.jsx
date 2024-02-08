@@ -321,7 +321,7 @@ function TransferHome() {
                   </label>
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-4 pt-3">
+              <div className="grid xl:grid-cols-2  gap-4 pt-3">
                 <div>
                   <div className="ml-2 text-white">
                     <label htmlFor="">From</label>
@@ -378,9 +378,9 @@ function TransferHome() {
                   </div>
                 </div>
               </div>
-              <div className="grid xl:grid-cols-2 gap-5 pt-4">
-                <div className="grid md:grid-cols-2 gap-2 w-full">
-                  <div className="w-full">
+              <div className="grid  2xl:grid-cols-2 gap-5 pt-4">
+                <div className="grid md:grid-cols-2 gap-2 w-full ">
+                  <div className="w-full ">
                     <div className="ml-2 text-white">
                       <label htmlFor="">Date and time of arrival</label>
                     </div>
@@ -402,9 +402,9 @@ function TransferHome() {
                           className="rounded-l p-3 h-12 w-full text-gray-300 bg-slate-100 outline-none"
                         />
                       </div>
-                      <div className="bg-slate-100 rounded-r border-l h-12 w-full ">
+                      <div className="bg-slate-100 rounded-r border-l h-12 w-full  ">
                         <div
-                          className="p-3 flex justify-between cursor-pointer"
+                          className="p-3  flex justify-between cursor-pointer"
                           onClick={() => {
                             setShowArraiDate(!showArraiDate);
                           }}
@@ -415,67 +415,72 @@ function TransferHome() {
                           <h1 className="text-black text-sm pt-1  ">
                             <SlArrowDown />
                           </h1>
+                          
                         </div>
-                        {showArraiDate && (
-                          <div className="bg-white  w-full h-40 shadow-lg shadow-gray-300 rounded-b-xl absolute right-0 left-0 top-14 bottom-0">
-                            <div className="flex gap-2 justify-center pt-3 ">
-                              <div className=" ">
-                                <select
-                                  name="pickupHr"
-                                  onChange={handleTripTimes}
-                                  value={pickupHour ? pickupHour : ""}
-                                  id=""
-                                  className="outline-none border h-12 w-36 p-2"
-                                >
-                                  {Array.from({ length: 25 })?.map(
-                                    (val, ind) => (
-                                      <option
-                                        key={ind}
-                                        value={ind
-                                          ?.toString()
-                                          ?.padStart(2, "0")}
-                                      >
-                                        {ind}
-                                      </option>
-                                    )
-                                  )}
-                                </select>
+                        
+                      </div>
+                      <div>
+                    {showArraiDate && (
+                          <div className=" h-52 sm:h-40 shadow-gray-300 rounded-b-xl absolute max-h-[20em] w-full mt-1 shadow border bg-light rounded-lg overflow-y-auto z-20">
+                              <div className=" grid sm:flex  gap-2 justify-center pt-3 ">
+                                <div className=" ">
+                                  <select
+                                    name="pickupHr"
+                                    onChange={handleTripTimes}
+                                    value={pickupHour ? pickupHour : ""}
+                                    id=""
+                                    className="outline-none border h-12 w-32 xl:w-24 2xl:w-32 p-2"
+                                  >
+                                    {Array.from({ length: 25 })?.map(
+                                      (val, ind) => (
+                                        <option
+                                          key={ind}
+                                          value={ind
+                                            ?.toString()
+                                            ?.padStart(2, "0")}
+                                        >
+                                          {ind}
+                                        </option>
+                                      )
+                                    )}
+                                  </select>
+                                </div>
+                                <div className="">
+                                  <select
+                                    name="pickupMin"
+                                    onChange={handleTripTimes}
+                                    value={pickupMint ? pickupMint : " "}
+                                    id=""
+                                    className="outline-none border h-12 w-32 xl:w-24 2xl:w-32 p-2"
+                                  >
+                                    <option value="00">00</option>
+                                    <option value="05">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="35">35</option>
+                                    <option value="40">40</option>
+                                    <option value="45">45</option>
+                                    <option value="50">50</option>
+                                    <option value="55">55</option>
+                                  </select>
+                                </div>
                               </div>
-                              <div className="">
-                                <select
-                                  name="pickupMin"
-                                  onChange={handleTripTimes}
-                                  value={pickupMint ? pickupMint : " "}
-                                  id=""
-                                  className="outline-none border h-12 w-36 p-2"
+                              <div className="flex justify-center pt-5">
+                                <button
+                                  className="bg-BEColor text-white h-10 w-44 rounded "
+                                  onClick={() => {
+                                    setShowArraiDate(false);
+                                  }}
                                 >
-                                  <option value="00">00</option>
-                                  <option value="05">5</option>
-                                  <option value="10">10</option>
-                                  <option value="15">15</option>
-                                  <option value="20">20</option>
-                                  <option value="25">25</option>
-                                  <option value="30">30</option>
-                                  <option value="35">35</option>
-                                  <option value="40">40</option>
-                                  <option value="45">45</option>
-                                  <option value="50">50</option>
-                                  <option value="55">55</option>
-                                </select>
+                                  Set Time
+                                </button>
                               </div>
-                            </div>
-                            <div className="flex justify-center pt-5">
-                              <button
-                                className="bg-BEColor text-white h-10 w-44 rounded "
-                                onClick={() => {
-                                  setShowArraiDate(false);
-                                }}
-                              >
-                                Set Time
-                              </button>
-                            </div>
+
                           </div>
-                        )}
+                        )}  
                       </div>
                     </div>
                   </div>
@@ -485,7 +490,7 @@ function TransferHome() {
                       <div className="ml-2 text-white">
                         <label htmlFor="">Date and time of departure</label>
                       </div>
-                      <div className="grid grid-cols-2 pt-1 relative">
+                      <div className="grid grid-cols-2 pt-1 relative ">
                         <div className="w-full">
                           <input
                             type="date"
@@ -519,16 +524,19 @@ function TransferHome() {
                               <SlArrowDown />
                             </h1>
                           </div>
+                         
+                        </div>
+                        <div>
                           {showDeptDate && (
-                            <div className="bg-white  w-full h-40 shadow-lg shadow-gray-300 rounded-b-xl absolute right-0 left-0 top-14 bottom-0">
-                              <div className="flex gap-2 justify-center pt-3 ">
+                            <div className=" h-52 sm:h-40 shadow-gray-300 rounded-b-xl absolute max-h-[20em] w-full mt-1 shadow border bg-light rounded-lg overflow-y-auto z-20">
+                              <div className="grid sm:flex   gap-2 justify-center pt-3 ">
                                 <div className=" ">
                                   <select
                                     name="returnHr"
                                     value={returnHr ? returnHr : ""}
                                     onChange={handleTripTimes}
                                     id=""
-                                    className="outline-none border h-12 w-36 p-2"
+                                    className="outline-none border h-12 w-32 xl:w-24 2xl:w-32 p-2"
                                   >
                                     {Array.from({ length: 25 })?.map(
                                       (val, ind) => (
@@ -550,7 +558,7 @@ function TransferHome() {
                                     value={returnMin ? returnMin : ""}
                                     onChange={handleTripTimes}
                                     id=""
-                                    className="outline-none border h-12 w-36 p-2"
+                                    className="outline-none border h-12 w-32 xl:w-24 2xl:w-32 p-2"
                                   >
                                     <option value="0">00</option>
                                     <option value="5">5</option>
@@ -579,7 +587,8 @@ function TransferHome() {
                               </div>
                             </div>
                           )}
-                        </div>
+
+                          </div>
                       </div>
                     </div>
                   ) : formDatas?.transferType === "oneway" ? (
