@@ -688,12 +688,12 @@ function Cartpage() {
                     )
                 ) : ""
             }
-             <div className="flex justify-center  md:p-0">
+             <div className="flex justify-center md:p-0">
                 <div className=''>
                     {
                         agentTransferCart?.length > 0 || agentExcursionCart?.length >  0 ? (
                             <>
-                                <div className='pt-10'>
+                                <div className='pt-14'>
                             <div className='bg-white shadow-sm p-5 w-96 md:w-[550px] border'>
                                 {/* <form onSubmit={handleCreateTransferBooking}> */}
                                 <div>
@@ -831,7 +831,7 @@ function Cartpage() {
                                                 {
                                                     !isLoading ? (
 
-                                                        <button onClick={()=>handleCreateTransferBooking()} className='bg-orange-500 text-white w-44 h-10 rounded text-lg font-medium'>Pay Now</button>
+                                                        <button onClick={()=>handleCreateTransferBooking()} className='bg-orange-500 text-white w-44 h-10 rounded text-lg font-medium'>Confirm & Pay</button>
                                                     ) : (
                                                         <button className='bg-orange-500 text-white w-60 h-10 rounded text-lg font-medium'><BtnLoader/></button>
                                                     )
