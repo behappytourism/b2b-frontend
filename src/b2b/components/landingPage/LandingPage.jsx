@@ -262,7 +262,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className="flex gap-5 justify-center">
-                <div className="pt-6">
+                <div className="">
                   <h1 className="text-4xl text-sky-500 rounded-full bg-sky-50 p-3">
                     <GiVibratingShield />
                   </h1>
@@ -282,7 +282,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className="flex gap-5 justify-center">
-                <div className="pt-8">
+                <div className="pt-2">
                   <h1 className="text-4xl text-sky-500 rounded-full bg-sky-50 p-3">
                     <MdOutlineMarkUnreadChatAlt />
                   </h1>
@@ -320,7 +320,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className="flex gap-5 justify-center">
-                <div className="pt-5">
+                <div className="pt-1">
                   <h1 className="text-4xl text-sky-500 rounded-full bg-sky-50 p-3 ">
                     <RiPriceTag2Fill />
                   </h1>
@@ -339,7 +339,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className="flex gap-5 justify-center">
-                <div className="pt-5">
+                <div className="">
                   <h1 className="text-4xl text-sky-500 rounded-full bg-sky-50 p-3 ">
                     <MdOutlineMiscellaneousServices />
                   </h1>

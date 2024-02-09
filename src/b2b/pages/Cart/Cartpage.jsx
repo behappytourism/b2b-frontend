@@ -450,7 +450,7 @@ function Cartpage() {
             </div>
             {
                 agentTransferCart?.length > 0 ? (
-                    <div className=' pt-10 bg-BeGray'>
+                    <div className=' pt-10 '>
                         <div>
                             <h1 className="font-semibold text-2xl">Transfer</h1>
                         </div>
