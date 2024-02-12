@@ -353,13 +353,13 @@ function Cartpage() {
         </div>
     <div className='grid  xl:flex gap-5 justify-center '>
         <div className=''>
-            {
+            {/* {
                 agentExcursionCart?.length > 0 || agentTransferCart?.length > 0 && (
                     <div>
                         <h1 className="text-lg font-bold">Cart Details</h1>
                     </div>
                 )
-            }
+            } */}
 
               {/* selected excursions  */}
               <div className="md:pt-3">
@@ -450,7 +450,7 @@ function Cartpage() {
             </div>
             {
                 agentTransferCart?.length > 0 ? (
-                    <div className=' pt-10 '>
+                    <div className={`${!agentExcursionCart?.length ? "pt-1" : "pt-10"}`}>
                         <div>
                             <h1 className="font-semibold text-2xl">Transfer</h1>
                         </div>
