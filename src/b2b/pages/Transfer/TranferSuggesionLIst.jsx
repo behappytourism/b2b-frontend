@@ -22,7 +22,7 @@ function TranferSuggesionLIst({
 
   return (
     <div>
-      {value.length && datalist && (
+      {value && datalist && (
         <div className="absolute max-h-[20em] w-[32em] mt-1 shadow border bg-light rounded-lg overflow-y-auto z-20">
           <div className="w-full p-5 overflow-y-auto">
             <div className="">
