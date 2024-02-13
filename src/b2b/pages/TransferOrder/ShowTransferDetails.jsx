@@ -132,8 +132,9 @@ function ShowTransferDetails({ele}) {
                                 {
                                     item?.vehicleTypes?.map((vehicle)=>{
                                         return (
-                                            <div className='flex gap-2 '>
-                                                <h1 className='text-xs  p-2 '>Name : {vehicle?.name} Count: {vehicle?.count} , </h1>
+                                            <div className=' '>
+                                                <h1 className='text-xs  p-2 '>Name : {vehicle?.name}  </h1>
+                                                <h1 className='text-xs p-2'> Count: {vehicle?.count}</h1>
                                             </div>
                                         )
                                     })

@@ -202,7 +202,7 @@ function OrderSuccessPage() {
                         {attr?.infantCount}{" "}
                       </p>
                     </div>
-                    <div className="flex justify-between py-2">
+                    {/* <div className="flex justify-between py-2">
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">
                         Ticket
                       </h4>
@@ -213,7 +213,7 @@ function OrderSuccessPage() {
                       >
                         <BsDownload />
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}
@@ -473,11 +473,11 @@ function OrderSuccessPage() {
         {renderAttractionSection()}
         {renderTransferSection()}
         <div className="flex justify-end">
-            <button className="text-white font-medium w-24 h-8 border bg-BEColor rounded"
+            <button className="text-white font-medium w-40 h-8 border bg-BEColor rounded"
             onClick={()=>{
-              navigate('/')
+              navigate(`/order/details/${params?.id}`)
             }}
-            >Home</button>
+            >Booking Details</button>
         </div>
       </div>
       

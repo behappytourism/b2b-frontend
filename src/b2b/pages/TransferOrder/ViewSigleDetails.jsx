@@ -166,7 +166,7 @@ function ViewSigleDetails() {
                             <div>
                                 <h1 className='text-lg font-bold'>Transfer</h1>
                             </div>
-                            <div className='p-5'>
+                            <div className='p-5 w-full'>
                                 {
                                     orderTransferDetails?.journey?.map((ele, index)=> {
                                         return (
