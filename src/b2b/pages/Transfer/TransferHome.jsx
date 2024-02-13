@@ -231,7 +231,6 @@ function TransferHome() {
   };
 
   const handleBannerUrls = (ele) => {
-    console.log(ele, "show ele");
     if (ele?.isButton === true && ele?.buttonUrl) {
       window.location.href = ele?.buttonUrl;
     }
@@ -382,7 +381,7 @@ function TransferHome() {
                 <div className="grid md:grid-cols-2 gap-2 w-full ">
                   <div className="w-full ">
                     <div className="ml-2 text-white">
-                      <label htmlFor="">Date and time of arrival</label>
+                      <label htmlFor="">Arrival Pickup Time</label>
                     </div>
                     <div className="grid grid-cols-2 pt-1 relative">
                       <div className="w-full">
@@ -488,7 +487,7 @@ function TransferHome() {
                   {formDatas?.transferType === "return" ? (
                     <div className="w-full">
                       <div className="ml-2 text-white">
-                        <label htmlFor="">Date and time of departure</label>
+                        <label htmlFor="">Departure Pickup Time</label>
                       </div>
                       <div className="grid grid-cols-2 pt-1 relative ">
                         <div className="w-full">
@@ -594,7 +593,7 @@ function TransferHome() {
                   ) : formDatas?.transferType === "oneway" ? (
                     <div>
                       <div className="ml-2 text-gray-300">
-                        <label htmlFor="">Date and time of departure</label>
+                        <label htmlFor="">Departure Pickup Time</label>
                       </div>
                       <div className="grid grid-cols-2 pt-1 relative">
                         <div>
