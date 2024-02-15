@@ -180,7 +180,7 @@ function LandingPage() {
                 >
                   <div>
                     <img
-                      className="object-cover h-64 rounded-lg"
+                      className="object-cover w-full h-64 rounded-lg"
                       src={
                         ele?.images?.length
                           ? config.SERVER_URL + ele?.images[0]
