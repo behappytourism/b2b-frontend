@@ -310,7 +310,7 @@ function TransferToSuggestionList({
                         setToLocality(item?.hotelId);
                         setToDatalist(!ToDatalist);
                         setToValue(
-                          `${item?.areaName}, ${item.cityName}, ${item.countryName}`
+                          `${item?.hotelName}, ${item.cityName}, ${item.countryName}`
                         );
                         dispatch(setSearchTransfer({
                             value:item?.hotelId, name:"dropOffLocation"
