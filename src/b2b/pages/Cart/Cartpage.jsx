@@ -24,6 +24,9 @@ import { removeFromCart } from "../../../redux/slices/agentExcursionSlice";
 import priceConversion from "../../../utils/PriceConversion";
 import { LiaEditSolid } from "react-icons/lia";
 import nextId from "react-id-generator";
+import { HiOutlineArrowSmLeft } from "react-icons/hi";
+
+
 
 function Cartpage() {
 
@@ -488,7 +491,9 @@ function Cartpage() {
 
                                                             ) : item?.transferType === "return" ? (
                                                                 <div className='absolute top-1/2 transform -translate-y-1/2 right-80'>
-                                                               <FaArrowRightArrowLeft />
+                                                               {/* <FaArrowRightArrowLeft /> */}
+                                                               <FaArrowRight />
+
                                                             </div>
                                                             ) : ""
                                                         }
@@ -497,6 +502,45 @@ function Cartpage() {
                                                         <div className='w-2 h-2 rounded-full border-2 border-orange-500'></div>
                                                     </div>
                                                 </div>
+
+                                                {
+                                                    item?.transferType === "return" ? (
+                                                      <div className="pt-3">
+
+                                                         <div className='flex justify-between p-2 items-center'>
+                                                    <div>
+                                                        <h1 className='text-sm font-bold'>{item?.dropOffLocationName}</h1>
+                                                    </div>
+                                                <div>
+                                                    <h1 className='text-sm font-bold'>{item?.pickupLocationName}</h1>
+                                                </div>
+                                            </div>
+                                            <div className='flex justify-between items-center gap-2'>
+                                                    <div className='flex items-center'>
+                                                        <div className='w-2 h-2 rounded-full border-2 border-orange-500'></div>
+                                                    </div>
+                                                    <div className='border-b flex-grow relative'>
+                                                        {
+                                                            item?.transferType === "oneway" ? (
+                                                                <div className='absolute top-1/2 transform -translate-y-1/2 right-80'>
+                                                                    <FaArrowRight />
+                                                                </div>
+
+                                                            ) : item?.transferType === "return" ? (
+                                                                <div className='absolute top-1/2 transform -translate-y-1/2 right-80 text-2xl'>
+                                                                  <HiOutlineArrowSmLeft />
+                                                            </div>
+                                                            ) : ""
+                                                        }
+                                                    </div>
+                                                    <div className='flex items-center'>
+                                                        <div className='w-2 h-2 rounded-full border-2 border-orange-500'></div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                                    ):""
+                                                }
                     
                                             <div className='flex gap-2 pt-2'>
                                                 <div className='flex gap-1'>

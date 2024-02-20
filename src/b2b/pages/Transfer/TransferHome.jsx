@@ -737,7 +737,7 @@ function TransferHome() {
                         Search Transfer
                       </button>
                     ) : (
-                      <button className="w-80 h-12 bg-BEColor text-white rounded font-semibold">
+                      <button className="w-full h-12 bg-BEColor text-white rounded font-semibold">
                         <BtnLoader />
                       </button>
                     )}
