@@ -55,7 +55,7 @@ function Footer({ module = "general" }) {
                 </div>
               </div>
 
-                <div className="flex justify-center items-center">
+                <div className="md:flex md:justify-center items-center">
                 {
                   socialMedias?.footer?.length ? (
                     <div>
@@ -67,7 +67,7 @@ function Footer({ module = "general" }) {
                         ele?.navLinks?.map((items)=>{
                           return (
                             <div className="">
-                              <div className="pt-5">
+                              <div className="md:py-2 py-1">
                               <button
                                 className="text-gray-300 text-sm font-extralight hover:border-b"
                                 onClick={()=>{
@@ -89,13 +89,13 @@ function Footer({ module = "general" }) {
                 }
                 </div>
 
-              <div className="flex justify-center md:items-centergap-10">
+              <div className="md:flex md:justify-center md:items-center gap-10">
               
-                <div className=" pt-3 justify-center">
+                <div className="grid grid-cols-2 md:block justify-between pt-3 ">
            
                   {socialMedias?.facebookUrl?.length ? (
                     <a href={socialMedias?.facebookUrl}>
-                      <div className=" flex gap-1  w-8 h-8 text-xl">
+                      <div className=" flex gap-1  w-8 h-8 text-xl mb-3 md:mb-0">
                         <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
                           <FaFacebook />
                         </h1>
@@ -126,7 +126,7 @@ function Footer({ module = "general" }) {
                   <div className="pt-1">
                     {socialMedias?.youtubeUrl?.length ? (
                       <a href={socialMedias?.youtubeUrl}>
-                        <div className=" flex gap-1  w-8 h-8 text-xl">
+                        <div className=" flex gap-1  w-8 h-8 text-xl mb-3 md:mb-0">
                           <h1 className="p-[10px] bg-white  rounded-full  shadow-xl">
                             <FaYoutube />
                           </h1>
