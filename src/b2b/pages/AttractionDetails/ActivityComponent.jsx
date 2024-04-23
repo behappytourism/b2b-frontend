@@ -498,10 +498,11 @@ function ActivityComponent({ item, index }) {
         </div>
 
         <div className="w-full py-5 p-2  h-full">
-          <h1 className="text-2xl font-semibold mb-2">{item?.name}</h1>
+          <h1 className="md:text-2xl text-lg font-semibold md:mb-2 ">{item?.name}</h1>
 
           <div>
             <div
+            className="text-xs md:text-base"
               dangerouslySetInnerHTML={{
                 __html: item?.description?.slice(0, 100) + "...",
               }}
@@ -513,7 +514,7 @@ function ActivityComponent({ item, index }) {
                   setHeadings("Description");
                   setTermsModals(!termsModals);
                 }}
-                className="text-blue-500 text-sm"
+                className="text-blue-500 text-xs"
               >
                 View More
               </button>
@@ -978,7 +979,7 @@ function ActivityComponent({ item, index }) {
               {!agentExcursion?.isApiConnected ||
               agentExcursion?.connectedApi !== "63f0a47b479d4a0376fe12f4" ? (
                 <div className="py-2 px-2">
-                  <div className="flex gap-2 w-full justify-end items-end ">
+                  <div className="flex gap-2 mt-3 md:mt-0 w-full justify-between md:justify-end md:items-end ">
                     {error ? <p className="text-red-500">{error}</p> : ""}
                     <button
                       onClick={() => carting(item)}

@@ -44,15 +44,15 @@ function HeroSection() {
         description={"Get best deals on Travel and Tourism online with us"}
         thumbnail={agentExcursion?.images ? agentExcursion?.images[0] : ""}
       />
-      <div className="bg-white rounded-3xl overflow-hidden md:px-20">
+      <div className="bg-white rounded-xl overflow-hidden md:px-20">
         <div className="  ">
           <div className="">
-            <div className="w-full ">
-              <div className="flex gap-1">
-                <div className="text-5xl font-semibold pt-1">
+            <div className="w-full border md:border-none rounded-xl p-2 md:p-0">
+              <div className="md:flex gap-1">
+                <div className="md:text-5xl text-xl font-semibold pt-1">
                     {agentExcursion?.title} 
               </div>
-              <div className="flex gap-2 pt-2"> 
+              <div className="flex justify-between md:justify-normal gap-2 pt-2"> 
                  <div className="text-xs text-text  flex space-x-1 items-center">
                         {/* <div className="">
                           <button className=" px-2 py-1 text-black border rounded-md capitalize">
@@ -102,9 +102,9 @@ function HeroSection() {
                       </button>
               </div>
               </div>
-              <div className="flex pt-1">
-                  <h1 className="text-2xl"><CiLocationOn /> </h1>
-                  <h1 className="text-lg text-gray-400">{agentExcursion?.destination?.name}{" "}</h1>
+              <div className="flex pt-1 items-center">
+                  <h1 className="md:text-2xl text-lg"><CiLocationOn /> </h1>
+                  <h1 className="md:text-lg text-md text-gray-400">{agentExcursion?.destination?.name}{" "}</h1>
                </div>
           
              {/* <div className="mx-2 pt-3 border-b rounded-lg">
@@ -113,7 +113,7 @@ function HeroSection() {
             </div>
             <div className="relative  gap-5 py-2 lg:my-0 lg:py-5 ">
               <div className="1st lg:col-span-8">
-                <div className="bg-light rounded-2xl  p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
+                <div className="bg-light rounded-2xl  md:p-5 mx-2 my-2 lg:my-0 lg:mx-0 text-darktext">
                   <div className="flex justify-between">
                     <div className="space-y-3">
                    
@@ -172,7 +172,7 @@ function HeroSection() {
                 <div className="mx-2 lg:mx-0 mt-2 ">
                   <div className="bg-light shadow-lg py-5 px-4 rounded-2xl md:my-4 w-full  lg:mx-0 my-2 lg:my-0 text-darktext">
                     <div className="py-3">
-                      <span className="text-3xl font-semibold text-black  ">
+                      <span className="md:text-3xl text-xl font-semibold text-black  ">
                         {agentExcursion?.title}{" "}
                         {agentExcursion?.title && "Highlights"}
                       </span>
@@ -182,7 +182,7 @@ function HeroSection() {
                         dangerouslySetInnerHTML={{
                           __html: agentExcursion?.highlights,
                         }}
-                        className="text-sm lg:text-base"
+                        className="text-xs lg:text-base"
                       ></div>
                     </div>
                   </div>
@@ -263,7 +263,7 @@ function HeroSection() {
           </div>
         </div>
 
-        <div
+        {/* <div
           className={`fixed  ${
             viewBookCard ? "-bottom-full" : "bottom-0"
           } flex transition-all  duration-500 left-0 right-0 lg:hidden space-x-1 px-7 py-7 bg-[rgb(255,255,255,0)] rounded-t-xl z-10`}
@@ -280,7 +280,7 @@ function HeroSection() {
           >
             Book Now
           </button>
-        </div>
+        </div> */}
       </div>
       {shareModal && (
         <ShareModal setShareModal={setShareModal} shareModal={shareModal} />
