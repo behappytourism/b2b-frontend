@@ -120,7 +120,7 @@ function OrderSuccessPage() {
               {orderDetails?.attractionOrder?.activities?.map((attr) => (
                 <div className="grid grid-cols-12 gap-3 md:gap-6 py-3">
                   {/* Image and detail */}
-                  {console.log(attr)}
+                  {/* {console.log(orderDetails?.attractionOrder)} */}
                   <div className="col-span-7 space-y-1">
                     <div className="flex gap-3 ">
                       <img
@@ -156,7 +156,7 @@ function OrderSuccessPage() {
                           </h4>
                           <p className="text-BEColor font-bold  ">
                             {priceConversion(
-                              orderDetails?.attractionOrder?.totalAmount,
+                              attr?.grandTotal,
                               selectedCurrency,
                               true
                             )}{" "}
@@ -194,15 +194,8 @@ function OrderSuccessPage() {
                         {attr?.childrenCount}{" "}
                       </p>
                     </div>
+                    {orderDetails?.attractionOrder?.orderStatus === "completed" | "booked" && (
                     <div className="flex justify-between py-2">
-                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
-                        Infant count
-                      </h4>
-                      <p className=" text-textColor text-sm capitalize ">
-                        {attr?.infantCount}{" "}
-                      </p>
-                    </div>
-                    {/* <div className="flex justify-between py-2">
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">
                         Ticket
                       </h4>
@@ -213,7 +206,8 @@ function OrderSuccessPage() {
                       >
                         <BsDownload />
                       </p>
-                    </div> */}
+                    </div>
+                    )}
                   </div>
                 </div>
               ))}

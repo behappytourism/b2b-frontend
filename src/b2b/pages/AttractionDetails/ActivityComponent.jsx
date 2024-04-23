@@ -503,7 +503,7 @@ function ActivityComponent({ item, index }) {
           <div>
             <div
               dangerouslySetInnerHTML={{
-                __html: item?.description?.slice(0, 300),
+                __html: item?.description?.slice(0, 100) + "...",
               }}
             ></div>
             {item?.description?.length > 300 ? (

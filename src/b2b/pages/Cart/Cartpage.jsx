@@ -25,6 +25,7 @@ import priceConversion from "../../../utils/PriceConversion";
 import { LiaEditSolid } from "react-icons/lia";
 import nextId from "react-id-generator";
 import { HiOutlineArrowSmLeft } from "react-icons/hi";
+import { BiLeftArrow } from "react-icons/bi";
 
 
 
@@ -308,13 +309,22 @@ function Cartpage() {
     }, [agentExcursionCart, agentTransferCart])
 
   return (
-   
-
     <div className="">
         <div className="p-5 flex justify-center">
             <div className='hidden lg:flex justify-between bg-white shadow-sm p-5 w-[1200px] rounded-lg '>
                         <div className='flex justify-evenly'>
-                                <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
+                        <div onClick={()=> navigate('/')} className='border cursor-pointer rounded-lg w-28 p-4 flex justify-center items-center'>
+                                    <div>
+                                        <div className='flex justify-center'>
+                                        <h1 className='text-xl text-center'><BiLeftArrow /></h1>
+                                        </div>
+                                        <h1 className='text-xs text-center font-light'>Back</h1>
+                                    </div>
+                                </div>
+                                <div className='pt-10'>
+                                <div className=' w-16 '></div>
+                                </div>
+                                <div className={`border ${agentExcursionCart.length ? "border-blue-400"  : ""} rounded-lg w-28 p-4 flex justify-center items-center`}>
                                     <div>
                                         <div className='flex justify-center'>
                                         <h1 className='text-xl text-center'><BsCart2 /></h1>
@@ -322,8 +332,8 @@ function Cartpage() {
                                         <h1 className='text-xs text-center font-light'>Add To Cart</h1>
                                     </div>
                                 </div>
-                                <div className='pt-10'>
-                                <div className='border-t w-32 '></div>
+                                <div className='pt-10 '>
+                                <div className={`border-t w-32 ${agentExcursionCart.length ? "border-blue-400"  : ""}`}></div>
                                 </div>
                                 <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
@@ -427,7 +437,7 @@ function Cartpage() {
                                                             <div>
                                                                 <div className="flex gap-1">
                                                                     <h1>Activity Type : </h1>
-                                                                    <h1>{item?.qtnActivityType}</h1>
+                                                                    <h1>{item?.activityType}</h1>
                                                                 </div>
                                                                 <div className="flex gap-1">
                                                                     <h1>Transfer : </h1>

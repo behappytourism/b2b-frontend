@@ -104,9 +104,6 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
                 <h1 className="w-14 h-4 bg-blue-500 text-white text-center">
                   Child {ele?.childrenCount ? ele?.childrenCount : 0}
                 </h1>
-                <h1 className="w-14 h-4 bg-blue-500 text-white text-center">
-                  Infant {ele?.infantCount ? ele?.infantCount : 0}
-                </h1>
               </div>
             </td>
             <td className="px-6 py-4">{ele?.transferType} Transfer</td>
