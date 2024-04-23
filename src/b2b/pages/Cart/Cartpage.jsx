@@ -311,9 +311,7 @@ function Cartpage() {
   return (
     <div className="">
         <div className="p-5 flex justify-center">
-            <div className='hidden lg:flex justify-between bg-white shadow-sm p-5 w-[1200px] rounded-lg '>
-                        <div className='flex justify-evenly'>
-                        <div onClick={()=> navigate('/')} className='border cursor-pointer rounded-lg w-28 p-4 flex justify-center items-center'>
+        <div onClick={()=> navigate('/')} className=' cursor-pointer w-28 flex justify-center items-center'>
                                     <div>
                                         <div className='flex justify-center'>
                                         <h1 className='text-xl text-center'><BiLeftArrow /></h1>
@@ -324,7 +322,9 @@ function Cartpage() {
                                 <div className='pt-10'>
                                 <div className=' w-16 '></div>
                                 </div>
-                                <div className={`border ${agentExcursionCart.length ? "border-blue-400"  : ""} rounded-lg w-28 p-4 flex justify-center items-center`}>
+            <div className='hidden lg:flex justify-between bg-white p-5 w-[1200px] rounded-lg '>
+                        <div className='flex justify-evenly'>        
+                                <div className={`border rounded-lg w-28 p-4 flex justify-center items-center`}>
                                     <div>
                                         <div className='flex justify-center'>
                                         <h1 className='text-xl text-center'><BsCart2 /></h1>
@@ -333,7 +333,7 @@ function Cartpage() {
                                     </div>
                                 </div>
                                 <div className='pt-10 '>
-                                <div className={`border-t w-32 ${agentExcursionCart.length ? "border-blue-400"  : ""}`}></div>
+                                <div className={`border-t w-32 `}></div>
                                 </div>
                                 <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
