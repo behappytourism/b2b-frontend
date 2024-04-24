@@ -80,7 +80,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                   src={agenttempLogo?agenttempLogo: agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo:config.COMPANY_LOGO}
                   // src={config.COMPANY_LOGO}
                   alt="logo"
-                  className="h-full w-full object-left"
+                  className="h-full  max-w-[100px] object-left"
                 />
               </div>
             </div>
