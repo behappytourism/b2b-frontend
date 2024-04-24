@@ -286,7 +286,7 @@ function TransferHome() {
         <div className="absolute top-10 bottom-0 right-0 left-0 h-0 w-0">
           {" "}
         </div>
-        <div className="absolute left-16 right-10 bottom-0 top-60 ">
+        <div className="absolute md:left-16 md:right-10 bottom-0 top-60 ">
           <div className="bg-black/60 max-w-screen-2xl mx-auto  rounded-xl h-auto md:min-h-[300px]">
             <div className=" p-10">
               {/* <form onSubmit={handleSubmint}> */}

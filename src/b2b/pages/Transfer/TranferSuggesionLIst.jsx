@@ -23,7 +23,7 @@ function TranferSuggesionLIst({
   return (
     <div>
       {value && datalist && (
-        <div className="absolute max-h-[20em] w-[32em] mt-1 shadow border bg-light rounded-lg overflow-y-auto z-20">
+        <div className="absolute max-h-[20em] md:w-[32em] w-full -ml-[38px] md:-ml-0  mt-1 shadow border bg-light rounded-lg overflow-y-auto z-20">
           <div className="w-full p-5 overflow-y-auto">
             <div className="">
               { suggestions?.areas?.length > 0 && value?.length < 3 && (
@@ -58,7 +58,7 @@ function TranferSuggesionLIst({
                       <span className="text-lg">
                         <GoLocation />
                       </span>
-                      <p className=" flex justify-between w-full">
+                      <p className=" flex md:justify-between w-full">
                         <span className="text-[15px] whitespace-nowrap">
                           {item?.cityName}
                         </span>
