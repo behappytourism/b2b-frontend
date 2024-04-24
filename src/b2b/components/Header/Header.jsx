@@ -68,8 +68,8 @@ export default function Header({ setSidebarView, sidebarView }) {
   return (
     <section className="bg-white">
       <div className="  bg-white border-b h-20   ">
-        <div className="max-w-screen-xl mx-auto px-5 2xl:px-0">
-          <div className="flex w-full items-center justify-between -mx-2">
+        <div className="max-w-screen-2xl mx-auto px-5 2xl:px-0">
+          <div className="flex w-full items-center justify-between">
             <div 
             style={{justifyContent: "space-between"}}
             className=" rounded-b-xl mb-2  h-16">
@@ -80,7 +80,7 @@ export default function Header({ setSidebarView, sidebarView }) {
                   src={agenttempLogo?agenttempLogo: agent?.companyLogo ? config.SERVER_URL + agent?.companyLogo:config.COMPANY_LOGO}
                   // src={config.COMPANY_LOGO}
                   alt="logo"
-                  className="h-full w-full rounded-b-xl object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
             </div>
