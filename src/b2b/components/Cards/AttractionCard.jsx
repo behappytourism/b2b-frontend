@@ -38,7 +38,7 @@ function AttractionCard({ setView }) {
   return (
     <>
       <form>
-        <div className="md:flex hidden gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto">
+        <div className="flex gap-2 pt-4 space-y-3 md:space-y-0 max-w-screen-xl mx-auto">
           <div className="w-full flex justify-center items-center ">
             <div className=" w-full ">
               <div className="" ref={dropdownWrapperRef}>
@@ -75,6 +75,7 @@ function AttractionCard({ setView }) {
                                 onClick={() => {
                                   setValue(item?.name);
                                   setDatalist(!datalist);
+                                  console.log(item?.name);
                                   navigate(`/attractions/${item?.name}`);
                                 }}
                               >
@@ -130,7 +131,7 @@ function AttractionCard({ setView }) {
        
 
   
-        <div className="w-full md:hidden justify-center mt-3"  ref={dropdownWrapperRef} >
+        {/* <div className="w-full md:hidden justify-center mt-3"  >
         <input
                     type="text"
                     list="Country"
@@ -158,6 +159,7 @@ function AttractionCard({ setView }) {
                                 onClick={() => {
                                   setValue(item?.name);
                                   setDatalist(!datalist);
+                                  console.log(item?.name);
                                   navigate(`/attractions/${item?.name}`);
                                 }}
                               >
@@ -205,7 +207,7 @@ function AttractionCard({ setView }) {
                     </div>
                   </div>
                 )}
-        </div>
+        </div> */}
 
     </>
   );
