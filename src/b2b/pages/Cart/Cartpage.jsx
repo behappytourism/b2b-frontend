@@ -1,5 +1,5 @@
 // import React, { useState } from 'react'
-import { BsCart2 } from "react-icons/bs";
+import { BsArrowDown, BsCart2 } from "react-icons/bs";
 import { MdOutlinePayment } from "react-icons/md";
 import { FaPrint } from "react-icons/fa6";
 import { FaBaby, FaChild } from 'react-icons/fa'
@@ -310,8 +310,8 @@ function Cartpage() {
 
   return (
     <div className="">
-        <div className="p-5 flex justify-center">
-        <div onClick={()=> navigate('/')} className=' cursor-pointer w-28 flex justify-center items-center'>
+        <div className="md:p-5 md:flex md:justify-center p-3">
+        <div onClick={()=> navigate('/')} className=' cursor-pointer w-28 flex md:justify-center md:items-center'>
                                     <div>
                                         <div className='flex justify-center'>
                                         <h1 className='text-xl text-center'><BiLeftArrow /></h1>
@@ -324,16 +324,16 @@ function Cartpage() {
                                 </div>
             <div className='hidden lg:flex justify-between bg-white p-5 w-[1200px] rounded-lg '>
                         <div className='flex justify-evenly'>        
-                                <div className={`border rounded-lg w-28 p-4 flex justify-center items-center`}>
+                                <div className={`border-2 border-[#01b2bd]  bg-[#01b2bd] rounded-lg w-28 p-4 flex justify-center items-center`}>
                                     <div>
                                         <div className='flex justify-center'>
-                                        <h1 className='text-xl text-center'><BsCart2 /></h1>
+                                        <h1 className='text-xl text-center'><BsCart2 color="white" /></h1>
                                         </div>
-                                        <h1 className='text-xs text-center font-light'>Add To Cart</h1>
+                                        <h1 className='text-xs text-center font-light text-white'>Add To Cart</h1>
                                     </div>
                                 </div>
                                 <div className='pt-10 '>
-                                <div className={`border-t w-32 `}></div>
+                                <div className={`border-t w-32 border-2 border-[#01b2bd]`}></div>
                                 </div>
                                 <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
@@ -344,7 +344,7 @@ function Cartpage() {
                                     </div>
                                 </div>
                                 <div className='pt-10'>
-                                <div className='border-t w-32 '></div>
+                                <div className='border-t w-32 border border-black'></div>
                                 </div>
                                 <div className='border rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
@@ -378,7 +378,7 @@ function Cartpage() {
               <div className="md:pt-3">
                 {
                     agentExcursionCart?.length > 0 ? (
-                        <div>
+                        <div className="p-3 md:p-0">
                             <div>
                                 <h1 className="font-semibold text-2xl">Attraction</h1>
                             </div>
@@ -463,7 +463,7 @@ function Cartpage() {
             </div>
             {
                 agentTransferCart?.length > 0 ? (
-                    <div className={`${!agentExcursionCart?.length ? "pt-1" : "pt-10"}`}>
+                    <div className={`${!agentExcursionCart?.length ? "pt-1" : "pt-10"} p-3 md:p-0`}>
                         <div>
                             <h1 className="font-semibold text-2xl">Transfer</h1>
                         </div>
@@ -473,26 +473,42 @@ function Cartpage() {
                             {
                                 ele?.journys.map((item, i)=>{
                                     return (
-                                        <div key={i} className='w-[500px] md:w-[800px] border bg-white'>
+                                        <div key={i} className='w-full md:w-[800px] border bg-white'>
                                             <div className='flex justify-end '>
                                                 <button 
                                                 onClick={()=>handleDeleteVehicle(ele, index)}
                                                 className='text-red-500 text-xl'><TiDelete /></button>
                                             </div>
                                             <div className='p-5'>
-                                            <div className='flex justify-between p-2 items-center'>
+                                            <div className='md:flex md:justify-between p-2 items-center'>
                                                 <div>
                                                     <h1 className='text-sm font-bold'>{item?.pickupLocationName}</h1>
                                                 </div>
+                                                <div className="md:hidden block">
+                                                {
+                                                            item?.transferType === "oneway" ? (
+                                                                <div className=''>
+                                                                    <BsArrowDown />
+                                                                </div>
+
+                                                            ) : item?.transferType === "return" ? (
+                                                                <div className=''>
+                                                               {/* <FaArrowRightArrowLeft /> */}
+                                                               <FaArrowRight />
+
+                                                            </div>
+                                                            ) : ""
+                                                        }
+                                                </div> 
                                                 <div>
                                                     <h1 className='text-sm font-bold'>{item?.dropOffLocationName}</h1>
                                                 </div>
                                             </div>
-                                            <div className='flex justify-between items-center gap-2'>
+                                            <div className='md:flex hidden justify-between items-center gap-2'>
                                                     <div className='flex items-center'>
                                                         <div className='w-2 h-2 rounded-full border-2 border-orange-500'></div>
                                                     </div>
-                                                    <div className='border-b flex-grow relative'>
+                                                    <div className='border-b  flex-grow relative'>
                                                         {
                                                             item?.transferType === "oneway" ? (
                                                                 <div className='absolute top-1/2 transform -translate-y-1/2 right-80'>
@@ -743,7 +759,7 @@ function Cartpage() {
                 ) : ""
             }
              <div className="flex justify-center md:p-0">
-                <div className=''>
+                <div className='p-3 md:p-0'>
                     {
                         agentTransferCart?.length > 0 || agentExcursionCart?.length >  0 ? (
                             <>

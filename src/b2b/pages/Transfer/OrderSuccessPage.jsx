@@ -389,34 +389,34 @@ function OrderSuccessPage() {
                                 </div>
             <div className='hidden md:flex justify-between bg-white p-5 w-fit rounded-lg '>
                         <div className='flex justify-evenly'>        
-                                <div className={`border border-blue-400 rounded-lg w-28 p-4 flex justify-center items-center`}>
+                                <div className={` border-2 border-[#01b2bd]  bg-[#01b2bd] rounded-lg w-28 p-4 flex justify-center items-center`}>
                                     <div>
                                         <div className='flex justify-center'>
-                                        <h1 className='text-xl text-center'><BsCart2 /></h1>
+                                        <h1 className='text-xl text-center'><BsCart2 color="white" /></h1>
                                         </div>
-                                        <h1 className='text-xs text-center font-light'>Add To Cart</h1>
+                                        <h1 className='text-xs text-center font-light text-white'>Add To Cart</h1>
                                     </div>
                                 </div>
                                 <div className='pt-10 '>
-                                <div className={`border-t w-32 border-blue-400 `}></div>
+                                <div className={`border-t w-32 border-[#01b2bd] `}></div>
                                 </div>
-                                <div className='border border-blue-400  rounded-lg w-28 p-4 flex justify-center items-center'>
+                                <div className='border-2 border-[#01b2bd]  bg-[#01b2bd]  rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
                                         <div className='flex justify-center'>
-                                        <h1 className='text-xl text-center'><MdOutlinePayment /></h1>
+                                        <h1 className='text-xl text-center'><MdOutlinePayment color="white"  /></h1>
                                         </div>
-                                        <h1 className='text-xs text-center font-light'>Payment</h1>
+                                        <h1 className='text-xs text-center font-light text-white'>Payment</h1>
                                     </div>
                                 </div>
                                 <div className='pt-10'>
-                                <div className='border-t w-32 border-blue-400 '></div>
+                                <div className='border-t w-32 border-[#01b2bd]'></div>
                                 </div>
-                                <div className='border border-blue-400  rounded-lg w-28 p-4 flex justify-center items-center'>
+                                <div className='border-2 border-[#01b2bd]  bg-[#01b2bd]  rounded-lg w-28 p-4 flex justify-center items-center'>
                                     <div>
                                         <div className='flex justify-center'>
-                                        <h1 className='text-xl text-center'><FaPrint /></h1>
+                                        <h1 className='text-xl text-center'><FaPrint color="white"  /></h1>
                                         </div>
-                                        <h1 className='text-xs text-center font-light'>Print </h1>
+                                        <h1 className='text-xs text-center font-light text-white'>Print </h1>
                                     </div>
                                 </div>
                         </div>
