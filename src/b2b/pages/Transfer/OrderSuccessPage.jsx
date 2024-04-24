@@ -7,13 +7,15 @@ import { useSelector, useDispatch } from "react-redux";
 import priceConversion from "../../../utils/PriceConversion";
 import { config } from "../../../constants";
 import moment from "moment";
-import { BsDownload } from "react-icons/bs";
-import { BiTransfer } from "react-icons/bi";
+import { BsCart2, BsDownload } from "react-icons/bs";
+import { BiLeftArrow, BiTransfer } from "react-icons/bi";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { BtnLoader } from "../../components";
 import { clearCartItemsAfterPurchase } from "../../../redux/slices/transferSlice";
 import { emptyCart } from "../../../redux/slices/agentExcursionSlice";
+import { MdOutlinePayment } from "react-icons/md";
+import { FaPrint } from "react-icons/fa";
 
 
 function OrderSuccessPage() {
@@ -372,6 +374,55 @@ function OrderSuccessPage() {
   };
 
   return (
+    <>
+     <div className="w-full p-2 flex justify-center">
+        <div onClick={()=> navigate('/')} className=' cursor-pointer w-28 flex justify-center items-center'>
+                                    <div>
+                                        <div className='flex justify-center'>
+                                        <h1 className='text-xl text-center'><BiLeftArrow /></h1>
+                                        </div>
+                                        <h1 className='text-xs text-center font-light'>Back</h1>
+                                    </div>
+                                </div>
+                                <div className='pt-10'>
+                                <div className=' w-[240px]'></div>
+                                </div>
+            <div className='hidden md:flex justify-between bg-white p-5 w-fit rounded-lg '>
+                        <div className='flex justify-evenly'>        
+                                <div className={`border border-blue-400 rounded-lg w-28 p-4 flex justify-center items-center`}>
+                                    <div>
+                                        <div className='flex justify-center'>
+                                        <h1 className='text-xl text-center'><BsCart2 /></h1>
+                                        </div>
+                                        <h1 className='text-xs text-center font-light'>Add To Cart</h1>
+                                    </div>
+                                </div>
+                                <div className='pt-10 '>
+                                <div className={`border-t w-32 border-blue-400 `}></div>
+                                </div>
+                                <div className='border border-blue-400  rounded-lg w-28 p-4 flex justify-center items-center'>
+                                    <div>
+                                        <div className='flex justify-center'>
+                                        <h1 className='text-xl text-center'><MdOutlinePayment /></h1>
+                                        </div>
+                                        <h1 className='text-xs text-center font-light'>Payment</h1>
+                                    </div>
+                                </div>
+                                <div className='pt-10'>
+                                <div className='border-t w-32 border-blue-400 '></div>
+                                </div>
+                                <div className='border border-blue-400  rounded-lg w-28 p-4 flex justify-center items-center'>
+                                    <div>
+                                        <div className='flex justify-center'>
+                                        <h1 className='text-xl text-center'><FaPrint /></h1>
+                                        </div>
+                                        <h1 className='text-xs text-center font-light'>Print </h1>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+        </div>
+
     <div className="flex justify-center p-10 max-w-screen-lg mx-auto ">
       <div className="w-full rounded-2xl border p-10 bg-gradient-to-br from-BEColor/10 to-gray-50 shadow-round">
         <div className="mb-7 ">
@@ -476,6 +527,7 @@ function OrderSuccessPage() {
       </div>
       
     </div>
+    </>
   );
 }
 
