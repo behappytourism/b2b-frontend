@@ -80,17 +80,17 @@ function TransferListPage() {
                 <div className='grid md:grid-cols-1 gap-7 '>
                     {
                         trips?.map((ele)=>(
-                            <div className='border w-[1000px]'>
+                            <div className='border md:w-[1000px]'>
                             {
                                 ele?.trips?.map((items, index)=>(
                                     <div key={index} className='  '>
-                                        <div className=' w-full p-8  bg-BeGray'>
+                                        <div className=' w-full md:p-8 p-3  bg-BeGray'>
                                         <div className='flex justify-between p-2 items-center'>
                                             <div>
-                                                <h1 className='text-sm font-bold'>{items?.transferFrom?.airportName || items?.transferFrom?.areaName }</h1>
+                                                <h1 className='text-sm md:font-bold font-semibold'>{items?.transferFrom?.airportName || items?.transferFrom?.areaName }</h1>
                                             </div>
                                             <div>
-                                                <h1 className='text-sm font-bold'>{items?.transferTo?.airportName || items?.transferTo?.areaName }</h1>
+                                                <h1 className='text-sm md:font-bold font-semibold'>{items?.transferTo?.airportName || items?.transferTo?.areaName }</h1>
                                             </div>
                                         </div>
                                         <div className='flex justify-between items-center gap-2'>
@@ -107,8 +107,8 @@ function TransferListPage() {
                                                 </div>
                                             </div>
                 
-                                        <div className='flex gap-2 pt-2'>
-                                            <div className='flex gap-1'>
+                                        <div className='md:flex gap-2 pt-2'>
+                                            <div className='flex gap-1 mb-3 md:mb-0'>
                                                 <div>
                                                     <h1><IoTimeOutline /></h1>
                                                 </div>
