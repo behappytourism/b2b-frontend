@@ -153,7 +153,7 @@ function TransferOrderPage() {
                   e.preventDefault();
                   fetchOrders({ ...filters });
                 }}
-              className='grid grid-cols-5 items-end gap-4 p-4'
+              className='grid md:grid-cols-5 items-end gap-4 p-4'
               >
                 <div className='col-span-2'>
                   <label htmlFor="" className="text-xs font-[500] text-gray-400">

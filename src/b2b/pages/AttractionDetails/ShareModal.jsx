@@ -27,7 +27,7 @@ function ShareModal({ setShareModal, shareModal }) {
           <div className='flex border-b border-dashed  border-text justify-center mt-3 lg:pt-0  py-4 font-bold tracking-wide text-xl'>
             Share
           </div>
-          <div className='p-5  space-x-1 font-semibold text-lg'>
+          <div className='p-5 space-x-1 font-semibold text-lg'>
             <img src={agentExcursion?.images?.length > 0 && config.SERVER_URL + agentExcursion?.images[0]} alt="banner" className='object-cover h-32  w-full rounded-2xl ' />
             <h2 className=''>{agentExcursion?.title} </h2>
           </div>
