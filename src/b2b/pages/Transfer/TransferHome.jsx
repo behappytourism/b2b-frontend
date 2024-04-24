@@ -686,8 +686,8 @@ function TransferHome() {
                                 id=""
                                 className="outline-none border h-12 w-36 p-2"
                               >
-                                {Array.from({ length: 11 }).map((val, ind) => (
-                                  <option value={ind}>{ind}</option>
+                                {Array.from({ length: 12 }).map((val, ind) => (
+                                  <option value={ind + 1}>{ind + 1}</option>
                                 ))}
                               </select>
                             </div>
