@@ -123,12 +123,12 @@ function BottomNav({ setSidebarView }) {
             </div>
           </div> */}
           <div className=" flex justify-center items-center">
-            <div className="cursor-pointer" onClick={() => navigate("/order")}>
+            <div className="cursor-pointer" onClick={() => navigate("/home/cart")}>
               <div className="flex justify-center items-center text-[20px]">
                 <IoMdCart />
               </div>
               <div className="">
-                <p className="text-xs">Orders</p>
+                <p className="text-xs">Cart</p>
               </div>
             </div>
           </div>
