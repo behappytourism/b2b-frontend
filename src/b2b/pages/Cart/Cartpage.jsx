@@ -66,30 +66,28 @@ function Cartpage() {
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
-    // const sum = agentExcursionCart?.reduce((acc, data) => {
-    //     console.log(acc, data, 'show acc and data');
-    //   return Number(acc) + Number(data?.price)
-    // }, 0)
-    // console.log(sum, 'show sum');
-    // setPrice(sum)
+    const cal = agentExcursionCart?.reduce((acc, data) => {
+      return Number(acc) + Number(data?.price)
+    }, 0)
+    setPrice(cal)
 
     let sum = 0;
     if (agentExcursionCart?.length) {
       agentExcursionCart?.map((items) => {
         if (items.adultPrice && items.adult) {
           sum += items?.isB2bPromoCode
-            ? (items?.adultPrice + items?.b2bPromoAmountAdult) * items?.adult
-            : items?.adultPrice * items?.adult;
+            ? (items?.adultPrice  + items?.vat + items?.b2bPromoAmountAdult) * items?.adult
+            : items?.adultPrice + items?.vat * items?.adult;
         }
         if (items?.childPrice && items.child) {
           sum += items?.isB2bPromoCode
-            ? (items?.childPrice + items?.b2bPromoAmountChild) * items?.child
-            : items?.childPrice * items?.child;
+            ? (items?.childPrice  + items?.vat + items?.b2bPromoAmountChild) * items?.child
+            : items?.childPrice + items?.vat * items?.child;
         }
-        if (items?.infantPrice && items?.infant) {
-          sum += items?.infantPrice * items?.infant;
-        }
-        setPrice(sum);
+        // if (items?.infantPrice && items?.infant) {
+        //   sum += items?.infantPrice * items?.infant;
+        // }
+        // setPrice(items?.price);
       });
     }
   }, [agentExcursionCart]);
@@ -317,7 +315,7 @@ function Cartpage() {
     //   sum += items?.infantPrice * items?.infant;
     // }
 
-    let data = priceConversion(sum , selectedCurrency, true);
+    let data = priceConversion(sum, selectedCurrency, true);
 
     return data;
   };
@@ -337,13 +335,16 @@ function Cartpage() {
   }, [agentExcursionCart, agentTransferCart]);
 
 
-  console.log(agentExcursionCart);
+  const backfunction = () => {
+    window?.history?.back();
+  };
+
 
   return (
     <div className="">
       <div className="md:p-5 md:flex md:justify-center p-3">
         <div
-          onClick={() => navigate("/")}
+          onClick={() => backfunction()}
           className=" cursor-pointer w-28 flex md:justify-center md:items-center"
         >
           <div>
@@ -542,11 +543,11 @@ function Cartpage() {
                           </div>
                           <div className="flex justify-end">
                             <p className="text-xl font-semibold text-green-500 ">
-                            {priceConversion(
-                                        item?.price,
-                                        selectedCurrency,
-                                        true
-                                      )}{" "}
+                              {priceConversion(
+                                item?.price,
+                                selectedCurrency,
+                                true
+                              )}{" "}
                             </p>
                           </div>
                         </div>

@@ -39,7 +39,6 @@ function TransferListPage() {
         
         const {name, value} = e.target
         dispatch(setSelectedTransfer({value, trip, index, vehicle, element}))
-        console.log(vehicle);
         dispatch(setAlertSuccess({
             status: true,
             title: "Transfer Added",
