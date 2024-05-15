@@ -1,6 +1,6 @@
 // import React, { useState } from 'react'
 import { BsArrowDown, BsCart2 } from "react-icons/bs";
-import { MdOutlinePayment } from "react-icons/md";
+import { MdDiscount, MdOutlinePayment } from "react-icons/md";
 import { FaPrint } from "react-icons/fa6";
 import { FaBaby, FaChild } from "react-icons/fa";
 import { BsDash, BsPersonFill } from "react-icons/bs";
@@ -8,7 +8,7 @@ import React, { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { CiCalendarDate } from "react-icons/ci";
+import { CiCalendarDate, CiDiscount1 } from "react-icons/ci";
 import { LiaSaveSolid } from "react-icons/lia";
 import { useSelector, useDispatch } from "react-redux";
 import { TiDelete } from "react-icons/ti";
@@ -31,7 +31,12 @@ import priceConversion from "../../../utils/PriceConversion";
 import { LiaEditSolid } from "react-icons/lia";
 import nextId from "react-id-generator";
 import { HiOutlineArrowSmLeft } from "react-icons/hi";
-import { BiLeftArrow } from "react-icons/bi";
+import {
+  BiChevronRight,
+  BiLeftArrow,
+  BiSolidDiscount,
+  BiXCircle,
+} from "react-icons/bi";
 
 function Cartpage() {
   // const { countries } = useSelector((state) => state.home);
@@ -62,26 +67,53 @@ function Cartpage() {
   });
   const [orderId, setOrderId] = useState("");
   const [isModal, setIsModal] = useState(false);
+  const [isCouponModal, setIsCouponModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [price, setPrice] = useState(0);
+  const [coupons, setCoupons] = useState();
+  const [couponResponse, setCouponResponse] = useState({});
+  const [couponError, setCouponError] = useState({});
+
+  // const fetchOfferCoupons = async () => {
+  //   try {
+  //     const res = await axios.get(`b2b/promo-code/list`, {
+  //       headers: { authorization: `Bearer ${token}` },
+  //     });
+  //     if (res.status === 200) {
+  //       setCoupons(res.data);
+  //     }
+  //   } catch (err) {
+  //     if (err.response) {
+  //       // console.error("Error response from the server:", err.response);
+  //     } else {
+  //       // console.error("An error occurred:", err.message);
+  //     }
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchOfferCoupons();
+  // }, []);
 
   useEffect(() => {
     const cal = agentExcursionCart?.reduce((acc, data) => {
-      return Number(acc) + Number(data?.price)
-    }, 0)
-    setPrice(cal)
+      return Number(acc) + Number(data?.price);
+    }, 0);
+    setPrice(cal);
 
     let sum = 0;
     if (agentExcursionCart?.length) {
       agentExcursionCart?.map((items) => {
         if (items.adultPrice && items.adult) {
           sum += items?.isB2bPromoCode
-            ? (items?.adultPrice  + items?.vat + items?.b2bPromoAmountAdult) * items?.adult
+            ? (items?.adultPrice + items?.vat + items?.b2bPromoAmountAdult) *
+              items?.adult
             : items?.adultPrice + items?.vat * items?.adult;
         }
         if (items?.childPrice && items.child) {
           sum += items?.isB2bPromoCode
-            ? (items?.childPrice  + items?.vat + items?.b2bPromoAmountChild) * items?.child
+            ? (items?.childPrice + items?.vat + items?.b2bPromoAmountChild) *
+              items?.child
             : items?.childPrice + items?.vat * items?.child;
         }
         // if (items?.infantPrice && items?.infant) {
@@ -254,6 +286,73 @@ function Cartpage() {
     agentExcursionCart,
   ]);
 
+  useEffect(() => {
+    let transfers = {};
+
+    if (agentTransferCart.length) {
+      agentTransferCart.map((ele) => {
+        ele?.journys.map((item) => {
+          transfers = {
+            dropOffLocation: item?.dropOffLocation,
+            transferType: item?.transferType,
+            pickupLocation: item?.pickupLocation,
+            pickupSuggestionType: item?.pickupSuggestionType,
+            dropOffSuggestionType: item?.dropOffSuggestionType,
+            noOfAdults: item?.noOfAdults,
+            noOfChildrens: item?.noOfChildrens,
+            pickupDate: item?.pickupDate,
+            pickupTime: item?.pickupTime,
+            returnDate: item?.returnDate,
+            returnTime: item?.returnTime,
+            selectedVehicleTypes: [],
+            selectedReturnVehicleTypes: [],
+          };
+          if (item?.selectedVehicleTypes.length) {
+            let vehicle = {};
+            for (let i = 0; i < item?.selectedVehicleTypes?.length; i++) {
+              vehicle = {
+                vehicle: item?.selectedVehicleTypes[i].vehicle,
+                count: item?.selectedVehicleTypes[i].count,
+              };
+              transfers.selectedVehicleTypes.push(vehicle);
+            }
+          }
+
+          if (item?.selectedReturnVehicleTypes.length) {
+            let vehicle = {};
+            for (let i = 0; i < item?.selectedReturnVehicleTypes?.length; i++) {
+              vehicle = {
+                vehicle: item?.selectedReturnVehicleTypes[i].vehicle,
+                count: item?.selectedReturnVehicleTypes[i].count,
+              };
+              transfers.selectedReturnVehicleTypes.push(vehicle);
+            }
+          }
+          data.push(transfers);
+        });
+      });
+    }
+
+    let activities = {};
+    if (agentExcursionCart?.length) {
+      agentExcursionCart.map((item) => {
+        activities = {
+          activity: item?._id,
+          date: item?.date,
+          adultsCount: item?.adult,
+          childrenCount: item?.child,
+          infantCount: item?.infant,
+          hoursCount: item?.hourCount ? item?.hourCount : "",
+          transferType: item?.transfer,
+          slot: item?.selectedTimeSlot,
+          isPromoAdded: item?.isPromoAdded,
+        };
+
+        activityData.push(activities);
+      });
+    }
+  }, [agentExcursionCart, agentTransferCart]);
+
   const [countryCode, setCountryCode] = useState("");
   useEffect(() => {
     countries.map((ele) => {
@@ -299,6 +398,59 @@ function Cartpage() {
     }
   };
 
+  const handleValidatingCoupon = async (code) => {
+    const tripDetails = {
+      selectedJourneys: details?.selectedJourneys,
+      selectedActivities: details?.selectedActivities,
+      promoCode: code,
+    };
+    try {
+      setIsLoading(true);
+      const res = await axios.post(
+        `/b2b/promo-code/eligibilty/check`,
+        tripDetails,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (res?.status !== 200) {
+        setCouponError(res?.data);
+      }
+
+      setCouponResponse(res?.data);
+
+      setIsLoading(false);
+      setIsCouponModal(false);
+    } catch (error) {
+      dispatch(
+        setAlertError({
+          status: true,
+          title: error?.response?.data?.error,
+          text: error?.message,
+        })
+      );
+      setIsLoading(false);
+      console.log(error, "error response");
+    }
+  };
+
+  console.log(couponResponse);
+
+  // Define a function to format the date
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const formattedDate = `${date.getFullYear()}-${padZero(
+      date.getMonth() + 1
+    )}-${padZero(date.getDate())}`;
+    return formattedDate;
+  }
+
+  // Define a function to pad zeros
+  function padZero(num) {
+    return num < 10 ? "0" + num : num;
+  }
+
   const singleAttractionTotalCost = (items) => {
     let sum = 0;
     if (items.adultPrice && items.adult) {
@@ -334,11 +486,9 @@ function Cartpage() {
     setCartCount(count);
   }, [agentExcursionCart, agentTransferCart]);
 
-
   const backfunction = () => {
     window?.history?.back();
   };
-
 
   return (
     <div className="">
@@ -1033,6 +1183,8 @@ function Cartpage() {
                     {/* </form> */}
                   </div>
                 </div>
+
+                <div></div>
                 <div className="pt-3">
                   <div className=" rounded-t-xl w-full h-80 mb-3 bg-white">
                     <div className="">
@@ -1045,6 +1197,124 @@ function Cartpage() {
                         </h1>
                       </div>
                     </div>
+
+                    {/* <div
+                      onClick={() => setIsCouponModal(true)}
+                      className="flex gap-3 items-center text-center w-full justify-center"
+                    >
+                      <div className="flex min-w-[300px] cursor-pointer hover:bg-gray-100/50 bg-gray-100 py-3 px-8 rounded-2xl justify-between items-center text-center">
+                        <div className="flex gap-2 items-center text-center">
+                          <MdDiscount color="blue" />
+                          {" "}
+                          {couponResponse?.discountAmount && (
+                            <>
+                              {couponResponse?.promoCode}
+                            </>
+                          )}
+                          {!couponResponse?.discountAmount && (
+                            <>
+                            <p className="font-semibold">Use Coupons</p>
+                            </>
+                          )}
+                        </div>
+                        <BiChevronRight color="blue" />
+                      </div>
+                    </div> */}
+
+                    {/* {isCouponModal === true && (
+                      <div className="fixed w-full h-full z-50 left-0 top-0 backdrop-blur-xl bg-opacity-30 bg-black">
+                        <div className="flex w-full justify-center">
+                          <div
+                            onClick={() => setIsCouponModal(false)}
+                            className="absolute md:top-[110px]  top-[60px] md:right-[260px] right-[20px] bg-white rounded-full cursor-pointer"
+                          >
+                            <BiXCircle height={40} width={40} />
+                          </div>
+                          <div className="bg-white md:mt-[80px] mt-[120px] m-5 md:m-0 md:min-w-[500px] md:max-w-[600px] px-10 text-center  max-h-[550px] overflow-x-auto py-5 rounded-xl shadow-2xl">
+                            <p className="text-lg font-semibold underline ">
+                              Coupons
+                            </p>
+                            <p className="text-left pb-2 font-semibold text-xs">
+                              Best coupons for you
+                            </p>
+
+                            <div>
+                              {coupons?.map((coupon, index) => (
+                                <div className=" gap-3 items-center border mb-5 p-3 rounded-xl text-center w-full">
+                                  <div className="flex mb-3 justify-between w-full">
+                                    <div className="w-full  flex flex-col justify-start">
+                                      <div className="flex font-bold gap-1 items-center text-center">
+                                        <p className=" capitalize">
+                                          {coupon?.type}
+                                        </p>
+                                        <p className="">{coupon?.value}</p>
+                                      </div>
+                                      <div className="flex gap-1 items-center text-center">
+                                        <p className="text-xs">Use code</p>
+                                        <p className="font-bold">
+                                          {coupon?.code}
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <button
+                                      onClick={() =>
+                                        handleValidatingCoupon(coupon?.code)
+                                      }
+                                      className="bg-[#01b2bd] text-xs text-white font-normal px-4 rounded-2xl"
+                                    >
+                                      Apply
+                                    </button>
+                                  </div>
+
+                                  <div className="text-left">
+                                    <ul className="">
+                                      <li className=" text-sm mb-3">
+                                        &#8226; Applicable on{" "}
+                                        {coupon?.product?.join(", ")}
+                                      </li>
+                                    </ul>
+
+                                    <ul className="">
+                                      <li className=" text-sm mb-3">
+                                        &#8226; Minimum Purchase Value{" "}                                     
+                                        {priceConversion(
+                                coupon?.minPurchaseValue,
+                                selectedCurrency,
+                                true
+                              )}
+                                      </li>
+                                    </ul>
+
+                                    {coupon?.fromValidity === null &&
+                                      coupon?.toValidity === null && (
+                                        <ul className="">
+                                          <li className=" text-sm mb-3">
+                                            &#8226; Valid till lifetime
+                                          </li>
+                                        </ul>
+                                      )}
+
+                                    {coupon?.fromValidity !== null &&
+                                      coupon?.toValidity !== null && (
+                                        <ul className="">
+                                          <li className="text-sm mb-3">
+                                            &#8226; Valid from{" "}
+                                            {formatDate(coupon.fromValidity)}{" "}
+                                            till {formatDate(coupon.toValidity)}
+                                          </li>
+                                        </ul>
+                                      )}
+                                  </div>
+
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )} */}
+
                     <div className=" w-full h-28 flex xl:justify-center items-center ">
                       <div className="">
                         <h1 className="text-lg flex justify-center">
@@ -1055,7 +1325,24 @@ function Cartpage() {
                         </h1>
                         <h1 className="text-black font-bold text-3xl">
                           {" "}
-                          {priceConversion(totalPrice, selectedCurrency, true)}
+                          {/* {couponResponse?.discountAmount && (
+                            <>
+                              {priceConversion(
+                                totalPrice - couponResponse?.discountAmount,
+                                selectedCurrency,
+                                true
+                              )}
+                            </>
+                          )} */}
+                          {/* {!couponResponse?.discountAmount && (
+                            <> */}
+                              {priceConversion(
+                                totalPrice,
+                                selectedCurrency,
+                                true
+                              )}
+                            {/* </>
+                          )} */}
                         </h1>
                       </div>
                     </div>
