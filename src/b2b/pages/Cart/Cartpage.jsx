@@ -46,7 +46,7 @@ function Cartpage() {
   const { countries } = useSelector((state) => state.home);
   const { token, agent } = useSelector((state) => state.agents);
 
-  const unid = nextId(agent.shortName + "_") + Math.floor(Math.random() * 1000);
+  const unid = nextId("behappy" + "_") + Math.floor(Math.random() * 1000);
 
   const dispatch = useDispatch();
 
@@ -60,8 +60,9 @@ function Cartpage() {
     phoneNumber: agent?.phoneNumber,
     country: agent?.country?._id,
     paymentMethod: "wallet",
-    countryCode: "",
+    countryCode: "+91",
     agentReferenceNumber: unid,
+    isPromoCodeApplied: false,
     selectedJourneys: [],
     selectedActivities: [],
   });

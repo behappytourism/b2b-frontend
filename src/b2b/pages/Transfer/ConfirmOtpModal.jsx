@@ -10,6 +10,7 @@ import { emptyCart } from '../../../redux/slices/agentExcursionSlice';
 import { setAlertSuccess } from '../../../redux/slices/homeSlice';
 import { useNavigate } from 'react-router-dom';
 import { IoClose } from "react-icons/io5";
+import { getWalletBalance } from '../../../redux/slices/walletSlice';
 
 function ConfirmOtpModal({details, orderId, setIsModal}) {
 
@@ -77,6 +78,7 @@ function ConfirmOtpModal({details, orderId, setIsModal}) {
                   title: "Completed",
                   text: "Order successfully completed"
                 }))
+                dispatch(getWalletBalance());
                 setIsModal(false)
                 setIsLoading(false)
     
