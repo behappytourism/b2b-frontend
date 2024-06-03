@@ -4,6 +4,7 @@ import axios from "../../../axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setAlertSuccess } from "../../../redux/slices/homeSlice";
 import { useNavigate } from "react-router-dom";
+import { fetchAgent } from "../../../redux/slices/agentSlice";
 
 function ProfileSettings() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function ProfileSettings() {
         config
       );
       setIsLoading(false);
+      dispatch(fetchAgent());
 
       dispatch(
         setAlertSuccess({
@@ -150,6 +152,7 @@ function ProfileSettings() {
               type="email"
               name="email"
               value={data.email}
+              disabled
               onChange={onChangeHandler}
             />
           </div>
