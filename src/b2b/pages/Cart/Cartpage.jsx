@@ -46,7 +46,11 @@ function Cartpage() {
   const { countries } = useSelector((state) => state.home);
   const { token, agent } = useSelector((state) => state.agents);
 
-  const unid = nextId("behappy" + "_") + Math.floor(Math.random() * 1000);
+  const unid = `BEH_${agent?.agentCode || ""}`;
+
+  console.log(agent?.agentCode);
+  console.log(unid);
+
 
   const dispatch = useDispatch();
 
@@ -436,7 +440,7 @@ function Cartpage() {
     }
   };
 
-  console.log(couponResponse);
+  // console.log(couponResponse);
 
   // Define a function to format the date
   function formatDate(dateString) {
