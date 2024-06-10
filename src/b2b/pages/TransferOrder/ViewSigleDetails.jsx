@@ -95,6 +95,37 @@ function ViewSigleDetails() {
     }
   };
 
+
+  const handleTransferOrderCancellation = async (ele) => {
+    const body = { cancellationRemark: ele };
+    try {
+      const res = await axios.patch(
+        `/b2b/transfer/order/${orderTransferDetails._id}/cancel/${ele?._id}`, 
+        body,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+  
+      console.log(res?.data);
+  
+      dispatch(setAlertSuccess({
+        status: true,
+        title: "Order Cancellation (in process)",
+        text: `${res?.data?.message}`
+      }));
+  
+    } catch (error) {
+      dispatch(setAlertError({
+        status: true,
+        title: "Order Cancellation Request",
+        text: `${error?.response?.data?.error || error.message}`
+      }));
+      console.log(error);
+    }
+  };
+
+
   function formatTime(dateTime) {
     const hours = new Date(dateTime).getHours().toString().padStart(2, "0");
     const minutes = new Date(dateTime).getMinutes().toString().padStart(2, "0");
@@ -206,9 +237,20 @@ function ViewSigleDetails() {
                     </div>
                     <div className="p-5 w-full">
                       {orderTransferDetails?.journey?.map((ele, index) => {
+                        console.log(ele);
                         return (
                           <div key={index} className="pt-4">
                             <ShowTransferDetails ele={ele} />
+                            {/* <div className="flex w-full justify-end mt-5">
+                              <button
+                                onClick={() => {
+                                  handleTransferOrderCancellation(ele);
+                                }}
+                                className="bg-black w-52 rounded-full text-white  h-8"
+                              >
+                                Cancel Order
+                              </button>
+                            </div> */}
                           </div>
                         );
                       })}
