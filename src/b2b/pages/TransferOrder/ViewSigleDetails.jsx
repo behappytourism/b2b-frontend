@@ -6,7 +6,11 @@ import { PageLoader } from "../../components";
 import ShowAttractionDetails from "./ShowAttractionDetails";
 import ShowTransferDetails from "./ShowTransferDetails";
 import { BtnLoader } from "../../components";
-import { setAlertError, setAlertSuccess } from "../../../redux/slices/homeSlice";
+import {
+  setAlertError,
+  setAlertSuccess,
+} from "../../../redux/slices/homeSlice";
+import { Checkbox } from "@material-tailwind/react";
 
 function ViewSigleDetails() {
   const params = useParams();
@@ -18,6 +22,13 @@ function ViewSigleDetails() {
   const [orderTransferDetails, setOrderTransferDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [invoiceLoading, setInvoiceLoading] = useState(false);
+  const [cancellationRemark, setCancellationRemark] = useState("");
+  const [cancelModal, setCancelModal] = useState(false);
+  const [cancelTransferActivityId, setCancelTransferActivityId] = useState([]);
+  const [cancelAttractionActivityId, setCancelAttractionActivityId] = useState(
+    []
+  );
+  const [cancel, setCancel] = useState(false);
 
   const fetchSingleOrderDetails = async () => {
     try {
@@ -66,65 +77,60 @@ function ViewSigleDetails() {
     }
   };
 
+  const handleCancel = () => {
+    // setCancelModal(true)
+    setCancel(true);
+    // setCancelTransferActivityId(ele?._id)
+  };
+
+  const handleCancelRemark = () => {
+    setCancelModal(true);
+    //setCancel(true);
+    // setCancelTransferActivityId(ele?._id)
+  };
+
+  // const handleCancelAttractionProcess = (ele) => {
+  //   setCancelModal(true)
+  //   setCancelAttractionActivityId(ele?._id)
+  // }
+
   const handleOrderCancellation = async (ele) => {
-    const body = { cancellationRemark: orderAttractionDetails };
+    const body = {
+      orderId: `${params.id}`,
+      attractionCancellations: cancelAttractionActivityId,
+      transferCancellations: cancelTransferActivityId,
+      cancellationRemark: cancellationRemark,
+    };
     try {
-      const res = await axios.patch(
-        `/b2b/attractions/orders/${orderAttractionDetails._id}/cancel/${ele?._id}`, 
-        body,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-  
+      const res = await axios.patch(`/b2b/orders/cancel`, body, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
       console.log(res?.data);
-  
-      dispatch(setAlertSuccess({
-        status: true,
-        title: "Order Cancellation (in process)",
-        text: `${res?.data?.message}`
-      }));
-  
+
+      dispatch(
+        setAlertSuccess({
+          status: true,
+          title: "Order Cancellation (in process)",
+          text: `${res?.data?.message}`,
+        })
+      );
+
+      setCancelAttractionActivityId([])
+      setCancelTransferActivityId([])
+      setCancelModal(false)
+      setCancel(false)
     } catch (error) {
-      dispatch(setAlertError({
-        status: true,
-        title: "Order Cancellation Request",
-        text: `${error?.response?.data?.error || error.message}`
-      }));
+      dispatch(
+        setAlertError({
+          status: true,
+          title: "Order Cancellation Request",
+          text: `${error?.response?.data?.error || error.message}`,
+        })
+      );
       console.log(error);
     }
   };
-
-
-  const handleTransferOrderCancellation = async (ele) => {
-    const body = { cancellationRemark: ele };
-    try {
-      const res = await axios.patch(
-        `/b2b/transfer/order/${orderTransferDetails._id}/cancel/${ele?._id}`, 
-        body,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-  
-      console.log(res?.data);
-  
-      dispatch(setAlertSuccess({
-        status: true,
-        title: "Order Cancellation (in process)",
-        text: `${res?.data?.message}`
-      }));
-  
-    } catch (error) {
-      dispatch(setAlertError({
-        status: true,
-        title: "Order Cancellation Request",
-        text: `${error?.response?.data?.error || error.message}`
-      }));
-      console.log(error);
-    }
-  };
-
 
   function formatTime(dateTime) {
     const hours = new Date(dateTime).getHours().toString().padStart(2, "0");
@@ -135,6 +141,7 @@ function ViewSigleDetails() {
     return formattedTime;
   }
 
+  //console.log(cancelAttractionActivityId, cancelTransferActivityId);
   return (
     <div>
       <div className="py-5 px-5">
@@ -189,16 +196,39 @@ function ViewSigleDetails() {
                 </div>
               </div>
               <div className="py-5 px-5 bg-white shadow-xl w-96 md:w-full h-auto">
-                <div className="flex justify-end">
-                  <button
-                    onClick={() => {
-                      handleDownloadInvoice();
-                    }}
-                    className="bg-BEColor w-52 rounded-full text-white  h-8"
-                  >
-                    {invoiceLoading ? <BtnLoader /> : "Download Invoice"}
-                  </button>
-                </div>
+                {cancel === false && (
+                  <div className="flex gap-5 justify-end">
+                    <button
+                      onClick={() => {
+                        handleDownloadInvoice();
+                      }}
+                      className="bg-BEColor w-52 rounded-full text-white  h-8"
+                    >
+                      {invoiceLoading ? <BtnLoader /> : "Download Invoice"}
+                    </button>
+
+                    {/* <button
+                      onClick={() => handleCancel()}
+                      className="bg-black w-52 rounded-full text-white  h-8"
+                    >
+                      Cancel Order
+                    </button> */}
+                  </div>
+                )}
+
+                {cancel === true && (
+                  <div className="flex gap-5 justify-end">
+                    <button
+                      onClick={() => setCancel(false)}
+                      className="bg-black w-52 rounded-full text-white  h-8"
+                    >
+                      Back
+                    </button>
+                    <button onClick={() => handleCancelRemark()} className="bg-BEColor w-52 rounded-full text-white  h-8">
+                      Continue
+                    </button>
+                  </div>
+                )}
                 {orderAttractionDetails?.activities?.length > 0 && (
                   <>
                     <div>
@@ -207,22 +237,28 @@ function ViewSigleDetails() {
                     <div className="p-5">
                       {orderAttractionDetails?.activities?.map((ele) => {
                         return (
-                          <div className="pt-4">
+                          <div className="pt-4 flex gap-3">
+                            {cancel && (
+                              <Checkbox
+                                checked={cancelAttractionActivityId.includes(
+                                  ele?._id
+                                )}
+                                onChange={() =>
+                                  setCancelAttractionActivityId((prevState) =>
+                                    prevState.includes(ele?._id)
+                                      ? prevState.filter(
+                                          (id) => id !== ele?._id
+                                        )
+                                      : [...prevState, ele?._id]
+                                  )
+                                }
+                              />
+                            )}
                             <ShowAttractionDetails
                               ele={ele}
                               orderAttractionDetails={orderAttractionDetails}
                               orderDetails={orderDetails}
                             />
-                            {/* <div className="flex w-full justify-end mt-5">
-                              <button
-                                onClick={() => {
-                                  handleOrderCancellation(ele);
-                                }}
-                                className="bg-black w-52 rounded-full text-white  h-8"
-                              >
-                                Cancel Order
-                              </button>
-                            </div> */}
                           </div>
                         );
                       })}
@@ -239,18 +275,24 @@ function ViewSigleDetails() {
                       {orderTransferDetails?.journey?.map((ele, index) => {
                         console.log(ele);
                         return (
-                          <div key={index} className="pt-4">
+                          <div key={index} className="pt-4 flex gap-3">
+                             {cancel && (
+                              <Checkbox
+                                checked={cancelTransferActivityId.includes(
+                                  ele?._id
+                                )}
+                                onChange={() =>
+                                  setCancelTransferActivityId((prevState) =>
+                                    prevState.includes(ele?._id)
+                                      ? prevState.filter(
+                                          (id) => id !== ele?._id
+                                        )
+                                      : [...prevState, ele?._id]
+                                  )
+                                }
+                              />
+                            )}
                             <ShowTransferDetails ele={ele} />
-                            {/* <div className="flex w-full justify-end mt-5">
-                              <button
-                                onClick={() => {
-                                  handleTransferOrderCancellation(ele);
-                                }}
-                                className="bg-black w-52 rounded-full text-white  h-8"
-                              >
-                                Cancel Order
-                              </button>
-                            </div> */}
                           </div>
                         );
                       })}
@@ -261,6 +303,23 @@ function ViewSigleDetails() {
             </div>
           </div>
         )}
+
+        <>
+        {cancelModal === true && (
+          <div className="fixed w-full h-full z-50 left-0 top-0 backdrop-blur-sm bg-opacity-10 bg-black">
+          <div className="w-full flex justify-center">
+           <div className="min-w-[300px] max-w-[300px] bg-white shadow-sm rounded-lg p-4 shadow-black mt-[10%]">
+            <p className="">Remark</p>
+            <input onChange={(e) => setCancellationRemark(e?.target?.value)} type="text" className="border w-full rounded px-2 py-1 placeholder:text-gray-300" placeholder="cancellation remark" />
+            <div className="flex w-full justify-end gap-5 mt-5">
+            <button onClick={() => setCancelModal(false)}>Back</button>
+            <button onClick={() => handleOrderCancellation()}>Confirm</button>
+            </div>
+           </div>
+          </div>
+          </div>
+        )}
+        </>
       </div>
     </div>
   );

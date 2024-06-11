@@ -46,12 +46,12 @@ function Cartpage() {
   const { countries } = useSelector((state) => state.home);
   const { token, agent } = useSelector((state) => state.agents);
 
-  const unid = nextId("BEH" + "_" + `${agent?.agentCode || ""}` + "_") + Math.floor(Math.random() * 1000);
+  const unid = nextId("BEH" + "-" + `${agent?.agentCode || ""}` + "-") + Math.floor(Math.random() * 1000);
 
  // const unid = `BEH_${agent?.agentCode || ""}`;
 
-  console.log(agent?.agentCode);
-  console.log(unid);
+  // console.log(agent?.agentCode);
+  // console.log(unid);
 
 
   const dispatch = useDispatch();
