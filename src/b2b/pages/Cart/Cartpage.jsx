@@ -1371,7 +1371,7 @@ function Cartpage() {
                             {/* {!couponResponse?.discountAmount && (
                             <> */}
                             {priceConversion(
-                              ((totalPrice * 1.027)),
+                              totalPrice * 1.027,
                               selectedCurrency,
                               true
                             )}
