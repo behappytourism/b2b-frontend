@@ -46,13 +46,15 @@ function Cartpage() {
   const { countries } = useSelector((state) => state.home);
   const { token, agent } = useSelector((state) => state.agents);
 
-  const unid = nextId(`${agent?.shortName || "BEH"}` + "-" + `${agent?.agentCode || ""}` + "-") + Math.floor(Math.random() * 1000);
+  const unid =
+    nextId(
+      `${agent?.shortName || "BEH"}` + "-" + `${agent?.agentCode || ""}` + "-"
+    ) + Math.floor(Math.random() * 1000);
 
- // const unid = `BEH_${agent?.agentCode || ""}`;
+  // const unid = `BEH_${agent?.agentCode || ""}`;
 
   // console.log(agent?.agentCode);
   // console.log(unid);
-
 
   const dispatch = useDispatch();
 
@@ -1330,9 +1332,10 @@ function Cartpage() {
                         <h1 className="text-xs text-gray-400 text-center">
                           Total price
                         </h1>
-                        <h1 className="text-black font-bold text-3xl">
-                          {" "}
-                          {/* {couponResponse?.discountAmount && (
+                        {details.paymentMethod === "wallet" && (
+                          <h1 className="text-black font-bold text-3xl">
+                            {" "}
+                            {/* {couponResponse?.discountAmount && (
                             <>
                               {priceConversion(
                                 totalPrice - couponResponse?.discountAmount,
@@ -1341,16 +1344,41 @@ function Cartpage() {
                               )}
                             </>
                           )} */}
-                          {/* {!couponResponse?.discountAmount && (
+                            {/* {!couponResponse?.discountAmount && (
                             <> */}
+                            {priceConversion(
+                              totalPrice,
+                              selectedCurrency,
+                              true
+                            )}
+                            {/* </>
+                          )} */}
+                          </h1>
+                        )}
+
+                        {details.paymentMethod === "ccavenue" && (
+                          <h1 className="text-black font-bold text-3xl">
+                            {" "}
+                            {/* {couponResponse?.discountAmount && (
+                            <>
                               {priceConversion(
-                                totalPrice,
+                                totalPrice - couponResponse?.discountAmount,
                                 selectedCurrency,
                                 true
                               )}
+                            </>
+                          )} */}
+                            {/* {!couponResponse?.discountAmount && (
+                            <> */}
+                            {priceConversion(
+                              ((totalPrice * 1.027)),
+                              selectedCurrency,
+                              true
+                            )}
                             {/* </>
                           )} */}
-                        </h1>
+                          </h1>
+                        )}
                       </div>
                     </div>
 
