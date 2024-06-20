@@ -160,12 +160,13 @@ function ResellersVerification() {
                 onChange={(e) => handleFileChange(e, setTradeLicense)}
               />
               </div>
-
+              {uploadedCertificates && uploadedCertificates?.tradeLicense && (
               <img
                 className="h-fit w-60 border rounded-lg"
                 src={config.SERVER_URL + uploadedCertificates?.tradeLicense}
                 alt=""
               />
+            )}
             </div>
             <div className="flex gap-3 mt-3">
               <div className="flex flex-col gap-3">
@@ -176,12 +177,13 @@ function ResellersVerification() {
                 onChange={(e) => handleFileChange(e, setTaxCertificate)}
               />
               </div>
-
+              {uploadedCertificates && uploadedCertificates?.taxCertificate && (
               <img
                 className="h-fit w-60 border rounded-lg"
                 src={config.SERVER_URL + uploadedCertificates?.taxCertificate}
                 alt=""
               />
+              )}
             </div>
             {error && <p style={{ color: "red" }}>{error}</p>}
             <button
