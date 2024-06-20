@@ -53,10 +53,6 @@ function ResellersVerification() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { agentCode, randomString } = useParams();
-
-  useEffect(() => {
-    console.log(agentCode, "agentCode");
-  }, [agentCode]);
   
   const [tradeLicense, setTradeLicense] = useState(null);
   const [taxCertificate, setTaxCertificate] = useState(null);
