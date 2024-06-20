@@ -95,6 +95,7 @@ function ViewSigleDetails() {
   // }
 
   const handleOrderCancellation = async (ele) => {
+    setIsLoading(true)
     const body = {
       orderId: `${params.id}`,
       attractionCancellations: cancelAttractionActivityId,
@@ -120,6 +121,7 @@ function ViewSigleDetails() {
       setCancelTransferActivityId([])
       setCancelModal(false)
       setCancel(false)
+      setIsLoading(false)
     } catch (error) {
       dispatch(
         setAlertError({
@@ -132,6 +134,7 @@ function ViewSigleDetails() {
       setCancelTransferActivityId([])
       setCancelModal(false)
       setCancel(false)
+      setIsLoading(false)
       console.log(error);
     }
   };
@@ -317,7 +320,7 @@ function ViewSigleDetails() {
             <input onChange={(e) => setCancellationRemark(e?.target?.value)} type="text" className="border w-full rounded px-2 py-1 placeholder:text-gray-300" placeholder="cancellation remark" />
             <div className="flex w-full justify-end gap-5 mt-5">
             <button onClick={() => setCancelModal(false)}>Back</button>
-            <button onClick={() => handleOrderCancellation()}>Confirm</button>
+            {isLoading ? <BtnLoader /> : <button onClick={() => handleOrderCancellation()}>Confirm</button>}
             </div>
            </div>
           </div>
