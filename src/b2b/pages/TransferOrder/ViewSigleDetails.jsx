@@ -128,6 +128,10 @@ function ViewSigleDetails() {
           text: `${error?.response?.data?.error || error.message}`,
         })
       );
+      setCancelAttractionActivityId([])
+      setCancelTransferActivityId([])
+      setCancelModal(false)
+      setCancel(false)
       console.log(error);
     }
   };
@@ -207,12 +211,12 @@ function ViewSigleDetails() {
                       {invoiceLoading ? <BtnLoader /> : "Download Invoice"}
                     </button>
 
-                    {/* <button
+                    <button
                       onClick={() => handleCancel()}
                       className="bg-black w-52 rounded-full text-white  h-8"
                     >
                       Cancel Order
-                    </button> */}
+                    </button>
                   </div>
                 )}
 
