@@ -21,6 +21,7 @@ function ViewSigleDetails() {
   const [orderAttractionDetails, setOrderAttractionDetails] = useState({});
   const [orderTransferDetails, setOrderTransferDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [invoiceLoading, setInvoiceLoading] = useState(false);
   const [cancellationRemark, setCancellationRemark] = useState("");
   const [cancelModal, setCancelModal] = useState(false);
@@ -95,7 +96,7 @@ function ViewSigleDetails() {
   // }
 
   const handleOrderCancellation = async (ele) => {
-    setIsLoading(true)
+    setLoading(true)
     const body = {
       orderId: `${params.id}`,
       attractionCancellations: cancelAttractionActivityId,
@@ -121,7 +122,7 @@ function ViewSigleDetails() {
       setCancelTransferActivityId([])
       setCancelModal(false)
       setCancel(false)
-      setIsLoading(false)
+      setLoading(false)
     } catch (error) {
       dispatch(
         setAlertError({
@@ -134,7 +135,7 @@ function ViewSigleDetails() {
       setCancelTransferActivityId([])
       setCancelModal(false)
       setCancel(false)
-      setIsLoading(false)
+      setLoading(false)
       console.log(error);
     }
   };
@@ -319,8 +320,8 @@ function ViewSigleDetails() {
             <p className="">Remark</p>
             <input onChange={(e) => setCancellationRemark(e?.target?.value)} type="text" className="border w-full rounded px-2 py-1 placeholder:text-gray-300" placeholder="cancellation remark" />
             <div className="flex w-full justify-end gap-5 mt-5">
-            <button onClick={() => setCancelModal(false)}>Back</button>
-            {isLoading ? <BtnLoader /> : <button onClick={() => handleOrderCancellation()}>Confirm</button>}
+            <button disabled={loading} onClick={() => setCancelModal(false)}>Back</button>
+            {loading ? <BtnLoader /> : <button onClick={() => handleOrderCancellation()}>Confirm</button>}
             </div>
            </div>
           </div>
