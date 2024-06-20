@@ -483,7 +483,7 @@ const ThemeRoutes = [
     element:<LandingPage/>
   },
   {
-    path:"/verification/:agentCode",
+    path:"/verification/:agentCode/:randomString",
     element:<ResellersVerification/>
   },
   {

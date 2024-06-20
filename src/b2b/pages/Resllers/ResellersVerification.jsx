@@ -28,7 +28,7 @@ import { SiAdguard } from "react-icons/si";
 import { IoCarSportSharp } from "react-icons/io5";
 import { TbBrandBooking } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const responsive = {
   superLargeDesktop: {
@@ -51,7 +51,8 @@ const responsive = {
 
 function ResellersVerification() {
   const dispatch = useDispatch();
-  const { agentCode } = useParams();
+  const navigate = useNavigate();
+  const { agentCode, randomString } = useParams();
 
   useEffect(() => {
     console.log(agentCode, "agentCode");
@@ -62,17 +63,21 @@ function ResellersVerification() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [uploadedCertificates, setUploadedCertificates] = useState({});
-
+  const [submitted, setSubmittted] = useState(false)
 
 
   const fetchCertificates = async () => {
     try {
       const response = await axios.get(
-        `/b2b/resellers/auth/certificate/${agentCode}`
+        `/b2b/resellers/auth/certificate/${agentCode}/${randomString}`
       );
       setUploadedCertificates(response.data);
+      {response.data?.taxCertificate && response.data?.tradeLicense && (
+        setSubmittted(true)
+      )}
     } catch (err) {
       console.error("Error fetching certificates:", err);
+      navigate("/");
     }
   };
 
@@ -113,7 +118,7 @@ function ResellersVerification() {
     try {
       setIsLoading(true);
       const response = await axios.patch(
-        `/b2b/resellers/auth/update/certificate/${agentCode}`,
+        `/b2b/resellers/auth/update/certificate/${agentCode}/${randomString}`,
         formData,
         {
           headers: {
@@ -139,7 +144,7 @@ function ResellersVerification() {
     return (
       <div className="w-full flex justify-center mt-5">
         <div>
-          <h1 className="text-2xl font-bold">
+          <h1 className="text-2xl w-full flex justify-center items-center font-bold">
             Please upload the required documents to get verified faster!
           </h1>
           <form onSubmit={handleSubmit}>
@@ -151,14 +156,16 @@ function ResellersVerification() {
                 onChange={(e) => setAgentCode(e.target.value)}
               />
             </div> */}
-            <div className="flex gap-3 mt-3">
+            <div className={`${submitted ? "flex flex-col w-full justify-center text-center items-center" : "flex flex-row"} gap-3 mt-3`}>
               <div className="flex flex-col gap-3">
               <label className="text-xl">Trade License</label>
+              {!submitted && (
               <input
                 type="file"
                 accept=".jpg,.jpeg,.pdf"
                 onChange={(e) => handleFileChange(e, setTradeLicense)}
               />
+              )}
               </div>
               {uploadedCertificates && uploadedCertificates?.tradeLicense && (
               <img
@@ -168,14 +175,16 @@ function ResellersVerification() {
               />
             )}
             </div>
-            <div className="flex gap-3 mt-3">
+            <div className={`${submitted ? "flex flex-col w-full justify-center text-center items-center" : "flex flex-row"} gap-3 mt-3`}>
               <div className="flex flex-col gap-3">
               <label className="text-xl">Tax Certificate</label>
+              {!submitted && (
               <input
                 type="file"
                 accept=".jpg,.jpeg,.pdf"
                 onChange={(e) => handleFileChange(e, setTaxCertificate)}
               />
+              )}
               </div>
               {uploadedCertificates && uploadedCertificates?.taxCertificate && (
               <img
@@ -186,6 +195,8 @@ function ResellersVerification() {
               )}
             </div>
             {error && <p style={{ color: "red" }}>{error}</p>}
+             
+             {!submitted && (
             <button
               className="px-5 my-10 py-1 rounded bg-black text-white font-semibold"
               type="submit"
@@ -193,8 +204,20 @@ function ResellersVerification() {
             >
               Submit
             </button>
-            <p>Thanks for your patience, Please wait for approval, an email will be send to your registered email after you are verified. Thank You</p>
+            )}
           </form>
+
+          {submitted && (
+            <button
+            onClick={() => setSubmittted(false)}
+              className="px-5 my-10 py-1 rounded bg-black text-white font-semibold"
+            >
+              Edit
+            </button>
+            )}
+
+<p>Thanks for your patience, Please wait for approval, an email will be send to your registered email after you are verified. Thank You</p>
+
         </div>
       </div>
     );

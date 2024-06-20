@@ -49,7 +49,7 @@ const LoginSection = () => {
       const response = await axios.post("/b2b/resellers/auth/login", data);
 
       if (response?.data?.status === "pending") {
-        navigate(`/verification/${response?.data?.agentCode}`);
+        navigate(`/verification/${response?.data?.agentCode}/${response?.data?.randomString}`);
       } else if (response?.data?.status === "ok") {
         dispatch(setAgent(response.data));
         navigate("/");
