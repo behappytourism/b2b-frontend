@@ -15,7 +15,7 @@ import alertimg from '../../../../public/alert.png'
 const LoginSection = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoggedIn, agentVerification } = useSelector((state) => state.agents);
+  const { isLoggedIn } = useSelector((state) => state.agents);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [forgotPasswordModal, setForgotPasswordModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -33,7 +33,6 @@ const LoginSection = () => {
   });
   const [forgotEmail, setForgotEmail] = useState("");
 
-  console.log(agentVerification);
 
   const handleChange = (e) => {
     setError("")
@@ -94,12 +93,7 @@ const LoginSection = () => {
     }
   }, [isLoggedIn]);
 
-  
-  // useEffect(() => {
-  //   if (agentVerification) {
-  //     navigate("/verification");
-  //   }
-  // }, [agentVerification]);
+
 
   function forgotpasswordMessageHandler(message) {
     setFrogotPasswordResponse({
