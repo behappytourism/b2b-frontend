@@ -7,6 +7,7 @@ const initialState = {
   agent: {},
   token: localStorage.getItem("agent-string") || "",
   isLoggedIn: false,
+  agentVerification: false,
   forgotPasswordEmail: "",
   agenttempLogo:null
 };
@@ -48,6 +49,9 @@ const agentSlice = createSlice({
 
       localStorage.setItem("agent-string", action.payload?.jwtToken);
     },
+    setAgentVerification: (state, action) => {
+     state.agentVerification = action.payload
+    },
     setAgentCompanyLogo:(state,action)=>{
       console.log(action.payload,"action.payload.companyLogo");
       state.agenttempLogo=action.payload
@@ -86,6 +90,6 @@ const agentSlice = createSlice({
 
 export { fetchAgent, logoutAgent };
 
-export const { setAgent,setAgentCompanyLogo, setRegisterAgent, setForgotPasswordEmail } = agentSlice.actions;
+export const { setAgent,setAgentCompanyLogo, setRegisterAgent, setForgotPasswordEmail, setAgentVerification } = agentSlice.actions;
 
 export default agentSlice.reducer;

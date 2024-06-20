@@ -15,7 +15,7 @@ import alertimg from '../../../../public/alert.png'
 const LoginSection = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.agents);
+  const { isLoggedIn, agentVerification } = useSelector((state) => state.agents);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [forgotPasswordModal, setForgotPasswordModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -33,6 +33,8 @@ const LoginSection = () => {
   });
   const [forgotEmail, setForgotEmail] = useState("");
 
+  console.log(agentVerification);
+
   const handleChange = (e) => {
     setError("")
     setData((prev) => {
@@ -47,9 +49,14 @@ const LoginSection = () => {
       setIsLoading(true);
       const response = await axios.post("/b2b/resellers/auth/login", data);
 
-      dispatch(setAgent(response.data));
+      if (response?.data?.status === "pending") {
+        navigate(`/verification/${response?.data?.agentCode}`);
+      } else if (response?.data?.status === "ok") {
+        dispatch(setAgent(response.data));
+        navigate("/");
+      }
+
       setIsLoading(false);
-      navigate("/");
     } catch (err) {
       if (err?.response?.data?.error === "Invalid credentials") {
         setError("You have given incorrect email or password");
@@ -85,7 +92,14 @@ const LoginSection = () => {
     if (isLoggedIn) {
       navigate("/");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
+
+  
+  // useEffect(() => {
+  //   if (agentVerification) {
+  //     navigate("/verification");
+  //   }
+  // }, [agentVerification]);
 
   function forgotpasswordMessageHandler(message) {
     setFrogotPasswordResponse({
