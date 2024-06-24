@@ -41,6 +41,7 @@ const PaymentHomePage = lazy(() =>
   import("../b2b/pages/AttractionPayment/PaymentHomePage")
 );
 const Resellers = lazy(() => import("../b2b/pages/Resllers/Resellers"));
+
 const Settings = lazy(() => import("../b2b/pages/Settings/Settings"));
 const SingleSubAgent = lazy(() =>
   import("../b2b/pages/Resllers/SingleSubAgent")
@@ -154,6 +155,7 @@ const AttractionPage = lazy(() => import("../b2b/pages/Home/AttractionPage"));
 // );
 const PrivacyAndPolicy = lazy(() => import("../b2b/pages/PrivacyAndPolicy"));
 const LandingPage = lazy(()=> import("../b2b/components/landingPage/LandingPage"))
+const VerificationPage = lazy(() => import("../b2b/pages/Resllers/ResellersVerification"));
 
 const Transfer = lazy(()=>import("../b2b/pages/Home/TransferPage"))
 const TransferListPage = lazy(()=>import("../b2b/pages/Transfer/TransferListPage"))
@@ -177,6 +179,7 @@ import TransferOrderPage from "../b2b/pages/TransferOrder/TransferOrderPage";
 import ViewSigleDetails from "../b2b/pages/TransferOrder/ViewSigleDetails";
 import TourModule from "./modules/TourModule";
 import TermsAndCondition from "../b2b/components/landingPage/TermsAndCondition";
+import ResellersVerification from "../b2b/pages/Resllers/ResellersVerification";
 
 
 // const HotelErrorPage = lazy(() =>
@@ -478,6 +481,10 @@ const ThemeRoutes = [
   {
     path:"/login",
     element:<LandingPage/>
+  },
+  {
+    path:"/verification/:agentCode/:randomString",
+    element:<ResellersVerification/>
   },
   {
     path:"/aboutus",

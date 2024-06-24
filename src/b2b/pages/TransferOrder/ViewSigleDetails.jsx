@@ -21,6 +21,7 @@ function ViewSigleDetails() {
   const [orderAttractionDetails, setOrderAttractionDetails] = useState({});
   const [orderTransferDetails, setOrderTransferDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [invoiceLoading, setInvoiceLoading] = useState(false);
   const [cancellationRemark, setCancellationRemark] = useState("");
   const [cancelModal, setCancelModal] = useState(false);
@@ -95,6 +96,7 @@ function ViewSigleDetails() {
   // }
 
   const handleOrderCancellation = async (ele) => {
+    setLoading(true)
     const body = {
       orderId: `${params.id}`,
       attractionCancellations: cancelAttractionActivityId,
@@ -120,6 +122,7 @@ function ViewSigleDetails() {
       setCancelTransferActivityId([])
       setCancelModal(false)
       setCancel(false)
+      setLoading(false)
     } catch (error) {
       dispatch(
         setAlertError({
@@ -128,6 +131,11 @@ function ViewSigleDetails() {
           text: `${error?.response?.data?.error || error.message}`,
         })
       );
+      setCancelAttractionActivityId([])
+      setCancelTransferActivityId([])
+      setCancelModal(false)
+      setCancel(false)
+      setLoading(false)
       console.log(error);
     }
   };
@@ -207,12 +215,12 @@ function ViewSigleDetails() {
                       {invoiceLoading ? <BtnLoader /> : "Download Invoice"}
                     </button>
 
-                    {/* <button
+                    <button
                       onClick={() => handleCancel()}
                       className="bg-black w-52 rounded-full text-white  h-8"
                     >
                       Cancel Order
-                    </button> */}
+                    </button>
                   </div>
                 )}
 
@@ -312,8 +320,8 @@ function ViewSigleDetails() {
             <p className="">Remark</p>
             <input onChange={(e) => setCancellationRemark(e?.target?.value)} type="text" className="border w-full rounded px-2 py-1 placeholder:text-gray-300" placeholder="cancellation remark" />
             <div className="flex w-full justify-end gap-5 mt-5">
-            <button onClick={() => setCancelModal(false)}>Back</button>
-            <button onClick={() => handleOrderCancellation()}>Confirm</button>
+            <button disabled={loading} onClick={() => setCancelModal(false)}>Back</button>
+            {loading ? <BtnLoader /> : <button onClick={() => handleOrderCancellation()}>Confirm</button>}
             </div>
            </div>
           </div>

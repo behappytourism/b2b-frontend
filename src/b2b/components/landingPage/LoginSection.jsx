@@ -33,6 +33,7 @@ const LoginSection = () => {
   });
   const [forgotEmail, setForgotEmail] = useState("");
 
+
   const handleChange = (e) => {
     setError("")
     setData((prev) => {
@@ -47,9 +48,14 @@ const LoginSection = () => {
       setIsLoading(true);
       const response = await axios.post("/b2b/resellers/auth/login", data);
 
-      dispatch(setAgent(response.data));
+      if (response?.data?.status === "pending") {
+        navigate(`/verification/${response?.data?.agentCode}/${response?.data?.randomString}`);
+      } else if (response?.data?.status === "ok") {
+        dispatch(setAgent(response.data));
+        navigate("/");
+      }
+
       setIsLoading(false);
-      navigate("/");
     } catch (err) {
       if (err?.response?.data?.error === "Invalid credentials") {
         setError("You have given incorrect email or password");
@@ -85,7 +91,9 @@ const LoginSection = () => {
     if (isLoggedIn) {
       navigate("/");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
+
+
 
   function forgotpasswordMessageHandler(message) {
     setFrogotPasswordResponse({
