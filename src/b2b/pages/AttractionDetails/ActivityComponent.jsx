@@ -16,7 +16,6 @@ import ImagePreviewModal from "./ImagePreviewModal";
 import TermsConditionModal from "./TermsConditionModal";
 
 function ActivityComponent({ item, index }) {
-
   const [price, setPrice] = useState(0);
   const [error, setError] = useState("");
   const [modal, setModal] = useState(false);
@@ -79,12 +78,20 @@ function ActivityComponent({ item, index }) {
         });
         while (totalTravellers > 0) {
           for (let x = 0; x < priceList.length; x++) {
+            let adjustedPrice = priceList[x].price;
+
+            if (item?.activityType === "transfer" && item?.isB2bPromoCode) {
+              const promoAmount = item?.b2bPromoAmountAdult || 0;
+              adjustedPrice = priceList[x].price + promoAmount; // Update the existing adjustedPrice
+            }
+
             if (x === 0) {
               if (
                 totalTravellers > 0 &&
                 totalTravellers <= priceList[x].maxCapacity
               ) {
-                totalPrice = totalPrice + priceList[x].price;
+                totalPrice += adjustedPrice;
+                //  totalPrice = totalPrice + priceList[x].price;
                 totalTravellers = totalTravellers - priceList[x].maxCapacity;
                 array = [...array, priceList[x]];
                 break;
@@ -94,56 +101,46 @@ function ActivityComponent({ item, index }) {
                 totalTravellers <= priceList[x].maxCapacity &&
                 totalTravellers > priceList[x - 1].maxCapacity
               ) {
-                totalPrice = totalPrice + priceList[x].price;
+                totalPrice += adjustedPrice;
+                // totalPrice = totalPrice + priceList[x].price;
                 totalTravellers = totalTravellers - priceList[x].maxCapacity;
                 array = [...array, priceList[x]];
                 break;
               }
             }
             if (x === priceList.length - 1) {
-              totalPrice = totalPrice + priceList[x].price;
+              totalPrice += adjustedPrice;
+              // totalPrice = totalPrice + priceList[x].price;
               totalTravellers = totalTravellers - priceList[x].maxCapacity;
               array = [...array, priceList[x]];
             }
           }
         }
+
+        // New lines added
+        if (item?.base === "hourly" && item?.activityType === "transfer") {
+          totalPrice *= Number(item?.hourCount);
+        }
+
         if (item?.activityType === "normal") {
           totalPrice += sum;
         }
 
-        if (item?.base === "hourly") {
-          setPrice(totalPrice * Number(item?.hourCount));
-          dispatch(
-            setActivities({
-              value: totalPrice * Number(item?.hourCount),
-              name: "price",
-              index,
-            })
-          );
-          dispatch(
-            setActivities({
-              value: totalPrice * Number(item?.hourCount),
-              name: "priceWithoutPromo",
-              index,
-            })
-          );
-        } else {
-          setPrice(totalPrice);
-          dispatch(
-            setActivities({
-              value: totalPrice,
-              name: "price",
-              index,
-            })
-          );
-          dispatch(
-            setActivities({
-              value: totalPrice,
-              name: "priceWithoutPromo",
-              index,
-            })
-          );
-        }
+        setPrice(totalPrice);
+        dispatch(
+          setActivities({
+            value: totalPrice,
+            name: "price",
+            index,
+          })
+        );
+        dispatch(
+          setActivities({
+            value: totalPrice,
+            name: "priceWithoutPromo",
+            index,
+          })
+        );
         dispatch(
           setActivities({
             value: array,
@@ -152,7 +149,7 @@ function ActivityComponent({ item, index }) {
           })
         );
       }
-      if (item?.isB2bPromoCode) {
+      if (item?.isB2bPromoCode && item?.activityType !== "transfer") {
         dispatch(
           setActivities({
             value: true,
@@ -193,43 +190,59 @@ function ActivityComponent({ item, index }) {
       if (item?.activityType === "normal") {
         sum += Number(totalTravellers) * item?.sharedTransferPrice;
       } else {
-        sum = Number(totalTravellers) * item?.sharedTransferPrice;
+        sum =
+          Number(totalTravellers) *
+          Number(item?.hourCount || 1) *
+          item?.sharedTransferPrice;
       }
 
-      if (item?.base === "hourly") {
-        setPrice(sum * Number(item?.hourCount));
-        dispatch(
-          setActivities({
-            value: sum * Number(item?.hourCount),
-            name: "price",
-            index,
-          })
-        );
-        dispatch(
-          setActivities({
-            value: sum * Number(item?.hourCount),
-            name: "priceWithoutPromo",
-            index,
-          })
-        );
-      } else {
-        setPrice(sum);
-        dispatch(
-          setActivities({
-            value: sum,
-            name: "price",
-            index,
-          })
-        );
-        dispatch(
-          setActivities({
-            value: sum,
-            name: "priceWithoutPromo",
-            index,
-          })
-        );
+      if (
+        item?.activityType === "transfer" &&
+        item?.base === "hourly" &&
+        item?.isB2bPromoCode
+      ) {
+        const promoAmount = item?.b2bPromoAmountAdult || 0;
+        sum += promoAmount * Number(totalTravellers) * Number(item?.hourCount);
       }
-      if (item?.isB2bPromoCode) {
+
+      //   if (item?.base === "hourly" && item?.activityType === "transfer") {
+      //     sum *= Number(item?.hourCount);
+      // }
+
+      // if (item?.base === "hourly") {
+      //     setPrice(sum * Number(item?.hourCount));
+      //     dispatch(
+      //         setActivities({
+      //             value: sum * Number(item?.hourCount),
+      //             name: "price",
+      //             index,
+      //         })
+      //     );
+      //     dispatch(
+      //         setActivities({
+      //             value: sum * Number(item?.hourCount),
+      //             name: "priceWithoutPromo",
+      //             index,
+      //         })
+      //     );
+      // } else {
+      setPrice(sum);
+      dispatch(
+        setActivities({
+          value: sum,
+          name: "price",
+          index,
+        })
+      );
+      dispatch(
+        setActivities({
+          value: sum,
+          name: "priceWithoutPromo",
+          index,
+        })
+      );
+      // }
+      if (item?.isB2bPromoCode && item?.base !== "hourly") {
         dispatch(
           setActivities({
             value: true,
@@ -248,6 +261,7 @@ function ActivityComponent({ item, index }) {
             index,
           })
         );
+        console.log(val);
         setPrice(val);
         dispatch(
           setActivities({
@@ -320,52 +334,13 @@ function ActivityComponent({ item, index }) {
         );
       }
     }
-
-    // if (item?.isB2bPromoCode) {
-    //   dispatch(
-    //     setActivities({
-    //       value: true,
-    //       name: "isPromoAdded",
-    //       index,
-    //     })
-    //   );
-    //   console.log(sum, "sum");
-    //   let val =
-    //     Number(sum) +
-    //     (Number(item.adult) * Number(item?.b2bPromoAmountAdult) +
-    //       Number(item.child) * Number(item?.b2bPromoAmountChild));
-    //   dispatch(
-    //     setActivities({
-    //       value: Number(val),
-    //       name: "priceWithoutPromo",
-    //       index,
-    //     })
-    //   );
-    //   setPrice(val);
-    //   console.log(price);
-    //   dispatch(
-    //     setActivities({
-    //       value: Number(sum),
-    //       name: "price",
-    //       index,
-    //     })
-    //   );
-    //   dispatch(
-    //     setActivities({
-    //       value:
-    //         Number(item.adult) * Number(item?.b2bPromoAmountAdult) +
-    //         Number(item.child) * Number(item?.b2bPromoAmountChild),
-    //       name: "appliedPromoAmountB2b",
-    //       index,
-    //     })
-    //   );
-    // }
   }, [
     item?.adult,
     item?.child,
     item?.infant,
     item?.transfer,
     item?.hourCount,
+    item?.selectedTimeSlot,
     dispatch,
   ]);
 
@@ -476,12 +451,11 @@ function ActivityComponent({ item, index }) {
     }
   };
 
-
+  console.log(item);
   return (
     <div
-      className={`text-black w-full h-auto xl:h-[330px] shadow-md border border-orange-300 rounded-lg mb-4 cursor-pointer overflow-hidden`}
+      className={`text-black w-full h-auto xl:h-[380px] shadow-md border border-orange-300 rounded-lg mb-4 cursor-pointer overflow-hidden`}
     >
-     
       <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-1 md:gap-4">
         <div className="w-full h-full xl:h-[330px] row-span-2">
           <img
@@ -498,11 +472,13 @@ function ActivityComponent({ item, index }) {
         </div>
 
         <div className="w-full py-5 p-2  h-full">
-          <h1 className="md:text-2xl text-lg font-semibold md:mb-2 ">{item?.name}</h1>
+          <h1 className="md:text-2xl text-lg font-semibold md:mb-2 ">
+            {item?.name}
+          </h1>
 
           <div>
             <div
-            className="text-xs md:text-base"
+              className="text-xs md:text-base"
               dangerouslySetInnerHTML={{
                 __html: item?.description?.slice(0, 100) + "...",
               }}
@@ -728,12 +704,35 @@ function ActivityComponent({ item, index }) {
                       <p className="text-left text-darktext underline">
                         {ride?.name}
                       </p>
-                      <p className="flex gap-1 justify-between">
-                        <span className="">
-                          {priceConversion(ride?.price, selectedCurrency, true)}
-                        </span>
-                        <span className="">X {ride?.length}</span>
-                      </p>
+                      {item?.isB2bPromoCode && (
+                        <>
+                          <p className="flex gap-1 justify-between">
+                            <span className="">
+                              {priceConversion(
+                                ride?.price + item?.b2bPromoAmountAdult,
+                                selectedCurrency,
+                                true
+                              )}
+                            </span>
+                            <span className="">X {ride?.length}</span>
+                          </p>
+                        </>
+                      )}
+
+                      {!item?.isB2bPromoCode && (
+                        <>
+                          <p className="flex gap-1 justify-between">
+                            <span className="">
+                              {priceConversion(
+                                ride?.price,
+                                selectedCurrency,
+                                true
+                              )}
+                            </span>
+                            <span className="">X {ride?.length}</span>
+                          </p>
+                        </>
+                      )}
                       <p className="flex justify-between">
                         <span className="">Seats:</span>
                         <span className="">{ride?.maxCapacity} </span>
@@ -742,20 +741,44 @@ function ActivityComponent({ item, index }) {
                   ))}
               </div>
             </div>
-            {item?.transfer === "shared" ? (
-              <div className="text-gray-400 text-sm font-semibold">
-                Shared Transfer Price*{" "}
-                <span className="text-xs text-gray-300 font-light">
-                  (per Person)
-                </span>{" "}
-                {priceConversion(
-                  item?.sharedTransferPrice,
-                  selectedCurrency,
-                  true
+            {item?.isB2bPromoCode && (
+              <>
+                {item?.transfer === "shared" ? (
+                  <div className="text-gray-400 text-sm font-semibold">
+                    Shared Transfer Price*{" "}
+                    <span className="text-xs text-gray-300 font-light">
+                      (per Person)
+                    </span>{" "}
+                    {priceConversion(
+                      item?.sharedTransferPrice + item?.b2bPromoAmountAdult,
+                      selectedCurrency,
+                      true
+                    )}
+                  </div>
+                ) : (
+                  ""
                 )}
-              </div>
-            ) : (
-              ""
+              </>
+            )}
+
+            {!item?.isB2bPromoCode && (
+              <>
+                {item?.transfer === "shared" ? (
+                  <div className="text-gray-400 text-sm font-semibold">
+                    Shared Transfer Price*{" "}
+                    <span className="text-xs text-gray-300 font-light">
+                      (per Person)
+                    </span>{" "}
+                    {priceConversion(
+                      item?.sharedTransferPrice,
+                      selectedCurrency,
+                      true
+                    )}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </>
             )}
             <div className={`grid  xl:flex  lg:justify-between `}>
               <div>
@@ -1008,7 +1031,6 @@ function ActivityComponent({ item, index }) {
             ""
           )}
         </div>
-        
       </div>
 
       {termsModals && (
