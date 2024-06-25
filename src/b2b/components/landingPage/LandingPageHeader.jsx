@@ -33,7 +33,7 @@ function LandingPageHeader() {
           <div className="hidden lg:block ">
             <button
               className="text-sm font-lg font-demo  font-bold h-10 rounded-full hover:bg-sky-100 p-2 hover:text-sky-400 transition duration-300 whitespace-nowrap"
-              onClick={() => navigate("/aboutus")}
+              onClick={() => navigate("/about-us")}
             >
               About Us{" "}
             </button>

@@ -154,6 +154,7 @@ const AttractionPage = lazy(() => import("../b2b/pages/Home/AttractionPage"));
 //   import("../b2b/pages/Flight/FlightOrderDetailPage")
 // );
 const PrivacyAndPolicy = lazy(() => import("../b2b/pages/PrivacyAndPolicy"));
+const AboutUs = lazy(() => import("../b2b/pages/About-us/AboutUs"))
 const LandingPage = lazy(()=> import("../b2b/components/landingPage/LandingPage"))
 const VerificationPage = lazy(() => import("../b2b/pages/Resllers/ResellersVerification"));
 
@@ -453,6 +454,10 @@ const ThemeRoutes = [
   {
     path: "/privacy-policy",
     element: <PrivacyAndPolicy />,
+  },
+  {
+    path: "/about-us",
+    element: <AboutUs />,
   },
   {
     path: "/register",
