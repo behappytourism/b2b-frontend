@@ -279,7 +279,7 @@ function ToursHomePage() {
               {isLoading  ? (
                 <div className="pt-2">
                   <div className="grid md:grid-cols-3 w-full sm:grid-cols-2 gap-3">
-                    {[1, 2, 3 ]?.map((ele) => (
+                    {[1, 2, 3, 4, 5, 6 ]?.map((ele) => (
                       <div className="bg-white shadow-md min-w-[350px]  w-full h-[400px]">
                         <div className="w-full h-52 ">
                           <div className="w-full  h-full bg-gray-100 animate-pulse"></div>
