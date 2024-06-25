@@ -196,6 +196,47 @@ function OrderSuccessPage() {
                         {attr?.childrenCount}{" "}
                       </p>
                     </div>
+                    {attr?.hoursCount > 0 && (
+                    <div className="flex justify-between py-2">
+                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                        Hours count
+                      </h4>
+                      <p className=" text-textColor text-sm capitalize ">
+                        {attr?.hoursCount}{" "}
+                      </p>
+                    </div>
+                    )}
+{attr?.privateTransfers?.length > 0 && (
+  <>
+  
+<div className="flex justify-between py-2">
+                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                        Vehicle Name
+                      </h4>
+                      {attr?.privateTransfers?.map((pvtTrans, pvtTransIndex) => (
+                      <div>
+                      <p className=" text-textColor text-sm capitalize ">
+                        {pvtTrans?.name}{" "}
+                      </p>
+                      </div>
+                      ))}
+                    </div>
+
+                    <div className="flex justify-between py-2">
+                      <h4 className="font-bold tracking-wide text-gray-400 text-sm">
+                        Vehicle count
+                      </h4>
+                      {attr?.privateTransfers?.map((pvtTrans, pvtTransIndex) => (
+                      <div>
+                      <p className=" text-textColor text-sm capitalize ">
+                        {pvtTrans?.count}{" "}
+                      </p>
+                      </div>
+                      ))}
+                    </div>
+                    </>
+)}
+
                     {orderDetails?.attractionOrder?.orderStatus === "completed" | "booked" && (
                     <div className="flex justify-between py-2">
                       <h4 className="font-bold tracking-wide text-gray-400 text-sm">

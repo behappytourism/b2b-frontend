@@ -21,7 +21,7 @@ function ToursHomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [attractions, setAttractions] = useState([]);
   const [filters, setFilters] = useState({
-    limit: 15,
+    limit: 30,
     skip: 0,
     totalAttractions: 0,
     filteredAttractionCount: 0,
@@ -278,9 +278,9 @@ function ToursHomePage() {
               </div>
               {isLoading  ? (
                 <div className="pt-2">
-                  <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-3">
+                  <div className="grid md:grid-cols-3 w-full sm:grid-cols-2 gap-3">
                     {[1, 2, 3 ]?.map((ele) => (
-                      <div className="bg-white shadow-md  w-full h-[450px]">
+                      <div className="bg-white shadow-md min-w-[350px]  w-full h-[400px]">
                         <div className="w-full h-52 ">
                           <div className="w-full  h-full bg-gray-100 animate-pulse"></div>
                         </div>

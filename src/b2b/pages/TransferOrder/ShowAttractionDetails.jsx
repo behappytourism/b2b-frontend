@@ -123,31 +123,27 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
                 {ele?.status}
               </h1>
             </td>
-            {
-              ele?.status === 'confirmed' ? (
-                <td className="px-6 py-4">
-                  <h1
-                    className="cursor-pointer text-xl"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDownloadAllTicket();
-                    }}
-                  >
-                    <LuDownload />
-                  </h1>
-                </td>
-              ) : (
-                <td className="px-6 py-4">
-                  N/A
-                </td>
-              )
-            }
+            {ele?.status === "confirmed" ? (
+              <td className="px-6 py-4">
+                <h1
+                  className="cursor-pointer text-xl"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDownloadAllTicket();
+                  }}
+                >
+                  <LuDownload />
+                </h1>
+              </td>
+            ) : (
+              <td className="px-6 py-4">N/A</td>
+            )}
           </tr>
         </tbody>
       </table>
       {showDetails && (
         <div className="w-full h-52 px-10 py-3">
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-10">
             <div className="flex gap-4">
               <div className="w-52 h-32">
                 <img
@@ -190,7 +186,7 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
               </div>
             </div>
 
-            <div>
+            <div className="w-full">
               <div>
                 <h1 className="text-gray-300">Other Options</h1>
               </div>
@@ -214,6 +210,31 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
                     {ele?.status}
                   </h1>
                 </div>
+                {ele?.hoursCount > 0 && (
+                  <div className="pt-1">
+                    <h1 className="text-sm">Hours Count : {ele?.hoursCount}</h1>
+                  </div>
+                )}
+                <div className="flex gap-2 w-full">
+                  {ele?.privateTransfers?.length > 0 && (
+                    <div className="pt-1 w-full">
+                      {ele?.privateTransfers?.map((pvtTrans, pvrTransIndex) => (
+                        <h1 className="text-sm">Vehicle: {pvtTrans?.name}</h1>
+                      ))}
+                    </div>
+                  )}
+
+                  {ele?.privateTransfers?.length > 0 && (
+                    <div className="pt-1 w-full">
+                      {ele?.privateTransfers?.map((pvtTrans, pvrTransIndex) => (
+                        <h1 className="text-sm w-fit">
+                          Vehicle Count: {pvtTrans?.count}
+                        </h1>
+                      ))}{" "}
+                    </div>
+                  )}
+                </div>
+
                 <div className="pt-1">
                   <h1 className="text-sm">Adult Count : {ele?.adultsCount}</h1>
                 </div>
@@ -222,9 +243,9 @@ function ShowAttractionDetails({ ele, orderAttractionDetails, orderDetails }) {
                     Children Count : {ele?.childrenCount}
                   </h1>
                 </div>
-                <div className="pt-1">
+                {/* <div className="pt-1">
                   <h1 className="text-sm">Infant Count : {ele?.infantCount}</h1>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
