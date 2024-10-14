@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import LandingPageHeader from './LandingPageHeader'
 import LandingPageFooter from './LandingPageFooter'
-import { FaFacebook, FaSquareInstagram } from "react-icons/fa6";
-import { IoLogoWhatsapp } from "react-icons/io";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux';
-import { FaYoutube, FaTwitter  } from "react-icons/fa";
 import axios from '../../../axios'
 import BtnLoader from '../BtnLoader';
 import { setAlertSuccess } from '../../../redux/slices/homeSlice';

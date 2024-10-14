@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { FaBars, FaWallet } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { RiFilePaper2Line } from "react-icons/ri";
+import { FaWallet } from "react-icons/fa";
 import { TbLayoutDashboard } from "react-icons/tb";
 import { IoMdCart } from "react-icons/io";
 import { RiMarkupFill } from "react-icons/ri";
@@ -12,7 +10,6 @@ import { MdTravelExplore } from "react-icons/md";
 import { RxPerson } from "react-icons/rx";
 import { TbBrandBooking } from "react-icons/tb";
 import { FaXmark } from "react-icons/fa6";
-import { BsDash } from "react-icons/bs";
 
 function BottomNav({ setSidebarView }) {
   const navigate = useNavigate();

@@ -1,10 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router";
 import { MdAttractions } from "react-icons/md";
-import { IoAirplaneOutline, IoBedOutline, IoNewspaperOutline } from "react-icons/io5";
-import { MdOutlineAirplaneTicket } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { AiOutlineInsurance } from "react-icons/ai";
 import { PiCarProfileLight } from "react-icons/pi";
 
 

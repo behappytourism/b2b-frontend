@@ -9,12 +9,9 @@ import {
 } from "react-icons/md";
 import { GiVibratingShield } from "react-icons/gi";
 import { RiSecurePaymentFill, RiPriceTag2Fill } from "react-icons/ri";
-import MobileAppCard from "../../components/Footers/MobileAppCard";
 
 import LandingPageFooter from "../../components/landingPage/LandingPageFooter";
 import LandingPageHeader from "../../components/landingPage/LandingPageHeader";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import ErrorAlert from "../../components/Alerts/ErrorAlert";
 import axios from "../../../axios";
 import { config } from "../../../constants";
